@@ -18,8 +18,6 @@
        <style>
             body{
                 background-color: #f5f5fa;
-                test bang ok sio;
-
             }
 
            .container2 {
