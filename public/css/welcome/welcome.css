@@ -2,9 +2,27 @@
     box-sizing: border-box;
 }
 
+html{
+    background-color: #f5f5fa;
+}
+
 body{
     overflow-x: hidden;
+}
 
+.image {
+    flex-basis: 40%;
+}
+
+.text {
+    font-size: 20px;
+    padding-left: 20px;
+}
+
+.container2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .box{

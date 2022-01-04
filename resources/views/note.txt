@@ -1,0 +1,33 @@
+ <div class="container text-center mt-xl-5">
+           <h1 class="s1">Why Posterios?</h1>
+          </div>
+
+
+          <div class="container mt-4">
+            <div class="row">
+
+              <div class="card col p-3 border-0 bg-transparent m-3">
+                  <img src="{{ asset('image/easy.png') }}" alt="Posterios" width="50px" height="50px">
+                <div class="card-title"><h3>Easy</h3></div>
+                <div class="card-text">
+                    <p class="text-justify">Post projects in minutes. Post your projects and get easy on the publishing process and organize your own projects. This ease of development helps Posterios grow.</p>
+                </div>
+              </div>
+
+              <div class="card col p-3 border-0 bg-transparent m-3">
+                <img src="{{ asset('image/friendly.png') }}" alt="Posterios" width="50px" height="50px">
+              <div class="card-title"><h3>Convenient For Users</h3></div>
+              <div class="card-text">
+                  <p class="text-justify">Posterios provides a user interface that is as friendly and convenient as possible to carry out project publication activities.</p>
+              </div>
+            </div>
+
+            <div class="card col p-3 border-0 bg-transparent m-3">
+                <img src="{{ asset('image/features.png') }}" alt="Posterios" width="50px" height="50px">
+              <div class="card-title"><h3>Full Features</h3></div>
+              <div class="card-text">
+                  <p class="text-justify">Posterios is always upgrading and improving its services for users. Add and improve the performance of new and existing features for the convenience of all users.</p>
+              </div>
+            </div>
+            </div>
+          </div>
