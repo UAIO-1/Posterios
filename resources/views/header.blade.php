@@ -1,4 +1,3 @@
-
 <div class="box2 p-5">
     <div></div>
     <div></div>
@@ -20,8 +19,8 @@
                 <div class="container text-light">
                     <div class="row">
                         <div class="col-md-6 box-c1 bg-warning">
-                        <p>Science</p>
-                        <h1 class="text-center sg">S</h1>
+                            <p>Science</p>
+                            <h1 class="text-center sg">S</h1>
                         </div>
                         <div class="col-md-6 box-c1 bg-info">
                             <p>Technology</p>
