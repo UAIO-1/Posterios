@@ -1,51 +1,51 @@
-* {
-    box-sizing: border-box;
-  }
+.card{
+    box-shadow: 1px 3px 5px 1px rgba(0,0,0,0.4);
+    background: transparent;
+    animation: transitionIn 2s;
+}
 
-  .columns {
-    float: left;
-    width: 25%;
-    padding: 8px;
+.card{
+    cursor: pointer;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.5);
+}
 
-  }
+.card-footer:hover{
+    cursor: not-allowed;
 
-  .image{
-    border-bottom-right-radius: 30px;
-    border-bottom-left-radius: 30px;
-  }
+}
 
+.card-img-overlay{
+    color: transparent;
+}
 
-  .price {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    -webkit-transition: 0.3s;
+.username-card{
+    color: black;
+    text-decoration: none;
+}
+
+.username-card:hover{
+    color: #8fb4e7;
+}
+
+.wishlist:hover{
+    color: rgb(248, 47, 47);
+}
+
+.card-img-overlay:hover{
+    color: white;
     transition: 0.3s;
-    border-radius: 15px;
-    box-shadow: 0 8px 12px 0 rgba(0,0,0,0.6)
-  }
+    height: 250px;
+    background: rgba(0, 0, 0, 0.5);
+}
 
 
-
-  .title{
-    color: rgb(69, 69, 80);
-    font-size: 30px;
-  }
-
-  .category{
-    font-size: 13px;
-  }
-
-  .description{
-    font-size: 13px;
-  }
-
-  .summary{
-      color: rgb(233, 233, 233);
-  }
-
-  @media only screen and (max-width: 600px) {
-    .columns {
-      width: 100%;
+@keyframes transitionIn  {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
     }
-  }
+    to {
+        opacity: 1;
+        transform:  translateY(0);
+    }
+}

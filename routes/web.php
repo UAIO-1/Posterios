@@ -27,6 +27,9 @@ Route::post('/doLogin', 'AuthController@doLogin');
 Route::get('/logout','AuthController@logout');
 
 
+Route::get('/', 'ProjectController@randomProjectWelcome');
+
+
 Route::group(['middleware'=>'cekuser'], function() {
 
     Route::get('/post', function () {

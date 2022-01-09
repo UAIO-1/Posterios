@@ -230,7 +230,7 @@ ul#comm li{
 
 
 
-.s1, .s2, .s3, .s4{
+.s1{
     margin-top: 150px;
     border-end-end-radius: 20px;
     border-end-start-radius: 20px;
@@ -240,6 +240,14 @@ ul#comm li{
     font-size: 60px;
 }
 
+.s2 {
+    margin-top: 150px;
+    border-end-end-radius: 20px;
+    border-end-start-radius: 20px;
+    color: #43536a;
+    font-family: 'Staatliches', cursive;
+    font-size: 60px;
+}
 
 
 .tutor:hover{

@@ -110,8 +110,8 @@ footer{
 }
 
 .box2 div:nth-child(12){
-    top: 10%;
-    left: 40%;
+    top: 30%;
+    left: 30%;
     animation: animate 10s linear infinite;
     border-color: #28a745;
     background-color: #28a745;

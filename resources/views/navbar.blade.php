@@ -1,3 +1,8 @@
+<style>
+    .pp-image{
+        border-radius: 50px;
+    }
+</style>
 @if(!Auth::check())
 
     <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-white">
@@ -47,7 +52,7 @@
                 </ul>
             </div>
             <div class="dropdown">
-                <button class="dropbtn"> <img src="{{ asset('image/icon-logo.PNG') }}" width="25px" height="25px" alt=""> {{ Auth::user()->username }}</button>
+                <button class="dropbtn"> <img src="{{ asset('image/icon-logo.PNG') }}" class="pp-image" width="25px" height="25px" alt=""> {{ Auth::user()->username }}</button>
                 <div class="dropdown-content">
                     <a href="/profile">Profile</a>
                     <a href="#">My Projects</a>

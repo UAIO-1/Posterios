@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Projects;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller
 {
     public function projectPost(Request $request){
 
         $this->validate($request,[
-            'project_title' => 'required|min:3|max:10',
+            'project_title' => 'required|min:3|max:20',
             'project_category' => 'required',
             'project_image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'project_video' => 'max:10240'
@@ -38,6 +39,16 @@ class ProjectController extends Controller
 
         $project->save();
 
-        return redirect(url('/post'));
+        return redirect(url('/'));
     }
+
+    public function randomProjectWelcome(){
+        $projects = DB::table('projects')
+            ->inRandomOrder()
+            ->join('users', 'projects.user_id', '=', 'users.id')
+            ->limit(6)
+            ->get();
+        return view('welcome', ['projects' => $projects]);
+    }
+
 }
