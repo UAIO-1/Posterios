@@ -29,6 +29,10 @@ Route::get('/logout','AuthController@logout');
 
 Route::group(['middleware'=>'cekuser'], function() {
 
+    Route::get('/post', function () {
+        return view('post');
+    });
+
     Route::get('/profile', 'AuthController@getProfileUser');
 });
 

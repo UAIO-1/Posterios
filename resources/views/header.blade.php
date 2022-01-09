@@ -46,7 +46,12 @@
     <h1 class="slogan">Project Exhibition & Forum Discussion</h1>
     <p class="">Posterios is a platform to show off and promote student creations widely. Everyone can learn through a project and build connections with people.</p>
     <div>
-        <a href="/login" type="button" class="btn1">Get Started</a>
-        <a href="" type="button" class="btn2">Explore Project</a>
+        @if(!Auth::check())
+            <a href="/login" type="button" class="btn1">Get Started</a>
+            <a href="" type="button" class="btn2">Explore Project</a>
+        @else
+            <a href="/post" type="button" class="btn1">Post a Project</a>
+            <a href="" type="button" class="btn2">Explore Project</a>
+        @endif
     </div>
 </div>
