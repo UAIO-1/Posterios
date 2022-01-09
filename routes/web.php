@@ -33,6 +33,8 @@ Route::group(['middleware'=>'cekuser'], function() {
         return view('post');
     });
 
+    Route::post('/projectPost', 'ProjectController@projectPost');
+
     Route::get('/profile', 'AuthController@getProfileUser');
 });
 

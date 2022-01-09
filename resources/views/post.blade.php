@@ -47,19 +47,24 @@
     </div>
 
 
-    <form action="" class="container mt-lg-5 mb-xl-5" enctype="multipart/form-data">
+    <form action={{url('/projectPost')}} method="post" class="container mt-lg-5 mb-xl-5" enctype="multipart/form-data">
+        {{ csrf_field() }}
+        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+        <input type="hidden" name="username" value="{{ Auth::user()->username }}">
+        <input type="hidden" name="gender" value="{{ Auth::user()->gender }}">
+
         <div class="card mb-3 p-3">
             <div class="card-body">
                 <h5 class="card-title text-center">Please fill out the form below to publish your work</h5>
 
                 <div class="mb-3">
                     <label class="form-label">Title</label> <span class="text-danger">*</span>
-                    <input type="text" class="form-control" name="title_project" placeholder="Enter a Project Title">
+                    <input type="text" class="form-control" name="project_title" placeholder="Enter a Project Title">
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Category</label> <span class="text-danger">*</span>
-                    <select class="form-select" name="category_project">
+                    <select class="form-select" name="project_category">
                         <option selected>Choose category ...</option>
                         <option value="Science">Science</option>
                         <option value="Technology">Technology</option>
@@ -70,33 +75,40 @@
 
                 <div class="mb-3">
                     <label class="form-label">Image / Thumbnail</label> <span class="text-danger">*</span>
-                    <input class="form-control" type="file" name="image_project">
+                    <input class="form-control" type="file" name="project_image">
                 </div>
 
                 <hr>
 
                 <div class="mb-3">
                     <label>Description</label>
-                    <textarea class="form-control" name="description_project" placeholder="Enter a text"></textarea>
+                    <textarea class="form-control" name="project_description" placeholder="Enter a text"></textarea>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Link</label>
-                    <input type="text" class="form-control" name="link_project" placeholder="Enter a valid link">
+                    <input type="text" class="form-control" name="project_link" placeholder="Enter a valid link">
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Video</label>
-                    <input class="form-control" type="file" name="video_project">
+                    <input class="form-control" type="file" name="project_video">
                 </div>
 
+                <div class="mb-3">
+                    <input type="submit" class="btn btn-primary float-right" value="Submit">
+                </div>
             </div>
         </div>
     </form>
 
-    <footer class="text-center">
-        <img src="{{ asset('image/icon-logo.PNG') }}" width="25px" height="25px" alt="Posterios-logo">
-        <h6>Posterios 2022</h6>
+    <footer class="text-center bg-white">
+        <marquee behavior="" direction="">
+            <h6>
+                <img src="{{ asset('image/icon-logo.PNG') }}" width="25px" height="25px" alt="Posterios-logo">
+                Posterios 2022 | Publish Your Work
+            </h6>
+        </marquee>
     </footer>
 
 </body>
