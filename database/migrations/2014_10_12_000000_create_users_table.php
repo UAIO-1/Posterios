@@ -21,6 +21,9 @@ class CreateUsersTable extends Migration
             $table->string('gender');
             $table->date('dob');
             $table->string('role');
+            $table->string('country')->nullable();
+            $table->text('image')->nullable();
+            $table->string('aboutme', 250)->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

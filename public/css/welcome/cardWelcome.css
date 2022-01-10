@@ -1,4 +1,5 @@
 .card{
+    position: relative;
     box-shadow: 1px 3px 5px 1px rgba(0,0,0,0.4);
     background: transparent;
     animation: transitionIn 2s;
@@ -7,11 +8,6 @@
 .card{
     cursor: pointer;
     box-shadow: 0 5px 5px 0 rgba(0,0,0,0.5);
-}
-
-.card-footer:hover{
-    cursor: not-allowed;
-
 }
 
 .card-img-overlay{

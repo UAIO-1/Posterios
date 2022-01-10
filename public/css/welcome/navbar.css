@@ -57,4 +57,5 @@
 .dropdown-content a:hover{
     background-color: #43536a;
     color: white;
+    text-decoration: none;
 }

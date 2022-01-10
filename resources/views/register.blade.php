@@ -94,6 +94,17 @@
                             <input type="date" name="dob" class="form-control" placeholder="Date of Birth">
                         </div>
 
+                        <div class="mb-3">
+                            <label class="form-label">Country</label>
+                            <select class="form-select" name="country">
+                                <option selected>Choose ...</option>
+                                <option value="Indonesia">Indonesia</option>
+                                <option value="Malaysia">Malaysia</option>
+                                <option value="Singapore">Singapore</option>
+                                <option value="Laos">Laos</option>
+                            </select>
+                        </div>
+
                     <input type="submit" value="Register" class="btn btn-primary w-100">
 
                   </form>

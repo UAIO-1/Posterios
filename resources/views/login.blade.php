@@ -48,6 +48,7 @@
             <div class="text-center mt-xl-5">
                 <p class="text-muted">Don't have an account? <strong><a href="/register">Sign Up</a></strong></p>
             </div>
+
         </form>
     </div>
 

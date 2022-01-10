@@ -52,10 +52,19 @@
                 </ul>
             </div>
             <div class="dropdown">
-                <button class="dropbtn"> <img src="{{ asset('image/icon-logo.PNG') }}" class="pp-image" width="25px" height="25px" alt=""> {{ Auth::user()->username }}</button>
+                <button class="dropbtn">
+                    @if(Auth::user()->image == null)
+                        <img src="{{ asset('image/icon-logo.PNG') }}" alt="" width="25px" height="25px" style="border-radius: 10px">
+                        {{ Auth::user()->username }}
+                    @else
+                        <img src="{{ asset('storage/images/user/'.Auth::user()->image) }}" alt="" width="25px" height="25px" style="border-radius: 10px">
+                        {{ Auth::user()->username }}
+                    @endif
+                </button>
                 <div class="dropdown-content">
                     <a href="/profile">Profile</a>
                     <a href="#">My Projects</a>
+                    <a href="/changepassword/{{ Auth::user()->id }}">Change Password</a>
                     <a href="/logout">Log Out</a>
                 </div>
             </div>

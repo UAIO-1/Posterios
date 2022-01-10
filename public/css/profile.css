@@ -1,34 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&display=swap');
+
 .card{
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
     border: none;
-    padding: 10px;
 }
 
-.pp{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 200px;
-    height: 200px;
-    border-radius: 100px;
+.name{
+    position: absolute;
+    top: 120px;
+    margin-left: 180px;
 }
 
-.at{
-    opacity: 0.5;
-    font-weight: bold;
-
+.change{
+    margin-left: 100px;
 }
 
-td{
-    opacity: 0.9;
-    padding-left: 30px;
-    padding-bottom: 10px;
-    color: #43536a;
-    font-weight: bold;
+.profilepicture{
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+    margin-left:  80px;
 }
 
 table{
-    font-size: 20px;
+    margin-left: 80px;
+}
 
+td{
+    padding-left: 20px;
+    font-family: 'ABeeZee', sans-serif;
 }
 
