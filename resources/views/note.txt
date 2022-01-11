@@ -1,3 +1,29 @@
+ Schema::create('projects', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id');
+            $table->string('username');
+            $table->string('gender');
+            $table->string('project_title');
+            $table->string('project_category');
+            $table->text('project_image');
+            $table->string('project_description')->nullable();
+            $table->string('project_link')->nullable();
+            $table->text('project_video')->nullable();
+            $table->timestamps();
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
  <div class="container text-center mt-xl-5">
            <h1 class="s1">Why Posterios?</h1>
           </div>

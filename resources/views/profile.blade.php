@@ -17,7 +17,7 @@
     <style>
         .card{
             border-radius: 5px;
-            width: 35%;
+            width: 50%;
         }
 
         .headercard{
