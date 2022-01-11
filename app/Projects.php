@@ -8,7 +8,7 @@ class Projects extends Model
 {
     protected $table = "projects";
 
-    public function users() {
-        return $this->belongsTo('App\Users', 'user_id');
+    public function Users() {
+        return $this->belongsTo(User::class);
     }
 }

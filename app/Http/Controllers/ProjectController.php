@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Projects;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller
@@ -49,6 +50,11 @@ class ProjectController extends Controller
             ->limit(6)
             ->get();
         return view('welcome', ['projects' => $projects]);
+    }
+
+    public function myProjects() {
+        $projects = DB::table('projects')->where('user_id', '=', Auth::user()->id)->get();
+        return view('myprojects', ['projects' => $projects]);
     }
 
 }

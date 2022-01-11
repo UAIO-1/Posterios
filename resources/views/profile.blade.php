@@ -30,7 +30,7 @@
 
     @include('navbar')
 
-        @foreach ($users as $u)
+        @foreach($users as $u)
 
             <div class="container card mt-xl-5 mb-3">
                 <div class="row">
@@ -93,12 +93,14 @@
                             <input type="submit" class="btn btn-primary" value="Change">
                         </form>
                     </div>
-
-
                 </div>
             </div>
 
         @endforeach
+
+
+
+
 
 </body>
 </html>

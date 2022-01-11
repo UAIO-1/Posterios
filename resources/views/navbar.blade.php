@@ -63,7 +63,7 @@
                 </button>
                 <div class="dropdown-content">
                     <a href="/profile">Profile</a>
-                    <a href="#">My Projects</a>
+                    <a href="/myprojects">My Projects</a>
                     <a href="/changepassword/{{ Auth::user()->id }}">Change Password</a>
                     <a href="/logout">Log Out</a>
                 </div>
