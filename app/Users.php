@@ -9,6 +9,6 @@ class Users extends Model
     protected $table = "users";
 
     public function Projects() {
-        return $this->hasMany(Projects::class);
+        return $this->hasMany('App\Projects', 'user_id');
     }
 }

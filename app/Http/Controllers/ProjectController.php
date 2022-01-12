@@ -54,10 +54,16 @@ class ProjectController extends Controller
 
     public function myProjects() {
         $projects = DB::table('projects')
-                ->join('users', 'users.id', '=', 'projects.user_id')
                 ->where('user_id', '=', Auth::user()->id)
-                ->paginate(1);
+                ->paginate(10);
         return view('myprojects', ['projects' => $projects]);
+    }
+
+    public function getProjectID ($id){
+        $projects = DB::table('projects')
+                    ->where('id','=', $id)
+                    ->get();
+        return view('projectDetail', ['projects' => $projects]);
     }
 
 }

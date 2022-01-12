@@ -37,17 +37,17 @@ Route::group(['middleware'=>'cekuser'], function() {
         return view('post');
     });
 
-
     Route::post('/projectPost', 'ProjectController@projectPost');
 
     Route::get('/profile', 'AuthController@getProfileUser');
-    Route::get('/myprojects', 'ProjectController@myProjects');
     Route::get('/profile', 'AuthController@getProfileUserNavbar');
     Route::post('/editProfile', 'AuthController@editProfile');
     Route::post('/editAboutMe', 'AuthController@editAboutMe');
 
-
     Route::get('/changepassword/{id}', 'AuthController@getID');
     Route::post('/changepassword', 'AuthController@changePassword');
+
+    Route::get('/myprojects', 'ProjectController@myProjects');
+    Route::get('/projectDetail/{id}', 'ProjectController@getProjectID');
 });
 

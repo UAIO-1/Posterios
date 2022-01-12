@@ -9,6 +9,6 @@ class Projects extends Model
     protected $table = "projects";
 
     public function Users() {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo('App\Users', 'id');
     }
 }
