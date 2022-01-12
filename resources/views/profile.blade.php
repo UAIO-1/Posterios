@@ -40,9 +40,9 @@
                     </div>
                     <div class="card-header bg-white">
                         @if($u->image == null)
-                            <img src="{{ asset('image/icon-logo.PNG') }}" alt="Profile Picture" class="profilepicture" width="150px" height="150px" style="border-radius: 10px;">
+                            <img src="{{ asset('image/icon-logo.PNG') }}" alt="Profile Picture" class="profilepicture" width="250px" height="250px" style="border-radius: 10px;">
                         @else
-                            <img src="{{ asset('storage/images/user/'.$u->image) }}" alt="Profile Picture" class="profilepicture" width="150px" height="150px" style="border-radius: 10px;">
+                            <img src="{{ asset('storage/images/user/'.$u->image) }}" alt="Profile Picture" class="profilepicture" width="250px" height="250px" style="border-radius: 10px;">
                         @endif
 
                         <div class="change">
@@ -88,13 +88,15 @@
                         <form action={{url('/editAboutMe')}} method="post">
                             {{csrf_field()}}
                             <div class="mb-3">
-                                <textarea class="form-control" id="exampleFormControlTextarea1" name="aboutme" rows="3"> {{ $u->aboutme }}</textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" name="aboutme" rows="10"> {{ $u->aboutme }}</textarea>
                             </div>
                             <input type="submit" class="btn btn-primary" value="Change">
                         </form>
                     </div>
                 </div>
             </div>
+
+
 
         @endforeach
 

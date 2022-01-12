@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Projects;
 use App\User;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
@@ -118,6 +119,7 @@ class AuthController extends Controller
     public function getProfileUser(){
 
         $users = DB::table('users')
+                ->join('projects', 'users.id', '=', 'projects.user_id')
                 ->where('users.id', '=', Auth::user()->id)
                 ->get();
 
@@ -138,17 +140,6 @@ class AuthController extends Controller
             ->update(['password' => Hash::make($request->password)]);
         return redirect('/profile');
     }
-
-    // public function changePassword(Request $request){
-
-    //     $user = User::where('id', Auth::user()->id)->first();
-
-    //     $user->password = Hash::make($request->password);
-
-    //     $user->save();
-    //     return redirect('/profile');
-    // }
-
 
     public function getProfileUserNavbar(){
 

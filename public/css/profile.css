@@ -11,10 +11,8 @@
     margin-left: 180px;
 }
 
-
-
 .change{
-    margin-left: 100px;
+    margin-left: 150px;
 }
 
 .profilepicture{
@@ -23,7 +21,8 @@
 }
 
 table{
-    margin-left: 80px;
+    font-size: 20px;
+    margin-left: 200px;
 }
 
 td{
