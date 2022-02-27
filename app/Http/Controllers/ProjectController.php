@@ -6,6 +6,7 @@ use App\Projects;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class ProjectController extends Controller
 {
@@ -65,5 +66,46 @@ class ProjectController extends Controller
                     ->get();
         return view('projectDetail', ['projects' => $projects]);
     }
+
+    public function updateProjectImage(Request $request){
+
+        $projects = Projects::where('id', '=', $request->id)->first();
+
+        if ($request->hasFile('project_image')) {
+            $path = 'storage/images/project'.$projects->project_image;
+            if(File::exists($path)){
+                File::delete($path);
+            }
+            $file = $request->file('project_image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('storage/images/project', $filename);
+            $projects->project_image = $filename;
+        }
+
+        $projects->save();
+        return redirect('/projectDetail/'.$projects->id);
+    }
+
+    // public function updateProjectImage(Request $request){
+
+    //     $user = User::where('id', Auth::user()->id)->first();
+
+    //     if ($request->hasFile('image')) {
+    //         $path = 'storage/images/user'.$user->image;
+    //         if(File::exists($path)){
+    //             File::delete($path);
+    //         }
+    //         $file = $request->file('image');
+    //         $extension = $file->getClientOriginalExtension();
+    //         $filename = time().'.'.$extension;
+    //         $file->move('storage/images/user', $filename);
+    //         $user->image = $filename;
+    //     }
+
+
+    //     $user->save();
+    //     return redirect('/profile');
+    // }
 
 }

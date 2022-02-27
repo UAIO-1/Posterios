@@ -65,7 +65,6 @@
                 <div class="mb-3">
                     <label class="form-label">Category</label> <span class="text-danger">*</span>
                     <select class="form-select" name="project_category">
-                        <option selected>Choose category ...</option>
                         <option value="Science">Science</option>
                         <option value="Technology">Technology</option>
                         <option value="Engineering">Engineering</option>

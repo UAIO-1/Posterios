@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Rubik', sans-serif;
+}
+
+body{
+    overflow-y: hidden;
+}
+
+.card{
+    margin-top: 150px;
+    background-image: url('../image/login-background.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 1000px;
+    height: 550px;
+    box-shadow: -10px 10px 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+.card-body {
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 35%;
+}
+
+input{
+    width: 100%;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+}
+
+input:focus {
+    outline: none;
+}
+
+.login-submit-btn{
+    background-color: #43536a;
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+.login-submit-btn:hover{
+    transform: scale(1.1);
+}
+
+.reg-sign{
+    color: #fff;
+    padding-top: 100px;
+    margin-left: 50px;
+}
+
+.but-reg{
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 10px 25px;
+    border-radius: 5px;
+    transition: 0.3s ease-in;
+}
+
+.but-reg:hover{
+    background-color: #fff;
+    color: #000;
+}

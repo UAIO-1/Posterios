@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Rubik', sans-serif;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    background-image:  url("../image/welcome-header.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+}
+
+.row{
+    display: flex;
+    height: 88%;
+    align-items: center;
+}
+
+.col{
+    padding-left: 10%;
+}
+
+.header-p{
+    max-width: 35vw;
+    word-wrap: break-word;
+}
+
+.getstarted-btn{
+    background-color: #000;
+    padding: 10px 25px;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.getstarted-btn:hover{
+    transform: translateX(10px);
+}
+
+
+
+
+

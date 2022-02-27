@@ -49,5 +49,7 @@ Route::group(['middleware'=>'cekuser'], function() {
 
     Route::get('/myprojects', 'ProjectController@myProjects');
     Route::get('/projectDetail/{id}', 'ProjectController@getProjectID');
+
+    Route::post('/updateProjectImage', 'ProjectController@updateProjectImage');
 });
 
