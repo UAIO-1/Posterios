@@ -25,20 +25,7 @@
 
         @else
 
-            @include('navbar')
-
-
-
-            @include('community')
-
-            <div>
-                <h1 class="container text-center s2">Look Here!</h1>
-                <p class="text-center" style="font-size: 17px">Posterios divides into categories for projects such as <span class="badge bg-warning">Science</span>
-                    , <span class="badge bg-info">Technology</span> , <span class="badge bg-danger">Engineering</span> , <span class="badge bg-success">Mathematics</span></p>
-
-                @include('ShowRandomProjectWelcome')
-
-            {{-- @include('footer') --}}
+            @include('welcome.welcomeHeader')
 
         @endif
     </body>

@@ -28,7 +28,7 @@ header{
 }
 
 h5{
-    color: #575e64;
+    color: #fff;
 }
 
 .nav-links{
@@ -43,11 +43,11 @@ h5{
 .nav-links li a{
     transition: all 0.3s ease 0s;
     text-decoration: none;
-    color: #808B96;
+    color: #fff;
 }
 
 .nav-links li a:hover{
-    color: black;
+    color: #43536a;
 }
 
 .login-btn{

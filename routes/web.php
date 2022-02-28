@@ -39,15 +39,15 @@ Route::group(['middleware'=>'cekuser'], function() {
 
     Route::post('/projectPost', 'ProjectController@projectPost');
 
-    Route::get('/profile', 'AuthController@getProfileUser');
-    Route::get('/profile', 'AuthController@getProfileUserNavbar');
+    Route::get('/myProfile', 'AuthController@getProfileUser');
+
+
     Route::post('/editProfile', 'AuthController@editProfile');
     Route::post('/editAboutMe', 'AuthController@editAboutMe');
 
     Route::get('/changepassword/{id}', 'AuthController@getID');
     Route::post('/changepassword', 'AuthController@changePassword');
 
-    Route::get('/myprojects', 'ProjectController@myProjects');
     Route::get('/projectDetail/{id}', 'ProjectController@getProjectID');
 
     Route::post('/updateProjectImage', 'ProjectController@updateProjectImage');

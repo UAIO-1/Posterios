@@ -66,7 +66,7 @@ class AuthController extends Controller
         }
 
         if($credential == null) {
-            return redirect(url('/login'))->with('failed', true);
+            return redirect(url('/login'));
         }
 
         if(Auth::user()->role=='Admin'){
@@ -101,9 +101,9 @@ class AuthController extends Controller
             $user->image = $filename;
         }
 
-
         $user->save();
-        return redirect('/profile');
+
+        return redirect('myProfile');
     }
 
     public function editAboutMe(Request $request){
@@ -113,17 +113,21 @@ class AuthController extends Controller
         $user->aboutme = $request->aboutme;
 
         $user->save();
-        return redirect('/profile');
+        return redirect('/myProfile');
     }
 
     public function getProfileUser(){
 
         $users = DB::table('users')
-                ->join('projects', 'users.id', '=', 'projects.user_id')
                 ->where('users.id', '=', Auth::user()->id)
                 ->get();
 
-        return view('profile', ['users' => $users]);
+        $projects = Projects::where('user_id', '=', Auth::user()->id)
+                ->get();
+
+        $myProjectsCount = Projects::where('user_id', '=', Auth::user()->id)->count();
+
+        return view('myProfile', compact('users', 'myProjectsCount', 'projects'));
 
     }
 
@@ -147,7 +151,7 @@ class AuthController extends Controller
                 ->where('users.id', '=', Auth::user()->id)
                 ->get();
 
-        return view('profile', ['users' => $users]);
+        return view('myProfile', compact('users'));
 
     }
 

@@ -64,7 +64,8 @@ class ProjectController extends Controller
         $projects = DB::table('projects')
                     ->where('id','=', $id)
                     ->get();
-        return view('projectDetail', ['projects' => $projects]);
+
+        return view('projectDetail', compact('projects'));
     }
 
     public function updateProjectImage(Request $request){
