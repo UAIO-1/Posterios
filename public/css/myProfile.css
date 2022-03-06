@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
 *{
     box-sizing: border-box;
@@ -7,6 +8,7 @@
     font-family: 'Rubik', sans-serif;
 }
 
+
 body{
     overflow-x: hidden;
 }
@@ -14,73 +16,51 @@ body{
 .header{
     width: 100vw;
     height: 100vh;
-    background-image: url("../image/profile-header.png");
+    background-image:  url("../image/profile-header.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    overflow-x: hidden;
 }
 
-.content{
-    color: #fff;
-    margin-top: 30vh;
-    margin-left: 10vw;
+.row{
+    padding-left: 100px;
+    padding-top: 50px;
 }
 
-.username{
-    font-size: 5em;
+.card-profile{
+    box-shadow: -5px 5px 30px 0 rgba(0, 0, 0, 0.1);
 }
 
-.at{
-    color: rgb(160, 160, 153);
-}
-
-.total-project{
-    color: rgb(226, 140, 35);
-}
-
-.card{
-    box-shadow: -30px 30px 20px 0 rgba(0, 0, 0, 0.2);
+.card-project{
+    box-shadow: -5px 5px 30px 0 rgba(0, 0, 0, 0.1);
     transition: 0.3s ease;
 }
 
-.card:hover{
-    transform: translateY(-10px);
-}
-
-.card-detail{
-    text-decoration: none;
-    color: #000;
-}
-
-.card-detail:hover{
-    text-decoration: none;
-    color: #000;
-}
-
 .profilepicture{
-    width: 500px;
-    height: 500px;
-    box-shadow: -30px 30px 0px 0 rgba(0, 0, 0, 0.2);
+    width: 150px;
+    height: 150px;
+    border-radius: 500px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
 }
 
-.bg-project{
-    background-color: #43536a;
-    margin-top: 10vh;
-    padding-right: 10vw;
+.card-project-detail{
+    text-decoration: none;
+    color: #000;
 }
 
-.projectimage{
+.card-project:hover{
+    text-decoration: none;
+    color: #000;
+    box-shadow: -5px 5px 20px 0 rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.project-image{
     width: 300px;
     max-width: 300px;
     height: 200px;
     max-height: 200px;
 }
 
-.project-section, .profile-section{
-    margin-top: 10vh;
-}
 
-.pro{
-    font-size: 3em;
-    color: #fff;
-}

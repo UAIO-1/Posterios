@@ -4,75 +4,93 @@
 <link rel="stylesheet" href="{{ asset('css/myProfile.css') }}">
 
 
+
 @if (!Auth::check())
     <div class="header">
 
     </div>
 @else
+    <div class="header">
+        @include('navbar')
 
-    @foreach ($users as $u)
 
-        <div class="header">
-            @include('navbarProfile')
-            <div class="content">
-                <h1 class="username mb-3">Hi!, I'm {{ $u->username }}</h1>
-                <h4 class="at mb-3">Student at <em>BINUS UNIVERSITY</em></h4>
-                <h5 class="mb-3">Uploaded Project: <span class="total-project">{{ $myProjectsCount }}</span></h5>
-            </div>
-        </div>
 
-    @endforeach
-
-    <div class="container profile-section">
         <div class="row">
-            <div class="col-md-6">
-                @if ($u->image == null)
-                    <img src="{{ asset('image/icon-logo.PNG') }}" class="profilepicture" alt="profile picture">
-                @else
-                    <img src="{{ asset('storage/'.$u->image) }}" class="profilepicture" alt="profile picture">
-                @endif
-            </div>
-            <div class="col-md-6">
-                <h1>About Me.</h1>
-                <h5 class="text-secondary">Student at <em>BINUS UNIVERSITY</em></h5>
-                <p class="text-muted">{{ $u->aboutme }}</p>
-                <a href="#" class="btn btn-primary">Edit Profile</a>
-            </div>
-        </div>
-    </div>
+            <div class="col-md-2">
+                    @foreach ($users as $u)
+                        <div class="card card-profile rounded-0 border-0 p-3" style="width: 18rem;">
+                            <div class="d-flex justify-content-center align-items-center">
+                                @if ($u->image == null)
+                                    <img src="{{ asset('image/icon-logo.PNG') }}" class="profilepicture" alt="profile picture">
+                                @else
+                                    <img src="{{ asset('storage/'.$u->image) }}" class="profilepicture" alt="profile picture">
+                                @endif
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title text-center">{{ $u->username }}</h4>
+                                <h6 class="text-center text-muted"><em>About Me</em></h6>
+                                <p class="card-text text-muted">{{ $u->aboutme }}</p>
+                            </div>
 
-
-    <div class="bg-project">
-        <div class="d-flex justify-content-end align-items-center">
-            <span class="pro">Projects</span>
-            <img src="{{ asset('image/project-profile.png') }}" width="250px" height="250px" alt="project">
-        </div>
-    </div>
-        <div class="container project-section">
-            <div class="row">
-                @foreach ($projects as $p)
-                    <div class="col-md-3">
-                        <a href="/projectDetail/{{ $p->id }}" class="card-detail">
-                            <div class="card mb-3 rounded-0 border-0" style="width: 18rem;">
-                                <img src="{{ asset('storage/'.$p->project_image) }}" class="card-img-top projectimage rounded-0" alt="project image">
-                                <div class="card-body">
-                                    <h4>{{ $p->project_title }}</h4>
-                                    @if($p->project_category == "Science")
-                                        <p class="badge bg-warning">{{ $p->project_category }}</p>
-                                    @elseif ($p->project_category == "Technology")
-                                        <p class="badge bg-info">{{ $p->project_category }}</p>
-                                    @elseif ($p->project_category == "Engineering")
-                                        <p class="badge bg-danger">{{ $p->project_category }}</p>
-                                    @else
-                                        <p class="badge bg-success">{{ $p->project_category }}</p>
-                                    @endif
+                            <a href="#" class="btn btn-warning text-light" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit Profile</a>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form  action={{ url('/editProfile') }} method="POST" enctype="multipart/form-data">
+                                                {{ csrf_field() }}
+                                                <div class="mb-3">
+                                                    <label for="formFile" class="form-label">Profile Picture</label>
+                                                    <input class="form-control" type="file" id="formFile" name="image" accept="image/jpg, image/jpeg, image/png">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlTextarea1" class="form-label">About Me</label>
+                                                    <textarea class="form-control" id="exampleFormControlTextarea1" name="aboutme" rows="3">{{ $u->aboutme }}</textarea>
+                                                </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <input type="submit" class="btn btn-info text-light" value="Save Changes">
+                                        </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
-                        </a>
-                    </div>
-                @endforeach
+                        </div>
+                    @endforeach
+            </div>
+            <div class="col-md-9">
+                <h5>My Projects</h5>
+                <div class="row">
+                        @foreach ($projects as $p)
+                            <div class="col-md-3">
+                                <a href="/projectDetail/{{ $p->id }}" class="card-project-detail">
+                                    <div class="card card-project mb-3 rounded-0 border-0 p-2" style="width: 18rem;">
+                                        <img src="{{ asset('storage/'.$p->project_image) }}" class="card-img-top project-image rounded-0" alt="project image">
+                                        <div class="card-body">
+                                            <h5 class="project-title text-dark">{{ $p->project_title }}</h5>
+                                            @if($p->project_category == "Science")
+                                                <small class="badge bg-warning">{{ $p->project_category }}</small>
+                                            @elseif ($p->project_category == "Technology")
+                                                <small class="badge bg-info">{{ $p->project_category }}</small>
+                                            @elseif ($p->project_category == "Engineering")
+                                                <small class="badge bg-danger">{{ $p->project_category }}</small>
+                                            @else
+                                                <small class="badge bg-success">{{ $p->project_category }}</small>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+                </div>
             </div>
         </div>
+</div>
 
 @endif
 

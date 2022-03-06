@@ -17,11 +17,11 @@
 @else
 
             <header>
-                <h5><img src="{{ asset('image/icon-logo.PNG') }}" class="logo" alt="posterios logo"> Posterios</h5>
+                <h5><img src="{{ asset('image/icon-logo-orange.PNG') }}" class="logo" alt="posterios logo"> Posterios</h5>
                 <nav>
                     <ul class="nav-links">
                         <li><a href="/">Home</a></li>
-                        <li><a href="#">Post</a></li>
+                        <li><a href="/post">Post</a></li>
                         <li><a href="#">Explore</a></li>
                         <li><a href="#">Forum</a></li>
                     </ul>

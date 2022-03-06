@@ -28,9 +28,6 @@ Route::post('/doLogin', 'AuthController@doLogin');
 Route::get('/logout','AuthController@logout');
 
 
-Route::get('/', 'ProjectController@randomProjectWelcome');
-
-
 Route::group(['middleware'=>'cekuser'], function() {
 
     Route::get('/post', function () {
@@ -40,16 +37,14 @@ Route::group(['middleware'=>'cekuser'], function() {
     Route::post('/projectPost', 'ProjectController@projectPost');
 
     Route::get('/myProfile', 'AuthController@getProfileUser');
-
-
     Route::post('/editProfile', 'AuthController@editProfile');
-    Route::post('/editAboutMe', 'AuthController@editAboutMe');
+
 
     Route::get('/changepassword/{id}', 'AuthController@getID');
     Route::post('/changepassword', 'AuthController@changePassword');
 
     Route::get('/projectDetail/{id}', 'ProjectController@getProjectID');
 
-    Route::post('/updateProjectImage', 'ProjectController@updateProjectImage');
+    Route::post('/editProject', 'ProjectController@editProject');
 });
 

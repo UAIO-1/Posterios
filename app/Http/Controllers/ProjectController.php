@@ -13,7 +13,7 @@ class ProjectController extends Controller
     public function projectPost(Request $request){
 
         $this->validate($request,[
-            'project_title' => 'required|min:3|max:20',
+            'project_title' => 'required|min:6|max:20',
             'project_category' => 'required',
             'project_image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'project_video' => 'max:10240'
@@ -44,14 +44,6 @@ class ProjectController extends Controller
         return redirect(url('/'));
     }
 
-    public function randomProjectWelcome(){
-        $projects = DB::table('projects')
-            ->inRandomOrder()
-            ->join('users', 'projects.user_id', '=', 'users.id')
-            ->limit(6)
-            ->get();
-        return view('welcome', ['projects' => $projects]);
-    }
 
     public function myProjects() {
         $projects = DB::table('projects')
@@ -68,9 +60,13 @@ class ProjectController extends Controller
         return view('projectDetail', compact('projects'));
     }
 
-    public function updateProjectImage(Request $request){
+    public function editProject(Request $request){
 
         $projects = Projects::where('id', '=', $request->id)->first();
+
+        $projects->project_title = $request->project_title;
+        $projects->project_category = $request->project_category;
+        $projects->project_link = $request->project_link;
 
         if ($request->hasFile('project_image')) {
             $path = 'storage/images/project'.$projects->project_image;
@@ -78,35 +74,27 @@ class ProjectController extends Controller
                 File::delete($path);
             }
             $file = $request->file('project_image');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extension;
-            $file->move('storage/images/project', $filename);
-            $projects->project_image = $filename;
+            $path = $file->store('images/project','public');
+            $file->move('storage/images/project', $path);
+            $projects->project_image = $path;
+        }
+
+        $projects->project_description = $request->project_description;
+
+        if ($request->hasFile('project_video')) {
+            $path = 'storage/videos/project'.$projects->project_video;
+            if(File::exists($path)){
+                File::delete($path);
+            }
+            $file = $request->file('project_video');
+            $path = $file->store('videos/project','public');
+            $file->move('storage/videos/project', $path);
+            $projects->project_video = $path;
         }
 
         $projects->save();
         return redirect('/projectDetail/'.$projects->id);
     }
 
-    // public function updateProjectImage(Request $request){
-
-    //     $user = User::where('id', Auth::user()->id)->first();
-
-    //     if ($request->hasFile('image')) {
-    //         $path = 'storage/images/user'.$user->image;
-    //         if(File::exists($path)){
-    //             File::delete($path);
-    //         }
-    //         $file = $request->file('image');
-    //         $extension = $file->getClientOriginalExtension();
-    //         $filename = time().'.'.$extension;
-    //         $file->move('storage/images/user', $filename);
-    //         $user->image = $filename;
-    //     }
-
-
-    //     $user->save();
-    //     return redirect('/profile');
-    // }
 
 }

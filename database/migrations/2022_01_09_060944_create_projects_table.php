@@ -21,9 +21,10 @@ class CreateProjectsTable extends Migration
             $table->string('project_title');
             $table->string('project_category');
             $table->text('project_image');
-            $table->string('project_description')->nullable();
+            $table->string('project_description', 1000)->nullable();
             $table->string('project_link')->nullable();
             $table->text('project_video')->nullable();
+            $table->text('project_status')->nullable();
             $table->timestamps();
         });
     }

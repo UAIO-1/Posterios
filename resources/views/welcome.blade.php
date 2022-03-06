@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Posterios - Project Exhibition & Forum Discussion</title>
-        <link rel="shortcut icon" href="{{ asset('image/icon-logo.PNG') }}">
+        <link rel="shortcut icon" href="{{ asset('image/icon-logo-white.png') }}">
         <link rel="stylesheet" href="{{ asset('css/welcome/cardWelcome.css') }}">
         <link rel="stylesheet" href="{{ asset('css/welcome/navbar.css') }}">
         <link rel="stylesheet" href="{{ asset('css/welcome/welcome.css') }}">

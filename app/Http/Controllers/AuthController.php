@@ -36,10 +36,10 @@ class AuthController extends Controller
         $user->username = $request->username;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        $user->gender = $request->gender;
         $user->dob = $request->dob;
+        $user->gender = $request->gender;
         $user->role = "User";
-        $user->country = $request->country;
+
         $user->save();
 
         return redirect(url('/login'));
@@ -95,25 +95,16 @@ class AuthController extends Controller
                 File::delete($path);
             }
             $file = $request->file('image');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extension;
-            $file->move('storage/images/user', $filename);
-            $user->image = $filename;
+            $path = $file->store('images/user','public');
+            $file->move('storage/images/user',  $path);
+            $user->image = $path;
         }
-
-        $user->save();
-
-        return redirect('myProfile');
-    }
-
-    public function editAboutMe(Request $request){
-
-        $user = User::where('id', Auth::user()->id)->first();
 
         $user->aboutme = $request->aboutme;
 
         $user->save();
-        return redirect('/myProfile');
+
+        return redirect('myProfile');
     }
 
     public function getProfileUser(){
@@ -125,9 +116,8 @@ class AuthController extends Controller
         $projects = Projects::where('user_id', '=', Auth::user()->id)
                 ->get();
 
-        $myProjectsCount = Projects::where('user_id', '=', Auth::user()->id)->count();
 
-        return view('myProfile', compact('users', 'myProjectsCount', 'projects'));
+        return view('myProfile', compact('users', 'projects'));
 
     }
 
@@ -145,14 +135,6 @@ class AuthController extends Controller
         return redirect('/profile');
     }
 
-    public function getProfileUserNavbar(){
 
-        $users = DB::table('users')
-                ->where('users.id', '=', Auth::user()->id)
-                ->get();
-
-        return view('myProfile', compact('users'));
-
-    }
 
 }

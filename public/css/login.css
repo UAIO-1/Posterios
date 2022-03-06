@@ -30,23 +30,19 @@ body{
     width: 35%;
 }
 
-input{
+input {
     width: 100%;
-    border-top-style: hidden;
-    border-right-style: hidden;
-    border-left-style: hidden;
-    border-bottom-style: groove;
+    outline: 0;
+    border-width: 0 0 1px;
 }
 
-input:focus {
-    outline: none;
-}
 
 .login-submit-btn{
-    background-color: #43536a;
+    background-color: #ffc107;
     color: #fff;
     padding: 10px 25px;
     border-radius: 5px;
+    border: none;
     transition: 0.3s ease;
 }
 

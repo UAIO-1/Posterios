@@ -1,114 +1,86 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Posterios - Post Project</title>
-    <link rel="shortcut icon" href="{{ asset('image/icon-logo.PNG') }}">
-    <link rel="stylesheet" href="{{ asset('css/post.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/welcome/navbar.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        body{
-            height: 100%;
-            background: linear-gradient(to bottom, #43536a 70%, #f5f5fa 30%);
-        }
-    </style>
-</head>
-<body>
+@extends('layout')
+@section('title', 'Posterios - Post Project')
+<link rel="shortcut icon" href="{{ asset('image/icon-logo-white.png') }}">
+<link rel="stylesheet" href="{{ asset('css/post.css') }}">
 
-    @include('navbar')
+@include('navbar')
 
-    <div class="box2 p-5 text-white" style="font-size: 30px">
-        <div class="d-flex align-items-center justify-content-center">S</div>
-        <div class="d-flex align-items-center justify-content-center">T</div>
-        <div class="d-flex align-items-center justify-content-center">E</div>
-        <div class="d-flex align-items-center justify-content-center">M</div>
-        <div class="d-flex align-items-center justify-content-center">S</div>
-        <div class="d-flex align-items-center justify-content-center">T</div>
-        <div class="d-flex align-items-center justify-content-center">E</div>
-        <div class="d-flex align-items-center justify-content-center">M</div>
-        <div class="d-flex align-items-center justify-content-center">S</div>
-        <div class="d-flex align-items-center justify-content-center">T</div>
-        <div class="d-flex align-items-center justify-content-center">E</div>
-        <div class="d-flex align-items-center justify-content-center">M</div>
-    </div>
+@if (!Auth::check())
 
-    <div class="text-white text-center">
-        <p>
-            In this post project, you need to fill out the form below. <br>
-            There are 2 parts of the form. <br>
-            The top section is a form that must be filled out. <br>
-            The bottom of the form can be filled when you update the project.
+@else
+
+    <div class="container mt-lg-5">
+        <h1><span class="badge bg-dark">Post</span></h1>
+        <p> Start your project by fill the form on this page. <br>
+            The form that has been provided has 2 parts that you must fill in and you don't have to. <br>
+            Fill in the form that has been provided correctly and completely. <br>
         </p>
     </div>
 
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-6">
+                <div class="card rounded-0 border-0">
+                    <form action={{url('/projectPost')}} method="post" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                        <input type="hidden" name="username" value="{{ Auth::user()->username }}">
+                        <input type="hidden" name="gender" value="{{ Auth::user()->gender }}">
+                        <h3 class="m-4 text-danger">Required</h3>
+                        <div class="card-body m-2">
+                            <div class="mb-3">
+                                <label class="form-label">Title</label> <span class="text-danger">*<small class="text-muted">at least 6 - 20 characters</small></span>
+                                <input type="text" name="project_title">
+                            </div>
 
-    <form action={{url('/projectPost')}} method="post" class="container mt-lg-5 mb-xl-5" enctype="multipart/form-data">
-        {{ csrf_field() }}
-        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-        <input type="hidden" name="username" value="{{ Auth::user()->username }}">
-        <input type="hidden" name="gender" value="{{ Auth::user()->gender }}">
+                            <div class="mb-3">
+                                <label class="form-label">Category</label> <span class="text-danger">*</span>
+                                <select name="project_category" class="ml-4">
+                                    <option value="Science">Science</option>
+                                    <option value="Technology">Technology</option>
+                                    <option value="Engineering">Engineering</option>
+                                    <option value="Mathematics">Mathematics</option>
+                                </select>
+                            </div>
 
-        <div class="card mb-3 p-3">
-            <div class="card-body">
-                <h5 class="card-title text-center">Please fill out the form below to publish your work</h5>
+                            <div class="mb-3">
+                                <label class="form-label">Link</label> <span class="text-danger"><small>*</small></span>
+                                <input type="text" name="project_link">
+                            </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Title</label> <span class="text-danger">*</span>
-                    <input type="text" class="form-control" name="project_title" placeholder="Enter a Project Title">
+                            <div class="mb-3">
+                                <label class="form-label">Image / Thumbnail</label> <span class="text-danger">*</span>
+                                <input class="form-control" type="file" name="project_image" accept="image/jpg, image/jpeg, image/png">
+                            </div>
+
+                        </div>
                 </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card rounded-0 border-0">
+                    <h3 class="m-4 text-muted">Optional</h3>
+                    <div class="card-body m-4">
+                        <div class="mb-3">
+                            <label>Description</label> <span class="text-muted"><small>*max. 1000 characters</small></span>
+                            <textarea class="form-control" name="project_description"></textarea>
+                        </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Category</label> <span class="text-danger">*</span>
-                    <select class="form-select" name="project_category">
-                        <option value="Science">Science</option>
-                        <option value="Technology">Technology</option>
-                        <option value="Engineering">Engineering</option>
-                        <option value="Mathematics">Mathematics</option>
-                    </select>
-                </div>
+                        <div class="mb-3">
+                            <label class="form-label">Video</label> <span class="text-muted">
+                            <input class="form-control" type="file" name="project_video" accept="video/mp4">
+                        </div>
+                   </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Image / Thumbnail</label> <span class="text-danger">*</span>
-                    <input class="form-control" type="file" name="project_image">
-                </div>
 
-                <hr>
+                    <div class="mb-3 text-center">
+                        <input type="submit" class="btn btn-warning text-light w-25" value="Submit">
+                    </div>
 
-                <div class="mb-3">
-                    <label>Description</label>
-                    <textarea class="form-control" name="project_description" placeholder="Enter a text"></textarea>
-                </div>
+                    </form>
 
-                <div class="mb-3">
-                    <label class="form-label">Link</label>
-                    <input type="text" class="form-control" name="project_link" placeholder="Enter a valid link">
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Video</label>
-                    <input class="form-control" type="file" name="project_video">
-                </div>
-
-                <div class="mb-3">
-                    <input type="submit" class="btn btn-primary float-right" value="Submit">
                 </div>
             </div>
         </div>
-    </form>
+    </div>
 
-    <footer class="text-center bg-white">
-        <marquee behavior="" direction="">
-            <h6>
-                <img src="{{ asset('image/icon-logo.PNG') }}" width="25px" height="25px" alt="Posterios-logo">
-                Posterios 2022 | Publish Your Work
-            </h6>
-        </marquee>
-    </footer>
-
-</body>
-</html>
+@endif
