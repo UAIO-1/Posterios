@@ -96,5 +96,16 @@ class ProjectController extends Controller
         return redirect('/projectDetail/'.$projects->id);
     }
 
+    public function projectDelete($id){
+        DB::table('projects')->where('id', $id)->delete();
+        return redirect('/myProfile');
+    }
+
+    public function indexProjects(Request $request){
+        $projects = Projects::all();
+
+        return view('welcome', compact('projects'));
+    }
+
 
 }

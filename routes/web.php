@@ -30,6 +30,8 @@ Route::get('/logout','AuthController@logout');
 
 Route::group(['middleware'=>'cekuser'], function() {
 
+    Route::get('/', 'ProjectController@indexProjects');
+
     Route::get('/post', function () {
         return view('post');
     });
@@ -46,5 +48,7 @@ Route::group(['middleware'=>'cekuser'], function() {
     Route::get('/projectDetail/{id}', 'ProjectController@getProjectID');
 
     Route::post('/editProject', 'ProjectController@editProject');
+
+    Route::get('/projectDelete/{id}', 'ProjectController@projectDelete');
 });
 
