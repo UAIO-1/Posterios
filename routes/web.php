@@ -39,6 +39,8 @@ Route::group(['middleware'=>'cekuser'], function() {
     Route::post('/projectPost', 'ProjectController@projectPost');
 
     Route::get('/myProfile', 'AuthController@getProfileUser');
+    Route::get('/myProfile/{id}', 'ProjectController@getProfile');
+
     Route::post('/editProfile', 'AuthController@editProfile');
 
 

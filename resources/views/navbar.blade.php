@@ -1,4 +1,7 @@
 <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
 
 @if(!Auth::check())
 
@@ -16,29 +19,35 @@
 
 @else
 
-            <header>
-                <h5><img src="{{ asset('image/icon-logo-orange.PNG') }}" class="logo" alt="posterios logo"> Posterios</h5>
-                <nav>
-                    <ul class="nav-links">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/post">Post</a></li>
-                        <li><a href="#">Explore</a></li>
-                        <li><a href="#">Forum</a></li>
-                    </ul>
-                </nav>
-                <div class="dropdown">
-                    <button class="dropbtn">
-                        Hi, {{ Auth::user()->username }}
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
-                            <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
-                        </svg>
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="/myProfile">Profile</a>
-                        <a href="/changepassword/{{ Auth::user()->id }}">Change Password</a>
-                        <a href="/logout">Log Out</a>
-                    </div>
-                </div>
-            </header>
+    <nav class="d-flex justify-content-between">
+        <div>
+            <ul class="nav-links-logo">
+                <li><a href="/">POSTERIOS</a></li>
+            </ul>
+        </div>
+        <div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/post">Post</a></li>
+                <li><a href="#">Explore</a></li>
+                <li><a href="#">Forum</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="dropdown">
+                <a class="dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Hi, <strong>{{ Auth::user()->username }}</strong>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/myProfile">My Profile</a></li>
+                    <li><a class="dropdown-item" href="/changepassword/{{ Auth::user()->id }}">Change My Password</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="/logout">Log Out</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
 
 @endif

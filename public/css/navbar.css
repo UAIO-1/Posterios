@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
 
 *{
     box-sizing: border-box;
@@ -7,45 +8,74 @@
     font-family: 'Rubik', sans-serif;
 }
 
-li, a{
-    text-decoration: none;
-    font-size: 20px;
+nav{
+    padding-top: 30px;
+    padding-left: 20%;
+    padding-right: 20%;
+    background-color: #dad9d4;
 }
 
-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px 10%;
-}
-
-.logo{
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-}
-
-h5{
-    color: #575e64;
-}
-
-.nav-links{
+.nav-links, .nav-links-logo, .nav-links-dropdown{
     list-style: none;
 }
 
 .nav-links li{
     display: inline-block;
-    padding: 0 20px;
+    padding: 0 15px;
 }
+
+.nav-links li a{
+    text-decoration: none;
+    color: #8a8b8d;
+}
+
+.nav-links li a:hover{
+    transition: 0.3s ease;
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav-links-logo li a, .nav-links-dropdown li a{
+    text-decoration: none;
+    color: #8a8b8d;
+}
+
+.nav-links-logo li a{
+    font-family: 'Kaushan Script', cursive;
+}
+
+.dropdown-toggle{
+    text-decoration: none;
+    color: #8a8b8d;
+}
+
+.dropdown-toggle:hover{
+    text-decoration: none;
+    color: #8a8b8d;
+}
+
+.dropdown:hover .dropdown-menu{
+    display: block;
+}
+
+
+a{
+    font-size: 18px;
+}
+
+
+
+
+/*
 
 .nav-links li a{
     transition: all 0.3s ease 0s;
     text-decoration: none;
-    color: #808B96;
+    color: #8a8b8d;
 }
 
 .nav-links li a:hover{
-    color: black;
+    color: #fff;
 }
 
 .login-btn{
@@ -66,10 +96,14 @@ h5{
 
 .dropbtn {
     background-color: transparent;
-    color: #fff;
-    padding: 16px;
+    color: #787874;
+    padding: 0;
     font-size: 18px;
     border: none;
+}
+
+h5{
+    color: #787874;
 }
 
 .dropdown {
@@ -99,6 +133,6 @@ h5{
     background-color: #ffc107;
     color: white;
     text-decoration: none;
-}
+} */
 
 

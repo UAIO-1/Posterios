@@ -1,6 +1,6 @@
-{{-- <div class="container">
+<div class="container">
     @foreach($projects as $p)
         {{ $p->project_title }}
     @endforeach
 
-</div> --}}
+</div>

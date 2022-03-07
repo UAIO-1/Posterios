@@ -57,7 +57,23 @@ class ProjectController extends Controller
                     ->where('id','=', $id)
                     ->get();
 
-        return view('projectDetail', compact('projects'));
+        $users = DB::table('users')
+                    ->where('users.id', '=', Auth::user()->id)
+                    ->get();
+
+        return view('projectDetail', compact('projects', 'users'));
+    }
+
+    public function getProfile(){
+        $users = DB::table('users')
+                ->where('users.id', '=', Auth::user()->id)
+                ->get();
+
+        $projects = DB::table('projects')
+                ->where('id','=', Auth::user()->id)
+                ->get();
+
+        return view('myProfile', compact('users', 'projects'));
     }
 
     public function editProject(Request $request){
@@ -102,7 +118,7 @@ class ProjectController extends Controller
     }
 
     public function indexProjects(Request $request){
-        $projects = Projects::all();
+        $projects = Projects::take(5)->get();
 
         return view('welcome', compact('projects'));
     }

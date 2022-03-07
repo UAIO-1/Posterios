@@ -9,16 +9,27 @@
 
 @else
 
-    <div class="container mt-lg-5">
-        <h1><span class="badge bg-dark">Post</span></h1>
-        <p> Start your project by fill the form on this page. <br>
-            The form that has been provided has 2 parts that you must fill in and you don't have to. <br>
-            Fill in the form that has been provided correctly and completely. <br>
-        </p>
-    </div>
-
     <div class="container">
-        <div class="row ">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mt-lg-5">
+                    <h1 style="color: #f77846;"><strong>How to Post?</strong></h1>
+                    <p>
+                        <p>Required</p>
+                        <ol>
+                            <li>Fill title fields.</li>
+                            <li>Choose Category.</li>
+                            <li>Fill link fields with a valid link.</li>
+                            <li>Choose image for your projects.</li>
+                        </ol>
+                        <p>Optional</p>
+                        <ol>
+                            <li>Fill description fields.</li>
+                            <li>Choose video for your projects.</li>
+                        </ol>
+                    </p>
+                </div>
+            </div>
             <div class="col-md-6">
                 <div class="card rounded-0 border-0">
                     <form action={{url('/projectPost')}} method="post" enctype="multipart/form-data">
@@ -53,34 +64,30 @@
                                 <input class="form-control" type="file" name="project_image" accept="image/jpg, image/jpeg, image/png">
                             </div>
 
+                            <hr>
+
+                            <h3 class="text-muted">Optional</h3>
+
+                            <div class="mb-3 mt-4">
+                                <label>Description</label> <span class="text-muted"><small>*max. 1000 characters</small></span>
+                                <textarea class="form-control" name="project_description"></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Video</label> <span class="text-muted">
+                                <input class="form-control" type="file" name="project_video" accept="video/mp4">
+                            </div>
+
+                            <div class="mb-3 text-center">
+                                <input type="submit" class="btn btn-warning text-light w-25" value="Submit">
+                            </div>
                         </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card rounded-0 border-0">
-                    <h3 class="m-4 text-muted">Optional</h3>
-                    <div class="card-body m-4">
-                        <div class="mb-3">
-                            <label>Description</label> <span class="text-muted"><small>*max. 1000 characters</small></span>
-                            <textarea class="form-control" name="project_description"></textarea>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Video</label> <span class="text-muted">
-                            <input class="form-control" type="file" name="project_video" accept="video/mp4">
-                        </div>
-                   </div>
-
-
-                    <div class="mb-3 text-center">
-                        <input type="submit" class="btn btn-warning text-light w-25" value="Submit">
-                    </div>
-
                     </form>
 
                 </div>
             </div>
         </div>
     </div>
+
 
 @endif
