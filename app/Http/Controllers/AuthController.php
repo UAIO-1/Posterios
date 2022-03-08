@@ -24,7 +24,7 @@ class AuthController extends Controller
     public function RegisterPost(Request $request){
 
         $this->validate($request,[
-            'username' => 'required|min:6|max:10',
+            'username' => 'required|min:6|max:15',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8',
             'confirmpassword' => 'required|same:password',
@@ -42,7 +42,7 @@ class AuthController extends Controller
 
         $user->save();
 
-        return redirect(url('/login'));
+        return redirect(url('/'));
     }
 
     public function doLogin(Request $request){
@@ -66,7 +66,7 @@ class AuthController extends Controller
         }
 
         if($credential == null) {
-            return redirect(url('/login'));
+            return redirect(url('/'));
         }
 
         if(Auth::user()->role=='Admin'){

@@ -30,7 +30,7 @@ Route::get('/logout','AuthController@logout');
 
 Route::group(['middleware'=>'cekuser'], function() {
 
-    Route::get('/', 'ProjectController@indexProjects');
+
 
     Route::get('/post', function () {
         return view('post');

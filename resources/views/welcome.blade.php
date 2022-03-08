@@ -15,21 +15,19 @@
     </head>
     <body>
 
+
         @if(!Auth::check())
 
         <div class="header">
             @include('navbar')
-            <div class="row">
-                <div class="col">
-                    <h1 class="header-title">Project Exhibiton & Forum Disccusion</h1>
-                    <p class="header-p">
-                        Posterios is a platform to show off and promote student creations widely. Everyone can learn through a project and build connections with people.
-                    </p>
-                    <a href="#"><button class="getstarted-btn">Get Started</button></a>
-                </div>
-
+            <div class="container-header text-center text-light mt-lg-4">
+                <h1>Project Exhibiton & Forum Disccusion</h1>
+                <p>
+                    Posterios is a platform to show off and promote student creations widely. Everyone can learn through a project and build connections with people.
+                </p>
+                <a href="#" id="getstartbtn" class="btn getstart-btn">How To Start</a>
+                <a href="/post" class="btn startpost-btn ml-2">Start Posting</a>
             </div>
-            @include('welcome.projectsection')
         </div>
 
 
@@ -38,17 +36,12 @@
 
         <div class="header">
             @include('navbar')
-            <div class="row">
-                <div class="col">
-                    <h1 class="header-title">Project Exhibiton & Forum Disccusion</h1>
-                    <p class="header-p">
-                        Posterios is a platform to show off and promote student creations widely. Everyone can learn through a project and build connections with people.
-                    </p>
-                    <a href="#"><button class="getstarted-btn">Get Started</button></a>
-                </div>
-
+            <div class="container-header text-center text-light mt-lg-4">
+                <h1>Project Exhibiton & Forum Disccusion</h1>
+                <p>
+                    Posterios is a platform to show off and promote student creations widely. Everyone can learn through a project and build connections with people.
+                </p>
             </div>
-            @include('welcome.projectsection')
         </div>
 
         @endif

@@ -9,7 +9,14 @@
 
 body{
     overflow-y: hidden;
+    background-image:  url("../image/login-header.png");
+    width: 100vw;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
+
 
 .card{
     margin-top: 150px;
