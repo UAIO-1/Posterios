@@ -1,0 +1,130 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.circle{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    position: absolute;
+    align-items: center;
+}
+
+.circle .ring{
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top: 2px solid #fff;
+}
+
+.circle .ring::before{
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    background-color: #fff;
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.2), 0 0 0 10px rgba(255, 255, 255, 0.2), 0 0 0 20px rgba(255, 255, 255, 0.2), 0 0 20px #fff, 0 0 50px #fff ;
+}
+
+.circle .ring:nth-child(1){
+    position: absolute;
+    top: 10%;
+    left: 70%;
+    opacity: 0.6;
+    animation: animate 10s linear infinite;
+}
+
+.circle .ring:nth-child(2){
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    opacity: 0.6;
+    animation: animate 7s linear infinite;
+}
+
+
+@keyframes animate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes animate2{
+    0%{
+        transform: rotate(360deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+}
+
+.circle .bulat{
+    position: relative;
+    width: 25px;
+    height: 25px;
+    border-radius: 5px;
+    border: 2px solid #fff;
+    opacity: 0.6;
+}
+
+.circle .bulat:nth-child(3){
+    position: absolute;
+    top: 10%;
+    left: 70%;
+    opacity: 0.6;
+    animation: animate3 10s linear infinite;
+}
+
+.circle .bulat:nth-child(4){
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    opacity: 0.6;
+    animation: animate3 7s linear infinite;
+}
+
+.circle .bulat:nth-child(5){
+    position: absolute;
+    top: 300px;
+    left: 50%;
+    opacity: 0.6;
+    animation: animate3 8s linear infinite;
+}
+
+.circle .bulat:nth-child(6){
+    position: absolute;
+    top: 250px;
+    left: 30%;
+    opacity: 0.6;
+    animation: animate3 16s linear infinite;
+}
+
+.circle .bulat:nth-child(7){
+    position: absolute;
+    top: 250px;
+    left: 80%;
+    opacity: 0.6;
+    animation: animate3 7s linear infinite;
+}
+
+
+@keyframes animate3{
+    0%{
+        opacity: 0;
+        transform: scale(0) rotate(0deg);
+    }
+    100%{
+        opacity: 0.6;
+        transform: scale(2) rotate(360deg);
+    }
+}

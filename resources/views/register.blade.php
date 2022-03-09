@@ -19,7 +19,7 @@
                     {{csrf_field()}}
                     <div class="text-center">
                         <h4>Sign Up Now</h4>
-                        <h6 class="text-muted">Already have an account? <a href="/login" class="signin">Sign In</a></h6>
+                        <h6 class="text-muted">Already have an account? <a href="/" class="signin">Sign In</a></h6>
                     </div>
 
                     <div class="form-group mb-3">

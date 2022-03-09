@@ -6,7 +6,7 @@
 @if(!Auth::check())
 
     <header>
-        <img src="{{ asset('image/icon-logo-white.png') }}" class="logo" alt="posterios logo">
+        <img src="{{ asset('image/logo-posterios-white.png') }}" class="logo" alt="posterios logo">
         <nav>
             <ul class="nav__links">
                 <li><a href="/">Home</a></li>

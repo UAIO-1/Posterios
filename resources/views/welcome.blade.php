@@ -20,9 +20,10 @@
 
         <div class="header">
             @include('navbar')
+            @include('welcome.effectbubble')
             <div class="container-header text-center text-light mt-lg-4">
-                <h1>Project Exhibiton & Forum Disccusion</h1>
-                <p>
+                <h1 class="mb-4">Project Showcase & Forum Disccusion</h1>
+                <p class="mb-4">
                     Posterios is a platform to show off and promote student creations widely. Everyone can learn through a project and build connections with people.
                 </p>
                 <a href="#" id="getstartbtn" class="btn getstart-btn">How To Start</a>
