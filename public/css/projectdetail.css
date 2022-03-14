@@ -11,28 +11,48 @@ body{
     overflow-x: hidden;
 }
 
-.row{
-    padding-top: 100px;
+.header{
+    width: 100vw;
+    height: 100vh;
+    background-image:  url("../image/project-detail.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+}
+
+.card{
+    margin-bottom: 100px;
 }
 
 .project-image{
     width: 500px;
-    height: 500px;
+    height: 450px;
     background-color: #fff;
+    box-shadow: -5px 5px 10px 0px rgba(0, 0, 0, 0.3);
 }
 
 .project-title{
     text-transform: uppercase;
-    color: #f77846;
+    color: #259df3;
+}
+
+.col-detail{
+    margin-left: 50px;
+}
+
+.row-overview{
+    padding-top: 50px;
 }
 
 .card-body{
-    background-color: #fff7de;
+    background-color: #259df3;
+
 }
 
 .project-description{
     text-align: justify;
-    max-width: 500px;
+    max-width: 700px;
     word-wrap: break-word;
 }
 
@@ -49,8 +69,39 @@ body{
     width: 150px;
     height: 150px;
     border-radius: 500px;
+    background-color: #fff;
+    box-shadow: -5px 5px 10px 0px rgba(0, 0, 0, 0.3);
+}
+.card-over{
+    box-shadow: -5px 5px 10px 0px rgba(0, 0, 0, 0.3);
 }
 
 .username{
     text-decoration: none;
+    color: #fff;
+    transition: all 0.3s ease 0s;
+}
+
+.viewprofile{
+    border-radius: 5px;
+    color: #fff;
+    background-color: #1fd09e;
+    padding: 10px 25px;
+    text-decoration: none;
+    transition: all 0.3s ease 0s;
+}
+
+.viewprofile:hover{
+    background-color: #1ca17c;
+    color: #fff;
+}
+
+.edit_btn{
+    background-color: lavender;
+    width: 100%;
+    text-align: center;
+}
+
+label{
+    color: #000;
 }

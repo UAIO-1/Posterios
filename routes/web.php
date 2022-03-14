@@ -30,8 +30,6 @@ Route::get('/logout','AuthController@logout');
 
 Route::group(['middleware'=>'cekuser'], function() {
 
-
-
     Route::get('/post', function () {
         return view('post');
     });

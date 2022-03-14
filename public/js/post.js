@@ -15,19 +15,11 @@ function show_hide() {
 }
 
 window.onload = function(){
-    const step1 = document.getElementById("step1");
-    const step2 = document.getElementById("step2");
-    const step3 = document.getElementById("step3");
-    const step4 = document.getElementById("step4");
-    const step5 = document.getElementById("step5");
-    const step6 = document.getElementById("step6");
+    const how = document.getElementById("how");
 
-    step1.style.transform="translateX(-60px)";
-    step2.style.transform="translateX(-50px)";
-    step3.style.transform="translateX(-40px)";
-    step4.style.transform="translateX(-30px)";
-    step5.style.transform="translateX(-20px)";
-    step6.style.transform="translateX(-10px)";
+    how.style.opacity="0";
+
+    return a = 1;
 }
 
 function fade_in() {

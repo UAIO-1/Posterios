@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Edit Project</h5>
+                <h5 class="modal-title" id="exampleModalLabel" style="color: #259df3">Edit Project</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -63,8 +63,8 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <input type="submit" class="btn btn-success" value="Save Changes">
+                <button type="button" class="btn bg-transparent" data-bs-dismiss="modal">Close</button>
+                <input type="submit" class="btn but-save text-light" style="background-color: #259df3" value="Save Changes">
             </div>
             </form>
         </div>
