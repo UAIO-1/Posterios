@@ -18,32 +18,45 @@
 
         @if(!Auth::check())
 
-        <div class="header">
-            @include('navbar')
-            @include('welcome.effectbubble')
-            <div class="container-header text-center text-light mt-lg-4">
-                <h1 class="mb-4">Project Showcase & Forum Disccusion</h1>
-                <p class="mb-4">
-                    Posterios is a platform to show off and promote student creations widely. Everyone can learn through a project and build connections with people.
-                </p>
-                <a href="#" id="getstartbtn" class="btn getstart-btn">How To Start</a>
-                <a href="/post" class="btn startpost-btn ml-2">Start Posting</a>
+            <div class="header">
+                @include('navbar')
+                @include('welcome.effectbubble')
+                <div class="container-header text-center text-light mt-lg-4">
+                    <h1 class="title mb-4">Project Showcase & Forum Disccusion</h1>
+                    <p class="mb-4">
+                        Posterios is a platform to show off and promote student creations widely. Everyone can learn through a project and build connections with people.
+                    </p>
+                    <div>
+                        <a href="#" id="getstartbtn" class="btn getstart-btn">How To Start</a>
+                        <a href="/post" class="btn startpost-btn ml-2">Start Posting</a>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center align-items-center mt-3">
+                    <img src="{{ asset('image/stem.png') }}" alt="stem" width="500px" height="500px">
+                </div>
             </div>
-        </div>
 
 
 
         @else
 
-        <div class="header">
-            @include('navbar')
-            <div class="container-header text-center text-light mt-lg-4">
-                <h1>Project Exhibiton & Forum Disccusion</h1>
-                <p>
-                    Posterios is a platform to show off and promote student creations widely. Everyone can learn through a project and build connections with people.
-                </p>
+            <div class="header">
+                @include('navbar')
+                @include('welcome.effectbubble')
+                <div class="container-header text-center text-light mt-lg-4">
+                    <h1 class="title mb-4">Project Showcase & Forum Disccusion</h1>
+                    <p class="mb-4">
+                        Posterios is a platform to show off and promote student creations widely. Everyone can learn through a project and build connections with people.
+                    </p>
+                    <div>
+                        <a href="#" id="getstartbtn" class="btn getstart-btn">How To Start</a>
+                        <a href="/post" class="btn startpost-btn ml-2">Start Posting</a>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center align-items-center stem">
+                    <img src="{{ asset('image/stem.png') }}" alt="stem" width="500px" height="500px">
+                </div>
             </div>
-        </div>
 
         @endif
     </body>

@@ -57,7 +57,7 @@
 @else
 
     <header>
-        <img src="{{ asset('image/icon-logo-white.png') }}" class="logo" alt="posterios logo">
+        <img src="{{ asset('image/logo-posterios-white.png') }}" class="logo" alt="posterios logo">
         <nav>
             <ul class="nav__links">
                 <li><a href="/">Home</a></li>
@@ -69,7 +69,7 @@
                         <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Hi, <strong>{{ Auth::user()->username }}</strong>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                        <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
                             <li><a class="dropdown-item" href="/myProfile">My Profile</a></li>
                             <li><a class="dropdown-item" href="/changepassword/{{ Auth::user()->id }}">Change My Password</a></li>
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -77,6 +77,7 @@
                         </ul>
                     </div>
                 </li>
+
             </ul>
         </nav>
     </header>

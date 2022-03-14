@@ -3,91 +3,152 @@
 <link rel="shortcut icon" href="{{ asset('image/icon-logo-white.png') }}">
 <link rel="stylesheet" href="{{ asset('css/post.css') }}">
 
-@include('navbar')
+<script src="{{ asset('js/post.js') }}"></script>
 
 @if (!Auth::check())
 
 @else
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="mt-lg-5">
-                    <h1 style="color: #f77846;"><strong>How to Post?</strong></h1>
-                    <p>
-                        <p>Required</p>
-                        <ol>
-                            <li>Fill title fields.</li>
-                            <li>Choose Category.</li>
-                            <li>Fill link fields with a valid link.</li>
-                            <li>Choose image for your projects.</li>
-                        </ol>
-                        <p>Optional</p>
-                        <ol>
-                            <li>Fill description fields.</li>
-                            <li>Choose video for your projects.</li>
-                        </ol>
-                    </p>
+    <div>
+        @include('navbar')
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="card card2 border-0 rounded-0">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h2 class="p-3" style="color: #259df3">Publish Now!</h2>
+                            <a href="#" onclick="show_hide()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-patch-question-fill"  viewBox="0 0 16 16">
+                                    <path d="M5.933.87a2.89 2.89 0 0 1 4.134 0l.622.638.89-.011a2.89 2.89 0 0 1 2.924 2.924l-.01.89.636.622a2.89 2.89 0 0 1 0 4.134l-.637.622.011.89a2.89 2.89 0 0 1-2.924 2.924l-.89-.01-.622.636a2.89 2.89 0 0 1-4.134 0l-.622-.637-.89.011a2.89 2.89 0 0 1-2.924-2.924l.01-.89-.636-.622a2.89 2.89 0 0 1 0-4.134l.637-.622-.011-.89a2.89 2.89 0 0 1 2.924-2.924l.89.01.622-.636zM7.002 11a1 1 0 1 0 2 0 1 1 0 0 0-2 0zm1.602-2.027c.04-.534.198-.815.846-1.26.674-.475 1.05-1.09 1.05-1.986 0-1.325-.92-2.227-2.262-2.227-1.02 0-1.792.492-2.1 1.29A1.71 1.71 0 0 0 6 5.48c0 .393.203.64.545.64.272 0 .455-.147.564-.51.158-.592.525-.915 1.074-.915.61 0 1.03.446 1.03 1.084 0 .563-.208.885-.822 1.325-.619.433-.926.914-.926 1.64v.111c0 .428.208.745.585.745.336 0 .504-.24.554-.627z"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="p-3">
+                            <form action={{url('/projectPost')}} method="post" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                <input type="hidden" name="username" value="{{ Auth::user()->username }}">
+                                <input type="hidden" name="gender" value="{{ Auth::user()->gender }}">
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Title</label> <span class="text-danger">*</span>
+                                            <input type="text" name="project_title" class="form-control">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Category</label> <span class="text-danger">*</span>
+                                            <select name="project_category" class="ml-4 form-select">
+                                                <option value="Science">Science</option>
+                                                <option value="Technology">Technology</option>
+                                                <option value="Engineering">Engineering</option>
+                                                <option value="Mathematics">Mathematics</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Link</label> <span class="text-danger">*</span>
+                                            <input type="text" name="project_link" class="form-control" placeholder="https://www.yourproject.com/">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Image</label> <span class="text-danger">*</span>
+                                            <input class="form-control" type="file" name="project_image" accept="image/jpg, image/jpeg, image/png">
+                                        </div>
+
+
+                                        <div class="mb-3">
+                                            <label>Description</label>
+                                            <textarea class="form-control" name="project_description" rows="5"></textarea>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Video</label> <span class="text-muted">
+                                            <input class="form-control" type="file" name="project_video" accept="video/mp4">
+                                        </div>
+
+                                        <div class="mb-3 text-center">
+                                            <input type="submit" value="Publish" class="btn text-light" style="background-color: #259df3">
+                                        </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card rounded-0 border-0">
-                    <form action={{url('/projectPost')}} method="post" enctype="multipart/form-data">
-                        {{ csrf_field() }}
-                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                        <input type="hidden" name="username" value="{{ Auth::user()->username }}">
-                        <input type="hidden" name="gender" value="{{ Auth::user()->gender }}">
-                        <h3 class="m-4 text-danger">Required</h3>
-                        <div class="card-body m-2">
-                            <div class="mb-3">
-                                <label class="form-label">Title</label> <span class="text-danger">*<small class="text-muted">at least 6 - 20 characters</small></span>
-                                <input type="text" name="project_title">
-                            </div>
+                <div class="col-md-2 col2">
+                    <div class="card card-for-step bg-transparent text-muted border-0" id="how" onload="hide()">
 
-                            <div class="mb-3">
-                                <label class="form-label">Category</label> <span class="text-danger">*</span>
-                                <select name="project_category" class="ml-4">
-                                    <option value="Science">Science</option>
-                                    <option value="Technology">Technology</option>
-                                    <option value="Engineering">Engineering</option>
-                                    <option value="Mathematics">Mathematics</option>
-                                </select>
-                            </div>
+                        <h4 class="text-light container">How to Publish?</h4>
 
-                            <div class="mb-3">
-                                <label class="form-label">Link</label> <span class="text-danger"><small>*</small></span>
-                                <input type="text" name="project_link">
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label">Image / Thumbnail</label> <span class="text-danger">*</span>
-                                <input class="form-control" type="file" name="project_image" accept="image/jpg, image/jpeg, image/png">
-                            </div>
-
-                            <hr>
-
-                            <h3 class="text-muted">Optional</h3>
-
-                            <div class="mb-3 mt-4">
-                                <label>Description</label> <span class="text-muted"><small>*max. 1000 characters</small></span>
-                                <textarea class="form-control" name="project_description"></textarea>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label">Video</label> <span class="text-muted">
-                                <input class="form-control" type="file" name="project_video" accept="video/mp4">
-                            </div>
-
-                            <div class="mb-3 text-center">
-                                <input type="submit" class="btn btn-warning text-light w-25" value="Submit">
+                        <div class="card card-step mb-3" id="step1">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h3 class="step-num">01</h3>
+                                </div>
+                                <div class="col-md-8">
+                                    <p>Fill in the title</p>
+                                </div>
                             </div>
                         </div>
-                    </form>
 
+                        <div class="card card-step mb-3" id="step2">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h3 class="step-num">02</h3>
+                                </div>
+                                <div class="col-md-8">
+                                    <p>Select category</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card card-step mb-3" id="step3">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h3 class="step-num">03</h3>
+                                </div>
+                                <div class="col-md-8">
+                                    <p>Fill in the link column with a valid link</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card card-step mb-3" id="step4">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h3 class="step-num">04</h3>
+                                </div>
+                                <div class="col-md-8">
+                                    <p>Choose image file</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card card-step mb-3" id="step5">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h3 class="step-num">*</h3>
+                                </div>
+                                <div class="col-md-8">
+                                    <p>Description and video are optional</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card card-step mb-3" id="step6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h3 class="step-num">*</h3>
+                                </div>
+                                <div class="col-md-8">
+                                    <p>You can update your project after publishing</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
-        </div>
+
     </div>
+
 
 
 @endif

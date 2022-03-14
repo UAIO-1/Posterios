@@ -1,0 +1,83 @@
+<div>
+        @include('navbar')
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="card rounded-0">
+                <div class="card-header bg-transparent p-3">
+                    <h2 class="text-muted">Publish Now!</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 p-5">
+                            <img src="{{ asset('image/howtopublish.png') }}" alt="howt to publish">
+                            <div class="col-md-11 text-justify container text-muted">
+                                <p>You can fill in the form on the right with the fields provided. There are fields title, category, link, image, description, and video.</p>
+                                <p>You can update your project after publishing.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-8 p-5">
+                            <img src="{{ asset('image/filltheform.png') }}" alt="howt to publish">
+                            <form action={{url('/projectPost')}} method="post" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                <input type="hidden" name="username" value="{{ Auth::user()->username }}">
+                                <input type="hidden" name="gender" value="{{ Auth::user()->gender }}">
+
+                                <div class="row">
+                                    <div class="col-md-5">
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Title</label> <span class="text-danger">*</span>
+                                            <input type="text" name="project_title" class="form-control">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Category</label> <span class="text-danger">*</span>
+                                            <select name="project_category" class="ml-4 form-select">
+                                                <option value="Science">Science</option>
+                                                <option value="Technology">Technology</option>
+                                                <option value="Engineering">Engineering</option>
+                                                <option value="Mathematics">Mathematics</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Link</label> <span class="text-danger">*</span>
+                                            <input type="text" name="project_link">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Image</label> <span class="text-danger">*</span>
+                                            <input class="form-control" type="file" name="project_image" accept="image/jpg, image/jpeg, image/png">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-6">
+
+                                        <div class="mb-3">
+                                            <label>Description</label>
+                                            <textarea class="form-control" name="project_description" rows="8"></textarea>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Video</label> <span class="text-muted">
+                                            <input class="form-control" type="file" name="project_video" accept="video/mp4">
+                                        </div>
+
+                                        <div class="mb-3 text-center">
+                                            <input type="submit" value="Publish" class="btn text-light" style="background-color: #1fd09e">
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>

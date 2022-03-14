@@ -17,17 +17,14 @@ body{
     overflow-x: hidden;
 }
 
-.badge .even-larger-badge{
-    font-size: 1.3em;
-}
 
-.card{
-    top: 10%;
-    width: 500px;
-    max-width: 500px;
-    height: 700px;
-    max-height: 700px;
+.card2{
+    width: 40%;
+    max-width: 40%;
+    height: 40vw;
+    max-height: 40vw;
     box-shadow: -10px 10px 20px 0 rgba(0, 0, 0, 0.2);
+    margin-left: 300px;
 }
 
 input, select{
@@ -43,4 +40,62 @@ input, select{
 input:focus {
     outline: none;
 }
+
+.bi-patch-question-fill{
+    margin: 20px;
+    cursor: pointer;
+}
+
+.col2{
+    margin-left: -25%;
+}
+
+.card-for-step{
+    width: 300px;
+    max-width: 300px;
+
+}
+
+.card-step{
+    padding: 5px;
+    width: 300px;
+    max-width: 300px;
+    height: 50px;
+    max-height: 50px;
+    background-image: url("../image/card-step.png");
+}
+
+.step-num{
+    padding: 5px;
+    color: #fff;
+}
+
+#how{
+    transition: opacity 1s;
+}
+
+#step1{
+    transition: 0.5s;
+}
+
+#step2{
+    transition: 1s;
+}
+
+#step3{
+    transition: 1.5s;
+}
+
+#step4{
+    transition: 2s;
+}
+
+#step5{
+    transition: 2.5s;
+}
+#step6{
+    transition: 3s;
+}
+
+
 

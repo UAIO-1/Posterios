@@ -35,7 +35,9 @@ header{
 }
 
 .nav__links li a{
+    text-decoration: none;
     transition: all 0.3s ease 0s;
+    color: #fff;
 }
 
 .nav__links li a:hover{
