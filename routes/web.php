@@ -27,6 +27,8 @@ Route::post('/doLogin', 'AuthController@doLogin');
 
 Route::get('/logout','AuthController@logout');
 
+Route::get('/myProfile/{id}', 'AuthController@getProfileOther');
+
 
 Route::group(['middleware'=>'cekuser'], function() {
 
@@ -34,13 +36,14 @@ Route::group(['middleware'=>'cekuser'], function() {
         return view('post');
     });
 
+    Route::get('/explore', 'ProjectController@indexExploreProjects');
+    // Route::get('/explore', 'ProjectController@searchProjects');
+
     Route::post('/projectPost', 'ProjectController@projectPost');
 
-    Route::get('/myProfile', 'AuthController@getProfileUser');
-    Route::get('/myProfile/{id}', 'ProjectController@getProfile');
+    Route::get('/myProfile/{id}', 'AuthController@getProfileUser');
 
     Route::post('/editProfile', 'AuthController@editProfile');
-
 
     Route::get('/changepassword/{id}', 'AuthController@getID');
     Route::post('/changepassword', 'AuthController@changePassword');

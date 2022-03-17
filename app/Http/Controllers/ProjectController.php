@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Projects;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -122,6 +123,24 @@ class ProjectController extends Controller
 
         return view('welcome', compact('projects'));
     }
+
+    public function indexExploreProjects(Request $request){
+        $projects = Projects::all();
+
+        $users = DB::table("projects")
+            ->select("users.image")
+            ->join("users", "projects.user_id", "=", "users.id")
+            ->first();
+
+        return view('/explore', compact('projects', 'users'));
+    }
+
+    // public function searchProjects(Request $request){
+    //     $search = $request->get('s');
+    //     $projects = Projects::where("project_title",'like','%'.$search.'%')
+    //                 ->simplePaginate(100);
+    //     return view('/explore', compact('projects'));
+    // }
 
 
 }

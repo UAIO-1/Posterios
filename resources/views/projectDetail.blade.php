@@ -133,10 +133,10 @@
                                     <img src="{{ asset('storage/'.$u->image) }}" alt="user image" class="pp">
                                 </div>
                                 <div class="text-center mt-lg-4">
-                                    <h6 class="username">Me</h6>
+                                    <h6 class="username">{{ $p->username }}</h6>
                                 </div>
                                 <div class="text-center mt-lg-4">
-                                    <a href="/myProfile" class="viewprofile">View Profile</a>
+                                    <a href="/myProfile/{{ $u->id }}" class="viewprofile">View Profile</a>
                                 </div>
                                 <hr>
                                 <div>

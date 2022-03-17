@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Rubik', sans-serif;
+}
+
+body{
+    overflow-x: hidden;
+}
+
+.header{
+    width: 100vw;
+    height: 40vh;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.5);
+    background-image:  url("../image/project-detail.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.science{
+    width: 200px;
+    height: 100px;
+    background-image: url("../image/sciencebtn.png");
+    border-radius: 5px;
+    border: 0;
+    font-size: 30px;
+    animation: animate 1s linear;
+    transition: all 0.3s ease 0s;
+}
+
+.science:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.8);
+}
+
+.technology{
+    width: 200px;
+    height: 100px;
+    background-image: url("../image/technologybtn.png");
+    border-radius: 5px;
+    border: 0;
+    font-size: 30px;
+    animation: animate 1s linear;
+    animation-delay: 0.5s;
+    transition: all 0.3s ease 0s;
+}
+
+.technology:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.8);
+}
+
+.engineering{
+    width: 200px;
+    height: 100px;
+    background-image: url("../image/engineeringbtn.png");
+    border-radius: 5px;
+    border: 0;
+    font-size: 30px;
+    animation: animate 1s linear;
+    animation-delay: 1s;
+    transition: all 0.3s ease 0s;
+}
+
+.engineering:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.8);
+}
+
+.mathematics{
+    width: 200px;
+    height: 100px;
+    background-image: url("../image/mathematicsbtn.png");
+    border-radius: 5px;
+    border: 0;
+    font-size: 30px;
+    animation: animate 1s linear;
+    animation-delay: 1.5s;
+    transition: all 0.3s ease 0s;
+}
+
+.mathematics:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.8);
+}
+
+@keyframes animate{
+    0%{
+        opacity: 0;
+        transform: translateY(0);
+    }
+    25%{
+        opacity: 0.5;
+        transform: translateY(-5px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.search{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 10px;
+    margin-top: 100px;
+    margin-right: 100px;
+}
+
+.card{
+    width: 400px;
+    height: 400px;
+    max-width: 400px;
+    max-height: 400px;
+    transition: all 0.3s ease 0s;
+    box-shadow: -1px 1px 5px 0 rgba(0, 0, 0, 0.3);
+}
+
+.card:hover{
+    box-shadow: -20px 20px 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.project-image{
+    width: 100%;
+    height: 250px;
+    max-height: 250px;
+}
+
+.detail{
+    text-decoration: none;
+    color: #000;
+}
+
+.detail:hover{
+    color: #000;
+}
+
+.profile{
+    margin-top: -20px;
+}
+
+.like{
+    margin-left: 150px;
+}
+
+.username{
+    text-decoration: none;
+    color: #000;
+}

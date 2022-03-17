@@ -118,7 +118,19 @@ class AuthController extends Controller
 
 
         return view('myProfile', compact('users', 'projects'));
+    }
 
+    public function getProfileOther($id){
+
+        $users = DB::table('users')
+                ->where('users.id', '=', $id)
+                ->get();
+
+        $projects = Projects::where('user_id', '=', $id)
+                ->get();
+
+
+        return view('myProfile', compact('users', 'projects'));
     }
 
     public function getID($id){

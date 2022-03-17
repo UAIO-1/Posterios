@@ -62,7 +62,7 @@
             <ul class="nav__links">
                 <li><a href="/">Home</a></li>
                 <li><a href="/post">Post</a></li>
-                <li><a href="#">Explore</a></li>
+                <li><a href="/explore">Explore</a></li>
                 <li><a href="#">Forum</a></li>
                 <li>
                     <div class="dropdown">
@@ -70,7 +70,7 @@
                             Hi, <strong>{{ Auth::user()->username }}</strong>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-                            <li><a class="dropdown-item" href="/myProfile">My Profile</a></li>
+                            <li><a class="dropdown-item" href="/myProfile/{{ Auth::user()->id }}">My Profile</a></li>
                             <li><a class="dropdown-item" href="/changepassword/{{ Auth::user()->id }}">Change My Password</a></li>
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                             <li><a class="dropdown-item" href="/logout">Log Out</a></li>
