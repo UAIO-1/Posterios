@@ -62,7 +62,7 @@
 
                                         <div class="mb-3">
                                             <label class="form-label">Video</label> <span class="text-muted">
-                                            <input class="form-control" type="file" name="project_video" accept="video/mp4, video/mkv">
+                                            <input class="form-control" type="file" name="project_video" accept="video/mp4, video/*">
                                         </div>
 
                                         <div class="mb-3 text-center">
