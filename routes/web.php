@@ -35,6 +35,9 @@ Route::group(['middleware'=>'cekuser'], function() {
     Route::get('/post', function () {
         return view('post');
     });
+    Route::get('/forum', function () {
+        return view('forum');
+    });
 
     Route::get('/explore', 'ProjectController@indexExploreProjects');
     // Route::get('/explore', 'ProjectController@searchProjects');

@@ -63,7 +63,7 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/post">Post</a></li>
                 <li><a href="/explore">Explore</a></li>
-                <li><a href="#">Forum</a></li>
+                <li><a href="/forum">Forum</a></li>
                 <li>
                     <div class="dropdown">
                         <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
