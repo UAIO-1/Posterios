@@ -17,7 +17,7 @@ class ProjectController extends Controller
             'project_title' => 'required|min:6|max:20',
             'project_category' => 'required',
             'project_image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'project_video' => 'max:10240'
+            'project_video' => 'max:30000'
         ]);
 
         $project = new Projects();
