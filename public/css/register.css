@@ -47,3 +47,14 @@ body{
     margin-left: -30px;
     font-family: 'Aclonica', sans-serif;
 }
+
+@media screen and (max-width: 1366px) {
+    .card{
+        width: 25vw;
+        height: 80vh;
+        top: 10%;
+        left: 55%;
+        box-shadow: -10px 10px 10px 0 rgba(0, 0, 0, 0.15);
+    }
+
+  }
