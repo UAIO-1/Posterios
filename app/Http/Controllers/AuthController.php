@@ -104,7 +104,7 @@ class AuthController extends Controller
 
         $user->save();
 
-        return redirect('myProfile');
+        return redirect('/myProfile/'.Auth::user()->id);
     }
 
     public function getProfileUser(){
