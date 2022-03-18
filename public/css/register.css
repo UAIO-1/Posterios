@@ -48,13 +48,3 @@ body{
     font-family: 'Aclonica', sans-serif;
 }
 
-@media screen and (max-width: 600px) {
-    .card{
-        width: 25vw;
-        height: 90vh;
-        top: 10%;
-        left: 55%;
-        box-shadow: -10px 10px 10px 0 rgba(0, 0, 0, 0.15);
-    }
-
-  }
