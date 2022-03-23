@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Forums;
 use App\Projects;
 use App\User;
 use Illuminate\Support\Facades\File;
@@ -116,8 +117,11 @@ class AuthController extends Controller
         $projects = Projects::where('user_id', '=', Auth::user()->id)
                 ->get();
 
+        $forums = Forums::where('user_id', '=', Auth::user()->id)
+                ->get();
 
-        return view('myProfile', compact('users', 'projects'));
+
+        return view('myProfile', compact('users', 'projects', 'forums'));
     }
 
     public function getProfileOther($id){
@@ -146,7 +150,5 @@ class AuthController extends Controller
             ->update(['password' => Hash::make($request->password)]);
         return redirect('/profile');
     }
-
-
 
 }

@@ -84,8 +84,19 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="col-md-6">
-
+                <div class="col-md-2">
+                    <div class="row">
+                        <h5 class="text-light">My Forum</h5>
+                        <hr style="border: 1px solid #fff">
+                        @foreach ($forums as $f)
+                        <div>
+                            <a href="#" class="forum-list">
+                                <h6><span>></span> {{Str::limit($f->forum_title, 15, '...')}}</h6>
+                            </a>
+                            <hr class="text-light">
+                        </div>
+                        @endforeach
+                    </div>
                 </div>
                 @endforeach
             </div>

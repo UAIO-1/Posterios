@@ -40,7 +40,7 @@
                                                 <option value="Science">Science</option>
                                                 <option value="Technology">Technology</option>
                                                 <option value="Engineering">Engineering</option>
-                                                <option value="Mathematics">Mathematics</option>
+                                                <option value="Mathematics">Art</option>
                                             </select>
                                         </div>
 

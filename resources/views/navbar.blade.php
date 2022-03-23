@@ -37,11 +37,11 @@
                                     <label for="flexCheckDefault">Remember Me</label>
                                 </div>
                                 <div class="text-center">
-                                    <p><span class="text-muted">Don't have an account?</span> <a href="/register" style="color: #7b849e"><u>Sign Up</u></a></p>
+                                    <p><span class="text-muted">Don't have an account?</span> <a href="/register" style="color: #7b849e">Sign Up</a></p>
                                 </div>
                                 <div class="d-flex justify-content-end mt-lg-4">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <input class="btn text-light ml-2 w-25" style="background-color: #259df3" type="submit" value="Login">
+                                    <button type="button" class="btn text-muted" data-bs-dismiss="modal">Close</button>
+                                    <input class="btn ml-2 w-25 log-but" type="submit" value="Login">
                                 </div>
                             </form>
 

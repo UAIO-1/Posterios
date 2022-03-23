@@ -65,6 +65,10 @@ body{
     max-height: 200px;
 }
 
+.forum-list{
+    text-decoration: none;
+    color: #fff;
+}
 
 
 
