@@ -89,15 +89,15 @@ class ForumController extends Controller
         $forum->forum_category = $request->forum_category;
         $forum->forum_message = $request->forum_message;
 
-        if ($request->hasFile('image')) {
+        if ($request->hasFile('forum_image')) {
             $path = 'storage/images/forum'.$forum->forum_image;
             if(File::exists($path)){
                 File::delete($path);
             }
-            $file = $request->file('image');
+            $file = $request->file('forum_image');
             $path = $file->store('images/forum','public');
             $file->move('storage/images/forum',  $path);
-            $forum->image = $path;
+            $forum->forum_image = $path;
         }
 
         $forum->save();

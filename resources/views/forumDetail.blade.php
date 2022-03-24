@@ -156,7 +156,11 @@
                     </div>
                     <div class="col">
                         <h6>{{ $r->username }} <span class="text-muted"><small>• {{ Carbon\Carbon::parse($f->created_at)->diffForHumans()}}</small></span></h6>
-                        <p class="reply">{{ $r->reply_message }}</p>
+                        @if (Auth::user()->id == $f->user_id)
+                            <p class="reply">{{ $r->reply_message }}</p>
+                        @else
+                            <p class="reply">{{ $r->reply_message }}</p>
+                        @endif
                     </div>
                 </div>
                 <hr>
