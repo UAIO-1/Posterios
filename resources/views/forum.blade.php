@@ -105,7 +105,7 @@
                                         @if ($f->forum_image == null)
                                             <img src="{{ asset('image/forum-icon-green.png') }}" class="img-fluid rounded-start p-4" alt="forum icon">
                                         @else
-                                            <img src="{{ $f->forum_image }}" class="img-fluid rounded-start" alt="forum image">
+                                            <img src="{{ asset('storage/'.$f->forum_image) }}" class="img-fluid rounded-start" alt="forum image">
                                         @endif
                                     </div>
                                     <div class="col-md-8">
