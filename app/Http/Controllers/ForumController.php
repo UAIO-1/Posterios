@@ -6,6 +6,7 @@ use App\ForumAnswers;
 use App\Forums;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class ForumController extends Controller
 {
@@ -29,7 +30,7 @@ class ForumController extends Controller
         if($request->file('forum_image') == null){
             $forum->forum_image = null;
         } else {
-            $path = $request->file('forum_image')->store('videos/forum','public');
+            $path = $request->file('forum_image')->store('images/forum','public');
             $forum->forum_image = $path;
         }
 
@@ -78,6 +79,30 @@ class ForumController extends Controller
         $reply->save();
 
         return redirect('/forumDetail/'.$reply->forum_id);
+    }
+
+    public function editForum(Request $request){
+
+        $forum = Forums::where('id', '=', $request->id)->first();
+
+        $forum->forum_title = $request->forum_title;
+        $forum->forum_category = $request->forum_category;
+        $forum->forum_message = $request->forum_message;
+
+        if ($request->hasFile('image')) {
+            $path = 'storage/images/forum'.$forum->forum_image;
+            if(File::exists($path)){
+                File::delete($path);
+            }
+            $file = $request->file('image');
+            $path = $file->store('images/forum','public');
+            $file->move('storage/images/forum',  $path);
+            $forum->image = $path;
+        }
+
+        $forum->save();
+
+        return redirect('/forumDetail/'.$forum->id);
     }
 
 

@@ -70,7 +70,7 @@
 
                                     <div class="mb-3">
                                         <label class="form-label text-muted">Image</label>
-                                        <input class="form-control" type="file" name="forum_image" accept="image/jpg, image/jpeg, image/png">
+                                        <input class="form-control" type="file" name="forum_image" accept="image/jpg, image/jpeg, image/png" multiple>
                                     </div>
 
 
