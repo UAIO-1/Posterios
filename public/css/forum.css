@@ -36,6 +36,10 @@ body{
     box-shadow: 0 0 150px 0 rgba(255, 255, 255, 1);
 }
 
+.modal-title{
+    color: #1FD09E;
+}
+
 .create-forum-modal-but{
     background-color: #1FD09E;
     color: #fff;
@@ -66,6 +70,12 @@ option{
 .forum-detail{
     text-decoration: none;
     color: #000;
+    transition: all 0.3s ease 0s;
+}
+
+.forum-detail:hover{
+    text-decoration: none;
+    color: #1FD09E;
 }
 
 .card{

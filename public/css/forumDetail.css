@@ -1,0 +1,39 @@
+.user-image{
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.reply-but{
+    background-color: #2834ae;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 50px;
+    border-radius: 5px;
+    transition: all 0.3s ease 0s;
+}
+
+.reply-but:hover{
+    background-color: #232c94;
+    color: #fff;
+}
+
+.reply-modal-but{
+    background-color: #2834ae;
+    padding: 10px 25px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-left: 5px;
+    transition: all 0.3s ease 0s;
+}
+
+.reply-modal-but:hover{
+    background-color: #232c94;
+    color: #fff;
+}
+.modal-title{
+    color: #2834ae;
+}

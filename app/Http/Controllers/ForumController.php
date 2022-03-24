@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Forums;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ForumController extends Controller
 {
@@ -43,6 +44,21 @@ class ForumController extends Controller
 
         return view('/forum', compact('forums'));
     }
+
+    public function getForumID($id){
+        $forums = DB::table('forum')
+                ->where('id','=',$id)
+                ->get();
+
+        $users = DB::table("projects")
+                ->select("users.image")
+                ->join("users", "projects.user_id", "=", "users.id")
+                ->first();
+
+        return view('/forumDetail', compact('forums', 'users'));
+    }
+
+    
 
 
 

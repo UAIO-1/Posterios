@@ -2,7 +2,6 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 
-
 @if(!Auth::check())
 
     <header>
@@ -56,7 +55,7 @@
 
 @else
 
-    <header>
+    <header id="navbar" class="sticky-top">
         <img src="{{ asset('image/logo-posterios-white.png') }}" class="logo" alt="posterios logo">
         <nav>
             <ul class="nav__links">
@@ -77,7 +76,6 @@
                         </ul>
                     </div>
                 </li>
-
             </ul>
         </nav>
     </header>
@@ -85,4 +83,22 @@
 
 
 
+
 @endif
+
+<script>
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function() {
+    var currentScrollPos = window.pageYOffset;
+      if (prevScrollpos > currentScrollPos) {
+        document.getElementById("navbar").style.top = "0";
+        document.getElementById("navbar").style.backgroundColor  = "#2834ae";
+      } else {
+        document.getElementById("navbar").style.backgroundColor  = "#2834ae";
+        document.getElementById("navbar").style.top = "-100px";
+      }
+      prevScrollpos = currentScrollPos;
+    }
+
+
+</script>

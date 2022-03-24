@@ -39,6 +39,8 @@ Route::group(['middleware'=>'cekuser'], function() {
     Route::get('/forum', 'ForumController@indexForum');
     Route::post('/postForum', 'ForumController@forumPost');
 
+    Route::get('/forumDetail/{id}', 'ForumController@getForumID');
+
     Route::get('/explore', 'ProjectController@indexExploreProjects');
     // Route::get('/explore', 'ProjectController@searchProjects');
 

@@ -35,7 +35,7 @@
 
 .circle .ring:nth-child(1){
     position: absolute;
-    top: 10%;
+    top: 100px;
     left: 70%;
     opacity: 0.6;
     animation: animate 10s linear infinite;
@@ -43,7 +43,7 @@
 
 .circle .ring:nth-child(2){
     position: absolute;
-    top: 10%;
+    top: 100px;
     left: 20%;
     opacity: 0.6;
     animation: animate 7s linear infinite;
@@ -75,19 +75,20 @@
     border-radius: 5px;
     border: 2px solid #fff;
     opacity: 0.6;
+
 }
 
 .circle .bulat:nth-child(3){
     position: absolute;
-    top: 10%;
-    left: 70%;
+    top: 100px;
+    left: 60%;
     opacity: 0.6;
     animation: animate3 10s linear infinite;
 }
 
 .circle .bulat:nth-child(4){
     position: absolute;
-    top: 10%;
+    top: 100px;
     left: 10%;
     opacity: 0.6;
     animation: animate3 7s linear infinite;
@@ -103,7 +104,7 @@
 
 .circle .bulat:nth-child(6){
     position: absolute;
-    top: 250px;
+    top: 450px;
     left: 30%;
     opacity: 0.6;
     animation: animate3 16s linear infinite;
@@ -112,7 +113,7 @@
 .circle .bulat:nth-child(7){
     position: absolute;
     top: 250px;
-    left: 80%;
+    left: 90%;
     opacity: 0.6;
     animation: animate3 7s linear infinite;
 }
@@ -123,8 +124,12 @@
         opacity: 0;
         transform: scale(0) rotate(0deg);
     }
-    100%{
+    90%{
         opacity: 0.6;
+        transform: scale(2) rotate(360deg);
+    }
+    100%{
+        opacity: 0;
         transform: scale(2) rotate(360deg);
     }
 }

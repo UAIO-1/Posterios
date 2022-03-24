@@ -10,9 +10,8 @@
 
 
 @else
-
-    <div class="header">
-        @include('navbar')
+@include('navbar')
+<div class="header">
         <div class="mt-lg-4">
             <div class="text-center text-light">
                 <h1 class="display-1">Forum Discussion</h1>
@@ -20,14 +19,14 @@
             </div>
             <div class="mt-xl-5">
                 <div class="text-center">
-                    <a href="#" class="createforum-but" data-bs-toggle="modal" data-bs-target="#createForumModal">Create Forum</a>
+                    <a href="#" class="createforum-but" data-bs-toggle="modal" data-bs-target="#createForumModal">Create General Forum</a>
                 </div>
                 <!-- Modal -->
                 <div class="modal fade" id="createForumModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header border-0">
-                            <h5 class="modal-title" id="createForumModal">Create Forum</h5>
+                            <h5 class="modal-title" id="createForumModal">Create General Forum</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
@@ -93,25 +92,25 @@
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-3">
-                        <h4><span style="color: #259df3"><strong>General</strong></span> <span style="color: #7b849e">Forum</span></h4>
+                        <h4><span style="color: #1fd09e"><strong>General</strong></span> <span style="color: #7b849e">Forum</span></h4>
                     </div>
                     <div class="col-md-6 mb-3">
                         <p class="text-muted">General Forum adalah tempat semua diskusi yang telah dibuat</p>
                     </div>
                     @foreach ($forums as $f)
-                        <a href="#" class="forum-detail">
+                        <a href="/forumDetail/{{ $f->id }}" class="forum-detail">
                             <div class="card mb-3 border-0 rounded-0" style="max-width: 540px;">
                                 <div class="row g-0">
                                     <div class="col-md-4">
                                         @if ($f->forum_image == null)
-                                            <img src="{{ asset('image/forum-icon.png') }}" class="img-fluid rounded-start p-4" alt="forum icon">
+                                            <img src="{{ asset('image/forum-icon-green.png') }}" class="img-fluid rounded-start p-4" alt="forum icon">
                                         @else
                                             <img src="{{ $f->forum_image }}" class="img-fluid rounded-start" alt="forum image">
                                         @endif
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
-                                        <h5 class="card-title">{{Str::limit($f->forum_title, 25, '...')}}</h5>
+                                        <h5 class="card-title"><strong>{{Str::limit($f->forum_title, 25, '...')}}</strong></h5>
                                         <p class="card-text">{{Str::limit($f->forum_message, 100, '...')}}</p>
                                         <p class="card-text"><small class="text-muted">{{ $f->forum_category }}</small></p>
                                         </div>
@@ -125,7 +124,7 @@
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-3">
-                        <h4><span style="color: #1fd09e"><strong>Project</strong></span> <span style="color: #7b849e">Forum</span></h4>
+                        <h4><span style="color: #259df3"><strong>Project</strong></span> <span style="color: #7b849e">Forum</span></h4>
                     </div>
                     <div class="col-md-6">
                         <p class="text-muted">Project Forum adalah tempat diskusi yang diintegrasi dalam project</p>
@@ -159,7 +158,7 @@
 
 @endif
 
-<script>
+{{-- <script>
     $(document).ready(function() {
 
         $("#main").change(function() {
@@ -176,4 +175,4 @@
         });
 
     });
-</script>
+</script> --}}
