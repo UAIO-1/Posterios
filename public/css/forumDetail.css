@@ -66,3 +66,13 @@
     max-width: 500px;
     max-height: 500px;
 }
+
+.edit-answer-but{
+    background: transparent;
+    padding: 5px 10px;
+    text-decoration: none;
+    border: none;
+    margin-left: 5px;
+    transition: all 0.3s ease 0s;
+}
+

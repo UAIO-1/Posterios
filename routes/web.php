@@ -43,6 +43,7 @@ Route::group(['middleware'=>'cekuser'], function() {
     Route::post('/postReplyForum', 'ForumController@postReplyForum');
 
     Route::post('/editForum', 'ForumController@editForum');
+    Route::post('/editReplyForum', 'ForumController@editReplyForum');
 
     Route::get('/explore', 'ProjectController@indexExploreProjects');
 

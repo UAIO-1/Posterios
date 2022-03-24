@@ -105,6 +105,17 @@ class ForumController extends Controller
         return redirect('/forumDetail/'.$forum->id);
     }
 
+    public function editReplyForum(Request $request){
+
+        $reply = ForumAnswers::where('id', '=', $request->id)->first();
+
+        $reply->reply_message = $request->reply_message;
+
+        $reply->save();
+
+        return redirect('/forumDetail/'.$reply->forum_id);
+    }
+
 
 
 }
