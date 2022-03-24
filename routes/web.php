@@ -40,9 +40,9 @@ Route::group(['middleware'=>'cekuser'], function() {
     Route::post('/postForum', 'ForumController@forumPost');
 
     Route::get('/forumDetail/{id}', 'ForumController@getForumID');
+    Route::post('/postReplyForum', 'ForumController@postReplyForum');
 
     Route::get('/explore', 'ProjectController@indexExploreProjects');
-    // Route::get('/explore', 'ProjectController@searchProjects');
 
     Route::post('/projectPost', 'ProjectController@projectPost');
 

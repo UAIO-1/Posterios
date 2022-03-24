@@ -11,4 +11,12 @@ class Users extends Model
     public function Projects() {
         return $this->hasMany('App\Projects', 'user_id');
     }
+
+    public function Forums() {
+        return $this->hasMany('App\Forums', 'user_id');
+    }
+
+    public function ReplyForums() {
+        return $this->hasMany('App\ForumAnswers', 'user_id');
+    }
 }

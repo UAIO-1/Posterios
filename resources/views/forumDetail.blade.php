@@ -51,12 +51,13 @@
                             <div class="modal-body">
                                 <form class="container" method="post" action={{url('/postReplyForum')}} enctype="multipart/form-data">
                                     {{csrf_field()}}
+                                    <input type="hidden" name="forum_id" value="{{ $f->id }}">
                                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                                     <input type="hidden" name="username" value="{{ Auth::user()->username }}">
 
                                     <div class="mb-3">
                                         <label class="text-muted">Reply Message</label> <span class="text-danger">*</span>
-                                        <textarea name="forum_message" class="form-control" cols="30" rows="10"></textarea>
+                                        <textarea name="reply_message" class="form-control" cols="30" rows="10"></textarea>
                                     </div>
 
                                     <div class="d-flex justify-content-end mt-lg-4">
@@ -75,8 +76,23 @@
         <div class="mt-xl-5">
             <h3>Answer</h3>
         </div>
-        <div class="card mt-lg-2">
-
+        <div class="card mt-lg-2 p-3">
+            @foreach ($replies as $r)
+                <div class="row row-cols-auto">
+                    <div class="col">
+                        @if ($users->image == null)
+                            <img src="{{ asset('image/icon-logo.png') }}" alt="user image" class="user-image">
+                        @else
+                            <img src="{{ asset('storage/'.$users->image) }}" alt="user image" class="user-image">
+                        @endif
+                    </div>
+                    <div class="col">
+                        <h6>{{ $r->username }} <span class="text-muted"><small>• {{ Carbon\Carbon::parse($f->created_at)->diffForHumans()}}</small></span></h6>
+                        <p class="reply">{{ $r->reply_message }}</p>
+                    </div>
+                </div>
+                <hr>
+            @endforeach
         </div>
 
     </div>

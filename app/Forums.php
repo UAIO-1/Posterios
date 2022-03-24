@@ -11,4 +11,8 @@ class Forums extends Model
     public function Users() {
         return $this->belongsTo('App\Users', 'id');
     }
+
+    public function ReplyForums() {
+        return $this->hasMany('App\ForumAnswer', 'forum_id');
+    }
 }

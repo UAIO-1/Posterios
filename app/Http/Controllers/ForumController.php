@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ForumAnswers;
 use App\Forums;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -50,15 +51,34 @@ class ForumController extends Controller
                 ->where('id','=',$id)
                 ->get();
 
-        $users = DB::table("projects")
+        $users = DB::table("forum")
                 ->select("users.image")
-                ->join("users", "projects.user_id", "=", "users.id")
+                ->join("users", "forum.user_id", "=", "users.id")
                 ->first();
 
-        return view('/forumDetail', compact('forums', 'users'));
+        $replies = DB::table('forumanswers')
+                ->where('forum_id', '=', $id)
+                ->get();
+
+        return view('/forumDetail', compact('forums', 'users', 'replies'));
     }
 
-    
+    public function postReplyForum(Request $request){
+
+        $this->validate($request,[
+            'reply_message' => 'required',
+        ]);
+
+        $reply = new ForumAnswers();
+        $reply->forum_id = $request->forum_id;
+        $reply->user_id = $request->user_id;
+        $reply->username = $request->username;
+        $reply->reply_message = $request->reply_message;
+
+        $reply->save();
+
+        return redirect('/forumDetail/'.$reply->forum_id);
+    }
 
 
 

@@ -15,6 +15,10 @@ class CreateForumanswersTable extends Migration
     {
         Schema::create('forumanswers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('forum_id');
+            $table->foreignId('user_id');
+            $table->string('username');
+            $table->string('reply_message', 10000);
             $table->timestamps();
         });
     }
