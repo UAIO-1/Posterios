@@ -13,7 +13,7 @@
 
 @include('navbar')
 <div class="header">
-        <div class="mt-lg-4">
+        <div class="container-start">
             <div class="text-center text-light">
                 <h1 class="display-1">Forum Discussion</h1>
                 <p class="mt-4 slogan text-center">Forum diskusi disediakan dalam beberapa kategori yang memudahkan Anda untuk memilih project sesuai dengan keinginan Anda.</p>
@@ -43,24 +43,18 @@
 
                                     <div class="mb-3">
                                         <label class="form-label text-muted">Category</label> <span class="text-danger">*</span>
-                                        <select name="forum_category" class="ml-4 form-select" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
-                                            <option selected disabled>Open this select menu</option>
-                                            <option disabled>----- Science -----</option>
-                                                <option value="Biologi">Biologi</option>
-                                                <option value="Fisika">Fisika</option>
-                                                <option value="Kimia">Kimia</option>
-                                            <option disabled>----- Technology -----</option>
-                                                <option value="Coding">Coding</option>
-                                                <option value="Digital Desain">Digital Desain</option>
-                                                <option value="Game">Game</option>
-                                            <option disabled>----- Engineering -----</option>
-                                                <option value="Mesin">Mesin</option>
-                                                <option value="Komputer dan Jaringan">Komputer dan Jaringan</option>
-                                                <option value="Konstruksi">Konstruksi</option>
-                                            <option disabled>----- Art -----</option>
-                                                <option value="Lukis">Lukis</option>
-                                                <option value="Musik">Musik</option>
-                                                <option value="Tari">Tari</option>
+                                        <select class="ml-4 form-select" id="main">
+                                            <option selected disabled>Select Category</option>
+                                            <option value="Teknologi">Teknologi</option>
+                                            <option value="Teknik Rekayasa">Teknik Rekayasa</option>
+                                            <option value="Seni">Seni</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label text-muted">Sub Category</label> <span class="text-danger">*</span>
+                                        <select name="forum_category" class="ml-4 form-select" id="sub">
+                                            <option selected disabled>Select Sub Category</option>
                                         </select>
                                     </div>
 
@@ -104,13 +98,13 @@
                     <div>
                         <h6><strong>Sort By</strong></h6>
                     </div>
-                    <select id="main" class="select-category-forum">
+                    <select id="main2" class="select-category-forum">
                         <option>Select Category</option>
                         <option value="Teknologi">Teknologi</option>
                         <option value="Teknik Rekayasa">Teknik Rekayasa</option>
                         <option value="Seni">Seni</option>
                     </select>
-                    <select name="forum_select" id="sub" class="select-category-forum">
+                    <select name="forum_select" id="sub2" class="select-category-forum">
                         <option value="Digital Design">Select Sub Category</option>
                     </select>
                     <input type="submit" value="Filter" class="search-but">
@@ -180,6 +174,21 @@
                 $("#sub").html("<option value='Komputer dan Jaringan'>Teknik Komputer dan Jaringan</option><option value='Teknik Kelistrikan'>Teknik Kelistrikan</option>");
             } else if (val == "Seni") {
                 $("#sub").html("<option value='Seni Musik'>Seni Musik</option><option value='Seni Lukis'>Seni Lukis</option><option value='Seni Tari'>Seni Tari</option>");
+            }
+        });
+
+    });
+
+    $(document).ready(function() {
+
+        $("#main2").change(function() {
+            var val = $(this).val();
+            if (val == "Teknologi") {
+                $("#sub2").html("<option value='Coding'>Coding</option><option value='Digital Desain'>Digital Desain</option>");
+            } else if (val == "Teknik Rekayasa") {
+                $("#sub2").html("<option value='Komputer dan Jaringan'>Teknik Komputer dan Jaringan</option><option value='Teknik Kelistrikan'>Teknik Kelistrikan</option>");
+            } else if (val == "Seni") {
+                $("#sub2").html("<option value='Seni Musik'>Seni Musik</option><option value='Seni Lukis'>Seni Lukis</option><option value='Seni Tari'>Seni Tari</option>");
             }
         });
 

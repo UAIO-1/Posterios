@@ -21,6 +21,10 @@ body{
     overflow-x: hidden;
 }
 
+.container-start{
+    margin-top: 100px;
+}
+
 .container2{
     margin-left: 200px;
     margin-right: 100px;
