@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
+
 class ForumController extends Controller
 {
     public function forumPost(Request $request){
@@ -116,6 +117,13 @@ class ForumController extends Controller
         return redirect('/forumDetail/'.$reply->forum_id);
     }
 
+    public function searchForumTitle(Request $request){
+        $search = $request->get('search_title');
+        $forums = Forums::where("forum_title",'like','%'.$search.'%')
+                    ->simplePaginate(15);
+
+        return view('/forum', compact('forums'));
+    }
 
 
 }

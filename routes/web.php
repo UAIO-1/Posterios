@@ -47,6 +47,9 @@ Route::group(['middleware'=>'cekuser'], function() {
 
     Route::get('/explore', 'ProjectController@indexExploreProjects');
 
+    Route::get('/forum', 'ForumController@searchForumTitle');
+    Route::get('/filterForum', 'SearchController@filterForum');
+
     Route::post('/projectPost', 'ProjectController@projectPost');
 
     Route::get('/myProfile/{id}', 'AuthController@getProfileUser');
