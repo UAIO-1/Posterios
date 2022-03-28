@@ -3,29 +3,26 @@
 <link rel="shortcut icon" href="{{ asset('image/icon-logo-white.png') }}">
 <link rel="stylesheet" href="{{ asset('css/explore.css') }}">
 
+@include('navbar')
+
 @if (!Auth::check())
 
 @else
 
     <div class="header">
-        @include('navbar')
-        <div class="text-center text-light">
-            <h1><strong>Explore STEM Projects</strong></h1>
-        </div>
-
-        <div class="container mt-xl-5">
-            <div class="row row-cols-4 mt-xl-5">
-                <a href="#"><button class="science">Science</button></a>
-                <a href="#"><button class="technology">Technology</button></a>
-                <a href="#"><button class="engineering">Engineering</button></a>
-                <a href="#"><button class="mathematics">Mathematics</button></a>
+        <div class="container-start">
+            <div class="text-center text-light">
+                <h1 class="display-1">Project Showcase</h1>
+                <p class="mt-4 slogan text-center">Project Showcase is provided in several categories that make it easier for you to choose the project according to your wishes.</p>
             </div>
+            <div class="mt-xl-5">
+                <div class="text-center">
+                    <a href="#" class="post-but">Post Now</a>
+                </div>
         </div>
+    </div>
 
-        <div class="search d-flex justify-content-between">
-            <div class="text-muted">
-                <h3>All Cateogry</h3>
-            </div>
+        {{-- <div class="search d-flex justify-content-end">
             <div>
                 <form autocomplete="off" method="get" class="d-flex">
                     <input class="form-control me-2" type="search" name="s" placeholder="Project Title" aria-label="Search">
@@ -36,11 +33,9 @@
                     </button>
                 </form>
             </div>
-        </div>
+        </div> --}}
 
-        <hr>
-
-        <div>
+        {{-- <div>
             <div class="row">
                 @foreach ($projects as $p)
                     <div class="col-md-3 p-5 mr-4">
@@ -80,8 +75,8 @@
                     </div>
                 @endforeach
             </div>
-        </div>
-    </div>
+        </div> --}}
+
 
 
 @endif

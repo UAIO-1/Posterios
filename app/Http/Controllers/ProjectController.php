@@ -26,12 +26,12 @@ class ProjectController extends Controller
         $project->gender = $request->gender;
         $project->project_title = $request->project_title;
         $project->project_category = $request->project_category;
+        $project->project_link = $request->project_link;
 
         $path = $request->file('project_image')->store('images/project','public');
         $project->project_image = $path;
 
         $project->project_description = $request->project_description;
-        $project->project_link = $request->project_link;
 
         if($request->file('project_video') == null){
             $project->project_video = null;

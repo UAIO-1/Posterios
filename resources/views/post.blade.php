@@ -2,7 +2,7 @@
 @section('title', 'Posterios - Post Project')
 <link rel="shortcut icon" href="{{ asset('image/icon-logo-white.png') }}">
 <link rel="stylesheet" href="{{ asset('css/post.css') }}">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="{{ asset('js/post.js') }}"></script>
 
 @if (!Auth::check())
@@ -34,15 +34,28 @@
                                             <input type="text" name="project_title" class="form-control">
                                         </div>
 
-                                        <div class="mb-3">
-                                            <label class="form-label">Category</label> <span class="text-danger">*</span>
-                                            <select name="project_category" class="ml-4 form-select">
-                                                <option value="Science">Science</option>
-                                                <option value="Technology">Technology</option>
-                                                <option value="Engineering">Engineering</option>
-                                                <option value="Mathematics">Art</option>
-                                            </select>
+                                        <div class="row row-cols-2">
+                                            <div class="col">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Category</label> <span class="text-danger">*</span>
+                                                    <select class="ml-4 form-select" id="main">
+                                                        <option selected disabled>Select Category</option>
+                                                        <option value="Teknologi">Teknologi</option>
+                                                        <option value="Teknik Rekayasa">Teknik Rekayasa</option>
+                                                        <option value="Seni">Seni</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Sub Category</label> <span class="text-danger">*</span>
+                                                    <select name="project_category" class="ml-4 form-select" id="sub">
+                                                        <option selected disabled>Select Sub Category</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
+
 
                                         <div class="mb-3">
                                             <label class="form-label">Link</label> <span class="text-danger">*</span>
@@ -152,3 +165,22 @@
 
 
 @endif
+
+<script>
+    $(document).ready(function() {
+
+        $("#main").change(function() {
+            var val = $(this).val();
+            if (val == "Teknologi") {
+                $("#sub").html("<option value='Coding'>Coding</option><option value='Digital Desain'>Digital Desain</option>");
+            } else if (val == "Teknik Rekayasa") {
+                $("#sub").html("<option value='Komputer dan Jaringan'>Teknik Komputer dan Jaringan</option><option value='Teknik Kelistrikan'>Teknik Kelistrikan</option>");
+            } else if (val == "Seni") {
+                $("#sub").html("<option value='Seni Musik'>Seni Musik</option><option value='Seni Lukis'>Seni Lukis</option><option value='Seni Tari'>Seni Tari</option>");
+            }
+        });
+
+    });
+
+
+</script>

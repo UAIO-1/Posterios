@@ -16,7 +16,7 @@
         <div class="container-start">
             <div class="text-center text-light">
                 <h1 class="display-1">Forum Discussion</h1>
-                <p class="mt-4 slogan text-center">Forum diskusi disediakan dalam beberapa kategori yang memudahkan Anda untuk memilih project sesuai dengan keinginan Anda.</p>
+                <p class="mt-4 slogan text-center">Discussion forums are provided in several categories that make it easier for you to choose a project according to your wishes.</p>
             </div>
             <div class="mt-xl-5">
                 <div class="text-center">
@@ -57,6 +57,7 @@
                                             <option selected disabled>Select Sub Category</option>
                                         </select>
                                     </div>
+
 
                                     <div class="mb-3">
                                         <label class="text-muted">Forum Message</label> <span class="text-danger">*</span>

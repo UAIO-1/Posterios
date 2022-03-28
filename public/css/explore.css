@@ -13,94 +13,38 @@ body{
 
 .header{
     width: 100vw;
-    height: 40vh;
-    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.5);
-    background-image:  url("../image/project-detail.png");
+    height: 60vh;
+    background-image:  url("../image/forum-header.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    overflow-x: hidden;
 }
 
-.science{
-    width: 200px;
-    height: 100px;
-    background-image: url("../image/sciencebtn.png");
+.container-start{
+    margin-top: 100px;
+}
+
+.slogan{
+    max-width: 30%;
+    word-wrap: break-word;
+    margin: 0 auto;
+}
+
+.post-but{
+    background-color: #1FD09E;
+    padding: 10px 25px;
+    text-decoration: none;
+    color: #fff;
+    border: none;
     border-radius: 5px;
-    border: 0;
-    font-size: 30px;
-    animation: animate 1s linear;
+    margin-left: 5px;
     transition: all 0.3s ease 0s;
 }
 
-.science:hover{
-    transform: translateY(-10px);
-    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.8);
-}
-
-.technology{
-    width: 200px;
-    height: 100px;
-    background-image: url("../image/technologybtn.png");
-    border-radius: 5px;
-    border: 0;
-    font-size: 30px;
-    animation: animate 1s linear;
-    animation-delay: 0.5s;
-    transition: all 0.3s ease 0s;
-}
-
-.technology:hover{
-    transform: translateY(-10px);
-    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.8);
-}
-
-.engineering{
-    width: 200px;
-    height: 100px;
-    background-image: url("../image/engineeringbtn.png");
-    border-radius: 5px;
-    border: 0;
-    font-size: 30px;
-    animation: animate 1s linear;
-    animation-delay: 1s;
-    transition: all 0.3s ease 0s;
-}
-
-.engineering:hover{
-    transform: translateY(-10px);
-    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.8);
-}
-
-.mathematics{
-    width: 200px;
-    height: 100px;
-    background-image: url("../image/mathematicsbtn.png");
-    border-radius: 5px;
-    border: 0;
-    font-size: 30px;
-    animation: animate 1s linear;
-    animation-delay: 1.5s;
-    transition: all 0.3s ease 0s;
-}
-
-.mathematics:hover{
-    transform: translateY(-10px);
-    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.8);
-}
-
-@keyframes animate{
-    0%{
-        opacity: 0;
-        transform: translateY(0);
-    }
-    25%{
-        opacity: 0.5;
-        transform: translateY(-5px);
-    }
-    100%{
-        opacity: 1;
-        transform: translateY(0);
-    }
+.post-but:hover{
+    background-color: #1aad84;
+    color: #fff;
 }
 
 .search{
