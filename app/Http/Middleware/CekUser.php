@@ -17,7 +17,7 @@ class CekUser
     public function handle($request, Closure $next)
     {
         if(!Auth::check()) {
-            return redirect('/');
+            return $next($request);
         }
 
         return $next($request);

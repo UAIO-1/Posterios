@@ -7,6 +7,7 @@ use App\Projects;
 use App\User;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
@@ -48,42 +49,32 @@ class AuthController extends Controller
 
     public function doLogin(Request $request){
 
-        $credential = $request->only('email','password');
+        $credentials = $request->only('email', 'password');
 
         $this->validate($request,[
-            'email' => 'required',
-            'password' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|string',
         ]);
 
-        if($request->remember != null){
-            Auth::attempt($credential, true);
-
-            $minute = 120;
-            $rememberToken = Auth::getRecallerName();
-            Cookie::queue($rememberToken, Cookie::get($rememberToken), $minute);
-        }
-        else{
-            Auth::attempt($credential);
-        }
-
-        if($credential == null) {
-            return redirect(url('/'));
-        }
-
-        if(Auth::user()->role=='Admin'){
-            return redirect(('admin.adminHome'));
+        if (Auth::attempt($credentials)) {
+            // Authentication passed...
+            if($request->remember != null){
+                $minute = 120;
+                $rememberToken = Auth::getRecallerName();
+                Cookie::queue($rememberToken, Cookie::get($rememberToken), $minute);
+            }
+            return redirect()->intended('/');
         }
         else {
-            return redirect('/');
+            return redirect()->intended('/');
         }
 
     }
 
-
     public function Logout(){
         Auth::logout();
 
-        return redirect('/');
+        return redirect('/home');
     }
 
     public function editProfile(Request $request){

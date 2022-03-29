@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', function () {
+    return view('/');
+});
 
 Route::get('/register', 'AuthController@showRegister');
 Route::post('/registerPost', 'AuthController@registerPost');
@@ -28,6 +32,9 @@ Route::post('/doLogin', 'AuthController@doLogin');
 Route::get('/logout','AuthController@logout');
 
 Route::get('/myProfile/{id}', 'AuthController@getProfileOther');
+
+Route::get('/forum', 'ForumController@indexForum');
+Route::get('/explore', 'ProjectController@indexExploreProjects');
 
 
 Route::group(['middleware'=>'cekuser'], function() {
@@ -65,4 +72,9 @@ Route::group(['middleware'=>'cekuser'], function() {
 
     Route::get('/projectDelete/{id}', 'ProjectController@projectDelete');
 });
+
+
+Auth::routes(['verify' => true]);
+
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 

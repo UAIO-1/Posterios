@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-center align-items-center mt-3">
-                    <img src="{{ asset('image/stem.png') }}" alt="stem" width="500px" height="500px">
+                    <img src="{{ asset('image/gambar-depan-welcome.png') }}" alt="stem" width="500px" height="500px">
                 </div>
             </div>
 
@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-center align-items-center stem">
-                    <img src="{{ asset('image/stem.png') }}" alt="stem" width="500px" height="500px">
+                    <img src="{{ asset('image/gambar-depan-welcome.png') }}" alt="stem" width="500px" height="500px">
                 </div>
             </div>
 

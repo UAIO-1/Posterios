@@ -10,8 +10,8 @@
             <ul class="nav__links">
                 <li><a href="/">Home</a></li>
                 <li><a href="#">Post</a></li>
-                <li><a href="#">Explore</a></li>
-                <li><a href="#">Forum</a></li>
+                <li><a href="/explore">Explore</a></li>
+                <li><a href="/forum">Forum</a></li>
                 <li><a href="#" class="btn log" data-bs-toggle="modal" data-bs-target="#loginmodal">Sign In</a></li>
                 <div class="modal fade" id="loginmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
@@ -42,6 +42,7 @@
                                     <button type="button" class="btn text-muted" data-bs-dismiss="modal">Close</button>
                                     <input class="btn ml-2 w-25 log-but" type="submit" value="Login">
                                 </div>
+
                             </form>
 
                         </div>
