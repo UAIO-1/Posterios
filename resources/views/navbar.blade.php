@@ -12,7 +12,7 @@
                 <li><a href="#">Post</a></li>
                 <li><a href="/explore">Explore</a></li>
                 <li><a href="/forum">Forum</a></li>
-                <li><a href="#" class="btn log" data-bs-toggle="modal" data-bs-target="#loginmodal">Sign In</a></li>
+                <li><a href="/login" class="btn log" data-bs-toggle="modal" data-bs-target="#loginmodal">Sign In</a></li>
                 <div class="modal fade" id="loginmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                       <div class="modal-content">
@@ -21,28 +21,68 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form class="container" method="post" action={{url('/doLogin')}}>
-                                {{csrf_field()}}
-                                <div class="mb-3">
-                                    <h6 class="text-muted">Email Address</h6>
-                                    <input type="email" name="email" class="form-control">
-                                </div>
-                                <div class="mb-3">
-                                    <h6 class="text-muted">Password</h6>
-                                    <input type="password" name="password" class="form-control">
-                                </div>
-                                <div class="mb-3 text-center">
-                                    <input class="form-check-input" type="checkbox" id="flexCheckDefault" name="remember">
-                                    <label for="flexCheckDefault">Remember Me</label>
-                                </div>
-                                <div class="text-center">
-                                    <p><span class="text-muted">Don't have an account?</span> <a href="/register" style="color: #7b849e">Sign Up</a></p>
-                                </div>
-                                <div class="d-flex justify-content-end mt-lg-4">
-                                    <button type="button" class="btn text-muted" data-bs-dismiss="modal">Close</button>
-                                    <input class="btn ml-2 w-25 log-but" type="submit" value="Login">
+                            <form method="POST" action="{{ route('login') }}">
+                                @csrf
+
+                                <div class="form-group row">
+                                    <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 </div>
 
+                                <div class="form-group row">
+                                    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-6 offset-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                            <label class="form-check-label" for="remember">
+                                                {{ __('Remember Me') }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-0">
+                                    <div class="col-md-8 offset-md-4">
+                                        <button type="submit" class="btn btn-primary">
+                                            {{ __('Login') }}
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mt-lg-4">
+                                    <div>
+                                        <small class="text-muted">Don't have an account? <a href="/register" class="text-muted"><small><u>Sign up here</u></small></a></small>
+                                    </div>
+                                    <div>
+                                        @if (Route::has('password.request'))
+                                            <a class="btn btn-link" href="{{ route('password.request') }}">
+                                               <small>{{ __('Forgot Your Password?') }}</small>
+                                            </a>
+                                        @endif
+                                    </div>
+                                </div>
                             </form>
 
                         </div>
