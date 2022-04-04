@@ -1,12 +1,29 @@
-@extends('layouts.app')
+@extends('layout')
+@section('title', 'Posterios - Verify Email')
+<link rel="shortcut icon" href="{{ asset('image/icon-logo-white.png') }}">
+<link rel="stylesheet" href="{{ asset('css/verifyemail.css') }}">
 
-@section('content')
+<style>
+    .container{
+        position: absolute;
+        top: 40vh;
+        left: 15vw
+    }
+</style>
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
-
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div>
+                        {{ __('Verify Your Email Address') }}
+                    </div>
+                    <div>
+                        <img src="{{ asset('image/logo-posterios.png') }}" alt="posterios logo" width="250px" height="50px">
+                    </div>
+                </div>
                 <div class="card-body">
                     @if (session('resent'))
                         <div class="alert alert-success" role="alert">
@@ -25,4 +42,4 @@
         </div>
     </div>
 </div>
-@endsection
+

@@ -107,12 +107,12 @@
                 <li>
                     <div class="dropdown">
                         <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Hi, <strong>{{ Auth::user()->username }}</strong>
+                            Hi, <strong>{{ Auth::user()->name }}</strong>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
                             <li><a class="dropdown-item" href="/myProfile/{{ Auth::user()->id }}">My Profile</a></li>
-                            <li><a class="dropdown-item" href="/changepassword/{{ Auth::user()->id }}">Change My Password</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            {{-- <li><a class="dropdown-item" href="/changepassword/{{ Auth::user()->id }}">Change My Password</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
                             <li><a class="dropdown-item" href="/logout">Log Out</a></li>
                         </ul>
                     </div>

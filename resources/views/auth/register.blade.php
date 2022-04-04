@@ -73,7 +73,7 @@
                     </div>
 
                     <div class="form-group row mb-3">
-                        <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
+                        <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
 
                         <div class="col-md-6">
                             <div class="form-check">
@@ -89,7 +89,7 @@
                                 </label>
                             </div>
 
-                            @error('password')
+                            @error('gender')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -98,12 +98,43 @@
                     </div>
 
                     <div class="form-group row mb-3">
-                        <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                        <label for="dob" class="col-md-4 col-form-label text-md-right">{{ __('Date of Birth') }}</label>
 
                         <div class="col-md-6">
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                            <input id="dob" type="date" class="form-control @error('dob') is-invalid @enderror" name="dob" required autocomplete="new-password">
 
-                            @error('password')
+                            @error('dob')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-3">
+                        <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Sign Up As') }}</label>
+
+                        <div class="col-md-6">
+                            <div class="row row-cols-2">
+                                <div class="col">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="role" id="flexRadioDefault3" value="Student" checked>
+                                        <label class="form-check-label" for="flexRadioDefault3">
+                                            Student
+                                        </label>
+                                     </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="role" value="Teacher" id="flexRadioDefault4">
+                                        <label class="form-check-label" for="flexRadioDefault4">
+                                            Teacher
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @error('role')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
