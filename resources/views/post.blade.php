@@ -26,7 +26,7 @@
                             <form action={{url('/projectPost')}} method="post" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                                <input type="hidden" name="username" value="{{ Auth::user()->username }}">
+                                <input type="hidden" name="name" value="{{ Auth::user()->name }}">
                                 <input type="hidden" name="gender" value="{{ Auth::user()->gender }}">
 
                                         <div class="mb-3">
@@ -172,7 +172,7 @@
         $("#main").change(function() {
             var val = $(this).val();
             if (val == "Teknologi") {
-                $("#sub").html("<option value='Coding'>Coding</option><option value='Digital Desain'>Digital Desain</option>");
+                $("#sub").html("<option value='Digital Desain'>Digital Desain</option><option value='Programming'>Programming</option><option value='Game'>Game</option>");
             } else if (val == "Teknik Rekayasa") {
                 $("#sub").html("<option value='Komputer dan Jaringan'>Teknik Komputer dan Jaringan</option><option value='Teknik Kelistrikan'>Teknik Kelistrikan</option>");
             } else if (val == "Seni") {

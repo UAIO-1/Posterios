@@ -19,6 +19,14 @@ body{
     background-repeat: no-repeat;
 }
 
+.gambar-depan{
+    border-radius: 5px;
+    margin-top: 50px;
+    box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.2);
+    width: 900px;
+    height: 400px;
+}
+
 .container-header{
     margin-right: auto;
     margin-left: auto;

@@ -15,6 +15,15 @@ class CreateQuestionProjectTable extends Migration
     {
         Schema::create('question_project', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreignId('project_id');
+            $table->integer('first_answer');
+            $table->integer('second_answer');
+            $table->integer('third_answer');
+            $table->string('strength')->nullable();
+            $table->string('weakness')->nullable();
+            $table->string('recommendation')->nullable();
+            $table->float('points')->nullable();
             $table->timestamps();
         });
     }

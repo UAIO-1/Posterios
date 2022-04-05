@@ -22,7 +22,7 @@ class ProjectController extends Controller
 
         $project = new Projects();
         $project->user_id = $request->user_id;
-        $project->username = $request->username;
+        $project->name = $request->name;
         $project->gender = $request->gender;
         $project->project_title = $request->project_title;
         $project->project_category = $request->project_category;
