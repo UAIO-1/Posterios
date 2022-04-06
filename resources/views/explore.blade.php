@@ -2,6 +2,7 @@
 @section('title', 'Posterios - Explore STEM')
 <link rel="shortcut icon" href="{{ asset('image/icon-logo-white.png') }}">
 <link rel="stylesheet" href="{{ asset('css/explore.css') }}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 @include('navbar')
 
@@ -32,26 +33,20 @@
     <div class="container2 search">
         <div class="row">
             <div class="col-md-5">
-                <form method="get">
-                    <div>
-                        <h5><strong>Enter a Title</strong></h5>
-                    </div>
-                    <input type="text" class="search-title-forum" name="search_title" placeholder="What are you looking for?">
-                    <input type="submit" value="Search" class="search-but">
-                </form>
+
             </div>
             <div class="col-md-6">
-                <form action="{{ url('filterForum') }}" method="get">
+                <form action="{{ url('filterProject') }}" method="get">
                     <div>
                         <h5><strong>Sort By</strong></h5>
                     </div>
-                    <select id="main2" class="select-category-forum">
+                    <select id="main3" class="select-category-forum">
                         <option>Select Category</option>
                         <option value="Teknologi">Teknologi</option>
                         <option value="Teknik Rekayasa">Teknik Rekayasa</option>
                         <option value="Seni">Seni</option>
                     </select>
-                    <select name="forum_select" id="sub2" class="select-category-forum">
+                    <select name="project_select" id="sub3" class="select-category-forum">
                         <option value="Digital Design">Select Sub Category</option>
                     </select>
                     <input type="submit" value="Set Filter" class="search-but">
@@ -81,3 +76,20 @@
 
 
 @endif
+
+<script>
+    $(document).ready(function() {
+
+        $("#main3").change(function() {
+            var val = $(this).val();
+            if (val == "Teknologi") {
+                $("#sub3").html("<option value='Digital Desain'>Digital Desain</option><option value='Programming'>Programming</option>");
+            } else if (val == "Teknik Rekayasa") {
+                $("#sub3").html("<option value='Komputer dan Jaringan'>Komputer dan Jaringan</option><option value='Kelistrikan'>Kelistrikan</option>");
+            } else if (val == "Seni") {
+                $("#sub3").html("<option value='Seni Musik'>Seni Musik</option><option value='Seni Lukis'>Seni Lukis</option><option value='Seni Tari'>Seni Tari</option>");
+            }
+        });
+
+    });
+</script>

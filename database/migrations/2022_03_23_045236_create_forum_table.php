@@ -16,7 +16,7 @@ class CreateForumTable extends Migration
         Schema::create('forum', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('username');
+            $table->string('name');
             $table->string('forum_title');
             $table->string('forum_category');
             $table->string('forum_subcategory');

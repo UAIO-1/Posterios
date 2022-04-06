@@ -34,29 +34,32 @@
                                 <form class="container" method="post" action={{url('/postForum')}} enctype="multipart/form-data">
                                     {{csrf_field()}}
                                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                                    <input type="hidden" name="username" value="{{ Auth::user()->username }}">
+                                    <input type="hidden" name="name" value="{{ Auth::user()->name }}">
 
                                     <div class="mb-3">
                                         <label class="text-muted">Title</label> <span class="text-danger">*</span>
                                         <input type="text" name="forum_title" class="form-control">
                                     </div>
 
-                                    <div class="mb-3">
-                                        <label class="form-label text-muted">Category</label> <span class="text-danger">*</span>
-                                        <select class="ml-4 form-select" id="main">
-                                            <option selected disabled>Select Category</option>
-                                            <option value="Teknologi">Teknologi</option>
-                                            <option value="Teknik Rekayasa">Teknik Rekayasa</option>
-                                            <option value="Seni">Seni</option>
-                                        </select>
+                                    <div class="row row-cols-2">
+                                        <div class="col mb-3">
+                                            <label class="form-label text-muted">Category</label> <span class="text-danger">*</span>
+                                            <select class="ml-4 form-select" id="main" name="forum_category">
+                                                <option selected disabled>Select Category</option>
+                                                <option value="Teknologi">Teknologi</option>
+                                                <option value="Teknik Rekayasa">Teknik Rekayasa</option>
+                                                <option value="Seni">Seni</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col mb-3">
+                                            <label class="form-label text-muted">Sub Category</label> <span class="text-danger">*</span>
+                                            <select name="forum_subcategory" class="ml-4 form-select" id="sub">
+                                                <option selected disabled>Select Sub Category</option>
+                                            </select>
+                                        </div>
                                     </div>
 
-                                    <div class="mb-3">
-                                        <label class="form-label text-muted">Sub Category</label> <span class="text-danger">*</span>
-                                        <select name="forum_category" class="ml-4 form-select" id="sub">
-                                            <option selected disabled>Select Sub Category</option>
-                                        </select>
-                                    </div>
 
 
                                     <div class="mb-3">
@@ -86,13 +89,7 @@
     <div class="container2 search">
         <div class="row">
             <div class="col-md-5">
-                <form method="get">
-                    <div>
-                        <h6><strong>Enter a Title</strong></h6>
-                    </div>
-                    <input type="text" class="search-title-forum" name="search_title" placeholder="What are you looking for?">
-                    <input type="submit" value="Search" class="search-but">
-                </form>
+
             </div>
             <div class="col-md-6">
                 <form action="{{ url('filterForum') }}" method="get">
@@ -108,11 +105,12 @@
                     <select name="forum_select" id="sub2" class="select-category-forum">
                         <option value="Digital Design">Select Sub Category</option>
                     </select>
-                    <input type="submit" value="Filter" class="search-but">
+                    <input type="submit" value="Set Filter" class="search-but">
                 </form>
             </div>
         </div>
     </div>
+    <hr>
 
 
     <div class="container2 forum-content">
@@ -140,7 +138,7 @@
                                             <div class="card-body">
                                             <h5 class="card-title"><strong>{{Str::limit($f->forum_title, 25, '...')}}</strong></h5>
                                             <p class="card-text">{{Str::limit($f->forum_message, 100, '...')}}</p>
-                                            <p class="card-text"><small class="text-muted">{{ $f->forum_category }}</small></p>
+                                            <p class="card-text"><small class="text-muted">{{ $f->forum_subcategory }}</small></p>
                                             </div>
                                         </div>
                                     </div>
@@ -170,9 +168,9 @@
         $("#main").change(function() {
             var val = $(this).val();
             if (val == "Teknologi") {
-                $("#sub").html("<option value='Coding'>Coding</option><option value='Digital Desain'>Digital Desain</option>");
+                $("#sub").html("<option value='Digital Desain'>Digital Desain</option><option value='Programming'>Programming</option>");
             } else if (val == "Teknik Rekayasa") {
-                $("#sub").html("<option value='Komputer dan Jaringan'>Teknik Komputer dan Jaringan</option><option value='Teknik Kelistrikan'>Teknik Kelistrikan</option>");
+                $("#sub").html("<option value='Komputer dan Jaringan'>Komputer dan Jaringan</option><option value='Kelistrikan'>Kelistrikan</option>");
             } else if (val == "Seni") {
                 $("#sub").html("<option value='Seni Musik'>Seni Musik</option><option value='Seni Lukis'>Seni Lukis</option><option value='Seni Tari'>Seni Tari</option>");
             }
@@ -185,9 +183,9 @@
         $("#main2").change(function() {
             var val = $(this).val();
             if (val == "Teknologi") {
-                $("#sub2").html("<option value='Coding'>Coding</option><option value='Digital Desain'>Digital Desain</option>");
+                $("#sub2").html("<option value='Digital Desain'>Digital Desain</option><option value='Programming'>Programming</option>");
             } else if (val == "Teknik Rekayasa") {
-                $("#sub2").html("<option value='Komputer dan Jaringan'>Teknik Komputer dan Jaringan</option><option value='Teknik Kelistrikan'>Teknik Kelistrikan</option>");
+                $("#sub2").html("<option value='Komputer dan Jaringan'>Komputer dan Jaringan</option><option value='Kelistrikan'>Kelistrikan</option>");
             } else if (val == "Seni") {
                 $("#sub2").html("<option value='Seni Musik'>Seni Musik</option><option value='Seni Lukis'>Seni Lukis</option><option value='Seni Tari'>Seni Tari</option>");
             }

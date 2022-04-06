@@ -38,7 +38,7 @@
                                             <div class="col">
                                                 <div class="mb-3">
                                                     <label class="form-label">Category</label> <span class="text-danger">*</span>
-                                                    <select class="ml-4 form-select" id="main">
+                                                    <select class="ml-4 form-select" id="main" name="project_category">
                                                         <option selected disabled>Select Category</option>
                                                         <option value="Teknologi">Teknologi</option>
                                                         <option value="Teknik Rekayasa">Teknik Rekayasa</option>
@@ -49,7 +49,7 @@
                                             <div class="col">
                                                 <div class="mb-3">
                                                     <label class="form-label">Sub Category</label> <span class="text-danger">*</span>
-                                                    <select name="project_category" class="ml-4 form-select" id="sub">
+                                                    <select name="project_subcategory" class="ml-4 form-select" id="sub">
                                                         <option selected disabled>Select Sub Category</option>
                                                     </select>
                                                 </div>
@@ -172,15 +172,13 @@
         $("#main").change(function() {
             var val = $(this).val();
             if (val == "Teknologi") {
-                $("#sub").html("<option value='Digital Desain'>Digital Desain</option><option value='Programming'>Programming</option><option value='Game'>Game</option>");
+                $("#sub").html("<option value='Digital Desain'>Digital Desain</option><option value='Programming'>Programming</option>");
             } else if (val == "Teknik Rekayasa") {
-                $("#sub").html("<option value='Komputer dan Jaringan'>Teknik Komputer dan Jaringan</option><option value='Teknik Kelistrikan'>Teknik Kelistrikan</option>");
+                $("#sub").html("<option value='Komputer dan Jaringan'>Komputer dan Jaringan</option><option value='Kelistrikan'>Kelistrikan</option>");
             } else if (val == "Seni") {
                 $("#sub").html("<option value='Seni Musik'>Seni Musik</option><option value='Seni Lukis'>Seni Lukis</option><option value='Seni Tari'>Seni Tari</option>");
             }
         });
 
     });
-
-
 </script>

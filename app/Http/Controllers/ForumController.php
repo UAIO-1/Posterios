@@ -22,9 +22,10 @@ class ForumController extends Controller
 
         $forum = new Forums();
         $forum->user_id = $request->user_id;
-        $forum->username = $request->username;
+        $forum->name = $request->name;
         $forum->forum_title = $request->forum_title;
         $forum->forum_category = $request->forum_category;
+        $forum->forum_subcategory = $request->forum_subcategory;
         $forum->forum_message = $request->forum_message;
 
 
@@ -88,6 +89,7 @@ class ForumController extends Controller
 
         $forum->forum_title = $request->forum_title;
         $forum->forum_category = $request->forum_category;
+        $forum->forum_subcategory = $request->forum_subcategory;
         $forum->forum_message = $request->forum_message;
 
         if ($request->hasFile('forum_image')) {

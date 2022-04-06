@@ -136,12 +136,13 @@ class ProjectController extends Controller
         return view('/explore', compact('projects', 'users'));
     }
 
-    // public function searchProjects(Request $request){
-    //     $search = $request->get('s');
-    //     $projects = Projects::where("project_title",'like','%'.$search.'%')
-    //                 ->simplePaginate(100);
-    //     return view('/explore', compact('projects'));
-    // }
+    public function searchProjectTitle(Request $request){
+        $search = $request->get('search_title_project');
+        $projects = Projects::where("project_title",'like','%'.$search.'%')
+                    ->simplePaginate(15);
+
+        return view('/explore', compact('projects'));
+    }
 
 
 }

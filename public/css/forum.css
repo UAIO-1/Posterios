@@ -100,7 +100,7 @@ option{
     max-width: 300px;
     height: 30px;
     max-height: 30px;
-    font-size: 14px;
+    font-size: 18px;
     outline: none;
     border-top-style: none;
     border-left-style: none;
@@ -112,7 +112,7 @@ option{
     max-width: 300px;
     height: 30px;
     max-height: 30px;
-    font-size: 14px;
+    font-size: 18px;
     outline: none;
     border-top-style: none;
     border-left-style: none;
@@ -127,10 +127,13 @@ option{
     border: none;
     border-radius: 5px;
     transition: all 0.3s ease 0s;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
 }
 
 .search-but:hover{
-    background-color: #212a8d;
+    transform: translateY(-5px);
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+    color: #fff;
 }
 
 .forum-content{

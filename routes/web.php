@@ -43,9 +43,6 @@ Route::group(['middleware'=>'cekuser'], function() {
         return view('post');
     });
 
-    Route::get('/forum', 'ForumController@indexForum');
-    Route::post('/postForum', 'ForumController@forumPost');
-
     Route::get('/forumDetail/{id}', 'ForumController@getForumID');
     Route::post('/postReplyForum', 'ForumController@postReplyForum');
 
@@ -53,7 +50,11 @@ Route::group(['middleware'=>'cekuser'], function() {
     Route::post('/editReplyForum', 'ForumController@editReplyForum');
 
     Route::get('/explore', 'ProjectController@indexExploreProjects');
+    Route::get('/explore', 'ProjectController@searchProjectTitle');
+    Route::get('/filterProject', 'SearchController@filterProject');
 
+    Route::get('/forum', 'ForumController@indexForum');
+    Route::post('/postForum', 'ForumController@forumPost');
     Route::get('/forum', 'ForumController@searchForumTitle');
     Route::get('/filterForum', 'SearchController@filterForum');
 
