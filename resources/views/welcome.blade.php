@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-center align-items-center mt-3">
-                    <img src="{{ asset('image/gambar-depan-welcome.png') }}" alt="stem" width="500px" height="500px">
+                    <img src="{{ asset('image/gambar-depan-welcome.png') }}" alt="stem" class="gambar-depan">
                 </div>
             </div>
 

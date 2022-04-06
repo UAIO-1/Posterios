@@ -1,98 +1,109 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Catamaran&family=Lato&display=swap');
 
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Rubik', sans-serif;
 }
 
 body{
     overflow-x: hidden;
+    font-family: 'Catamaran', sans-serif;
 }
 
 .header{
+    padding-top: 100px;
     width: 100vw;
     height: 60vh;
-    background-image:  url("../image/explore.png");
+    background-color: azure;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     overflow-x: hidden;
 }
 
-.container-start{
-    margin-top: 100px;
+.title{
+    font-family: 'Lato', sans-serif;
+    font-weight: bolder;
+    color: #2b3954;
+    font-size: 3em;
 }
 
 .slogan{
-    max-width: 30%;
+    max-width: 500px;
     word-wrap: break-word;
-    margin: 0 auto;
+    font-size: 20px;
+    line-height: 1.7;
 }
 
-.post-but{
-    background-color: #1FD09E;
-    padding: 10px 25px;
+.publish-but{
+    background-color: #259df3;
+    padding: 15px 30px;
     text-decoration: none;
     color: #fff;
     border: none;
-    border-radius: 5px;
-    margin-left: 5px;
+    border-radius: 30px;
     transition: all 0.3s ease 0s;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
 }
 
-.post-but:hover{
-    background-color: #1aad84;
+.publish-but:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
     color: #fff;
 }
 
-.search{
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    padding: 10px;
-    margin-top: 100px;
+.showcase{
+    padding: 25px;
+    box-shadow: inset 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.container2{
+    margin-top: 25px;
+    margin-left: 200px;
     margin-right: 100px;
 }
 
-.card{
-    width: 400px;
-    height: 400px;
-    max-width: 400px;
-    max-height: 400px;
+.search-title-forum{
+    width: 300px;
+    max-width: 300px;
+    height: 30px;
+    max-height: 30px;
+    font-size: 18px;
+    outline: none;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+}
+
+.select-category-forum{
+    width: 300px;
+    max-width: 300px;
+    height: 30px;
+    max-height: 30px;
+    font-size: 18px;
+    outline: none;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+}
+
+.search-but{
+    margin-left: 10px;
+    padding: 10px 25px;
+    color: #fff;
+    background-color: #259df3;
+    border: none;
+    border-radius: 5px;
     transition: all 0.3s ease 0s;
-    box-shadow: -1px 1px 5px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
 }
 
-.card:hover{
-    box-shadow: -20px 20px 10px 0 rgba(0, 0, 0, 0.3);
+.search-but:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
 }
 
-.project-image{
-    width: 100%;
-    height: 250px;
-    max-height: 250px;
-}
-
-.detail{
-    text-decoration: none;
-    color: #000;
-}
-
-.detail:hover{
-    color: #000;
-}
-
-.profile{
-    margin-top: -20px;
-}
-
-.like{
-    margin-left: 150px;
-}
-
-.username{
-    text-decoration: none;
-    color: #000;
+.card-img-top{
+    max-height: 300px;
 }

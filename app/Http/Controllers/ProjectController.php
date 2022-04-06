@@ -26,6 +26,7 @@ class ProjectController extends Controller
         $project->gender = $request->gender;
         $project->project_title = $request->project_title;
         $project->project_category = $request->project_category;
+        $project->project_subcategory = $request->project_subcategory;
         $project->project_link = $request->project_link;
 
         $path = $request->file('project_image')->store('images/project','public');

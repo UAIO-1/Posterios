@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->date('dob');
             $table->string('role');
             $table->text('image')->nullable();
-            $table->string('aboutme', 500)->nullable();
+            $table->string('aboutme', 10000)->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

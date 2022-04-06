@@ -19,6 +19,7 @@ class CreateForumTable extends Migration
             $table->string('username');
             $table->string('forum_title');
             $table->string('forum_category');
+            $table->string('forum_subcategory');
             $table->string('forum_message', 10000);
             $table->text('forum_image')->nullable();
             $table->timestamps();
