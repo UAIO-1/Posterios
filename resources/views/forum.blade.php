@@ -4,14 +4,96 @@
 <link rel="stylesheet" href="{{ asset('css/forum.css') }}">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
+@include('navbar')
 
 @if (!Auth::check())
 
+    <div class="header">
+        <div class="container-start">
+            <div class="text-center text-light">
+                <h1 class="display-1">Forum Discussion</h1>
+                <p class="mt-4 slogan text-center">Discussion forums are provided in several categories that make it easier for you to choose a project according to your wishes.</p>
+            </div>
+        </div>
+    </div>
 
+    <div class="container2 search">
+        <div class="row">
+            <div class="col-md-5">
+
+            </div>
+            <div class="col-md-6">
+                <form action="{{ url('filterForum') }}" method="get">
+                    <div>
+                        <h6><strong>Sort By</strong></h6>
+                    </div>
+                    <select id="main2" class="select-category-forum">
+                        <option>Select Category</option>
+                        <option value="Teknologi">Teknologi</option>
+                        <option value="Teknik Rekayasa">Teknik Rekayasa</option>
+                        <option value="Seni">Seni</option>
+                    </select>
+                    <select name="forum_select" id="sub2" class="select-category-forum">
+                        <option value="Digital Design">Select Sub Category</option>
+                    </select>
+                    <input type="submit" value="Set Filter" class="search-but">
+                </form>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+
+    <div class="container2 forum-content">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h4><span style="color: #1fd09e"><strong>General</strong></span> <span style="color: #7b849e">Forum</span></h4>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <p class="text-muted">General Forum adalah tempat semua diskusi yang telah dibuat</p>
+                    </div>
+                    @foreach ($forums as $f)
+                            <a href="/forumDetail/{{ $f->id }}" class="forum-detail">
+                                <div class="card mb-3 border-0 rounded-0" style="max-width: 720px;">
+                                    <div class="row g-0">
+                                        <div class="col-md-4">
+                                            @if ($f->forum_image == null)
+                                                <img src="{{ asset('image/forum-icon-green.png') }}" class="img-fluid rounded-start p-4" alt="forum icon">
+                                            @else
+                                                <img src="{{ asset('storage/'.$f->forum_image) }}" class="img-fluid rounded-start p-4" alt="forum image">
+                                            @endif
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                            <h5 class="card-title"><strong>{{Str::limit($f->forum_title, 25, '...')}}</strong></h5>
+                                            <p class="card-text">{{Str::limit($f->forum_message, 100, '...')}}</p>
+                                            <p class="card-text"><small class="text-muted">{{ $f->forum_subcategory }}</small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                    @endforeach
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h4><span style="color: #259df3"><strong>Project</strong></span> <span style="color: #7b849e">Forum</span></h4>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="text-muted">Project Forum adalah tempat diskusi yang diintegrasi dalam project</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 @else
 
-@include('navbar')
+
 <div class="header">
         <div class="container-start">
             <div class="text-center text-light">

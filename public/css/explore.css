@@ -107,3 +107,29 @@ body{
 .card-img-top{
     max-height: 300px;
 }
+
+.project-detail{
+    text-decoration: none;
+    color: #000;
+}
+
+.project-detail:hover{
+    text-decoration: none;
+    color: #000;
+}
+
+.card{
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.username{
+    text-decoration: none;
+    color: #000;
+    transition: all 0.3s ease 0s;
+}
+
+.username:hover{
+    text-decoration: none;
+    color: #259df3;
+}
+

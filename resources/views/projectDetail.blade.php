@@ -88,7 +88,7 @@
                             <h1 class="project-title"><strong>{{ $p->project_title }}</strong></h1>
                         </div>
                         <div class="mb-2">
-                            <small class="text-muted"><em>{{ $p->project_category }}</em></small>
+                            <small class="text-muted"><em>{{ $p->project_subcategory }}</em></small>
                         </div>
                         <div class="d-flex justify-content-end mt-lg-4">
                             <small class="text-muted"><em>Posted {{ Carbon\Carbon::parse($p->created_at)->diffForHumans()}} {{ $p->project_status }}</em></small>
@@ -116,6 +116,14 @@
                         <br>
                         <p class="text-secondary project-description mt-1">{{ $p->project_description }}</p>
                     </div>
+                    <div>
+                        <h3><u>Pertanyaan</u></h3>
+                        @if ($p->project_subcategory == "Programming")
+                            @include('pertanyaanTemplate.programming')
+                        @elseif ($p->project_subcategory == "Digital Desain")
+
+                        @endif
+                    </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card card-over">
@@ -130,10 +138,18 @@
                             <hr>
                             @foreach ($users as $u)
                                 <div class="d-flex justify-content-center align-items-center">
-                                    <img src="{{ asset('storage/'.$u->image) }}" alt="user image" class="pp">
+                                    @if ($u->image == null)
+                                        @if ($u->gender == "Male")
+                                            <img src="{{ asset('image/user-male.png') }}" alt="posterios male" class="pp">
+                                        @else
+                                            <img src="{{ asset('image/user-female.png') }}" alt="posterios female" class="pp">
+                                        @endif
+                                    @else
+                                        <img src="{{ asset('storage/'.$u->image) }}" alt="profile picture" class="pp">
+                                    @endif
                                 </div>
                                 <div class="text-center mt-lg-4">
-                                    <h6 class="username">{{ $p->username }}</h6>
+                                    <h6 class="username">{{ $p->name }}</h6>
                                 </div>
                                 <div class="text-center mt-lg-4">
                                     <a href="/myProfile/{{ $u->id }}" class="viewprofile">View Profile</a>

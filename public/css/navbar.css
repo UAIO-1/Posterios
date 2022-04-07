@@ -12,13 +12,20 @@ li, a, button{
     text-decoration: none;
 }
 
+/* .modal-backdrop {
+    position:unset !important;
+
+} */
+
 header{
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    z-index: 0;
     padding: 15px 10%;
     transition: all 0.3s ease 0s;
     background-color: #2834ae;
+    position: sticky;
 }
 
 .logo{
@@ -48,18 +55,10 @@ header{
 }
 
 .log{
+    padding: 7px 15px;
+    border-radius: 5px;
     background-color: #1FD09E;
     color: #fff;
-}
-
-.log-but{
-    color: #fff;
-    background-color: #259df3;
-}
-
-.log-but:hover{
-    color: #fff;
-    background-color: #1c7abd;
 }
 
 .nav__links li .log:hover{

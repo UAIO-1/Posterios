@@ -34,7 +34,10 @@ Route::get('/logout','AuthController@logout');
 Route::get('/myProfile/{id}', 'AuthController@getProfileOther');
 
 Route::get('/forum', 'ForumController@indexForum');
+Route::get('/filterForum', 'SearchController@filterForum');
+
 Route::get('/explore', 'ProjectController@indexExploreProjects');
+Route::get('/filterProject', 'SearchController@filterProject');
 
 
 Route::group(['middleware'=>'cekuser'], function() {
@@ -50,12 +53,12 @@ Route::group(['middleware'=>'cekuser'], function() {
     Route::post('/editReplyForum', 'ForumController@editReplyForum');
 
     Route::get('/explore', 'ProjectController@indexExploreProjects');
-    Route::get('/explore', 'ProjectController@searchProjectTitle');
+    // Route::get('/explore', 'ProjectController@searchProjectTitle');
     Route::get('/filterProject', 'SearchController@filterProject');
 
     Route::get('/forum', 'ForumController@indexForum');
     Route::post('/postForum', 'ForumController@forumPost');
-    Route::get('/forum', 'ForumController@searchForumTitle');
+    // Route::get('/forum', 'ForumController@searchForumTitle');
     Route::get('/filterForum', 'SearchController@filterForum');
 
     Route::post('/projectPost', 'ProjectController@projectPost');
@@ -68,6 +71,7 @@ Route::group(['middleware'=>'cekuser'], function() {
     Route::post('/changepassword', 'AuthController@changePassword');
 
     Route::get('/projectDetail/{id}', 'ProjectController@getProjectID');
+    Route::post('/submitAnswer', 'ProjectController@submitAnswer');
 
     Route::post('/editProject', 'ProjectController@editProject');
 

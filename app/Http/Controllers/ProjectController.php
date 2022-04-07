@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Projects;
+use App\Questions;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -47,12 +48,12 @@ class ProjectController extends Controller
     }
 
 
-    public function myProjects() {
-        $projects = DB::table('projects')
-                ->where('user_id', '=', Auth::user()->id)
-                ->paginate(10);
-        return view('myprojects', ['projects' => $projects]);
-    }
+    // public function myProjects() {
+    //     $projects = DB::table('projects')
+    //             ->where('user_id', '=', Auth::user()->id)
+    //             ->paginate(10);
+    //     return view('myprojects', ['projects' => $projects]);
+    // }
 
     public function getProjectID ($id){
         $projects = DB::table('projects')
@@ -129,19 +130,37 @@ class ProjectController extends Controller
         $projects = Projects::all();
 
         $users = DB::table("projects")
-            ->select("users.image")
+            ->select("users.image", "users.gender")
             ->join("users", "projects.user_id", "=", "users.id")
             ->first();
 
         return view('/explore', compact('projects', 'users'));
     }
 
-    public function searchProjectTitle(Request $request){
-        $search = $request->get('search_title_project');
-        $projects = Projects::where("project_title",'like','%'.$search.'%')
-                    ->simplePaginate(15);
+    // public function searchProjectTitle(Request $request){
+    //     $search = $request->get('search_title_project');
+    //     $projects = Projects::where("project_title",'like','%'.$search.'%')
+    //                 ->simplePaginate(15);
 
-        return view('/explore', compact('projects'));
+    //     return view('/explore', compact('projects'));
+    // }
+
+    public function submitAnswer(Request $request){
+
+        $question = new Questions();
+        $question->user_id = $request->user_id;
+        $question->project_id = $request->project_id;
+        $question->first_answer = $request->first_answer;
+        $question->second_answer = $question->second_answer;
+        $question->third_answer = $request->third_answer;
+        // $question->strength = $request->strength;
+        // $question->weakness = $request->weakness;
+        // $question->recommendation = $request->recommendation;
+        // $question->points = $request->points;
+
+        $question->save();
+
+        return redirect('/projectDetail/'.$question->id);
     }
 
 
