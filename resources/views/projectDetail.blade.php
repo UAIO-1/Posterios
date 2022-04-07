@@ -2,12 +2,13 @@
 @section('title', 'Posterios - Project')
 <link rel="shortcut icon" href="{{ asset('image/icon-logo-white.png') }}">
 <link rel="stylesheet" href="{{ asset('css/projectdetail.css') }}">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-
+@include('navbar')
 
 @if (!Auth::check())
 
-        <div class="container">
+        {{-- <div class="container">
             @foreach ($projects as $p)
                 <div class="row mt-lg-5">
                     <div class="col-md-6 mr-2">
@@ -69,16 +70,14 @@
                     </div>
                 </div>
             @endforeach
-        </div>
+        </div> --}}
 
 
 @else
 
-    <div class="header">
-        @include('navbar')
         <div class="container">
             @foreach ($projects as $p)
-            <div class="card p-5">
+            <div class="card border-0 p-5">
                 <div class="row">
                     <div class="col-md-5 mr-2">
                         <img src="{{ asset('storage/'.$p->project_image) }}" alt="project image" class="project-image">
@@ -116,12 +115,14 @@
                         <br>
                         <p class="text-secondary project-description mt-1">{{ $p->project_description }}</p>
                     </div>
-                    <div>
-                        <h3><u>Pertanyaan</u></h3>
+                    <div class="mt-xl-5">
+                        <h3 class="mb-3"><u>Pertanyaan</u></h3>
                         @if ($p->project_subcategory == "Programming")
                             @include('pertanyaanTemplate.programming')
                         @elseif ($p->project_subcategory == "Digital Desain")
-
+                            @include('pertanyaanTemplate.digitaldesain')
+                        @elseif ($p->project_subcategory == "Komputer Dan Jaringan")
+                            {{-- @include('pertanyaanTemplate.digitaldesain') --}}
                         @endif
                     </div>
                 </div>
@@ -179,14 +180,13 @@
                         </div>
                     </div>
                 </div>
+
+                </div>
             </div>
+            @endforeach
+        </div>
 
-    </div>
-        @endforeach
 
-    </div>
-
-    </div>
 
 
 

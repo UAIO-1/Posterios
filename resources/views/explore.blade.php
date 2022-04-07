@@ -2,7 +2,8 @@
 @section('title', 'Posterios - Explore STEM')
 <link rel="shortcut icon" href="{{ asset('image/icon-logo-white.png') }}">
 <link rel="stylesheet" href="{{ asset('css/explore.css') }}">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
 
 @include('navbar')
 
@@ -131,17 +132,19 @@
                                 <h5 class="card-title">{{ $p->project_title }}</h5>
                                 @include('badgeCategory')
                                 <p class="card-text text-muted">{{ Str::limit($p->project_description, 100, '...')}}</p>
-                                <div>
-                                    @if ($users->image == null)
-                                        @if ($users->gender == "Male")
-                                            <img src="{{ asset('image/user-male.png') }}" alt="posterios male" width="25px" height="25px" class="profile-picture" style="border-radius: 10px">
+                                <div class="mt-2">
+                                    <a href="" class="username">
+                                        @if ($users->image == null)
+                                            @if ($users->gender == "Male")
+                                                <img src="{{ asset('image/user-male.png') }}" alt="posterios male" width="25px" height="25px" class="profile-picture" style="border-radius: 10px">
+                                            @else
+                                                <img src="{{ asset('image/user-female.png') }}" alt="posterios female" width="25px" height="25px" class="profile-picture" style="border-radius: 10px">
+                                            @endif
                                         @else
-                                            <img src="{{ asset('image/user-female.png') }}" alt="posterios female" width="25px" height="25px" class="profile-picture" style="border-radius: 10px">
+                                            <img src="{{ asset('storage/'.$users->image) }}" alt="profile picture" class="profile-picture">
                                         @endif
-                                    @else
-                                        <img src="{{ asset('storage/'.$users->image) }}" alt="profile picture" class="profile-picture">
-                                    @endif
-                                    <small><a href="" class="username m-1">{{ $p->name }}</a></small>
+                                        <small>{{ $p->name }}</small>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -170,3 +173,4 @@
 
     });
 </script>
+

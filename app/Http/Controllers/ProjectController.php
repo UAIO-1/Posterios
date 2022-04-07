@@ -151,16 +151,16 @@ class ProjectController extends Controller
         $question->user_id = $request->user_id;
         $question->project_id = $request->project_id;
         $question->first_answer = $request->first_answer;
-        $question->second_answer = $question->second_answer;
+        $question->second_answer = $request->second_answer;
         $question->third_answer = $request->third_answer;
-        // $question->strength = $request->strength;
-        // $question->weakness = $request->weakness;
-        // $question->recommendation = $request->recommendation;
-        // $question->points = $request->points;
+        $question->strength = $request->strength;
+        $question->weakness = $request->weakness;
+        $question->recommendation = $request->recommendation;
+        $question->points = $request->points;
 
         $question->save();
 
-        return redirect('/projectDetail/'.$question->id);
+        return redirect('/projectDetail/'.$question->project_id);
     }
 
 
