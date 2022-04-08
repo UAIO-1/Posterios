@@ -10,7 +10,7 @@
 
     <div class="container">
         @foreach ($projects as $p)
-        <div class="card border-0 p-5">
+        <div class="border-0 p-5">
             <div class="row">
                 <div class="col-md-5 mr-2">
                     <img src="{{ asset('storage/'.$p->project_image) }}" alt="project image" class="project-image">

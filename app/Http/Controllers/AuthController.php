@@ -94,8 +94,12 @@ class AuthController extends Controller
         $projects = Projects::where('user_id', '=', $id)
                 ->get();
 
+        $forums = Forums::where('user_id', '=', $id)
+                ->get();
 
-        return view('myProfile', compact('users', 'projects'));
+
+
+        return view('myProfile', compact('users', 'projects', 'forums'));
     }
 
     public function getID($id){

@@ -4,7 +4,7 @@
 
 
 
-<form action={{ url('/submitAnswer') }} method="POST">
+<form action={{ url('/submitAnswer') }} method="POST" class="form-pertanyaan">
     {{ csrf_field() }}
     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
     <input type="hidden" name="project_id" value="{{ $p->id }}">
