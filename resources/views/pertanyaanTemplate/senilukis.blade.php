@@ -11,7 +11,7 @@
 
     <div class="mb-3">
         <label for="customRange1" class="form-label">
-            1. Dari skala 1 sampai dengan 10, bagaimana kombinasi warna yang digunakan proyek tersebut?
+            1. Dari skala 1 sampai dengan 10, bagaimana ketepatan kombinasi warna atau pewarnaan dari lukisan tersebut?
             <span class="text-danger">*</span>
         </label>
         <br>
@@ -25,11 +25,11 @@
 
     <div class="mb-3">
         <label for="customRange2" class="form-label">
-            2. Dari skala 1 sampai dengan 10, bagaimana elemen-elemen atau komponen-komponen yang digunakan proyek tersebut?
+            2. Dari skala 1 sampai dengan 10, bagaimana kesesuaian tema lukisan tersebut dengan alirannya?
             <span class="text-danger">*</span>
         </label>
         <br>
-        <small class="text-muted"><i>catatan: elemen atau komponen dapat berupa aset gambar, warna, atau teks.</i></small>
+        <small class="text-muted"><i>catatan: aliran dapat berupa romantisme atau naturalisme.</i></small>
 
         <input type="range" name="second_answer" class="form-range" id="second_answer" value="5" min="1" max="10" oninput="second_output.value = second_answer.value">
         <div class="text-center">
@@ -39,11 +39,11 @@
 
     <div class="mb-3">
         <label for="customRange3" class="form-label">
-            3. Dari skala 1 sampai dengan 10, bagaimana desain yang ditampilkan dari proyek tersebut?
+            3. Dari skala 1 sampai dengan 10, bagaimana penguasaan teknik dan bahan dalam proses melukis atau dari lukisan tersebut?
             <span class="text-danger">*</span>
         </label>
         <br>
-        <small class="text-muted"><i>catatan: desain dapat berupa kombinasi warna atau kerapian penempatan elemen.</i></small>
+        <small class="text-muted"><i>catatan: cth. penguasan penggunaan cat minyak.</i></small>
 
         <input type="range" name="third_answer" class="form-range" id="third_answer" value="5" min="1" max="10" oninput="third_output.value = third_answer.value">
         <div class="text-center">

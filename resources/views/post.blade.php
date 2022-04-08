@@ -174,7 +174,7 @@
             if (val == "Teknologi") {
                 $("#sub").html("<option value='Digital Desain'>Digital Desain</option><option value='Programming'>Programming</option>");
             } else if (val == "Teknik Rekayasa") {
-                $("#sub").html("<option value='Komputer dan Jaringan'>Komputer dan Jaringan</option><option value='Kelistrikan'>Kelistrikan</option>");
+                $("#sub").html("<option value='Komputer dan Jaringan'>Komputer dan Jaringan</option>");
             } else if (val == "Seni") {
                 $("#sub").html("<option value='Seni Musik'>Seni Musik</option><option value='Seni Lukis'>Seni Lukis</option><option value='Seni Tari'>Seni Tari</option>");
             }

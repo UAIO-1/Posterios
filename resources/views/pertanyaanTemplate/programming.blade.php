@@ -10,7 +10,13 @@
     <input type="hidden" name="project_id" value="{{ $p->id }}">
 
     <div class="mb-3">
-        <label for="customRange1" class="form-label">1. Dari skala 1 sampai dengan 10, bagaimana ketepatan input, proses, dan output dari proyek tersebut?</label> <span class="text-danger">*</span>
+        <label for="customRange1" class="form-label">
+            1. Dari skala 1 sampai dengan 10, bagaimana ketepatan input, proses, dan output dari proyek tersebut?
+            <span class="text-danger">*</span>
+        </label>
+        <br>
+        <small class="text-muted"><i>catatan: nilai yang masuk harus sama dengan nilai yang dihasilkan.</i></small>
+
         <input type="range" name="first_answer" class="form-range" id="first_answer" value="5" min="1" max="10" oninput="first_output.value = first_answer.value">
         <div class="text-center">
             <span>Nilai: </span> <h1 class="display-3"><output id="first_output">5</output></h1>
@@ -18,7 +24,13 @@
     </div>
 
     <div class="mb-3">
-        <label for="customRange2" class="form-label">2. Dari skala 1 sampai dengan 10, bagaimana elemen-elemen atau komponen-komponen yang digunakan dari proyek tersebut?</label> <span class="text-danger">*</span>
+        <label for="customRange2" class="form-label">
+            2. Dari skala 1 sampai dengan 10, bagaimana elemen-elemen atau komponen-komponen yang digunakan dari proyek tersebut?
+            <span class="text-danger">*</span>
+        </label>
+        <br>
+        <small class="text-muted"><i>catatan: elemen atau komponen dapat berupa aset gambar, suara, atau teks.</i></small>
+
         <input type="range" name="second_answer" class="form-range" id="second_answer" value="5" min="1" max="10" oninput="second_output.value = second_answer.value">
         <div class="text-center">
             <span>Nilai: </span> <h1 class="display-3"><output id="second_output">5</output></h1>
@@ -26,7 +38,12 @@
     </div>
 
     <div class="mb-3">
-        <label for="customRange3" class="form-label">3. Dari skala 1 sampai dengan 10, bagaimana tampilan antar muka atau <i>user interface</i> dari proyek tersebut?</label> <span class="text-danger">*</span>
+        <label for="customRange3" class="form-label">
+            3. Dari skala 1 sampai dengan 10, bagaimana tampilan antar muka atau <i>user interface</i> dari proyek tersebut?
+            <span class="text-danger">*</span>
+        </label>
+        <small class="text-muted"><i>catatan: tampilan antar muka dapat berupa kombinasi warna atau kerapian penempatan elemen.</i></small>
+
         <input type="range" name="third_answer" class="form-range" id="third_answer" value="5" min="1" max="10" oninput="third_output.value = third_answer.value">
         <div class="text-center">
             <span>Nilai: </span> <h1 class="display-3"><output id="third_output">5</output></h1>

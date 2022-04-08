@@ -2,7 +2,7 @@
 @section('title', 'Posterios - Explore STEM')
 <link rel="shortcut icon" href="{{ asset('image/icon-logo-white.png') }}">
 <link rel="stylesheet" href="{{ asset('css/explore.css') }}">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 
 @include('navbar')
@@ -18,6 +18,9 @@
                         Publish your work in school to be the best work here!
                         Project Showcase always provides the categories that students in various schools need!
                     </p>
+                    <div style="margin-top: 30px">
+                        <a href="/post" class="publish-but" type="button">Publish Your Project</a>
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <img src="{{ asset('image/showcase.png') }}" alt="showcase" class="showcase">
@@ -53,17 +56,31 @@
 
     <hr>
 
-    <div class="p-3" style="margin-top: 50px">
+    <div class="p-5" style="margin-top: 50px">
         <div class="row row-cols-0 row-cols-md-5 g-4">
             @foreach ($projects as $p)
                 <div class="col">
-                    <a href="/projectDetail/{{ $p->id }}">
+                    <a href="/projectDetail/{{ $p->id }}" class="project-detail">
                         <div class="card">
                             <img src="{{ asset('storage/'.$p->project_image) }}" class="card-img-top" alt="project image">
                                 <div class="card-body">
                                 <h5 class="card-title">{{ $p->project_title }}</h5>
                                 @include('badgeCategory')
                                 <p class="card-text text-muted">{{ Str::limit($p->project_description, 100, '...')}}</p>
+                                <div class="mt-2">
+                                    <a href="" class="username">
+                                        @if ($users->image == null)
+                                            @if ($users->gender == "Male")
+                                                <img src="{{ asset('image/user-male.png') }}" alt="posterios male" width="25px" height="25px" class="profile-picture" style="border-radius: 10px">
+                                            @else
+                                                <img src="{{ asset('image/user-female.png') }}" alt="posterios female" width="25px" height="25px" class="profile-picture" style="border-radius: 10px">
+                                            @endif
+                                        @else
+                                            <img src="{{ asset('storage/'.$users->image) }}" alt="profile picture" class="profile-picture">
+                                        @endif
+                                        <small>{{ $p->name }}</small>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </a>
@@ -165,7 +182,7 @@
             if (val == "Teknologi") {
                 $("#sub3").html("<option value='Digital Desain'>Digital Desain</option><option value='Programming'>Programming</option>");
             } else if (val == "Teknik Rekayasa") {
-                $("#sub3").html("<option value='Komputer dan Jaringan'>Komputer dan Jaringan</option><option value='Kelistrikan'>Kelistrikan</option>");
+                $("#sub3").html("<option value='Komputer dan Jaringan'>Komputer dan Jaringan</option>");
             } else if (val == "Seni") {
                 $("#sub3").html("<option value='Seni Musik'>Seni Musik</option><option value='Seni Lukis'>Seni Lukis</option><option value='Seni Tari'>Seni Tari</option>");
             }

@@ -11,11 +11,11 @@
 
     <div class="mb-3">
         <label for="customRange1" class="form-label">
-            1. Dari skala 1 sampai dengan 10, bagaimana kombinasi warna yang digunakan proyek tersebut?
+            1. Dari skala 1 sampai dengan 10, bagaimana kerapian penyusunan kabel dari jaringan tersebut?
             <span class="text-danger">*</span>
         </label>
         <br>
-        <small class="text-muted"><i>catatan: </i></small>
+        <small class="text-muted"><i>catatan: penyusunan kabel dapat berupa hubungan device dengan device lain sudah baik atau pemasangan kabel RJ.</i></small>
 
         <input type="range" name="first_answer" class="form-range" id="first_answer" value="5" min="1" max="10" oninput="first_output.value = first_answer.value">
         <div class="text-center">
@@ -25,11 +25,12 @@
 
     <div class="mb-3">
         <label for="customRange2" class="form-label">
-            2. Dari skala 1 sampai dengan 10, bagaimana elemen-elemen atau komponen-komponen yang digunakan proyek tersebut?
+            2. Dari skala 1 sampai dengan 10, bagaimana teknik yang digunakan dalam membuat jaringan tersebut?
             <span class="text-danger">*</span>
+            <i class="text-muted">(cth. teknik menjepit kabel, sesuai dengan standar operasional prosedur)</i>
         </label>
         <br>
-        <small class="text-muted"><i>catatan: elemen atau komponen dapat berupa aset gambar, warna, atau teks.</i></small>
+        <small class="text-muted"><i>catatan: teknik dapat berupa teknik menjepit kabel atau pembuatan jaringan sudah sesuai dengan standar operasional prosedur.</i></small>
 
         <input type="range" name="second_answer" class="form-range" id="second_answer" value="5" min="1" max="10" oninput="second_output.value = second_answer.value">
         <div class="text-center">
@@ -39,11 +40,11 @@
 
     <div class="mb-3">
         <label for="customRange3" class="form-label">
-            3. Dari skala 1 sampai dengan 10, bagaimana desain yang ditampilkan dari proyek tersebut?
+            3. Dari skala 1 sampai dengan 10, bagaimana kesesuaian hasil dari pengujian yang dilakukan dari jaringan tersebut?
             <span class="text-danger">*</span>
         </label>
         <br>
-        <small class="text-muted"><i>catatan: desain dapat berupa kombinasi warna atau kerapian penempatan elemen.</i></small>
+        <small class="text-muted"><i>catatan: </i></small>
 
         <input type="range" name="third_answer" class="form-range" id="third_answer" value="5" min="1" max="10" oninput="third_output.value = third_answer.value">
         <div class="text-center">

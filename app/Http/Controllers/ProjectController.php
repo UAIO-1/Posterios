@@ -47,25 +47,20 @@ class ProjectController extends Controller
         return redirect(url('/'));
     }
 
-
-    // public function myProjects() {
-    //     $projects = DB::table('projects')
-    //             ->where('user_id', '=', Auth::user()->id)
-    //             ->paginate(10);
-    //     return view('myprojects', ['projects' => $projects]);
-    // }
-
     public function getProjectID ($id){
+
         $projects = DB::table('projects')
                     ->where('id','=', $id)
                     ->get();
 
-        $users = DB::table('users')
-                    ->where('users.id', '=', Auth::user()->id)
-                    ->get();
+        $users = DB::table("users")
+                    ->select("users.image", "users.gender", "users.id")
+                    ->join("projects", "projects.user_id", "=", "users.id")
+                    ->first();
 
         return view('projectDetail', compact('projects', 'users'));
     }
+
 
     public function getProfile(){
         $users = DB::table('users')
@@ -136,14 +131,6 @@ class ProjectController extends Controller
 
         return view('/explore', compact('projects', 'users'));
     }
-
-    // public function searchProjectTitle(Request $request){
-    //     $search = $request->get('search_title_project');
-    //     $projects = Projects::where("project_title",'like','%'.$search.'%')
-    //                 ->simplePaginate(15);
-
-    //     return view('/explore', compact('projects'));
-    // }
 
     public function submitAnswer(Request $request){
 
