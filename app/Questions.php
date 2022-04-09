@@ -13,6 +13,6 @@ class Questions extends Model
     }
 
     public function Users() {
-        return $this->belongsTo('App\Users', 'id');
+        return $this->belongsToMany('App\Users', 'id');
     }
 }

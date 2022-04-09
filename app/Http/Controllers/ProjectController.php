@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Projects;
 use App\Questions;
 use App\User;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -58,7 +60,10 @@ class ProjectController extends Controller
                     ->join("projects", "projects.user_id", "=", "users.id")
                     ->first();
 
-        return view('projectDetail', compact('projects', 'users'));
+        $answers = Questions::select('project_id')->where('user_id', Auth::user()->id)->get();
+        $answerArr = Arr::flatten($answers->toArray());
+
+        return view('projectDetail', ['projects'=>$projects, 'users'=>$users, 'answers'=>$answerArr]);
     }
 
 
@@ -149,6 +154,7 @@ class ProjectController extends Controller
 
         return redirect('/projectDetail/'.$question->project_id);
     }
+
 
 
 }

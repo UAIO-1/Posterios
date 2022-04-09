@@ -19,4 +19,10 @@ class Users extends Model
     public function ReplyForums() {
         return $this->hasMany('App\ForumAnswers', 'user_id');
     }
+
+    public function Question() {
+        return $this->hasMany('App\Questions', 'user_id');
+    }
+
+
 }
