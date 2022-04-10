@@ -11,7 +11,7 @@
 
     <div class="mb-3">
         <label for="customRange1" class="form-label">
-            1. Dari skala 1 sampai dengan 10, bagaimana kerapian penyusunan kabel dari jaringan tersebut?
+            1. Dari skala 1 sampai dengan 10, bagaimana kerapian penyusunan kabel dalam jaringan tersebut?
             <span class="text-danger">*</span>
         </label>
         <br>
@@ -55,20 +55,23 @@
 
     <div class="mb-3">
         <h6>Kelebihan Proyek</h6>
+        <small class="text-muted"><i>contoh: Penyusunan kabel dalam jaringan sangat rapi.</i></small>
         <textarea name="strength" class="form-control" style="width: 100%; height: 10%"></textarea>
     </div>
 
     <div class="mb-3">
         <h6>Kekurangan Proyek</h6>
+        <small class="text-muted"><i>contoh: Teknik yang digunakan masih salah.</i></small>
         <textarea name="weakness"  class="form-control" style="width: 100%; height: 10%"></textarea>
     </div>
 
     <div class="mb-3">
         <h6>Saran/Rekomendasi untuk <strong>{{ $p->name }}</strong></h6>
+        <small class="text-muted"><i>contoh: Kedepannya perbaiki teknik yang digunakan | Dari proyek ini, Anda sangat cocok dalam bidang ini.</i></small>
         <textarea name="recommendation"  class="form-control" style="width: 100%; height: 10%"></textarea>
     </div>
 
-    <div>
+    <div class="d-flex justify-content-end">
         <input type="submit" value="Submit" class="submit-but w-25">
     </div>
 </form>

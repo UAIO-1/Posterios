@@ -54,20 +54,23 @@
 
     <div class="mb-3">
         <h6>Kelebihan Proyek</h6>
+        <small class="text-muted"><i>contoh: Gerakan sangat bagus | Kostum dan Aksesoris serta musik yang digunakan sangat baik.</i></small>
         <textarea name="strength" class="form-control" style="width: 100%; height: 10%"></textarea>
     </div>
 
     <div class="mb-3">
         <h6>Kekurangan Proyek</h6>
+        <small class="text-muted"><i>contoh: Gerakan sangat tidak serasi | Kostum dan Aksesoris sangat tidak cocok dengan tema.</i></small>
         <textarea name="weakness"  class="form-control" style="width: 100%; height: 10%"></textarea>
     </div>
 
     <div class="mb-3">
         <h6>Saran/Rekomendasi untuk <strong>{{ $p->name }}</strong></h6>
+        <small class="text-muted"><i>contoh: Kamu bisa tampil lebih baik di atas panggung | Dari proyek ini, Anda sangat cocok dalam bidang ini.</i></small>
         <textarea name="recommendation"  class="form-control" style="width: 100%; height: 10%"></textarea>
     </div>
 
-    <div>
+    <div class="d-flex justify-content-end">
         <input type="submit" value="Submit" class="submit-but w-25">
     </div>
 </form>

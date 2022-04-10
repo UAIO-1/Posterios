@@ -19,8 +19,10 @@ class ProjectController extends Controller
         $this->validate($request,[
             'project_title' => 'required|min:6|max:20',
             'project_category' => 'required',
-            'project_image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'project_video' => 'max:30720'
+            'project_subcategory' => 'required',
+            'project_image' => 'required|image|mimes:jpeg,png,jpg|max:10240',
+            'project_video' => 'max:30720',
+            'project_description' => 'max:10000',
         ]);
 
         $project = new Projects();
@@ -44,10 +46,13 @@ class ProjectController extends Controller
             $project->project_video = $path;
         }
 
+        $project->project_video_link = $request->project_video_link;
+
         $project->save();
 
         return redirect(url('/'));
     }
+
 
     public function getProjectID ($id){
 
@@ -64,6 +69,20 @@ class ProjectController extends Controller
         $answerArr = Arr::flatten($answers->toArray());
 
         return view('projectDetail', ['projects'=>$projects, 'users'=>$users, 'answers'=>$answerArr]);
+    }
+
+    public function getProjectIDGuest($id){
+
+        $projects = DB::table('projects')
+                    ->where('id','=', $id)
+                    ->get();
+
+        $users = DB::table("users")
+                ->select("users.image", "users.gender", "users.id")
+                ->join("projects", "projects.user_id", "=", "users.id")
+                ->first();
+
+        return view('projectDetail', compact('projects', 'users'));
     }
 
 

@@ -15,11 +15,11 @@
                 <div class="col-md-6">
                     <h1 class="title">Project Showcase</h1>
                     <p class="slogan text-muted">
-                        Publish your work in school to be the best work here!
-                        Project Showcase always provides the categories that students in various schools need!
+                        Publikasikan karya Anda di sekolah untuk menjadi karya terbaik di sini!
+                        Posterios selalu menyediakan kategori yang dibutuhkan siswa dalam membuat karya!
                     </p>
                     <div style="margin-top: 30px">
-                        <a href="/post" class="publish-but" type="button">Publish Your Project</a>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#loginmodal" class="publish-but" type="button">Mulai Posting</a>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -54,37 +54,37 @@
         </div>
     </div>
 
-    <hr>
 
     <div class="p-5" style="margin-top: 50px">
-        <div class="row row-cols-0 row-cols-md-5 g-4">
+        <div class="row row-cols-1 row-cols-md-4 g-4">
             @foreach ($projects as $p)
                 <div class="col">
-                    <a href="/projectDetail/{{ $p->id }}" class="project-detail">
-                        <div class="card">
+                    <a href="/projectDetailGuest/{{ $p->id }}" class="project-detail">
+                        <div class="card border-0">
                             <img src="{{ asset('storage/'.$p->project_image) }}" class="card-img-top" alt="project image">
-                                <div class="card-body">
-                                <h5 class="card-title">{{ $p->project_title }}</h5>
+                            <div class="card-body card-img-overlay">
+                                <h3 class="card-title">{{ $p->project_title }}</h3>
                                 @include('badgeCategory')
-                                <p class="card-text text-muted">{{ Str::limit($p->project_description, 100, '...')}}</p>
-                                <div class="mt-2">
-                                    <a href="" class="username">
-                                        @if ($users->image == null)
-                                            @if ($users->gender == "Male")
-                                                <img src="{{ asset('image/user-male.png') }}" alt="posterios male" width="25px" height="25px" class="profile-picture" style="border-radius: 10px">
-                                            @else
-                                                <img src="{{ asset('image/user-female.png') }}" alt="posterios female" width="25px" height="25px" class="profile-picture" style="border-radius: 10px">
-                                            @endif
-                                        @else
-                                            <img src="{{ asset('storage/'.$users->image) }}" alt="profile picture" class="profile-picture">
-                                        @endif
-                                        <small>{{ $p->name }}</small>
-                                    </a>
-                                </div>
+                                <p>{{ Str::limit($p->project_description, 200, '...') }}</p>
                             </div>
                         </div>
                     </a>
+                    <div class="mt-2">
+                        <a href="" class="username">
+                            @if ($users->image == null)
+                                @if ($users->gender == "Male")
+                                    <img src="{{ asset('image/user-male.png') }}" alt="posterios male" width="25px" height="25px" class="profile-picture" style="border-radius: 10px">
+                                @else
+                                    <img src="{{ asset('image/user-female.png') }}" alt="posterios female" width="25px" height="25px" class="profile-picture" style="border-radius: 10px">
+                                @endif
+                            @else
+                                <img src="{{ asset('storage/'.$users->image) }}" alt="profile picture" class="profile-picture">
+                            @endif
+                            <small>{{ $p->name }}</small>
+                        </a>
+                    </div>
                 </div>
+
             @endforeach
         </div>
     </div>
@@ -97,11 +97,11 @@
                 <div class="col-md-6">
                     <h1 class="title">Project Showcase</h1>
                     <p class="slogan text-muted">
-                        Publish your work in school to be the best work here!
-                        Project Showcase always provides the categories that students in various schools need!
+                        Publikasikan karya Anda di sekolah untuk menjadi karya terbaik di sini!
+                        Posterios selalu menyediakan kategori yang dibutuhkan siswa dalam membuat karya!
                     </p>
                     <div style="margin-top: 30px">
-                        <a href="/post" class="publish-but" type="button">Publish Your Project</a>
+                        <a href="/post" class="publish-but" type="button">Mulai Posting</a>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -147,6 +147,7 @@
                             <div class="card-body card-img-overlay">
                                 <h4 class="card-title">{{ $p->project_title }}</h4>
                                 @include('badgeCategory')
+                                <p>{{ Str::limit($p->project_description, 100, '...') }}</p>
                             </div>
                         </div>
                     </a>
@@ -165,7 +166,6 @@
                         </a>
                     </div>
                 </div>
-
             @endforeach
         </div>
     </div>

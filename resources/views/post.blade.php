@@ -31,7 +31,7 @@
 
                                         <div class="mb-3">
                                             <label class="form-label">Title</label> <span class="text-danger">*</span>
-                                            <input type="text" name="project_title" class="form-control">
+                                            <input type="text" name="project_title" value="{{ old('project_title') }}" class="form-control">
                                         </div>
 
                                         <div class="row row-cols-2">
@@ -56,26 +56,36 @@
                                             </div>
                                         </div>
 
-
-                                        <div class="mb-3">
-                                            <label class="form-label">Link</label> <span class="text-danger">*</span>
-                                            <input type="text" name="project_link" class="form-control" placeholder="https://www.yourproject.com/">
-                                        </div>
-
                                         <div class="mb-3">
                                             <label class="form-label">Image</label> <span class="text-danger">*</span>
                                             <input class="form-control" type="file" name="project_image" accept="image/jpg, image/jpeg, image/png">
                                         </div>
 
+                                        <hr>
 
                                         <div class="mb-3">
-                                            <label>Description</label>
-                                            <textarea class="form-control" name="project_description" rows="5"></textarea>
+                                            <label class="form-label">Link</label>
+                                            <input type="text" value="{{ old('project_link') }}" name="project_link" class="form-control" placeholder="https://www.scratch.mit.edu/ or https://drive.google.com/">
                                         </div>
 
                                         <div class="mb-3">
-                                            <label class="form-label">Video</label> <span class="text-muted">
-                                            <input class="form-control" type="file" name="project_video" accept=".mp4,.mkv">
+                                            <label>Description</label>
+                                            <textarea value="{{ old('project_description') }}" class="form-control" name="project_description" rows="5"></textarea>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Video File</label> <span class="text-muted">
+                                                    <input class="form-control" type="file" name="project_video" accept=".mp4,.mkv">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Video Link</label> <span class="text-muted">
+                                                    <input class="form-control" value="{{ old('project_video_link') }}" type="text" name="project_video_link" placeholder="https://www.youtube.com/">
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div class="mb-3 text-center">

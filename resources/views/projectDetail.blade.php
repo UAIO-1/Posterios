@@ -2,9 +2,6 @@
 @section('title', 'Posterios - Project')
 <link rel="shortcut icon" href="{{ asset('image/icon-logo-white.png') }}">
 <link rel="stylesheet" href="{{ asset('css/projectdetail.css') }}">
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 
 @include('navbar')
@@ -13,84 +10,6 @@
 
 @if (!Auth::check())
 
-    <div class="container">
-        <div class="border-0 p-5">
-            <div class="row">
-                <div class="col-md-5 mr-2">
-                    <img src="{{ asset('storage/'.$p->project_image) }}" alt="project image" class="project-image">
-                </div>
-                <div class="col-md-5 col-detail">
-                    <div>
-                        <h1 class="project-title"><strong>{{ $p->project_title }}</strong></h1>
-                    </div>
-                    <div class="mb-2">
-                        <small class="text-muted"><em>{{ $p->project_subcategory }}</em></small>
-                    </div>
-                    <div class="d-flex justify-content-end mt-lg-4">
-                        <small class="text-muted"><em>Posted {{ Carbon\Carbon::parse($p->created_at)->diffForHumans()}} {{ $p->project_status }}</em></small>
-                    </div>
-                    <hr>
-                    <div class="mb-2">
-                        <small class="text-muted mb-3"><em>Video</em></small>
-                        @if ($p->project_video == null)
-                            <p class="p-1">No Videos</p>
-                        @else
-                            <video src="{{ asset('storage/'.$p->project_video) }}"class="project-video mt-lg-4 bg-dark" controls></video>
-                        @endif
-                    </div>
-                </div>
-            </div>
-
-        <div class="row row-overview">
-            <div class="col-md-8">
-                <div class="mb-2">
-                    <h4 class="text-secondary mb-4">{{ $p->project_title }}</h4>
-                    <small class="text-muted"> Project Link: <a href="{{ $p->project_link }}" target="_blank" class="text-primary link"><em>click here</em></a></small>
-                    <br>
-                    <p class="text-secondary project-description mt-1">{{ $p->project_description }}</p>
-                </div>
-                <div class="mt-xl-5">
-                    <h3 class="mb-3"><u>Pertanyaan</u></h3>
-                    <p class="text-muted">Anda harus sign in terlebih dahulu sebelum menjawab pertanyaan.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-over">
-                    <div class="card-body text-light">
-                        <p>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-award" viewBox="0 0 16 16">
-                                <path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702 1.509.229z"/>
-                                <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
-                            </svg>
-                            Overview
-                        </p>
-                        <hr>
-                            <div class="d-flex justify-content-center align-items-center">
-                                @if ($users->image == null)
-                                    @if ($p->gender == "Male")
-                                        <img src="{{ asset('image/user-male.png') }}" alt="posterios male" class="pp">
-                                    @else
-                                        <img src="{{ asset('image/user-female.png') }}" alt="posterios female" class="pp">
-                                    @endif
-                                @else
-                                    <img src="{{ asset('storage/'.$users->image) }}" alt="profile picture" class="pp">
-                                @endif
-                            </div>
-                            <div class="text-center mt-lg-4">
-                                <h6 class="username">{{ $p->name }}</h6>
-                            </div>
-                            <div class="text-center mt-lg-4">
-                                <a href="/myProfile/{{ $users->id }}" class="viewprofile">View Profile</a>
-                            </div>
-                        <hr>
-                    </div>
-                </div>
-            </div>
-
-            </div>
-        </div>
-
-    </div>
 
 @elseif(Auth::check() && Auth::user()->role == "Admin")
 
@@ -98,148 +17,143 @@
 @elseif(Auth::check() && Auth::user()->id != $p->user_id)
 
 
-@if (in_array($p->id, $answers))
+    @if (in_array($p->id, $answers))
 
-<div class="container">
-    <div class="card border-0 p-5">
-        <div class="row">
-            <div class="col-md-5 mr-2">
-                <img src="{{ asset('storage/'.$p->project_image) }}" alt="project image" class="project-image">
-            </div>
-            <div class="col-md-5 col-detail">
-                <div>
-                    <h1 class="project-title"><strong>{{ $p->project_title }}</strong></h1>
-                </div>
-                <div class="mb-2">
-                    <small class="text-muted"><em>{{ $p->project_subcategory }}</em></small>
-                </div>
-                <div class="d-flex justify-content-end mt-lg-4">
-                    <small class="text-muted"><em>Posted {{ Carbon\Carbon::parse($p->created_at)->diffForHumans()}} {{ $p->project_status }}</em></small>
-                </div>
-                <hr>
-                <div class="mb-2">
-                    <small class="text-muted mb-3"><em>Video</em></small>
-                    @if ($p->project_video == null)
-                        <p class="p-1">No Videos</p>
-                    @else
-                        <video src="{{ asset('storage/'.$p->project_video) }}"class="project-video mt-lg-4 bg-dark" controls></video>
-                    @endif
-                </div>
-            </div>
-        </div>
-
-
-    <div class="row row-overview">
-        <div class="col-md-8">
-            <div class="mb-2">
-                <h4 class="text-secondary mb-4">{{ $p->project_title }}</h4>
-                <small class="text-muted"> Project Link: <a href="{{ $p->project_link }}" target="_blank" class="text-primary link"><em>click here</em></a></small>
-                <br>
-                <p class="text-secondary project-description mt-1">{{ $p->project_description }}</p>
-            </div>
-            <div class="mt-xl-5">
-                <h3 class="mb-3"><u>Pertanyaan</u></h3>
-
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card card-over">
-                <div class="card-body text-light">
-                    <p>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-award" viewBox="0 0 16 16">
-                            <path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702 1.509.229z"/>
-                            <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
-                        </svg>
-                        Overview
-                    </p>
-                    <hr>
-                        <div class="d-flex justify-content-center align-items-center">
-                            @if ($users->image == null)
-                                @if ($p->gender == "Male")
-                                    <img src="{{ asset('image/user-male.png') }}" alt="posterios male" class="pp">
-                                @else
-                                    <img src="{{ asset('image/user-female.png') }}" alt="posterios female" class="pp">
-                                @endif
-                            @else
-                                <img src="{{ asset('storage/'.$users->image) }}" alt="profile picture" class="pp">
-                            @endif
-                        </div>
-                        <div class="text-center mt-lg-4">
-                            <h6 class="username">{{ $p->name }}</h6>
-                        </div>
-                        <div class="text-center mt-lg-4">
-                            <a href="/myProfile/{{ $users->id }}" class="viewprofile">View Profile</a>
+        <div class="container">
+            <div class="row">
+                @foreach($projects as $p)
+                    <div class="col-md-6">
+                        <img src="{{ asset('storage/'.$p->project_image) }}" alt="project picture" class="project-picture">
+                    </div>
+                    <div class="col-md-6">
+                        <h1 class="project-title">{{ $p->project_title }}</h1>
+                        <p>
+                            <em class="by">by</em>
+                            <a href="" class="username">{{ $p->name }}</a>
+                        </p>
+                        <div class="d-flex justify-content-between">
+                            <p class="text-muted"><em>{{ $p->project_category }} / {{ $p->project_subcategory }}</em></p>
+                            <p class="text-muted">{{ Carbon\Carbon::parse($p->created_at)->diffForHumans()}}</p>
                         </div>
                         <hr>
-                        <div>
-                            <p>Action</p>
-                            <div class="mb-2">
-                                <a href="#" class="btn btn-light p-3 w-100"  data-bs-toggle="modal" data-bs-target="#exampleModalEditProject">Edit this project
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                    </svg>
-                                </a>
-                                @include('profile.modalEditProject')
-                            </div>
-                            <div class="mb-2">
-                                <a href="#" class="btn btn-outline-light p-3 w-100" data-bs-toggle="modal" data-bs-target="#exampleModalDeleteProject">Delete this project
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                                        <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
-                                    </svg>
-                                </a>
-                                @include('profile.modalDeleteProject')
-                            </div>
+                        <a href="" class="btn btn-outline-secondary">Add to Wishlist</a>
+                        <div class="mt-4">
+                            <h6><strong>Description :</strong></h6>
+                            @if ($p->project_description == null)
+                                <p class="text-muted"><em>tidak ada description.</em></p>
+                            @else
+
+                            @endif
+                            <p class="project-description text-muted">{{ $p->project_description }}</p>
                         </div>
-                </div>
+                        <div class="mt-4">
+                            @if ($p->project_link == null)
+                                <p><h6><strong>Source :</strong></h6> <em class="text-muted">tidak ada sumber.</em></p>
+                            @else
+                                <p><h6><strong>Source :</strong></h6> <a href="{{ $p->project_link }}" class="project-link" target="_blank">{{ $p->project_link }}</a></p>
+                            @endif
+                        </div>
+                        <div class="mt-2">
+                            @if ($p->project_video_link == null)
+                                <p><h6><strong> Link Video :</strong></h6> <em class="text-muted">tidak ada link video.</em></p>
+                            @else
+                                <p><h6><strong> Link Video :</strong></h6> <a href="{{ $p->project_video_link }}" class="project-link" target="_blank">{{ $p->project_video_link }}</a></p>
+                            @endif
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="mt-2 container">
+                        <h6><strong>File Video : </strong></h6>
+                        @if ($p->project_video == null)
+                            <p class="text-muted"><em>tidak ada video.</em></p>
+                        @else
+                            <video src="{{ asset('storage/'.$p->project_video) }}" controls width="100%" height="100%"></video>
+                        @endif
+                    </div>
+                @endforeach
             </div>
         </div>
 
+        <div class="about text-light text-center p-3">
+            <h4>Tentang Pertanyaan</h4>
+            <p class="pertanyaan">
+                Berikanlah saran, rekomendasi, penilaian, dan jawaban Anda terhadap proyek <strong>{{ $p->name }}.</strong>
+                Penilaian yang masuk dapat menjadi pertimbangan bagi <strong>{{ $p->name }}</strong> untuk membuat proyek yang lebih baik.
+            </p>
         </div>
-    </div>
-</div>
 
-@else
-
-<div class="container">
-    <div class="card border-0 p-5">
-        <div class="row">
-            <div class="col-md-5 mr-2">
-                <img src="{{ asset('storage/'.$p->project_image) }}" alt="project image" class="project-image">
-            </div>
-            <div class="col-md-5 col-detail">
-                <div>
-                    <h1 class="project-title"><strong>{{ $p->project_title }}</strong></h1>
-                </div>
-                <div class="mb-2">
-                    <small class="text-muted"><em>{{ $p->project_subcategory }}</em></small>
-                </div>
-                <div class="d-flex justify-content-end mt-lg-4">
-                    <small class="text-muted"><em>Posted {{ Carbon\Carbon::parse($p->created_at)->diffForHumans()}} {{ $p->project_status }}</em></small>
-                </div>
-                <hr>
-                <div class="mb-2">
-                    <small class="text-muted mb-3"><em>Video</em></small>
-                    @if ($p->project_video == null)
-                        <p class="p-1">No Videos</p>
-                    @else
-                        <video src="{{ asset('storage/'.$p->project_video) }}"class="project-video mt-lg-4 bg-dark" controls></video>
-                    @endif
-                </div>
-            </div>
+        <div class="mt-4">
+            <p class="text-center">Anda telah memberikan saran, rekomendasi, penilaian, dan jawaban Anda terhadap proyek ini.</p>
         </div>
 
 
-    <div class="row row-overview">
-        <div class="col-md-8">
-            <div class="mb-2">
-                <h4 class="text-secondary mb-4">{{ $p->project_title }}</h4>
-                <small class="text-muted"> Project Link: <a href="{{ $p->project_link }}" target="_blank" class="text-primary link"><em>click here</em></a></small>
-                <br>
-                <p class="text-secondary project-description mt-1">{{ $p->project_description }}</p>
+    @else
+
+        <div class="container">
+            <div class="row">
+                @foreach($projects as $p)
+                    <div class="col-md-6">
+                        <img src="{{ asset('storage/'.$p->project_image) }}" alt="project picture" class="project-picture">
+                    </div>
+                    <div class="col-md-6">
+                        <h1 class="project-title">{{ $p->project_title }}</h1>
+                        <p>
+                            <em class="by">by</em>
+                            <a href="" class="username">{{ $p->name }}</a>
+                        </p>
+                        <div class="d-flex justify-content-between">
+                            <p class="text-muted"><em>{{ $p->project_category }} / {{ $p->project_subcategory }}</em></p>
+                            <p class="text-muted">{{ Carbon\Carbon::parse($p->created_at)->diffForHumans()}}</p>
+                        </div>
+                        <hr>
+                        <a href="" class="btn btn-outline-secondary">Add to Wishlist</a>
+                        <div class="mt-4">
+                            <h6><strong>Description :</strong></h6>
+                            @if ($p->project_description == null)
+                                <p class="text-muted"><em>tidak ada description.</em></p>
+                            @else
+
+                            @endif
+                            <p class="project-description text-muted">{{ $p->project_description }}</p>
+                        </div>
+                        <div class="mt-4">
+                            @if ($p->project_link == null)
+                                <p><h6><strong>Source :</strong></h6> <em class="text-muted">tidak ada sumber.</em></p>
+                            @else
+                                <p><h6><strong>Source :</strong></h6> <a href="{{ $p->project_link }}" class="project-link" target="_blank">{{ $p->project_link }}</a></p>
+                            @endif
+                        </div>
+                        <div class="mt-2">
+                            @if ($p->project_video_link == null)
+                                <p><h6><strong> Link Video :</strong></h6> <em class="text-muted">tidak ada link video.</em></p>
+                            @else
+                                <p><h6><strong> Link Video :</strong></h6> <a href="{{ $p->project_video_link }}" class="project-link" target="_blank">{{ $p->project_video_link }}</a></p>
+                            @endif
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="mt-2 container">
+                        <h6><strong>File Video : </strong></h6>
+                        @if ($p->project_video == null)
+                            <p class="text-muted"><em>tidak ada video.</em></p>
+                        @else
+                            <video src="{{ asset('storage/'.$p->project_video) }}" controls width="100%" height="100%"></video>
+                        @endif
+                    </div>
+                @endforeach
             </div>
-            <div class="mt-xl-5">
-                <h3 class="mb-3"><u>Pertanyaan</u></h3>
+        </div>
+
+        <div class="about text-light text-center p-3">
+            <h4>Tentang Pertanyaan</h4>
+            <p class="pertanyaan">
+                Berikanlah saran, rekomendasi, penilaian, dan jawaban Anda terhadap proyek <strong>{{ $p->name }}.</strong>
+                Penilaian yang masuk dapat menjadi pertimbangan bagi <strong>{{ $p->name }}</strong> untuk membuat proyek yang lebih baik.
+            </p>
+        </div>
+
+        <div class="mt-lg-4">
+            <div class="container">
                 @if ($p->project_subcategory == "Programming")
                     @include('pertanyaanTemplate.programming')
                 @elseif($p->project_subcategory == "Digital Desain")
@@ -253,69 +167,11 @@
                 @elseif($p->project_subcategory == "Seni Lukis")
                     @include('pertanyaanTemplate.senilukis')
                 @endif
-
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card card-over">
-                <div class="card-body text-light">
-                    <p>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-award" viewBox="0 0 16 16">
-                            <path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702 1.509.229z"/>
-                            <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
-                        </svg>
-                        Overview
-                    </p>
-                    <hr>
-                        <div class="d-flex justify-content-center align-items-center">
-                            @if ($users->image == null)
-                                @if ($p->gender == "Male")
-                                    <img src="{{ asset('image/user-male.png') }}" alt="posterios male" class="pp">
-                                @else
-                                    <img src="{{ asset('image/user-female.png') }}" alt="posterios female" class="pp">
-                                @endif
-                            @else
-                                <img src="{{ asset('storage/'.$users->image) }}" alt="profile picture" class="pp">
-                            @endif
-                        </div>
-                        <div class="text-center mt-lg-4">
-                            <h6 class="username">{{ $p->name }}</h6>
-                        </div>
-                        <div class="text-center mt-lg-4">
-                            <a href="/myProfile/{{ $users->id }}" class="viewprofile">View Profile</a>
-                        </div>
-                        <hr>
-                        <div>
-                            <p>Action</p>
-                            <div class="mb-2">
-                                <a href="#" class="btn btn-light p-3 w-100"  data-bs-toggle="modal" data-bs-target="#exampleModalEditProject">Edit this project
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                    </svg>
-                                </a>
-                                @include('profile.modalEditProject')
-                            </div>
-                            <div class="mb-2">
-                                <a href="#" class="btn btn-outline-light p-3 w-100" data-bs-toggle="modal" data-bs-target="#exampleModalDeleteProject">Delete this project
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                                        <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
-                                    </svg>
-                                </a>
-                                @include('profile.modalDeleteProject')
-                            </div>
-                        </div>
-                </div>
             </div>
         </div>
 
-        </div>
-    </div>
-</div>
 
-
-
-@endif
+    @endif
 
 
 
@@ -334,105 +190,88 @@
 
 @else
 
-        <div class="container">
-            <div class="card border-0 p-5">
-                <div class="row">
-                    <div class="col-md-5 mr-2">
-                        <img src="{{ asset('storage/'.$p->project_image) }}" alt="project image" class="project-image">
+    <div class="container">
+        <div class="row">
+            @foreach($projects as $p)
+                <div class="col-md-6">
+                    <img src="{{ asset('storage/'.$p->project_image) }}" alt="project picture" class="project-picture">
+                </div>
+                <div class="col-md-6">
+                    <h1 class="project-title">{{ $p->project_title }}</h1>
+                    <p>
+                        <em class="by">by</em>
+                        <a href="" class="username">{{ $p->name }}</a>
+                    </p>
+                    <div class="d-flex justify-content-between">
+                        <p class="text-muted"><em>{{ $p->project_category }} / {{ $p->project_subcategory }}</em></p>
+                        <p class="text-muted">{{ Carbon\Carbon::parse($p->created_at)->diffForHumans()}}</p>
                     </div>
-                    <div class="col-md-5 col-detail">
-                        <div>
-                            <h1 class="project-title"><strong>{{ $p->project_title }}</strong></h1>
-                        </div>
-                        <div class="mb-2">
-                            <small class="text-muted"><em>{{ $p->project_subcategory }}</em></small>
-                        </div>
-                        <div class="d-flex justify-content-end mt-lg-4">
-                            <small class="text-muted"><em>Posted {{ Carbon\Carbon::parse($p->created_at)->diffForHumans()}} {{ $p->project_status }}</em></small>
-                        </div>
-                        <hr>
-                        <div class="mb-2">
-                            <small class="text-muted mb-3"><em>Video</em></small>
-                            @if ($p->project_video == null)
-                                <p class="p-1">No Videos</p>
-                            @else
-                                <video src="{{ asset('storage/'.$p->project_video) }}"class="project-video mt-lg-4 bg-dark" controls></video>
-                            @endif
-                        </div>
+                    <hr>
+                    <a href="#"  class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModalEditProject">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil m-1" viewBox="0 0 16 16">
+                            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                        </svg>
+                        Edit Proyek
+                    </a>
+                    @include('profile.modalEditProject')
+                    <a href="#"  class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModalDeleteProject">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                        </svg>
+                        Hapus Proyek
+                    </a>
+                    @include('profile.modalDeleteProject')
+                    <div class="mt-4">
+                        <h6><strong>Description :</strong></h6>
+                        @if ($p->project_description == null)
+                            <p class="text-muted"><em>tidak ada description.</em></p>
+                        @else
+
+                        @endif
+                        <p class="project-description text-muted">{{ $p->project_description }}</p>
+                    </div>
+                    <div class="mt-4">
+                        @if ($p->project_link == null)
+                            <p><h6><strong>Source :</strong></h6> <em class="text-muted">tidak ada sumber.</em></p>
+                        @else
+                            <p><h6><strong>Source :</strong></h6> <a href="{{ $p->project_link }}" class="project-link" target="_blank">{{ $p->project_link }}</a></p>
+                        @endif
+                    </div>
+                    <div class="mt-2">
+                        @if ($p->project_video_link == null)
+                            <p><h6><strong> Link Video :</strong></h6> <em class="text-muted">tidak ada link video.</em></p>
+                        @else
+                            <p><h6><strong> Link Video :</strong></h6> <a href="{{ $p->project_video_link }}" class="project-link" target="_blank">{{ $p->project_video_link }}</a></p>
+                        @endif
                     </div>
                 </div>
-
-
-            <div class="row row-overview">
-                <div class="col-md-8">
-                    <div class="mb-2">
-                        <h4 class="text-secondary mb-4">{{ $p->project_title }}</h4>
-                        <small class="text-muted"> Project Link: <a href="{{ $p->project_link }}" target="_blank" class="text-primary link"><em>click here</em></a></small>
-                        <br>
-                        <p class="text-secondary project-description mt-1">{{ $p->project_description }}</p>
-                    </div>
-                    <div class="mt-xl-5">
-                        <h3 class="mb-3"><u>Pertanyaan</u></h3>
-
-                    </div>
+                <hr>
+                <div class="mt-2 container">
+                    <h6><strong>File Video : </strong></h6>
+                    @if ($p->project_video == null)
+                        <p class="text-muted"><em>tidak ada video.</em></p>
+                    @else
+                        <video src="{{ asset('storage/'.$p->project_video) }}" controls width="100%" height="100%"></video>
+                    @endif
                 </div>
-                <div class="col-md-4">
-                    <div class="card card-over">
-                        <div class="card-body text-light">
-                            <p>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-award" viewBox="0 0 16 16">
-                                    <path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702 1.509.229z"/>
-                                    <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
-                                </svg>
-                                Overview
-                            </p>
-                            <hr>
-                                <div class="d-flex justify-content-center align-items-center">
-                                    @if ($users->image == null)
-                                        @if ($p->gender == "Male")
-                                            <img src="{{ asset('image/user-male.png') }}" alt="posterios male" class="pp">
-                                        @else
-                                            <img src="{{ asset('image/user-female.png') }}" alt="posterios female" class="pp">
-                                        @endif
-                                    @else
-                                        <img src="{{ asset('storage/'.$users->image) }}" alt="profile picture" class="pp">
-                                    @endif
-                                </div>
-                                <div class="text-center mt-lg-4">
-                                    <h6 class="username">{{ $p->name }}</h6>
-                                </div>
-                                <div class="text-center mt-lg-4">
-                                    <a href="/myProfile/{{ $users->id }}" class="viewprofile">View Profile</a>
-                                </div>
-                                <hr>
-                                <div>
-                                    <p>Action</p>
-                                    <div class="mb-2">
-                                        <a href="#" class="btn btn-light p-3 w-100"  data-bs-toggle="modal" data-bs-target="#exampleModalEditProject">Edit this project
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                            </svg>
-                                        </a>
-                                        @include('profile.modalEditProject')
-                                    </div>
-                                    <div class="mb-2">
-                                        <a href="#" class="btn btn-outline-light p-3 w-100" data-bs-toggle="modal" data-bs-target="#exampleModalDeleteProject">Delete this project
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                                                <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
-                                            </svg>
-                                        </a>
-                                        @include('profile.modalDeleteProject')
-                                    </div>
-                                </div>
-                        </div>
-                    </div>
-                </div>
-
-                </div>
-            </div>
+            @endforeach
         </div>
+    </div>
+
+    <div class="about text-light text-center p-3">
+        <h4>Feedback Proyekmu!</h4>
+        <p class="pertanyaan">
+           Semua pengguna lain yang memberikan saran, rekomendasi, penilaian, dan jawaban terhadap proyek Anda akan muncul di sini.
+        </p>
+    </div>
+
+
+
 
 @endif
 
 @endforeach
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>

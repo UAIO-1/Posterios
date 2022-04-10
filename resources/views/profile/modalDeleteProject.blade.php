@@ -6,11 +6,11 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body text-dark">
-                Are you sure want to delete this project?
+                Apakah Anda yakin ingin menghapus proyek ini?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn bg-transparent" data-bs-dismiss="modal">Close</button>
-                <a href="/projectDelete/{{ $p->id }}" class="btn btn-danger">Yes</a>
+                <a href="/projectDelete/{{ $p->id }}" class="btn btn-danger">Ya</a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
             </div>
         </div>
     </div>

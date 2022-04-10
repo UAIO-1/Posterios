@@ -1,0 +1,51 @@
+
+
+body{
+    overflow-x: hidden;
+}
+
+.col-md-6{
+    padding: 150px;
+}
+
+.project-picture{
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, .1);
+    padding: 100px;
+}
+
+.project-title{
+    text-transform: uppercase;
+    color: #7b849e;
+}
+
+.username{
+    font-size: 2em;
+    color: #259df3;
+    margin-left: 10px;
+    transition: all 0.3s ease 0s;
+}
+
+.by{
+    font-size: 25px;
+}
+
+.project-description{
+    text-align: justify;
+}
+
+.project-link{
+    color: #259df3;
+    transition: all 0.3s ease 0s;
+}
+
+.about{
+    background-color: #259df3;
+}
+
+.pertanyaan{
+    max-width: 1000px;
+    word-wrap: break-word;
+    margin: 0 auto;
+}
+

@@ -11,33 +11,18 @@ body{
     overflow-x: hidden;
 }
 
-.card{
-    margin-bottom: 100px;
+.col-md-6{
+    padding: 150px;
 }
 
-.project-image{
-    width: 500px;
-    height: 450px;
-    background-color: #fff;
-    box-shadow: -5px 5px 10px 0px rgba(0, 0, 0, 0.3);
+.project-picture{
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, .1);
 }
 
 .project-title{
     text-transform: uppercase;
-    color: #259df3;
-}
-
-.col-detail{
-    margin-left: 50px;
-}
-
-.row-overview{
-    padding-top: 50px;
-}
-
-.card-body{
-    background-color: #259df3;
-
+    color: #7b849e;
 }
 
 .project-description{
@@ -46,54 +31,36 @@ body{
     word-wrap: break-word;
 }
 
-.link{
-    font-size: 14px;
-}
-
-.project-video{
-    width: 100%;
-    height: 50%;
-}
-
-.pp{
-    width: 150px;
-    height: 150px;
-    border-radius: 500px;
-    background-color: #fff;
-    box-shadow: -5px 5px 10px 0px rgba(0, 0, 0, 0.3);
-}
-.card-over{
-    box-shadow: -5px 5px 10px 0px rgba(0, 0, 0, 0.3);
-}
-
 .username{
-    text-decoration: none;
-    color: #fff;
+    font-size: 2em;
+    color: #259df3;
+    margin-left: 10px;
     transition: all 0.3s ease 0s;
 }
 
-.viewprofile{
-    border-radius: 5px;
-    color: #fff;
-    background-color: #1fd09e;
-    padding: 10px 25px;
-    text-decoration: none;
+.by{
+    font-size: 25px;
+}
+
+.project-description{
+    text-align: justify;
+}
+
+.project-link{
+    color: #259df3;
     transition: all 0.3s ease 0s;
 }
 
-.viewprofile:hover{
-    background-color: #1ca17c;
-    color: #fff;
+
+.about{
+    background-color: #259df3;
+    margin-top: 100px;
 }
 
-.edit_btn{
-    background-color: lavender;
-    width: 100%;
-    text-align: center;
-}
-
-label{
-    color: #000;
+.pertanyaan{
+    max-width: 1000px;
+    word-wrap: break-word;
+    margin: 0 auto;
 }
 
 .form-pertanyaan{

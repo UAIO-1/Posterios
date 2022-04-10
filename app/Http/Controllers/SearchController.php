@@ -31,4 +31,5 @@ class SearchController extends Controller
 
         return view('/explore', compact('projects', 'users'));
     }
+
 }
