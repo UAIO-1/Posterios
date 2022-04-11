@@ -31,6 +31,17 @@ body{
     word-wrap: break-word;
 }
 
+.modal-backdrop{
+    display:none;
+    visibility:hidden;
+    position:relative
+}
+
+.modal{
+    background:url("http://bin.smwcentral.net/u/11361/BlackTransparentBackground.png");
+    z-index:1100;
+}
+
 .username{
     font-size: 2em;
     color: #259df3;
@@ -50,7 +61,6 @@ body{
     color: #259df3;
     transition: all 0.3s ease 0s;
 }
-
 
 .about{
     background-color: #259df3;

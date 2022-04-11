@@ -70,7 +70,7 @@
                         </div>
                     </a>
                     <div class="mt-2">
-                        <a href="" class="username">
+                        <a href="/myProfile/{{ $p->user_id }}" class="username">
                             @if ($users->image == null)
                                 @if ($users->gender == "Male")
                                     <img src="{{ asset('image/user-male.png') }}" alt="posterios male" width="25px" height="25px" class="profile-picture" style="border-radius: 10px">
@@ -152,7 +152,7 @@
                         </div>
                     </a>
                     <div class="mt-2">
-                        <a href="" class="username">
+                        <a href="/myProfile/{{ $p->user_id }}" class="username">
                             @if ($users->image == null)
                                 @if ($users->gender == "Male")
                                     <img src="{{ asset('image/user-male.png') }}" alt="posterios male" width="25px" height="25px" class="profile-picture" style="border-radius: 10px">
@@ -160,7 +160,7 @@
                                     <img src="{{ asset('image/user-female.png') }}" alt="posterios female" width="25px" height="25px" class="profile-picture" style="border-radius: 10px">
                                 @endif
                             @else
-                                <img src="{{ asset('storage/'.$users->image) }}" alt="profile picture" class="profile-picture">
+                                <img src="{{ asset('storage/'.$users->image) }}" alt="profile picture" class="profile-picture" width="25px" height="25px">
                             @endif
                             <small>{{ $p->name }}</small>
                         </a>

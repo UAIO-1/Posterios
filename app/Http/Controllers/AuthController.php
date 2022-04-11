@@ -27,7 +27,6 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            // Authentication passed...
             if($request->remember != null){
                 $minute = 120;
                 $rememberToken = Auth::getRecallerName();
@@ -62,6 +61,9 @@ class AuthController extends Controller
             $user->image = $path;
         }
 
+        $user->jurusan = $request->jurusan;
+        $user->grade = $request->grade;
+        $user->sekolah = $request->sekolah;
         $user->aboutme = $request->aboutme;
 
         $user->save();
@@ -69,32 +71,32 @@ class AuthController extends Controller
         return redirect('/myProfile/'.Auth::user()->id);
     }
 
-    public function getProfileUser(){
+    public function getProfileUser(Request $request){
 
         $users = DB::table('users')
-                ->where('users.id', '=', Auth::user()->id)
+                ->where('users.id', '=', $request->id)
                 ->get();
 
-        $projects = Projects::where('user_id', '=', Auth::user()->id)
+        $projects = Projects::where('user_id', '=', $request->id)
                 ->get();
 
-        $forums = Forums::where('user_id', '=', Auth::user()->id)
+        $forums = Forums::where('user_id', '=', $request->id)
                 ->get();
 
 
         return view('myProfile', compact('users', 'projects', 'forums'));
     }
 
-    public function getProfileOther($id){
+    public function getProfileOther(Request $request){
 
         $users = DB::table('users')
-                ->where('users.id', '=', $id)
+                ->where('users.id', '=', $request->id)
                 ->get();
 
-        $projects = Projects::where('user_id', '=', $id)
+        $projects = Projects::where('user_id', '=', $request->id)
                 ->get();
 
-        $forums = Forums::where('user_id', '=', $id)
+        $forums = Forums::where('user_id', '=', $request->id)
                 ->get();
 
 

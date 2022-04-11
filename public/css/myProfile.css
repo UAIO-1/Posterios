@@ -14,7 +14,6 @@ body{
 
 .header{
     padding-top: 100px;
-    padding-left: 200px;
 }
 
 .name{
@@ -27,6 +26,7 @@ body{
 
 .teks{
     font-size: 20px;
+    color: #259df3;
 }
 
 .profilepicture{
@@ -34,7 +34,7 @@ body{
     height: 300px;
     max-width: 300px;
     max-height: 300px;
-    box-shadow: inset 0 0 20px 0 rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .contact-but{
@@ -54,23 +54,34 @@ body{
     color: #fff;
 }
 
-.aboutme{
-    background-color: #259df3;
-    padding: 20px;
-}
-
-.about{
-    max-width: 1500px;
-    word-wrap: break-word;
-    text-align: justify;
-    margin: 0 auto;
-}
-
 .myproject{
     margin-top: 100px;
 }
 
 h4{
     color: #259df3;
+}
+
+.project-detail{
+    text-decoration: none;
+}
+
+.card-project{
+    transition: all 0.3s ease 0s;
+}
+
+.card-project:hover{
+    transform: translateX(10px);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+td{
+    padding-left: 150px;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.aboutme{
+    text-align: justify;
 }
 

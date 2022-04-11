@@ -82,7 +82,7 @@ class ProjectController extends Controller
                 ->join("projects", "projects.user_id", "=", "users.id")
                 ->first();
 
-        return view('projectDetail', compact('projects', 'users'));
+        return view('projectDetailGuest', compact('projects', 'users'));
     }
 
 
@@ -102,9 +102,17 @@ class ProjectController extends Controller
 
         $projects = Projects::where('id', '=', $request->id)->first();
 
+        $this->validate($request,[
+            'project_title' => 'min:6|max:20',
+            'project_image' => 'image|mimes:jpeg,png,jpg|max:10240',
+            'project_video' => 'max:30720',
+            'project_description' => 'max:10000',
+        ]);
+
         $projects->project_title = $request->project_title;
         $projects->project_category = $request->project_category;
-        $projects->project_link = $request->project_link;
+        $projects->project_subcategory = $request->project_subcategory;
+
 
         if ($request->hasFile('project_image')) {
             $path = 'storage/images/project'.$projects->project_image;
@@ -117,7 +125,9 @@ class ProjectController extends Controller
             $projects->project_image = $path;
         }
 
+        $projects->project_link = $request->project_link;
         $projects->project_description = $request->project_description;
+        $projects->project_video_link = $request->project_video_link;
 
         if ($request->hasFile('project_video')) {
             $path = 'storage/videos/project'.$projects->project_video;

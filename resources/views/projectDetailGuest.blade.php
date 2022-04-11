@@ -18,34 +18,44 @@
                     <h1 class="project-title">{{ $p->project_title }}</h1>
                     <p>
                         <em class="by">by</em>
-                        <a href="" class="username">{{ $p->name }}</a>
+                        <a href="/myProfile/{{ $p->user_id }}" class="username">{{ $p->name }}</a>
                     </p>
-                    <p class="text-muted"><em>{{ $p->project_category }} / {{ $p->project_subcategory }}</em></p>
+                    <div class="d-flex justify-content-between">
+                        <p class="text-muted"><em>{{ $p->project_category }} / {{ $p->project_subcategory }}</em></p>
+                        <p class="text-muted">{{ Carbon\Carbon::parse($p->created_at)->diffForHumans()}}</p>
+                    </div>
                     <hr>
                     <div class="mt-4">
-                        <h6>Description :</h6>
+                        <h6><strong>Description :</strong></h6>
                         @if ($p->project_description == null)
                             <p class="text-muted"><em>tidak ada description.</em></p>
                         @else
-
+                            <p class="project-description text-muted">{{ $p->project_description }}</p>
                         @endif
-                        <p class="project-description text-muted">{{ $p->project_description }}</p>
                     </div>
                     <div class="mt-4">
                         @if ($p->project_link == null)
-                            <p><h6>Source :</h6> <em class="text-muted">tidak ada sumber.</em></p>
+                            <p><h6><strong>Source :</strong></h6> <em class="text-muted">tidak ada sumber.</em></p>
                         @else
-                            <p><h6>Source :</h6> <a href="{{ $p->project_link }}" class="project-link" target="_blank">{{ $p->project_link }}</a></p>
+                            <p><h6><strong>Source :</strong></h6> <a href="{{ $p->project_link }}" class="project-link" target="_blank">{{ $p->project_link }}</a></p>
                         @endif
                     </div>
                     <div class="mt-2">
-                        <h6>Video : </h6>
-                        @if ($p->project_video == null)
-                            <p class="text-muted"><em>tidak ada video.</em></p>
+                        @if ($p->project_video_link == null)
+                            <p><h6><strong> Link Video :</strong></h6> <em class="text-muted">tidak ada link video.</em></p>
                         @else
-                            <video src="{{ asset('storage/'.$p->project_video) }}" controls></video>
+                            <p><h6><strong> Link Video :</strong></h6> <a href="{{ $p->project_video_link }}" class="project-link" target="_blank">{{ $p->project_video_link }}</a></p>
                         @endif
                     </div>
+                </div>
+                <hr>
+                <div class="mt-2 container">
+                    <h6><strong>File Video : </strong></h6>
+                    @if ($p->project_video == null)
+                        <p class="text-muted"><em>tidak ada video.</em></p>
+                    @else
+                        <video src="{{ asset('storage/'.$p->project_video) }}" controls width="100%" height="100%"></video>
+                    @endif
                 </div>
             @endforeach
         </div>
@@ -60,7 +70,7 @@
     </div>
 
     <div class="mt-4">
-        <p class="text-center">Anda harus login terlebih dahulu sebelum memberikan saran, rekomendasi, penilaian, dan jawaban Anda terhadap proyek <strong>{{ $p->name }}</strong></p>
+        <p class="text-center">Anda harus login terlebih dahulu sebelum memberikan saran, rekomendasi, penilaian, dan jawaban Anda terhadap proyek ini.</p>
     </div>
 
 @else

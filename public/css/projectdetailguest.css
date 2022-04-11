@@ -11,7 +11,6 @@ body{
 .project-picture{
     width: 100%;
     border: 1px solid rgba(0, 0, 0, .1);
-    padding: 100px;
 }
 
 .project-title{
@@ -41,6 +40,7 @@ body{
 
 .about{
     background-color: #259df3;
+    margin-top: 100px;
 }
 
 .pertanyaan{
