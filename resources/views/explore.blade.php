@@ -78,7 +78,7 @@
                                     <img src="{{ asset('image/user-female.png') }}" alt="posterios female" width="25px" height="25px" class="profile-picture" style="border-radius: 10px">
                                 @endif
                             @else
-                                <img src="{{ asset('storage/'.$users->image) }}" alt="profile picture" class="profile-picture">
+                                <img src="{{ asset('storage/'.$users->image) }}" alt="profile picture"  width="25px" height="25px" class="profile-picture">
                             @endif
                             <small>{{ $p->name }}</small>
                         </a>

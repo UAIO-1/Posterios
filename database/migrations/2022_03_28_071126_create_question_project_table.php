@@ -17,6 +17,7 @@ class CreateQuestionProjectTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('project_id');
+            $table->string('name');
             $table->integer('first_answer');
             $table->integer('second_answer');
             $table->integer('third_answer');

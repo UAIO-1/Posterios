@@ -61,14 +61,16 @@ class ProjectController extends Controller
                     ->get();
 
         $users = DB::table("users")
-                    ->select("users.image", "users.gender", "users.id")
+                    ->select("users.image", "users.gender", "users.id", "users.jurusan")
                     ->join("projects", "projects.user_id", "=", "users.id")
                     ->first();
 
         $answers = Questions::select('project_id')->where('user_id', Auth::user()->id)->get();
         $answerArr = Arr::flatten($answers->toArray());
 
-        return view('projectDetail', ['projects'=>$projects, 'users'=>$users, 'answers'=>$answerArr]);
+        $questions = Questions::where('project_id', '=', $id)->get();
+
+        return view('projectDetail', ['projects'=>$projects, 'users'=>$users, 'answers'=>$answerArr, 'questions'=>$questions]);
     }
 
     public function getProjectIDGuest($id){
@@ -86,17 +88,6 @@ class ProjectController extends Controller
     }
 
 
-    public function getProfile(){
-        $users = DB::table('users')
-                ->where('users.id', '=', Auth::user()->id)
-                ->get();
-
-        $projects = DB::table('projects')
-                ->where('id','=', Auth::user()->id)
-                ->get();
-
-        return view('myProfile', compact('users', 'projects'));
-    }
 
     public function editProject(Request $request){
 
@@ -171,11 +162,16 @@ class ProjectController extends Controller
         $question = new Questions();
         $question->user_id = $request->user_id;
         $question->project_id = $request->project_id;
+        $question->name = $request->name;
         $question->first_answer = $request->first_answer;
         $question->second_answer = $request->second_answer;
         $question->third_answer = $request->third_answer;
-        $question->strength = $request->strength;
-        $question->weakness = $request->weakness;
+        $question->strength = $request->input('kel1') . '-' .
+                                $request->input('kel2') . '-' .
+                                $request->input('kel3');
+        $question->weakness = $request->input('kek1') . '-' .
+                                $request->input('kek2') . '-' .
+                                $request->input('kek3');
         $question->recommendation = $request->recommendation;
         $question->points = $request->points;
 
@@ -183,7 +179,6 @@ class ProjectController extends Controller
 
         return redirect('/projectDetail/'.$question->project_id);
     }
-
 
 
 }

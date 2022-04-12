@@ -9,7 +9,7 @@
         <nav>
             <ul class="nav__links">
                 <li><a href="/">Home</a></li>
-                <li><a href="#">Post</a></li>
+                <li><a href="/login" data-bs-toggle="modal" data-bs-target="#loginmodal">Post</a></li>
                 <li><a href="/explore">Explore</a></li>
                 <li><a href="/forum">Forum</a></li>
                 <li><a href="/login" class="log" data-bs-toggle="modal" data-bs-target="#loginmodal">Sign In</a></li>

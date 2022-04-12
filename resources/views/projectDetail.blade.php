@@ -286,6 +286,35 @@
         </p>
     </div>
 
+    <div class="container">
+        <div class="row row-cols-1 row-cols-3">
+            @foreach ($questions as $q)
+                <div class="card p-3 m-3">
+                    <div>
+                        <p>from: <a href="">{{ $q->name }}</a></p>
+                    </div>
+                    <div class="text-justify">
+                        <small class="text-muted">Saran / Rekomendasi</small>
+                        <p>{{ Str::limit($q->recommendation, 100, '...') }} <a href="">Read More</a></p>
+                    </div>
+                    <div>
+                        <h5>Nilai:
+                            @if ($q->points > 90)
+                                <span class="text-success">{{ $q->points }}</span>
+                            @elseif($q->points > 75)
+                                <span class="text-success">{{ $q->points }}</span>
+                            @elseif($q->points > 65)
+                                <span class="text-warning">{{ $q->points }}</span>
+                            @else
+                                <span class="text-danger">{{ $q->points }}</span>
+                            @endif
+                        </h5>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+
 
 
 
