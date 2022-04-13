@@ -171,7 +171,7 @@
             </p>
         </div>
 
-        <div class="mt-lg-4">
+        <div class="mt-xl-5">
             <div class="container">
                 @if ($p->project_subcategory == "Programming")
                     @include('pertanyaanTemplate.programming')

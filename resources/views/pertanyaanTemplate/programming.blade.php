@@ -52,77 +52,99 @@
         </div>
     </div>
 
+    <hr>
+
     <div class="mt-xl-5"></div>
 
-    <div class="mb-xl-5">
-        <div class="mb-2">
-            <h6><strong>Kelebihan Proyek (maks. 3)</strong></h6>
-            <small class="text-muted"><i>contoh: Elemen yang digunakan sesuai dengan tema | Tampilan sangat bagus.</i></small>
+    <div class="row row-cols-1 row-cols-2">
+        <div class="col">
+            <div class="">
+                <div class="mb-2">
+                    <h4><strong>Kelebihan Proyek (maks. 3)</strong></h4>
+                    <small class="text-muted"><i>contoh: Elemen yang digunakan sesuai dengan tema | Tampilan sangat bagus.</i></small>
+                </div>
+                <div class="mb-3">
+                    <small>Kelebihan 1</small>
+                    <input type="text" name="kel1" id="kel1" class="form-control" style="width: 100%;">
+                </div>
+                <div class="mb-3">
+                    <small>Kelebihan 2</small>
+                    <input type="text" name="kel2" id="kel2" class="form-control" style="width: 100%;">
+                </div>
+                <div class="mb-3">
+                    <small>Kelebihan 3</small>
+                    <input type="text" name="kel3" id="kel3" class="form-control" style="width: 100%;">
+                </div>
+            </div>
         </div>
-        <div class="mb-3">
-            <small>Kelebihan 1</small>
-            <input type="text" name="kel1" id="kel1" class="form-control" style="width: 50%;">
-        </div>
-        <div class="mb-3">
-            <small>Kelebihan 2</small>
-            <input type="text" name="kel2" id="kel2" class="form-control" style="width: 50%;">
-        </div>
-        <div class="mb-3">
-            <small>Kelebihan 3</small>
-            <input type="text" name="kel3" id="kel3" class="form-control" style="width: 50%;">
+        <div class="col">
+            <div class="">
+                <div class="mb-2">
+                    <h4><strong>Kekurangan Proyek (maks. 3)</strong></h4>
+                    <small class="text-muted"><i>contoh: Elemen yang digunakan sedikit | Hasil yang dikeluarkan tidak sesuai.</i></small>
+                </div>
+                <div class="mb-3">
+                    <small>Kekurangan 1</small>
+                    <input type="text" name="kek1" id="kek1" class="form-control" style="width: 100%;">
+                </div>
+                <div class="mb-3">
+                    <small>Kekurangan 2</small>
+                    <input type="text" name="kek2" id="kek2" class="form-control" style="width: 100%;">
+                </div>
+                <div class="mb-3">
+                    <small>Kekurangan 3</small>
+                    <input type="text" name="kek3" id="kek3" class="form-control" style="width: 100%;">
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="mb-xl-5 mt-lg-4">
-        <h6><strong>Kekurangan Proyek (maks. 3)</strong></h6>
-        <small class="text-muted"><i>contoh: Elemen yang digunakan kurang banyak | Hasil yang masuk tidak sama dengan hasil yang dikeluarkan.</i></small>
-        <div class="mb-3">
-            <small>Kekurangan 1</small>
-            <input type="text" name="kek1" id="kek1" class="form-control" style="width: 50%;">
-        </div>
-        <div class="mb-3">
-            <small>Kekurangan 2</small>
-            <input type="text" name="kek2" id="kek2" class="form-control" style="width: 50%;">
-        </div>
-        <div class="mb-3">
-            <small>Kekurangan 3</small>
-            <input type="text" name="kek3" id="kek3" class="form-control" style="width: 50%;">
-        </div>
-    </div>
 
-    <div class="mb-xl-5">
-        <h6><strong> {{ $p->name }}</strong> memiliki peminatan pada jurusan <strong>{{ $users->jurusan }}.</strong></h6>
-        <p>Berikan saran Anda untuk <em>{{ $p->name }}</em>:</p>
+
+    <div class="mt-xl-5 mb-xl-5">
+        <div class="text-center" style="font-size: 1.5em">
+            <p><strong> {{ $p->name }}</strong> memiliki peminatan pada jurusan <strong>{{ $users->jurusan }}.</strong></p>
+            <p>Berikan saran Anda untuk <em>{{ $p->name }}</em>:</p>
+        </div>
         <div class="row row-cols-1 row-cols-3">
             <div class="col">
                 <label>
-                    <input type="radio" name="recommendation" value="" class="card-input-element">
+                    <input type="radio" name="recommendation" value="A" class="card-input-element">
                     <div class="card card-default card-input">
                         <div class="card-body">
                             <p>A</p>
-                            <p class="text-center">Kamu sangat cocok dibidang ini. Teruslah berlatih sampai menjadi sukses!</p>
+                            <div class="d-flex justify-content-center">
+                                <img src="{{ asset('image/A.png') }}" alt="success">
+                            </div>
+                            <p class="text-center mt-4">Kamu sangat cocok dibidang ini. Teruslah berlatih sampai menjadi sukses!</p>
                         </div>
                     </div>
                 </label>
             </div>
             <div class="col">
                 <label>
-                    <input type="radio" name="recommendation" value="" class="card-input-element">
+                    <input type="radio" name="recommendation" value="B" class="card-input-element">
                     <div class="card card-default card-input">
                         <div class="card-body">
                             <p>B</p>
-                            <p class="text-center">Kamu harus lebih banyak berlatih, harus banyak membuat proyek, harus banyak belajar dari orang lain.</p>
+                            <div class="d-flex justify-content-center">
+                                <img src="{{ asset('image/B.png') }}" alt="power">
+                            </div>
+                            <p class="text-center mt-3">Kamu harus lebih banyak berlatih, harus banyak membuat proyek, harus banyak belajar dari orang lain.</p>
                         </div>
                     </div>
                 </label>
             </div>
             <div class="col">
                 <label>
-                    <input type="radio" name="recommendation" value="" class="card-input-element">
+                    <input type="radio" name="recommendation" value="C" class="card-input-element">
                     <div class="card card-default card-input">
                         <div class="card-body">
                             <p>C</p>
-                            <p class="text-center">Kamu harus lebih banyak berlatih, harus banyak membuat proyek, harus banyak belajar dari orang lain.</p>
+                            <div class="d-flex justify-content-center">
+                                <img src="{{ asset('image/C.png') }}" alt="study" style="border-radius: 50%">
+                            </div>
+                            <p class="text-center mt-4">Semangat terus jangan menyerah, asah terus kemampuanmu.</p>
                         </div>
                     </div>
                 </label>
@@ -130,10 +152,12 @@
         </div>
     </div>
 
-    <div class="mb-3">
-        <label for="customRange3" class="form-label">
-            Total nilai keseluruhan yang Anda ingin berikan terhadap proyek ini?
-            <span class="text-danger">*</span>
+    <hr>
+
+    <div class="mb-3 mt-xl-5">
+        <label for="customRange3" class="form-label text-center">
+            <h3>Total nilai keseluruhan yang Anda ingin berikan terhadap proyek ini?<span class="text-danger">*</span></h3>
+
         </label>
 
         <input type="range" name="points" class="form-range" id="points" value="50" min="0" max="100" oninput="points_output.value = points.value">
@@ -144,8 +168,8 @@
 
 
 
-    <div class="d-flex justify-content-end">
-        <input type="submit" value="Submit" class="submit-but w-25">
+    <div class="d-flex justify-content-end mt-xl-5">
+        <input type="submit" value="Submit Answer" class="submit-but w-25">
     </div>
 </form>
 

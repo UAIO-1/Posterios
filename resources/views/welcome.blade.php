@@ -28,7 +28,7 @@
                     </p>
                     <div>
                         <a href="#" id="getstartbtn" class="btn getstart-btn">How To Start</a>
-                        <a href="/post" class="btn startpost-btn ml-2">Start Posting</a>
+                        <a href="/login" data-bs-toggle="modal" data-bs-target="#loginmodal" class="btn startpost-btn ml-2">Start Posting</a>
                     </div>
                 </div>
                 <div class="d-flex justify-content-center align-items-center mt-3">

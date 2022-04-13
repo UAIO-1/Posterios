@@ -1,5 +1,17 @@
-label {
-    width: 100%;
+.form-label {
+    font-size: 20px;
+}
+
+.card-default{
+    width: 400px;
+    height: 350px;
+    transition: all 0.3s ease 0s;
+    box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.card-default:hover{
+    border: 1px solid #259df3;
+    transform: translateY(-10px);
 }
 
 .card-input-element {
@@ -16,5 +28,5 @@ label {
 }
 
 .card-input-element:checked + .card-input {
-     box-shadow: 0 0 1px 1px #259df3;
+    box-shadow: 0 0 1px 1px #259df3;
 }
