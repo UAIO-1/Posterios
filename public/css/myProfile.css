@@ -1,15 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Catamaran&family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@300&family=Judson&display=swap');
 
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Archivo', sans-serif;
 }
 
 
 body{
     overflow-x: hidden;
-    font-family: 'Catamaran', sans-serif;
 }
 
 .header{
@@ -21,7 +21,7 @@ body{
     font-size: 3em;
     max-width: 500px;
     word-wrap: break-word;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Judson', serif;
 }
 
 .teks{
@@ -30,25 +30,26 @@ body{
 }
 
 .profilepicture{
-    width: 300px;
-    height: 300px;
-    max-width: 300px;
-    max-height: 300px;
+    width: 350px;
+    height: 350px;
+    max-width: 350px;
+    max-height: 350px;
+    border-radius: 50%;
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .contact-but{
-    background-color: #259df3;
+    background-color: #fff;
     padding: 10px 25px;
     text-decoration: none;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
+    color: #259df3;
+    border-radius: 100px;
     transition: all 0.3s ease 0s;
+    box-shadow: -5px 5px 5px 0 rgba(0, 0, 0, 0.3);
 }
 
 .contact-but:hover{
-    transform: translateX(5px);
+    background-color: #259df3;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
     color: #fff;
 }
@@ -67,10 +68,11 @@ h4{
 
 .card-project{
     transition: all 0.3s ease 0s;
+    box-shadow: -20px 20px 20px 5px rgba(0, 0, 0, 0.3);
 }
 
 .card-project:hover{
-    transform: translateX(10px);
+    transform: translateY(-5px);
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 }
 

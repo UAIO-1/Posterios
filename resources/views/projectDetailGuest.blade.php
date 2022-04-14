@@ -11,10 +11,10 @@
     <div class="container">
         <div class="row">
             @foreach($projects as $p)
-                <div class="col-md-6">
+                <div class="col-md-6 col">
                     <img src="{{ asset('storage/'.$p->project_image) }}" alt="project picture" class="project-picture">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col">
                     <h1 class="project-title">{{ $p->project_title }}</h1>
                     <p>
                         <em class="by">by</em>

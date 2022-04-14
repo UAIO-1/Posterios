@@ -4,8 +4,8 @@ body{
     overflow-x: hidden;
 }
 
-.col-md-6{
-    padding: 150px;
+.col{
+    padding: 50px;
 }
 
 .project-picture{

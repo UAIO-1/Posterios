@@ -1,10 +1,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
+<style>
+    label{
+        font-weight: bold;
+    }
+</style>
+
 <div class="modal fade" id="EditProfileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="EditProfileModal" style="color: #259df3">Edit Profile</h5>
+            <div class="modal-header border-0">
+                <h5 class="modal-title" id="EditProfileModal" style="color: #259df3">Ubah Profile</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -12,11 +18,11 @@
                     {{ csrf_field() }}
                     <input type="hidden" name="id" value="{{ Auth::user()->id }}">
 
-                    <label for="formFile" class="form-label">Grade</label>
+                    <label for="formFile" class="form-label">Kelas</label>
                     <div class="mb-3">
                         <select name="grade" class="form-select">
                             @if ($u->grade == null)
-                                <option selected>Select Grade</option>
+                                <option selected disabled>Pilih Kelas</option>
                                 <option value="10">10</option>
                                 <option value="11">11</option>
                                 <option value="12">12</option>
@@ -37,29 +43,29 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="formFile" class="form-label">School</label>
+                        <label for="formFile" class="form-label">Sekolah</label>
                         <input class="form-control" type="text" name="sekolah" value="{{ $u->sekolah }}" placeholder="SMP 06 Satu Bangsa">
                     </div>
 
                     <div class="mb-3">
-                        <label for="formFile" class="form-label">Preferred Major</label>
+                        <label for="formFile" class="form-label">Jurusan yang disukai</label>
                         <input class="form-control" type="text" name="jurusan" value="{{ $u->jurusan }}" placeholder="Teknik Industri, Teknik Informatika">
                     </div>
 
                     <div class="mb-3">
-                        <label for="formFile" class="form-label">Profile Picture</label>
+                        <label for="formFile" class="form-label">Gambar Profile</label>
                         <input class="form-control" type="file" id="formFile" name="image" accept="image/jpg, image/jpeg, image/png">
                     </div>
 
                     <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">About Me</label>
+                        <label for="exampleFormControlTextarea1" class="form-label">Tentang Saya</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" name="aboutme" rows="10">{{ $u->aboutme }}</textarea>
                     </div>
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn bg-transparent" data-bs-dismiss="modal">Close</button>
-                <input type="submit" class="btn but-save text-light" style="background-color: #259df3" value="Save Changes">
+                <button type="button" class="btn bg-transparent" data-bs-dismiss="modal">Tutup</button>
+                <input type="submit" class="btn but-save text-light" style="background-color: #259df3" value="Simpan">
             </div>
             </form>
         </div>

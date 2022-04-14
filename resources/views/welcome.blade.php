@@ -22,8 +22,8 @@
                 @include('navbar')
                 @include('welcome.effectbubble')
                 <div class="container-header text-center text-light mt-lg-4">
-                    <h1 class="title mb-4">Project Showcase & Forum Disccusion</h1>
-                    <p class="mb-4">
+                    <h2 class="title mb-4">Project Showcase And Forum Disccusion</h2>
+                    <p class="mb-4 slogan">
                         Posterios is a platform to show off and promote student creations widely. Everyone can learn through a project and build connections with people.
                     </p>
                     <div>
@@ -44,8 +44,8 @@
                 @include('navbar')
                 @include('welcome.effectbubble')
                 <div class="container-header text-center text-light mt-lg-4">
-                    <h1 class="title mb-4">Project Showcase & Forum Disccusion</h1>
-                    <p class="mb-4">
+                    <h2 class="title mb-4">Project Showcase And Forum Disccusion</h2>
+                    <p class="mb-4 slogan">
                         Posterios is a platform to show off and promote student creations widely. Everyone can learn through a project and build connections with people.
                     </p>
                     <div>

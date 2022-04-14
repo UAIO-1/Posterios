@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@300&family=Judson&display=swap');
 
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Archivo', sans-serif;
 }
 
 body{
@@ -17,6 +18,15 @@ body{
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+.title{
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 3em;
+}
+
+.slogan{
+    font-family: 'Judson', serif;
 }
 
 .gambar-depan{

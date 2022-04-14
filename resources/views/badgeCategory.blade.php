@@ -9,9 +9,6 @@
 @elseif ($p->project_subcategory == "Komputer dan Jaringan")
     <p class="card-text badge badge-komputerdanjaringan">{{ $p->project_subcategory }}</p>
 
-@elseif ($p->project_subcategory == "Kelistrikan")
-    <p class="card-text badge badge-kelistrikan">{{ $p->project_subcategory }}</p>
-
 @elseif ($p->project_subcategory == "Seni Tari")
     <p class="card-text badge badge-senitari">{{ $p->project_subcategory }}</p>
 

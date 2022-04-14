@@ -32,30 +32,37 @@
                     <p class="teks">{{ $u->role }}</p>
                     <table>
                         <tr>
-                            <th>Age</th>
+                            <th>Umur</th>
                             <td>{{ \Carbon\Carbon::parse($u->dob)->diff(\Carbon\Carbon::now())->format('%y years old') }}</td>
                         </tr>
                         <tr>
-                            <th>Gender</th>
+                            <th>Jenis Kelamin</th>
                             <td>{{ $u->gender }}</td>
                         </tr>
                         <tr>
-                            <th>Grade</th>
-                            <td>{{ $u->grade }}</td>
+                            <th>Kelas</th>
+                            @if ($u->grade == null || $u->grade == "Select Grade")
+                                <td></td>
+                            @else
+                                <td>{{ $u->grade }} SMA</td>
+                            @endif
                         </tr>
                         <tr>
-                            <th>School</th>
+                            <th>Sekolah</th>
                             <td>{{ $u->sekolah }}</td>
                         </tr>
+                        <tr>
+                            <th>Jurusan yang diminati</th>
+                            <td>{{ $u->jurusan }}</td>
+                        </tr>
                     </table>
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to={{ $u->email }}" type="button" target="_blank" class="contact-but">Contact Me</a>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="container mt-xl-5">
-        <h6><strong>About Me</strong></h6>
+        <h6><strong>Tentang Saya:</strong></h6>
         <p class="aboutme">{{ $u->aboutme }}</p>
     </div>
 
@@ -66,7 +73,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-kanban-fill" viewBox="0 0 16 16">
                         <path d="M2.5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2h-11zm5 2h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zm-5 1a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3zm9-1h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/>
                     </svg>
-                    Projects
+                    Proyek
                 </button>
             </li>
             <li class="nav-item" role="presentation">
@@ -74,7 +81,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-square-dots-fill" viewBox="0 0 16 16">
                         <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.5a1 1 0 0 0-.8.4l-1.9 2.533a1 1 0 0 1-1.6 0L5.3 12.4a1 1 0 0 0-.8-.4H2a2 2 0 0 1-2-2V2zm5 4a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
                     </svg>
-                    Forums
+                    Forum
                 </button>
             </li>
         </ul>
@@ -89,8 +96,8 @@
                 <div class="row row-cols-1 row-cols-3">
                     @foreach ($projects as $p)
                     <div class="col">
-                        <div class="card mb-3 card-project" style="max-width: 540px;">
-                            <a href="/projectDetail/{{ $p->id }}" class="project-detail">
+                        <div class="card border-0 mb-3 card-project" style="max-width: 540px;">
+                            <a href="/projectDetailGuest/{{ $p->id }}" class="project-detail">
                                 <div class="row g-0">
                                     <div class="col-md-4">
                                         <img src="{{ asset('storage/'.$p->project_image) }}" class="img-fluid rounded-start projectimage p-3" alt="project image">
@@ -155,20 +162,28 @@
                     <p class="teks">{{ $u->role }}</p>
                     <table>
                         <tr>
-                            <th>Age</th>
+                            <th>Umur</th>
                             <td>{{ \Carbon\Carbon::parse($u->dob)->diff(\Carbon\Carbon::now())->format('%y years old') }}</td>
                         </tr>
                         <tr>
-                            <th>Gender</th>
+                            <th>Jenis Kelamin</th>
                             <td>{{ $u->gender }}</td>
                         </tr>
                         <tr>
-                            <th>Grade</th>
-                            <td>{{ $u->grade }}</td>
+                            <th>Kelas</th>
+                            @if ($u->grade == null || $u->grade == "Select Grade")
+                                <td></td>
+                            @else
+                                <td>{{ $u->grade }} SMA</td>
+                            @endif
                         </tr>
                         <tr>
-                            <th>School</th>
+                            <th>Sekolah</th>
                             <td>{{ $u->sekolah }}</td>
+                        </tr>
+                        <tr>
+                            <th>Jurusan yang diminati</th>
+                            <td>{{ $u->jurusan }}</td>
                         </tr>
                     </table>
                 </div>
@@ -177,7 +192,7 @@
     </div>
 
     <div class="container mt-xl-5">
-        <h6><strong>About Me</strong></h6>
+        <h6><strong>Tentang Saya:</strong></h6>
         <p class="aboutme">{{ $u->aboutme }}</p>
     </div>
 
@@ -188,7 +203,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-kanban-fill" viewBox="0 0 16 16">
                         <path d="M2.5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2h-11zm5 2h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zm-5 1a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3zm9-1h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/>
                     </svg>
-                    Projects
+                    Proyek
                 </button>
             </li>
             <li class="nav-item" role="presentation">
@@ -196,7 +211,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-square-dots-fill" viewBox="0 0 16 16">
                         <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.5a1 1 0 0 0-.8.4l-1.9 2.533a1 1 0 0 1-1.6 0L5.3 12.4a1 1 0 0 0-.8-.4H2a2 2 0 0 1-2-2V2zm5 4a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
                     </svg>
-                    Forums
+                    Forum
                 </button>
             </li>
         </ul>
@@ -207,7 +222,7 @@
                 <div class="row row-cols-1 row-cols-3">
                     @foreach ($projects as $p)
                     <div class="col">
-                        <div class="card mb-3 card-project" style="max-width: 540px;">
+                        <div class="card mb-3 border-0 card-project" style="max-width: 540px;">
                             <a href="/projectDetail/{{ $p->id }}" class="project-detail">
                                 <div class="row g-0">
                                     <div class="col-md-4">
@@ -287,20 +302,28 @@
                     <p class="teks">{{ $u->role }}</p>
                     <table>
                         <tr>
-                            <th>Age</th>
+                            <th>Umur</th>
                             <td>{{ \Carbon\Carbon::parse($u->dob)->diff(\Carbon\Carbon::now())->format('%y years old') }}</td>
                         </tr>
                         <tr>
-                            <th>Gender</th>
+                            <th>Jenis Kelamin</th>
                             <td>{{ $u->gender }}</td>
                         </tr>
                         <tr>
-                            <th>Grade</th>
-                            <td>{{ $u->grade }}</td>
+                            <th>Kelas</th>
+                            @if ($u->grade == null || $u->grade == "Select Grade")
+                                <td></td>
+                            @else
+                                <td>{{ $u->grade }} SMA</td>
+                            @endif
                         </tr>
                         <tr>
-                            <th>School</th>
+                            <th>Sekolah</th>
                             <td>{{ $u->sekolah }}</td>
+                        </tr>
+                        <tr>
+                            <th>Jurusan yang diminati</th>
+                            <td>{{ $u->jurusan }}</td>
                         </tr>
                     </table>
                 </div>
@@ -309,14 +332,14 @@
     </div>
 
     <div class="container mt-xl-5">
-        <h6><strong>About Me</strong></h6>
+        <h6><strong>Tentang Saya:</strong></h6>
         <p class="aboutme">{{ $u->aboutme }}</p>
     </div>
 
     <div class="container mt-xl-5">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="wishlist-tab" data-bs-toggle="tab" data-bs-target="#wishlist" type="button" role="tab" aria-controls="wishlist" aria-selected="true">
+                <button class="nav-link" id="wishlist-tab" data-bs-toggle="tab" data-bs-target="#wishlist" type="button" role="tab" aria-controls="wishlist" aria-selected="true">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-heart-fill" viewBox="0 0 16 16">
                         <path d="M2 15.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v13.5zM8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z"/>
                     </svg>
@@ -328,7 +351,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-kanban-fill" viewBox="0 0 16 16">
                         <path d="M2.5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2h-11zm5 2h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zm-5 1a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3zm9-1h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/>
                     </svg>
-                    Projects
+                    Proyek
                 </button>
             </li>
             <li class="nav-item" role="presentation">
@@ -336,7 +359,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-square-dots-fill" viewBox="0 0 16 16">
                         <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.5a1 1 0 0 0-.8.4l-1.9 2.533a1 1 0 0 1-1.6 0L5.3 12.4a1 1 0 0 0-.8-.4H2a2 2 0 0 1-2-2V2zm5 4a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
                     </svg>
-                    Forums
+                    Forum
                 </button>
             </li>
         </ul>
@@ -351,7 +374,7 @@
                 <div class="row row-cols-1 row-cols-3">
                     @foreach ($projects as $p)
                     <div class="col">
-                        <div class="card mb-3 card-project" style="max-width: 540px;">
+                        <div class="card border-0 mb-3 card-project" style="max-width: 540px;">
                             <a href="/projectDetail/{{ $p->id }}" class="project-detail">
                                 <div class="row g-0">
                                     <div class="col-md-4">

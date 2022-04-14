@@ -116,7 +116,7 @@
                             <div class="d-flex justify-content-center">
                                 <img src="{{ asset('image/A.png') }}" alt="success">
                             </div>
-                            <p class="text-center mt-4">Kamu sangat cocok dibidang ini. Teruslah berlatih sampai menjadi sukses!</p>
+                            <p class="text-center mt-4">Kamu sangat cocok dibidang ini. Teruslah berkarya sampai menjadi sukses!</p>
                         </div>
                     </div>
                 </label>

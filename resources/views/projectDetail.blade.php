@@ -35,142 +35,74 @@
 
 @elseif(Auth::check() && Auth::user()->id != $p->user_id)
 
-
-    @if (in_array($p->id, $answers))
-
-        <div class="container">
-            <div class="row">
-                @foreach($projects as $p)
-                    <div class="col-md-6">
-                        <img src="{{ asset('storage/'.$p->project_image) }}" alt="project picture" class="project-picture">
-                    </div>
-                    <div class="col-md-6">
-                        <h1 class="project-title">{{ $p->project_title }}</h1>
-                        <p>
-                            <em class="by">by</em>
-                            <a href="/myProfile/{{ $p->user_id }}" class="username">{{ $p->name }}</a>
-                        </p>
-                        <div class="d-flex justify-content-between">
-                            <p class="text-muted"><em>{{ $p->project_category }} / {{ $p->project_subcategory }}</em></p>
-                            <p class="text-muted">{{ Carbon\Carbon::parse($p->created_at)->diffForHumans()}}</p>
-                        </div>
-                        <hr>
-                        <a href="" class="btn btn-outline-secondary">Add to Wishlist</a>
-                        <div class="mt-4">
-                            <h6><strong>Description :</strong></h6>
-                            @if ($p->project_description == null)
-                                <p class="text-muted"><em>tidak ada description.</em></p>
-                            @else
-
-                            @endif
-                            <p class="project-description text-muted">{{ $p->project_description }}</p>
-                        </div>
-                        <div class="mt-4">
-                            @if ($p->project_link == null)
-                                <p><h6><strong>Source :</strong></h6> <em class="text-muted">tidak ada sumber.</em></p>
-                            @else
-                                <p><h6><strong>Source :</strong></h6> <a href="{{ $p->project_link }}" class="project-link" target="_blank">{{ $p->project_link }}</a></p>
-                            @endif
-                        </div>
-                        <div class="mt-2">
-                            @if ($p->project_video_link == null)
-                                <p><h6><strong> Link Video :</strong></h6> <em class="text-muted">tidak ada link video.</em></p>
-                            @else
-                                <p><h6><strong> Link Video :</strong></h6> <a href="{{ $p->project_video_link }}" class="project-link" target="_blank">{{ $p->project_video_link }}</a></p>
-                            @endif
-                        </div>
+    <div class="container">
+        <div class="row">
+            @foreach($projects as $p)
+                <div class="col-md-6 col">
+                    <img src="{{ asset('storage/'.$p->project_image) }}" alt="project picture" class="project-picture">
+                </div>
+                <div class="col-md-6 col">
+                    <h1 class="project-title">{{ $p->project_title }}</h1>
+                    <p>
+                        <em class="by">by</em>
+                        <a href="/myProfile/{{ $p->user_id }}" class="username">{{ $p->name }}</a>
+                    </p>
+                    <div class="d-flex justify-content-between">
+                        <p class="text-muted"><em>{{ $p->project_category }} / {{ $p->project_subcategory }}</em></p>
+                        <p class="text-muted">{{ Carbon\Carbon::parse($p->created_at)->diffForHumans()}}</p>
                     </div>
                     <hr>
-                    <div class="mt-2 container">
-                        <h6><strong>File Video : </strong></h6>
-                        @if ($p->project_video == null)
-                            <p class="text-muted"><em>tidak ada video.</em></p>
+                    <a href="" class="btn btn-outline-secondary">Add to Wishlist</a>
+                    <div class="mt-4">
+                        <h6><strong>Description :</strong></h6>
+                        @if ($p->project_description == null)
+                            <p class="text-muted"><em>tidak ada description.</em></p>
                         @else
-                            <video src="{{ asset('storage/'.$p->project_video) }}" controls width="100%" height="100%"></video>
+
+                        @endif
+                        <p class="project-description text-muted">{{ $p->project_description }}</p>
+                    </div>
+                    <div class="mt-4">
+                        @if ($p->project_link == null)
+                            <p><h6><strong>Source :</strong></h6> <em class="text-muted">tidak ada sumber.</em></p>
+                        @else
+                            <p><h6><strong>Source :</strong></h6> <a href="{{ $p->project_link }}" class="project-link" target="_blank">{{ $p->project_link }}</a></p>
                         @endif
                     </div>
-                @endforeach
-            </div>
+                    <div class="mt-2">
+                        @if ($p->project_video_link == null)
+                            <p><h6><strong> Link Video :</strong></h6> <em class="text-muted">tidak ada link video.</em></p>
+                        @else
+                            <p><h6><strong> Link Video :</strong></h6> <a href="{{ $p->project_video_link }}" class="project-link" target="_blank">{{ $p->project_video_link }}</a></p>
+                        @endif
+                    </div>
+                </div>
+                <hr>
+                <div class="mt-2 container">
+                    <h6><strong>File Video : </strong></h6>
+                    @if ($p->project_video == null)
+                        <p class="text-muted"><em>tidak ada video.</em></p>
+                    @else
+                        <video src="{{ asset('storage/'.$p->project_video) }}" controls width="100%" height="100%"></video>
+                    @endif
+                </div>
+            @endforeach
         </div>
+    </div>
 
-        <div class="about text-light text-center p-3">
-            <h4>Tentang Pertanyaan</h4>
-            <p class="pertanyaan">
-                Berikanlah saran, rekomendasi, penilaian, dan jawaban Anda terhadap proyek <strong>{{ $p->name }}.</strong>
-                Penilaian yang masuk dapat menjadi pertimbangan bagi <strong>{{ $p->name }}</strong> untuk membuat proyek yang lebih baik.
-            </p>
-        </div>
+    <div class="about text-light text-center p-3">
+        <h4>Tentang Pertanyaan</h4>
+        <p class="pertanyaan">
+            Berikanlah saran, rekomendasi, penilaian, dan jawaban Anda terhadap proyek <strong>{{ $p->name }}.</strong>
+            Penilaian yang masuk dapat menjadi pertimbangan bagi <strong>{{ $p->name }}</strong> untuk membuat proyek yang lebih baik.
+        </p>
+    </div>
 
+    @if (in_array($p->id, $answers))
         <div class="mt-4">
             <p class="text-center">Anda telah memberikan saran, rekomendasi, penilaian, dan jawaban Anda terhadap proyek ini.</p>
         </div>
-
-
     @else
-
-        <div class="container">
-            <div class="row">
-                @foreach($projects as $p)
-                    <div class="col-md-6">
-                        <img src="{{ asset('storage/'.$p->project_image) }}" alt="project picture" class="project-picture">
-                    </div>
-                    <div class="col-md-6">
-                        <h1 class="project-title">{{ $p->project_title }}</h1>
-                        <p>
-                            <em class="by">by</em>
-                            <a href="/myProfile/{{ $p->user_id }}" class="username">{{ $p->name }}</a>
-                        </p>
-                        <div class="d-flex justify-content-between">
-                            <p class="text-muted"><em>{{ $p->project_category }} / {{ $p->project_subcategory }}</em></p>
-                            <p class="text-muted">{{ Carbon\Carbon::parse($p->created_at)->diffForHumans()}}</p>
-                        </div>
-                        <hr>
-                        <a href="" class="btn btn-outline-secondary">Add to Wishlist</a>
-                        <div class="mt-4">
-                            <h6><strong>Description :</strong></h6>
-                            @if ($p->project_description == null)
-                                <p class="text-muted"><em>tidak ada description.</em></p>
-                            @else
-
-                            @endif
-                            <p class="project-description text-muted">{{ $p->project_description }}</p>
-                        </div>
-                        <div class="mt-4">
-                            @if ($p->project_link == null)
-                                <p><h6><strong>Source :</strong></h6> <em class="text-muted">tidak ada sumber.</em></p>
-                            @else
-                                <p><h6><strong>Source :</strong></h6> <a href="{{ $p->project_link }}" class="project-link" target="_blank">{{ $p->project_link }}</a></p>
-                            @endif
-                        </div>
-                        <div class="mt-2">
-                            @if ($p->project_video_link == null)
-                                <p><h6><strong> Link Video :</strong></h6> <em class="text-muted">tidak ada link video.</em></p>
-                            @else
-                                <p><h6><strong> Link Video :</strong></h6> <a href="{{ $p->project_video_link }}" class="project-link" target="_blank">{{ $p->project_video_link }}</a></p>
-                            @endif
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="mt-2 container">
-                        <h6><strong>File Video : </strong></h6>
-                        @if ($p->project_video == null)
-                            <p class="text-muted"><em>tidak ada video.</em></p>
-                        @else
-                            <video src="{{ asset('storage/'.$p->project_video) }}" controls width="100%" height="100%"></video>
-                        @endif
-                    </div>
-                @endforeach
-            </div>
-        </div>
-
-        <div class="about text-light text-center p-3">
-            <h4>Tentang Pertanyaan</h4>
-            <p class="pertanyaan">
-                Berikanlah saran, rekomendasi, penilaian, dan jawaban Anda terhadap proyek <strong>{{ $p->name }}.</strong>
-                Penilaian yang masuk dapat menjadi pertimbangan bagi <strong>{{ $p->name }}</strong> untuk membuat proyek yang lebih baik.
-            </p>
-        </div>
-
         <div class="mt-xl-5">
             <div class="container">
                 @if ($p->project_subcategory == "Programming")
@@ -188,9 +120,8 @@
                 @endif
             </div>
         </div>
-
-
     @endif
+
 
 
 
@@ -286,31 +217,103 @@
         </p>
     </div>
 
-    <div class="container">
-        <div class="row row-cols-1 row-cols-3">
+    <div class="mt-lg-4 p-3">
+        <div class="row row-cols-5 g-4">
             @foreach ($questions as $q)
-                <div class="card p-3 m-3">
-                    <div>
-                        <p>from: <a href="">{{ $q->name }}</a></p>
+            <div class="col">
+                <a href="" class="card-detail">
+                    <div class="card">
+                        @if ($q->recommendation == "A")
+                            <img src="{{ asset('image/A.png') }}" alt="success" class="card-img-top">
+                            <small class="text-muted text-center"><em>from</em></small>
+                            <small class="text-center"><em class="name">{{ $q->name }}</em></small>
+                            <p class="text-center rec">Kamu sangat cocok dibidang ini. Teruslah berkarya sampai menjadi sukses!</p>
+                        @elseif ($q->recommendation == "B")
+                            <img src="{{ asset('image/B.png') }}" alt="success" class="card-img-top">
+                            <small class="text-muted text-center"><em>from</em></small>
+                            <small class="text-center"><em class="name">{{ $q->name }}</em></small>
+                            <p class="text-center rec">Kamu harus lebih banyak berlatih, harus banyak membuat proyek, harus banyak belajar dari orang lain.</p>
+                        @else
+                            <img src="{{ asset('image/C.png') }}" alt="success" class="card-img-top" style="border-radius: 50%">
+                            <small class="text-muted text-center"><em>from</em></small>
+                            <small class="text-center"><em class="name">{{ $q->name }}</em></small>
+                            <p class="text-center rec">Semangat terus jangan menyerah, asah terus kemampuanmu.</p>
+                        @endif
                     </div>
-                    <div class="text-justify">
-                        <small class="text-muted">Saran / Rekomendasi</small>
-                        <p>{{ Str::limit($q->recommendation, 100, '...') }} <a href="">Read More</a></p>
+                </a>
+            </div>
+                {{-- @if ($q->recommendation == "A")
+                        <div class="card card-feed p-3 m-3">
+                            <div class="d-flex justify-content-center">
+                                <img src="{{ asset('image/A.png') }}" alt="success">
+                            </div>
+                            <div class="text-center text-muted mt-2">
+                                <small>from: <a href="">{{ $q->name }}</a></small>
+                            </div>
+                            <p class="text-center mt-4">Kamu sangat cocok dibidang ini. Teruslah berkarya sampai menjadi sukses!</p>
+                            <div>
+                                <h5>Nilai:
+                                    @if ($q->points > 90)
+                                        <span class="text-success">{{ $q->points }}</span>
+                                    @elseif($q->points > 75)
+                                        <span class="text-success">{{ $q->points }}</span>
+                                    @elseif($q->points > 65)
+                                        <span class="text-warning">{{ $q->points }}</span>
+                                    @else
+                                        <span class="text-danger">{{ $q->points }}</span>
+                                    @endif
+                                </h5>
+                            </div>
+                        </div>
+
+                @elseif ($q->recommendation == "B")
+                    <div class="card card-feed p-3 m-3">
+                        <div class="d-flex justify-content-center">
+                            <img src="{{ asset('image/A.png') }}" alt="success">
+                        </div>
+                        <div class="text-center text-muted mt-2">
+                            <small>from: <a href="">{{ $q->name }}</a></small>
+                        </div>
+                        <p class="text-center mt-4">Kamu sangat cocok dibidang ini. Teruslah berkarya sampai menjadi sukses!</p>
+                        <div>
+                            <h5>Nilai:
+                                @if ($q->points > 90)
+                                    <span class="text-success">{{ $q->points }}</span>
+                                @elseif($q->points > 75)
+                                    <span class="text-success">{{ $q->points }}</span>
+                                @elseif($q->points > 65)
+                                    <span class="text-warning">{{ $q->points }}</span>
+                                @else
+                                    <span class="text-danger">{{ $q->points }}</span>
+                                @endif
+                            </h5>
+                        </div>
                     </div>
-                    <div>
-                        <h5>Nilai:
-                            @if ($q->points > 90)
-                                <span class="text-success">{{ $q->points }}</span>
-                            @elseif($q->points > 75)
-                                <span class="text-success">{{ $q->points }}</span>
-                            @elseif($q->points > 65)
-                                <span class="text-warning">{{ $q->points }}</span>
-                            @else
-                                <span class="text-danger">{{ $q->points }}</span>
-                            @endif
-                        </h5>
+                @else
+                    <div class="card card-feed p-3 m-3">
+                        <div class="d-flex justify-content-center">
+                            <img src="{{ asset('image/A.png') }}" alt="success">
+                        </div>
+                        <div class="text-center text-muted mt-2">
+                            <small>from: <a href="">{{ $q->name }}</a></small>
+                        </div>
+                        <p class="text-center mt-4">Kamu sangat cocok dibidang ini. Teruslah berkarya sampai menjadi sukses!</p>
+                        <div>
+                            <h5>Nilai:
+                                @if ($q->points > 90)
+                                    <span class="text-success">{{ $q->points }}</span>
+                                @elseif($q->points > 75)
+                                    <span class="text-success">{{ $q->points }}</span>
+                                @elseif($q->points > 65)
+                                    <span class="text-warning">{{ $q->points }}</span>
+                                @else
+                                    <span class="text-danger">{{ $q->points }}</span>
+                                @endif
+                            </h5>
+                        </div>
                     </div>
-                </div>
+                @endif --}}
+
             @endforeach
         </div>
     </div>

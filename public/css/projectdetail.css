@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap');
 
 *{
     box-sizing: border-box;
@@ -11,8 +12,8 @@ body{
     overflow-x: hidden;
 }
 
-.col-md-6{
-    padding: 150px;
+.col{
+    padding: 50px;
 }
 
 .project-picture{
@@ -91,4 +92,44 @@ body{
 .submit-but:hover{
     transform: translateY(-1px);
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+}
+
+.card{
+    width: 350px;
+    height: 400px;
+    transition: all 0.3s ease 0s;
+}
+
+.card:hover{
+    transform: translateY(-5px);
+}
+
+.rec{
+    width: 80%;
+    margin: auto;
+    font-size: 16px;
+}
+
+.card-img-top{
+    max-width: 250px;
+    max-height: 250px;
+    margin: auto;
+}
+
+.card-detail{
+    text-decoration: none;
+    color: #000;
+}
+
+.user-detail{
+    text-decoration: none;
+}
+
+.name{
+    color: #000;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.card:hover .name{
+    color: #000;
 }

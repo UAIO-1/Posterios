@@ -12,10 +12,14 @@ li, a, button{
     text-decoration: none;
 }
 
-/* .modal-backdrop {
-    position:unset !important;
-
-} */
+.pp{
+    width: 25px;
+    height: 25px;
+    max-width: 25px;
+    max-height: 25px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
 
 header{
     display: flex;
@@ -78,9 +82,14 @@ input:-webkit-autofill:focus{
     border-color: #259df3;
 }
 
-.dropdown {
+.dropdown{
     position: relative;
     display: inline-block;
+}
+
+.dropdown:hover .dropdown-menu{
+    display: block;
+    margin-top: -5px;
 }
 
 .dropdown-menu li a {
