@@ -68,10 +68,11 @@ h4{
 
 .card-project{
     transition: all 0.3s ease 0s;
-    box-shadow: -20px 20px 20px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: -10px 10px 20px 0 rgba(0, 0, 0, 0.1);
 }
 
 .card-project:hover{
+    border-color: #259df3;
     transform: translateY(-5px);
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 }

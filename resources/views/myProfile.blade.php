@@ -7,6 +7,7 @@
 
 @include('navbar')
 
+
 @foreach ($users as $u)
 
 
@@ -96,7 +97,7 @@
                 <div class="row row-cols-1 row-cols-3">
                     @foreach ($projects as $p)
                     <div class="col">
-                        <div class="card border-0 mb-3 card-project" style="max-width: 540px;">
+                        <div class="card mb-3 card-project" style="max-width: 540px;">
                             <a href="/projectDetailGuest/{{ $p->id }}" class="project-detail">
                                 <div class="row g-0">
                                     <div class="col-md-4">
@@ -106,6 +107,9 @@
                                         <div class="card-body">
                                             <h5 class="card-title">{{ $p->project_title }}</h5>
                                             @include('badgeCategory')
+                                            @php
+                                                Carbon\Carbon::setLocale('id');
+                                            @endphp
                                             <p class="card-text"><small class="text-muted">{{ Carbon\Carbon::parse($p->created_at)->diffForHumans()}}</small></p>
                                         </div>
                                     </div>
@@ -222,7 +226,7 @@
                 <div class="row row-cols-1 row-cols-3">
                     @foreach ($projects as $p)
                     <div class="col">
-                        <div class="card mb-3 border-0 card-project" style="max-width: 540px;">
+                        <div class="card mb-3 card-project" style="max-width: 540px;">
                             <a href="/projectDetail/{{ $p->id }}" class="project-detail">
                                 <div class="row g-0">
                                     <div class="col-md-4">
@@ -232,6 +236,9 @@
                                         <div class="card-body">
                                             <h5 class="card-title">{{ $p->project_title }}</h5>
                                             @include('badgeCategory')
+                                            @php
+                                                Carbon\Carbon::setLocale('id');
+                                            @endphp
                                             <p class="card-text"><small class="text-muted">{{ Carbon\Carbon::parse($p->created_at)->diffForHumans()}}</small></p>
                                         </div>
                                     </div>
@@ -374,7 +381,7 @@
                 <div class="row row-cols-1 row-cols-3">
                     @foreach ($projects as $p)
                     <div class="col">
-                        <div class="card border-0 mb-3 card-project" style="max-width: 540px;">
+                        <div class="card mb-3 card-project" style="max-width: 540px;">
                             <a href="/projectDetail/{{ $p->id }}" class="project-detail">
                                 <div class="row g-0">
                                     <div class="col-md-4">
@@ -384,6 +391,9 @@
                                         <div class="card-body">
                                             <h5 class="card-title">{{ $p->project_title }}</h5>
                                             @include('badgeCategory')
+                                            @php
+                                                Carbon\Carbon::setLocale('id');
+                                            @endphp
                                             <p class="card-text"><small class="text-muted">{{ Carbon\Carbon::parse($p->created_at)->diffForHumans()}}</small></p>
                                         </div>
                                     </div>
