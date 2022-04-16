@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'Project Detail | Posterios')
+@section('title', 'Project Detail • Posterios')
 <link rel="shortcut icon" href="{{ asset('image/icon-logo-white.png') }}">
 <link rel="stylesheet" href="{{ asset('css/projectdetailguest.css') }}">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -8,7 +8,7 @@
 
 @if (!Auth::check())
 
-    <div class="container">
+    <div class="container mt-xl-5">
         <div class="row">
             @foreach($projects as $p)
                 <div class="col-md-6 col">
@@ -22,29 +22,32 @@
                     </p>
                     <div class="d-flex justify-content-between">
                         <p class="text-muted"><em>{{ $p->project_category }} / {{ $p->project_subcategory }}</em></p>
+                        @php
+                            Carbon\Carbon::setLocale('id');
+                        @endphp
                         <p class="text-muted">{{ Carbon\Carbon::parse($p->created_at)->diffForHumans()}}</p>
                     </div>
                     <hr>
                     <div class="mt-4">
-                        <h6><strong>Description :</strong></h6>
+                        <h6><strong>Deskripsi Proyek :</strong></h6>
                         @if ($p->project_description == null)
-                            <p class="text-muted"><em>tidak ada description.</em></p>
+                            <p class="text-muted"><em>tidak ada deskripsi.</em></p>
                         @else
                             <p class="project-description text-muted">{{ $p->project_description }}</p>
                         @endif
                     </div>
                     <div class="mt-4">
                         @if ($p->project_link == null)
-                            <p><h6><strong>Source :</strong></h6> <em class="text-muted">tidak ada sumber.</em></p>
+                            <p><h6><strong>Tautan Proyek :</strong></h6> <em class="text-muted">tidak ada tautan.</em></p>
                         @else
-                            <p><h6><strong>Source :</strong></h6> <a href="{{ $p->project_link }}" class="project-link" target="_blank">{{ $p->project_link }}</a></p>
+                            <p><h6><strong>Tautan Proyek :</strong></h6> <a href="{{ $p->project_link }}" class="project-link" target="_blank">{{ $p->project_link }}</a></p>
                         @endif
                     </div>
                     <div class="mt-2">
                         @if ($p->project_video_link == null)
-                            <p><h6><strong> Link Video :</strong></h6> <em class="text-muted">tidak ada link video.</em></p>
+                            <p><h6><strong> Tautan Video :</strong></h6> <em class="text-muted">tidak ada tautan.</em></p>
                         @else
-                            <p><h6><strong> Link Video :</strong></h6> <a href="{{ $p->project_video_link }}" class="project-link" target="_blank">{{ $p->project_video_link }}</a></p>
+                            <p><h6><strong> Tautan Video :</strong></h6> <a href="{{ $p->project_video_link }}" class="project-link" target="_blank">{{ $p->project_video_link }}</a></p>
                         @endif
                     </div>
                 </div>

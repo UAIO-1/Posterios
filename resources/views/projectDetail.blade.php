@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'Posterios - Project')
+@section('title', 'Project Detail • Posterios')
 <link rel="shortcut icon" href="{{ asset('image/icon-logo-white.png') }}">
 <link rel="stylesheet" href="{{ asset('css/projectdetail.css') }}">
 
@@ -35,7 +35,7 @@
 
 @elseif(Auth::check() && Auth::user()->id != $p->user_id)
 
-    <div class="container">
+    <div class="container mt-xl-5">
         <div class="row">
             @foreach($projects as $p)
                 <div class="col-md-6 col">
@@ -49,14 +49,17 @@
                     </p>
                     <div class="d-flex justify-content-between">
                         <p class="text-muted"><em>{{ $p->project_category }} / {{ $p->project_subcategory }}</em></p>
+                        @php
+                            Carbon\Carbon::setLocale('id');
+                        @endphp
                         <p class="text-muted">{{ Carbon\Carbon::parse($p->created_at)->diffForHumans()}}</p>
                     </div>
                     <hr>
-                    <a href="" class="btn btn-outline-secondary">Add to Wishlist</a>
+                    <a href="" class="btn btn-outline-secondary">Tambahkan ke Wishlist</a>
                     <div class="mt-4">
-                        <h6><strong>Description :</strong></h6>
+                        <h6><strong>Deskripsi Proyek:</strong></h6>
                         @if ($p->project_description == null)
-                            <p class="text-muted"><em>tidak ada description.</em></p>
+                            <p class="text-muted"><em>tidak ada deskripsi.</em></p>
                         @else
 
                         @endif
@@ -64,16 +67,16 @@
                     </div>
                     <div class="mt-4">
                         @if ($p->project_link == null)
-                            <p><h6><strong>Source :</strong></h6> <em class="text-muted">tidak ada sumber.</em></p>
+                            <p><h6><strong>Tautan Proyek :</strong></h6> <em class="text-muted">tidak ada tautan.</em></p>
                         @else
-                            <p><h6><strong>Source :</strong></h6> <a href="{{ $p->project_link }}" class="project-link" target="_blank">{{ $p->project_link }}</a></p>
+                            <p><h6><strong>Tautan Proyek :</strong></h6> <a href="{{ $p->project_link }}" class="project-link" target="_blank">{{ $p->project_link }}</a></p>
                         @endif
                     </div>
                     <div class="mt-2">
                         @if ($p->project_video_link == null)
-                            <p><h6><strong> Link Video :</strong></h6> <em class="text-muted">tidak ada link video.</em></p>
+                            <p><h6><strong> Tautan Video :</strong></h6> <em class="text-muted">tidak ada tautan.</em></p>
                         @else
-                            <p><h6><strong> Link Video :</strong></h6> <a href="{{ $p->project_video_link }}" class="project-link" target="_blank">{{ $p->project_video_link }}</a></p>
+                            <p><h6><strong> Tautan Video :</strong></h6> <a href="{{ $p->project_video_link }}" class="project-link" target="_blank">{{ $p->project_video_link }}</a></p>
                         @endif
                     </div>
                 </div>
@@ -140,7 +143,7 @@
 
 @else
 
-    <div class="container">
+    <div class="container mt-xl-5">
         <div class="row">
             @foreach($projects as $p)
                 <div class="col-md-6">
@@ -154,6 +157,9 @@
                     </p>
                     <div class="d-flex justify-content-between">
                         <p class="text-muted"><em>{{ $p->project_category }} / {{ $p->project_subcategory }}</em></p>
+                        @php
+                            Carbon\Carbon::setLocale('id');
+                        @endphp
                         <p class="text-muted">{{ Carbon\Carbon::parse($p->created_at)->diffForHumans()}}</p>
                     </div>
                     <hr>
@@ -175,25 +181,25 @@
                     @include('profile.modalEditProject')
                     @include('profile.modalDeleteProject')
                     <div class="mt-4">
-                        <h6><strong>Description :</strong></h6>
+                        <h6><strong>Deskripsi Proyek:</strong></h6>
                         @if ($p->project_description == null)
-                            <p class="text-muted"><em>tidak ada description.</em></p>
+                            <p class="text-muted"><em>tidak ada deskripsi.</em></p>
                         @else
                             <p class="project-description text-muted">{{ $p->project_description }}</p>
                         @endif
                     </div>
                     <div class="mt-4">
                         @if ($p->project_link == null)
-                            <p><h6><strong>Source :</strong></h6> <em class="text-muted">tidak ada sumber.</em></p>
+                            <p><h6><strong>Tautan Proyek :</strong></h6> <em class="text-muted">tidak ada tautan.</em></p>
                         @else
-                            <p><h6><strong>Source :</strong></h6> <a href="{{ $p->project_link }}" class="project-link" target="_blank">{{ $p->project_link }}</a></p>
+                            <p><h6><strong>Tautan Proyek :</strong></h6> <a href="{{ $p->project_link }}" class="project-link" target="_blank">{{ $p->project_link }}</a></p>
                         @endif
                     </div>
                     <div class="mt-2">
                         @if ($p->project_video_link == null)
-                            <p><h6><strong> Link Video :</strong></h6> <em class="text-muted">tidak ada link video.</em></p>
+                            <p><h6><strong> Tautan Video :</strong></h6> <em class="text-muted">tidak ada tautan.</em></p>
                         @else
-                            <p><h6><strong> Link Video :</strong></h6> <a href="{{ $p->project_video_link }}" class="project-link" target="_blank">{{ $p->project_video_link }}</a></p>
+                            <p><h6><strong> Tautan Video :</strong></h6> <a href="{{ $p->project_video_link }}" class="project-link" target="_blank">{{ $p->project_video_link }}</a></p>
                         @endif
                     </div>
                 </div>
@@ -218,101 +224,94 @@
     </div>
 
     <div class="mt-lg-4 p-3">
-        <div class="row row-cols-5 g-4">
+        <div class="row row-cols-5 g-3">
             @foreach ($questions as $q)
-            <div class="col">
-                <a href="" class="card-detail">
-                    <div class="card">
-                        @if ($q->recommendation == "A")
-                            <img src="{{ asset('image/A.png') }}" alt="success" class="card-img-top">
-                            <small class="text-muted text-center"><em>from</em></small>
-                            <small class="text-center"><em class="name">{{ $q->name }}</em></small>
-                            <p class="text-center rec">Kamu sangat cocok dibidang ini. Teruslah berkarya sampai menjadi sukses!</p>
-                        @elseif ($q->recommendation == "B")
-                            <img src="{{ asset('image/B.png') }}" alt="success" class="card-img-top">
-                            <small class="text-muted text-center"><em>from</em></small>
-                            <small class="text-center"><em class="name">{{ $q->name }}</em></small>
-                            <p class="text-center rec">Kamu harus lebih banyak berlatih, harus banyak membuat proyek, harus banyak belajar dari orang lain.</p>
-                        @else
-                            <img src="{{ asset('image/C.png') }}" alt="success" class="card-img-top" style="border-radius: 50%">
-                            <small class="text-muted text-center"><em>from</em></small>
-                            <small class="text-center"><em class="name">{{ $q->name }}</em></small>
-                            <p class="text-center rec">Semangat terus jangan menyerah, asah terus kemampuanmu.</p>
-                        @endif
-                    </div>
-                </a>
-            </div>
-                {{-- @if ($q->recommendation == "A")
-                        <div class="card card-feed p-3 m-3">
-                            <div class="d-flex justify-content-center">
-                                <img src="{{ asset('image/A.png') }}" alt="success">
-                            </div>
-                            <div class="text-center text-muted mt-2">
-                                <small>from: <a href="">{{ $q->name }}</a></small>
-                            </div>
-                            <p class="text-center mt-4">Kamu sangat cocok dibidang ini. Teruslah berkarya sampai menjadi sukses!</p>
-                            <div>
-                                <h5>Nilai:
-                                    @if ($q->points > 90)
-                                        <span class="text-success">{{ $q->points }}</span>
-                                    @elseif($q->points > 75)
-                                        <span class="text-success">{{ $q->points }}</span>
-                                    @elseif($q->points > 65)
-                                        <span class="text-warning">{{ $q->points }}</span>
-                                    @else
-                                        <span class="text-danger">{{ $q->points }}</span>
-                                    @endif
-                                </h5>
-                            </div>
-                        </div>
+                <div class="col">
+                    <a href="#modalFeedbackDetail_{{ $q->id }}" data-bs-toggle="modal" data-bs-target="#modalFeedbackDetail_{{ $q->id }}" class="card-detail">
+                        <div class="card card2">
 
-                @elseif ($q->recommendation == "B")
-                    <div class="card card-feed p-3 m-3">
-                        <div class="d-flex justify-content-center">
-                            <img src="{{ asset('image/A.png') }}" alt="success">
+                            @if ($q->recommendation == "A")
+                                <div class="row row-cols-2 p-5">
+                                    <div class="col">
+                                        <img src="{{ asset('image/A.png') }}" alt="success" class="card-img-top">
+                                    </div>
+                                    <div class="col">
+                                        <div class="text-center">
+                                            <h3>Nilai:</h3>
+                                            @if ($q->points > 90)
+                                                <h1 class="text-success display-3">{{ $q->points }}</h1>
+                                            @elseif($q->points > 75)
+                                                <h1 class="text-success display-3">{{ $q->points }}</h1>
+                                            @elseif($q->points > 65)
+                                                <h1 class="text-warning display-3">{{ $q->points }}</h1>
+                                            @else
+                                                <h1 class="text-danger display-3">{{ $q->points }}</h1>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <small class="text-muted text-center"><em>dari</em></small>
+                                <small class="text-center"><em class="name">{{ $q->name }}</em></small>
+                                <p class="text-center rec">Kamu sangat cocok dibidang ini. Teruslah berkarya sampai menjadi sukses!</p>
+
+                            @elseif ($q->recommendation == "B")
+
+                                <div class="row row-cols-2 p-5">
+                                    <div class="col">
+                                        <img src="{{ asset('image/B.png') }}" alt="power" class="card-img-top">
+                                    </div>
+                                    <div class="col">
+                                        <div class="text-center">
+                                            <h3>Nilai:</h3>
+                                            @if ($q->points > 90)
+                                                <h1 class="text-success display-3">{{ $q->points }}</h1>
+                                            @elseif($q->points > 75)
+                                                <h1 class="text-success display-3">{{ $q->points }}</h1>
+                                            @elseif($q->points > 65)
+                                                <h1 class="text-warning display-3">{{ $q->points }}</h1>
+                                            @else
+                                                <h1 class="text-danger display-3">{{ $q->points }}</h1>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr>
+                                <small class="text-muted text-center"><em>dari</em></small>
+                                <small class="text-center"><em class="name">{{ $q->name }}</em></small>
+                                <p class="text-center rec">Kamu harus lebih banyak berlatih, harus banyak membuat proyek, harus banyak belajar dari orang lain.</p>
+
+                            @else
+
+                                <div class="row row-cols-2 p-5">
+                                    <div class="col">
+                                        <img src="{{ asset('image/C.png') }}" alt="spirit" class="card-img-top">
+                                    </div>
+                                    <div class="col">
+                                        <div class="text-center">
+                                            <h3>Nilai:</h3>
+                                            @if ($q->points > 90)
+                                                <h1 class="text-success display-3">{{ $q->points }}</h1>
+                                            @elseif($q->points > 75)
+                                                <h1 class="text-success display-3">{{ $q->points }}</h1>
+                                            @elseif($q->points > 65)
+                                                <h1 class="text-warning display-3">{{ $q->points }}</h1>
+                                            @else
+                                                <h1 class="text-danger display-3">{{ $q->points }}</h1>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <small class="text-muted text-center"><em>dari</em></small>
+                                <small class="text-center"><em class="name">{{ $q->name }}</em></small>
+                                <p class="text-center rec">Semangat terus jangan menyerah, asah terus kemampuanmu.</p>
+                            @endif
                         </div>
-                        <div class="text-center text-muted mt-2">
-                            <small>from: <a href="">{{ $q->name }}</a></small>
-                        </div>
-                        <p class="text-center mt-4">Kamu sangat cocok dibidang ini. Teruslah berkarya sampai menjadi sukses!</p>
-                        <div>
-                            <h5>Nilai:
-                                @if ($q->points > 90)
-                                    <span class="text-success">{{ $q->points }}</span>
-                                @elseif($q->points > 75)
-                                    <span class="text-success">{{ $q->points }}</span>
-                                @elseif($q->points > 65)
-                                    <span class="text-warning">{{ $q->points }}</span>
-                                @else
-                                    <span class="text-danger">{{ $q->points }}</span>
-                                @endif
-                            </h5>
-                        </div>
-                    </div>
-                @else
-                    <div class="card card-feed p-3 m-3">
-                        <div class="d-flex justify-content-center">
-                            <img src="{{ asset('image/A.png') }}" alt="success">
-                        </div>
-                        <div class="text-center text-muted mt-2">
-                            <small>from: <a href="">{{ $q->name }}</a></small>
-                        </div>
-                        <p class="text-center mt-4">Kamu sangat cocok dibidang ini. Teruslah berkarya sampai menjadi sukses!</p>
-                        <div>
-                            <h5>Nilai:
-                                @if ($q->points > 90)
-                                    <span class="text-success">{{ $q->points }}</span>
-                                @elseif($q->points > 75)
-                                    <span class="text-success">{{ $q->points }}</span>
-                                @elseif($q->points > 65)
-                                    <span class="text-warning">{{ $q->points }}</span>
-                                @else
-                                    <span class="text-danger">{{ $q->points }}</span>
-                                @endif
-                            </h5>
-                        </div>
-                    </div>
-                @endif --}}
+                    </a>
+                    @include('profile.modalFeedbackDetail')
+                </div>
 
             @endforeach
         </div>

@@ -18,7 +18,7 @@
         <br>
         <small class="text-muted"><i>catatan: </i></small>
 
-        <input type="range" name="first_answer" class="form-range" id="first_answer" value="5" min="1" max="10" oninput="first_output.value = first_answer.value">
+        <input type="range" name="first_answer" class="form-range" id="first_answer" value="5" min="0" max="10" oninput="first_output.value = first_answer.value">
         <div class="text-center">
             <span>Nilai: </span> <h1 class="display-3"><output id="first_output">5</output></h1>
         </div>
@@ -32,7 +32,7 @@
         <br>
         <small class="text-muted"><i>catatan: elemen atau komponen dapat berupa aset gambar, warna, atau teks.</i></small>
 
-        <input type="range" name="second_answer" class="form-range" id="second_answer" value="5" min="1" max="10" oninput="second_output.value = second_answer.value">
+        <input type="range" name="second_answer" class="form-range" id="second_answer" value="5" min="0" max="10" oninput="second_output.value = second_answer.value">
         <div class="text-center">
             <span>Nilai: </span> <h1 class="display-3"><output id="second_output">5</output></h1>
         </div>
@@ -46,7 +46,7 @@
         <br>
         <small class="text-muted"><i>catatan: desain dapat berupa kombinasi warna atau kerapian penempatan elemen.</i></small>
 
-        <input type="range" name="third_answer" class="form-range" id="third_answer" value="5" min="1" max="10" oninput="third_output.value = third_answer.value">
+        <input type="range" name="third_answer" class="form-range" id="third_answer" value="5" min="0" max="10" oninput="third_output.value = third_answer.value">
         <div class="text-center">
             <span>Nilai: </span> <h1 class="display-3"><output id="third_output">5</output></h1>
         </div>

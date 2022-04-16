@@ -64,7 +64,7 @@
                                         </div>
 
                                         <div class="mb-3">
-                                            <label>Deskirpsi Proyek</label>
+                                            <label>Deskripsi Proyek</label>
                                             <textarea value="{{ old('project_description') }}" class="form-control" name="project_description" rows="5"></textarea>
                                         </div>
 

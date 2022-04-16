@@ -149,10 +149,7 @@ class ProjectController extends Controller
     public function indexExploreProjects(Request $request){
         $projects = Projects::all();
 
-        $users = DB::table("projects")
-            ->select("users.image", "users.gender")
-            ->join("users", "projects.user_id", "=", "users.id")
-            ->first();
+        $users = DB::table('users')->join('projects', 'projects.user_id', '=', 'users.id')->select('*')->where('projects.user_id', '>', 0)->first();
 
         return view('/explore', compact('projects', 'users'));
     }

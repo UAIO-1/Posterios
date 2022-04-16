@@ -28,7 +28,6 @@
         <label for="customRange2" class="form-label">
             2. Dari skala 1 sampai dengan 10, bagaimana teknik yang digunakan dalam membuat jaringan tersebut?
             <span class="text-danger">*</span>
-            <i class="text-muted">(cth. teknik menjepit kabel, sesuai dengan standar operasional prosedur)</i>
         </label>
         <br>
         <small class="text-muted"><i>catatan: teknik dapat berupa teknik menjepit kabel atau pembuatan jaringan sudah sesuai dengan standar operasional prosedur.</i></small>

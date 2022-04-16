@@ -1,19 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@300&family=Judson&display=swap');
 
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Archivo', sans-serif;
 }
 
 body{
     overflow-x: hidden;
-}
-
-.col{
-    padding: 50px;
 }
 
 .project-picture{
@@ -22,6 +17,7 @@ body{
 }
 
 .project-title{
+    font-family: 'Archivo Black', sans-serif;
     text-transform: uppercase;
     color: #7b849e;
 }
@@ -94,14 +90,16 @@ body{
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
 }
 
-.card{
+.card2{
     width: 350px;
     height: 400px;
     transition: all 0.3s ease 0s;
+    box-shadow: -20px 20px 10px 0 rgba(0, 0, 0, 0.1);
 }
 
-.card:hover{
+.card2:hover{
     transform: translateY(-5px);
+    border-color: #259df3;
 }
 
 .rec{

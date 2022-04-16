@@ -15,7 +15,7 @@
                 <div class="col-md-6">
                     <h1 class="title">Project Showcase</h1>
                     <p class="slogan text-muted">
-                        Publikasikan karya Anda di sekolah untuk menjadi karya terbaik di sini!
+                        Publikasikan karya Anda untuk menjadi karya terbaik di sini!
                         Posterios selalu menyediakan kategori yang dibutuhkan siswa dalam membuat karya!
                     </p>
                     <div style="margin-top: 20px">
@@ -75,7 +75,7 @@
                     <a href="/projectDetailGuest/{{ $p->id }}" class="project-detail">
                         <div class="card card-project border-0">
                             <img src="{{ asset('storage/'.$p->project_image) }}" class="card-img-top" alt="project image">
-                            <div class="card-body card-img-overlay text-center">
+                            <div class="card-body card-img-overlay">
                                 <div class="isi">
                                     <h3 class="card-title">{{ $p->project_title }}</h3>
                                     @include('badgeCategory')
@@ -85,15 +85,6 @@
                     </a>
                     <div class="mt-2">
                         <a href="/myProfile/{{ $p->user_id }}" class="username">
-                            @if ($users->image == null)
-                                @if ($users->gender == "Male")
-                                    <img src="{{ asset('image/user-male.png') }}" alt="posterios male" width="25px" height="25px" class="profile-picture" style="border-radius: 10px">
-                                @else
-                                    <img src="{{ asset('image/user-female.png') }}" alt="posterios female" width="25px" height="25px" class="profile-picture" style="border-radius: 10px">
-                                @endif
-                            @else
-                                <img src="{{ asset('storage/'.$users->image) }}" alt="profile picture"  width="25px" height="25px" class="profile-picture">
-                            @endif
                             <small>{{ $p->name }}</small>
                         </a>
                     </div>
@@ -111,10 +102,10 @@
                 <div class="col-md-6">
                     <h1 class="title">Project Showcase</h1>
                     <p class="slogan text-muted">
-                        Publikasikan karya Anda di sekolah untuk menjadi karya terbaik di sini!
+                        Publikasikan karya Anda untuk menjadi karya terbaik di sini!
                         Posterios selalu menyediakan kategori yang dibutuhkan siswa dalam membuat karya!
                     </p>
-                    <div style="margin-top: 30px">
+                    <div style="margin-top: 20px">
                         <a href="/post" class="publish-but" type="button">
                             Mulai Posting
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 17 17">
@@ -182,14 +173,14 @@
                     <div class="mt-2">
                         <a href="/myProfile/{{ $p->user_id }}" class="username">
                             @if ($users->image == null)
-                                @if ($users->gender == "Male")
-                                    <img src="{{ asset('image/user-male.png') }}" alt="posterios male" class="profile-picture" style="border-radius: 10px">
-                                @else
-                                    <img src="{{ asset('image/user-female.png') }}" alt="posterios female" class="profile-picture" style="border-radius: 10px">
-                                @endif
-                            @else
-                                <img src="{{ asset('storage/'.$users->image) }}" alt="profile picture" class="profile-picture">
-                            @endif
+                                        @if ($p->gender == "Male")
+                                            <img src="{{ asset('image/user-male.png') }}" alt="posterios male" class="profile-picture" style="border-radius: 10px">
+                                        @else
+                                            <img src="{{ asset('image/user-female.png') }}" alt="posterios female" class="profile-picture" style="border-radius: 10px">
+                                        @endif
+                                    @else
+                                        <img src="{{ asset('storage/'.$users->image) }}" alt="profile picture" class="profile-picture">
+                                    @endif
                             <small>{{ $p->name }}</small>
                         </a>
                     </div>

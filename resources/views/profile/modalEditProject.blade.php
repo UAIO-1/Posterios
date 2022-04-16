@@ -1,5 +1,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
+<style>
+    label{
+        font-weight: bold;
+    }
+</style>
+
+
 <div class="modal fade" id="exampleModalEditProject" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
     <div class="modal-dialog modal-dialog-centered" >
         <div class="modal-content">
@@ -12,14 +19,14 @@
                     {{ csrf_field() }}
                     <input type="hidden" name="id" value="{{ $p->id }}">
                     <div class="mb-3">
-                        <label for="formFile" class="form-label">Title</label>
+                        <label for="formFile" class="form-label">Judul Proyek</label>
                         <input class="form-control" type="text" name="project_title" value="{{ $p->project_title }}">
                     </div>
 
                     <div class="row row-cols-2">
                         <div class="col">
                             <div class="mb-3">
-                                <label class="form-label">Category</label>
+                                <label class="form-label">Kategori</label>
                                 <select class="ml-4 form-select" id="main" name="project_category">
                                     @if ($p->project_category == "Teknologi")
                                         <option value="Teknologi" selected>Teknologi</option>
@@ -39,7 +46,7 @@
                         </div>
                         <div class="col">
                             <div class="mb-3">
-                                <label class="form-label">Sub Category</label>
+                                <label class="form-label">Sub Kategori</label>
                                 <select name="project_subcategory" class="ml-4 form-select" id="sub">
                                     @if ($p->project_category == "Teknologi" && $p->project_subcategory == "Digital Desain")
                                         <option value="Digital Desain" selected>Digital Desain</option>
@@ -68,28 +75,28 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="formFile" class="form-label">Image</label>
-                        <input class="form-control" type="file" id="formFile" name="project_image" accept="image/jpg, image/jpeg, image/png">
+                        <label for="formFile" class="form-label">Gambar Proyek</label>
+                        <input class="form-control" type="file" id="for mFile" name="project_image" accept="image/jpg, image/jpeg, image/png">
                     </div>
 
                     <div class="mb-3">
-                        <label for="formFile" class="form-label">Link</label>
+                        <label for="formFile" class="form-label">Tautan Proyek</label>
                         <input class="form-control" type="url" name="project_link" value="{{ $p->project_link }}">
                     </div>
 
 
                     <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+                        <label for="exampleFormControlTextarea1" class="form-label">Deskripsi Proyek</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" name="project_description" rows="10">{{ $p->project_description }}</textarea>
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Video Link</label> <span class="text-muted">
+                        <label class="form-label">Tautan Video</label> <span class="text-muted">
                         <input class="form-control" value="{{ $p->project_video_link }}" type="text" name="project_video_link" placeholder="https://www.youtube.com/">
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Video File</label> <span class="text-muted">
+                        <label class="form-label">File Video</label> <span class="text-muted">
                         <input class="form-control" type="file" name="project_video" accept=".mp4,.mkv">
                     </div>
 
