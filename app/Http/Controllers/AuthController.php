@@ -13,7 +13,6 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -42,11 +41,7 @@ class AuthController extends Controller
 
     }
 
-    public function Logout(){
-        Auth::logout();
 
-        return redirect('/');
-    }
 
     public function editProfile(Request $request){
 
@@ -75,55 +70,48 @@ class AuthController extends Controller
 
     public function getProfileUser(Request $request){
 
-        $users = DB::table('users')
-                ->where('users.id', '=', $request->id)
-                ->get();
+        if(!Auth::check())
+        {
+            $users = DB::table('users')
+                    ->where('users.id', '=', $request->id)
+                    ->get();
 
-        $projects = Projects::where('projects.user_id', '=', $request->id)
-                ->get();
+            $projects = Projects::where('user_id', '=', $request->id)
+                    ->get();
 
-        $forums = Forums::where('user_id', '=', $request->id)
-                ->get();
+            $forums = Forums::where('user_id', '=', $request->id)
+                    ->get();
 
-        $wishlists = DB::table('wishlists')
-                ->join('projects', 'projects.id', '=', 'wishlists.project_id')
-                ->where('wishlists.user_id', Auth::user()->id)
-                ->select('*', 'wishlists.id as w_id')
-                ->get();
+            return view('myProfile', compact('users', 'projects', 'forums'));
+        }
+        else
+        {
+            $users = DB::table('users')
+                    ->where('users.id', '=', $request->id)
+                    ->get();
+
+            $projects = Projects::where('projects.user_id', '=', $request->id)
+                    ->get();
+
+            $forums = Forums::where('user_id', '=', $request->id)
+                    ->get();
+
+            $wishlists = DB::table('wishlists')
+                    ->join('projects', 'projects.id', '=', 'wishlists.project_id')
+                    ->where('wishlists.user_id', Auth::user()->id)
+                    ->select('*', 'wishlists.id as w_id')
+                    ->get();
 
 
-        return view('myProfile', compact('users', 'projects', 'forums', 'wishlists'));
+            return view('myProfile', compact('users', 'projects', 'forums', 'wishlists'));
+        }
+
     }
 
-    public function getProfileOther(Request $request){
+    public function Logout(){
+        Auth::logout();
 
-        $users = DB::table('users')
-                ->where('users.id', '=', $request->id)
-                ->get();
-
-        $projects = Projects::where('user_id', '=', $request->id)
-                ->get();
-
-        $forums = Forums::where('user_id', '=', $request->id)
-                ->get();
-
-
-
-        return view('myProfile', compact('users', 'projects', 'forums'));
-    }
-
-    public function getID($id){
-        $users = DB::table('users')
-                ->where('id','=',$id)
-                ->get();
-        return view('changepassword', ['users' => $users]);
-    }
-
-    public function changePassword(Request $request){
-        DB::table('users')
-            ->where('id', '=', Auth::user()->id)
-            ->update(['password' => Hash::make($request->password)]);
-        return redirect('/profile');
+        return redirect('/');
     }
 
 }

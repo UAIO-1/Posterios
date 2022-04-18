@@ -4,7 +4,6 @@
 <link rel="stylesheet" href="{{ asset('css/myProfile.css') }}">
 
 
-
 @include('navbar')
 
 
@@ -203,7 +202,7 @@
     <div class="container mt-xl-5">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="projects-tab" data-bs-toggle="tab" data-bs-target="#projects" type="button" role="tab" aria-controls="projects" aria-selected="false">
+                <button class="nav-link active" id="projects-tab" data-bs-toggle="tab" data-bs-target="#projects" type="button" role="tab" aria-controls="projects" aria-selected="false">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-kanban-fill" viewBox="0 0 16 16">
                         <path d="M2.5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2h-11zm5 2h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zm-5 1a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3zm9-1h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/>
                     </svg>
@@ -221,60 +220,46 @@
         </ul>
 
         <div class="tab-content p-3" id="myTabContent">
-            <div class="tab-pane fade mt-4" id="projects" role="tabpanel" aria-labelledby="projects-tab">
+
+            <div class="tab-pane fade mt-4 show active" id="projects" role="tabpanel" aria-labelledby="projects-tab">
                 @if (isset($projects))
-                <div class="row row-cols-1 row-cols-3">
-                    @foreach ($projects as $p)
-                    <div class="col">
-                        <div class="card mb-3 card-project" style="max-width: 540px;">
-                            <a href="/projectDetail/{{ $p->id }}" class="project-detail">
-                                <div class="row g-0">
-                                    <div class="col-md-4">
-                                        <img src="{{ asset('storage/'.$p->project_image) }}" class="img-fluid rounded-start projectimage p-3" alt="project image">
-                                    </div>
-                                    <div class="col-md-8">
+                    <div class="row row-cols-4">
+                        @foreach ($projects as $p)
+                            <div class="col">
+                                <a href="/projectDetail/{{ $p->id }}" class="project-detail">
+                                    <div class="card card-wishlist border-0" style="width: 18rem;">
+                                        <img src="{{ asset('storage/'.$p->project_image) }}" class="rounded-start project-image-wishlist p-3" alt="project image">
                                         <div class="card-body">
-                                            <h5 class="card-title">{{ $p->project_title }}</h5>
-                                            @include('badgeCategory')
-                                            @php
-                                                Carbon\Carbon::setLocale('id');
-                                            @endphp
-                                            <p class="card-text"><small class="text-muted">{{ Carbon\Carbon::parse($p->created_at)->diffForHumans()}}</small></p>
+                                            <h5 class="card-title text-center">{{ $p->project_title }}</h5>
+                                            <div class="text-center">
+                                                @include('badgeCategory')
+                                            </div class="text-center">
+                                            <div class="mt-2">
+                                                @php
+                                                    Carbon\Carbon::setLocale('id');
+                                                @endphp
+                                                <p class="card-text text-center">
+                                                    <small class="text-muted">
+                                                        {{ Carbon\Carbon::parse($p->created_at)->diffForHumans()}}
+                                                    </small>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
+                                </a>
+                            </div>
+                        @endforeach
                     </div>
-                    @endforeach
-                </div>
                 @else
                     Tidak ada proyek yang diposting.
                 @endif
             </div>
+
             <div class="tab-pane fade" id="forums" role="tabpanel" aria-labelledby="forums-tab">
                 ...
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 @else
@@ -371,77 +356,78 @@
             </li>
         </ul>
 
-        <div class="tab-content p-3" id="myTabContent">
-            <div class="tab-pane fade" id="wishlist" role="tabpanel" aria-labelledby="wishlist-tab">
-                @if (isset($wishlists))
-                <div class="row row-cols-1 row-cols-4">
-                    @foreach ($wishlists as $w)
-                    <div class="col">
-                        @foreach ($projects as $p)
-                            <a href="/projectDetail/{{ $w->project_id }}" class="project-detail">
-                                <div class="card card-wishlist" style="width: 18rem;">
-                                    <img src="{{ asset('storage/'.$w->project_image) }}" class="img-fluid rounded-start project-image-wishlist p-3" alt="project image">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between">
-                                            <div>
-                                                <h5 class="card-title text-dark">{{ Str::limit($w->project_title, 15, '...') }}</h5>
-                                            </div>
-                                            <div>
-                                                <a href="/wishlistDelete/{{ $w->w_id }}">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-plus-fill" viewBox="0 0 16 16">
-                                                        <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm6.5-11a.5.5 0 0 0-1 0V6H6a.5.5 0 0 0 0 1h1.5v1.5a.5.5 0 0 0 1 0V7H10a.5.5 0 0 0 0-1H8.5V4.5z"/>
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="card-body">
-                                        @include('badgeCategoryWishlists')
-                                    </div>
-                                </div>
-                            </a>
-                        @endforeach
-                    </div>
-                    @endforeach
-                </div>
-                @else
-                    Tidak ada proyek yang diposting.
-                @endif
-            </div>
+        <div class="tab-content p-3" id="myTabContent">
 
             <div class="tab-pane fade mt-4 show active" id="projects" role="tabpanel" aria-labelledby="projects-tab">
                 @if (isset($projects))
-                <div class="row row-cols-1 row-cols-3">
-                    @foreach ($projects as $p)
-                    <div class="col">
-                        <div class="card mb-3 card-project" style="max-width: 540px;">
-                            <a href="/projectDetail/{{ $p->id }}" class="project-detail">
-                                <div class="row g-0">
-                                    <div class="col-md-4">
-                                        <img src="{{ asset('storage/'.$p->project_image) }}" class="img-fluid rounded-start projectimage p-3" alt="project image">
-                                    </div>
-                                    <div class="col-md-8">
+                    <div class="row-cols-4">
+                        @foreach ($projects as $p)
+                            <div class="col">
+                                <a href="/projectDetail/{{ $p->id }}" class="project-detail">
+                                    <div class="card card-wishlist border-0" style="width: 18rem;">
+                                        <img src="{{ asset('storage/'.$p->project_image) }}" class="rounded-start project-image-wishlist p-3" alt="project image">
                                         <div class="card-body">
-                                            <h5 class="card-title">{{ $p->project_title }}</h5>
-                                            @include('badgeCategory')
-                                            @php
-                                                Carbon\Carbon::setLocale('id');
-                                            @endphp
-                                            <p class="card-text"><small class="text-muted">{{ Carbon\Carbon::parse($p->created_at)->diffForHumans()}}</small></p>
+                                            <h5 class="card-title text-center">{{ $p->project_title }}</h5>
+                                            <div class="text-center">
+                                                @include('badgeCategory')
+                                            </div class="text-center">
+                                            <div class="mt-2">
+                                                @php
+                                                    Carbon\Carbon::setLocale('id');
+                                                @endphp
+                                                <p class="card-text text-center">
+                                                    <small class="text-muted">
+                                                        {{ Carbon\Carbon::parse($p->created_at)->diffForHumans()}}
+                                                    </small>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
+                                </a>
+                            </div>
+                        @endforeach
                     </div>
-                    @endforeach
-                </div>
                 @else
                     Tidak ada proyek yang diposting.
                 @endif
             </div>
-            <div class="tab-pane fade" id="forums" role="tabpanel" aria-labelledby="forums-tab">
+
+
+            <div class="tab-pane fade mt-4" id="wishlist" role="tabpanel" aria-labelledby="wishlist-tab">
+                @if (isset($wishlists))
+                    <div class="row row-cols-1 row-cols-4">
+                        @foreach ($wishlists as $w)
+                            <div class="col">
+                                @foreach ($projects as $p)
+                                    <a href="/projectDetail/{{ $w->project_id }}" class="project-detail">
+                                        <div class="card card-wishlist" style="width: 18rem;">
+                                            <img src="{{ asset('storage/'.$w->project_image) }}" class="rounded-start project-image-wishlist p-3" alt="project image">
+                                            <div class="card-body">
+                                                <div class="text-center mb-2">
+                                                    <a href="/wishlistDelete/{{ $w->w_id }}">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bookmark-plus-fill" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm6.5-11a.5.5 0 0 0-1 0V6H6a.5.5 0 0 0 0 1h1.5v1.5a.5.5 0 0 0 1 0V7H10a.5.5 0 0 0 0-1H8.5V4.5z"/>
+                                                        </svg>
+                                                    </a>
+                                                </div>
+                                                <h5 class="card-title text-center">{{ $p->project_title }}</h5>
+                                                <div class="text-center">
+                                                    @include('badgeCategoryWishlists')
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                @endforeach
+                            </div>
+                        @endforeach
+                    </div>
+                @else
+                    Tidak ada proyek yang diposting.
+                @endif
+            </div>
+
+            <div class="tab-pane fade mt-4" id="forums" role="tabpanel" aria-labelledby="forums-tab">
                 ...
             </div>
         </div>

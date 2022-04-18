@@ -36,8 +36,6 @@ Route::get('/myProfile/{id}', 'AuthController@getProfileOther');
 Route::get('/forum', 'ForumController@indexForum');
 Route::get('/filterForum', 'SearchController@filterForum');
 
-Route::get('/explore', 'ProjectController@indexExploreProjects');
-Route::get('/projectDetailGuest/{id}', 'ProjectController@getProjectIDGuest');
 Route::get('/filterProject', 'SearchController@filterProject');
 
 

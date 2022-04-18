@@ -10,6 +10,74 @@
 
 @if (!Auth::check())
 
+    <div class="container mt-xl-5">
+        <div class="row">
+            @foreach($projects as $p)
+                <div class="col-md-6 col">
+                    <img src="{{ asset('storage/'.$p->project_image) }}" alt="project picture" class="project-picture">
+                </div>
+                <div class="col-md-6 col">
+                    <h1 class="project-title"><strong>{{ $p->project_title }}</strong></h1>
+                    <p>
+                        <em class="by">by</em>
+                        <a href="/myProfile/{{ $p->user_id }}" class="username">{{ $p->name }}</a>
+                    </p>
+                    <div class="d-flex justify-content-between">
+                        <p class="text-muted"><em>{{ $p->project_category }} / {{ $p->project_subcategory }}</em></p>
+                        @php
+                            Carbon\Carbon::setLocale('id');
+                        @endphp
+                        <p class="text-muted">{{ Carbon\Carbon::parse($p->created_at)->diffForHumans()}}</p>
+                    </div>
+                    <hr>
+                    <div class="mt-4">
+                        <h6><strong>Deskripsi Proyek :</strong></h6>
+                        @if ($p->project_description == null)
+                            <p class="text-muted"><em>tidak ada deskripsi.</em></p>
+                        @else
+                            <p class="project-description text-muted">{{ $p->project_description }}</p>
+                        @endif
+                    </div>
+                    <div class="mt-4">
+                        @if ($p->project_link == null)
+                            <p><h6><strong>Tautan Proyek :</strong></h6> <em class="text-muted">tidak ada tautan.</em></p>
+                        @else
+                            <p><h6><strong>Tautan Proyek :</strong></h6> <a href="{{ $p->project_link }}" class="project-link" target="_blank">{{ $p->project_link }}</a></p>
+                        @endif
+                    </div>
+                    <div class="mt-2">
+                        @if ($p->project_video_link == null)
+                            <p><h6><strong> Tautan Video :</strong></h6> <em class="text-muted">tidak ada tautan.</em></p>
+                        @else
+                            <p><h6><strong> Tautan Video :</strong></h6> <a href="{{ $p->project_video_link }}" class="project-link" target="_blank">{{ $p->project_video_link }}</a></p>
+                        @endif
+                    </div>
+                </div>
+                <hr>
+                <div class="mt-2 container">
+                    <h6><strong>File Video : </strong></h6>
+                    @if ($p->project_video == null)
+                        <p class="text-muted"><em>tidak ada video.</em></p>
+                    @else
+                        <video src="{{ asset('storage/'.$p->project_video) }}" controls width="100%" height="100%"></video>
+                    @endif
+                </div>
+            @endforeach
+        </div>
+    </div>
+
+    <div class="about text-light text-center p-3">
+        <h4>Tentang Pertanyaan</h4>
+        <p class="pertanyaan">
+            Berikanlah saran, rekomendasi, penilaian, dan jawaban Anda terhadap project <strong>{{ $p->name }}.</strong>
+            Penilaian yang masuk dapat menjadi pertimbangan bagi <strong>{{ $p->name }}</strong> untuk membuat proyek yang lebih baik.
+        </p>
+    </div>
+
+    <div class="mt-4">
+        <p class="text-center">Anda harus login terlebih dahulu sebelum memberikan saran, rekomendasi, penilaian, dan jawaban Anda terhadap proyek ini.</p>
+    </div>
+
 @elseif(Auth::check() && Auth::user()->role == "Admin")
 
 
@@ -147,22 +215,6 @@
             </div>
         </div>
     @endif
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @else
 

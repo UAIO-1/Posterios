@@ -7,8 +7,8 @@
     font-family: 'Archivo', sans-serif;
 }
 
-
-body{
+html, body{
+    background: black;
     overflow-x: hidden;
 }
 
@@ -64,6 +64,7 @@ h4{
 
 .project-detail{
     text-decoration: none;
+    color: #000;
 }
 
 .card-project{
@@ -87,15 +88,23 @@ td{
     text-align: justify;
 }
 
+.card-wishlist{
+    box-shadow: -10px 10px 20px 0 rgba(0, 0, 0, 0.2);
+}
+
 .card-wishlist:hover{
     transition: all 0.3s ease 0s;
-    border-color: #259df3;
-    transform: translateY(-5px);
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    transform: translateY(-10px);
+    box-shadow: -10px 10px 20px 0 rgba(0, 0, 0, 0.3);
 }
 
 .project-image-wishlist{
     width: 100%;
-    height: 200px;
-    max-height: 200px;
+    height: 250px;
+    max-height: 250px;
+}
+
+.card-title{
+    font-family: 'Archivo Black', sans-serif;
+    color: #000;
 }

@@ -56,43 +56,45 @@ class ProjectController extends Controller
 
     public function getProjectID ($id){
 
-        $projects = DB::table('projects')
-                    ->where('id','=', $id)
-                    ->get();
+        if(!Auth::check())
+        {
+            $projects = DB::table('projects')
+                        ->where('id','=', $id)
+                        ->get();
 
-        $users = DB::table("users")
-                    ->select("users.image", "users.gender", "users.id", "users.jurusan")
-                    ->join("projects", "projects.user_id", "=", "users.id")
-                    ->first();
+            $users = DB::table("users")
+                        ->select("users.image", "users.gender", "users.id", "users.jurusan")
+                        ->join("projects", "projects.user_id", "=", "users.id")
+                        ->first();
 
-        $answers = Questions::select('project_id')->where('user_id', Auth::user()->id)->get();
-        $answerArr = Arr::flatten($answers->toArray());
+            return view('projectDetail', compact('projects', 'users'));
+        }
+        else
+        {
+            $projects = DB::table('projects')
+                        ->where('id','=', $id)
+                        ->get();
 
-        $questions = Questions::where('project_id', '=', $id)->get();
+            $users = DB::table("users")
+                        ->select("users.image", "users.gender", "users.id", "users.jurusan")
+                        ->join("projects", "projects.user_id", "=", "users.id")
+                        ->first();
 
-        $wishses = DB::table('wishlists')->select('id')->where('user_id', Auth::user()->id)->first();
+            $answers = Questions::select('project_id')->where('user_id', Auth::user()->id)->get();
+            $answerArr = Arr::flatten($answers->toArray());
 
-        $wishlists = Wishlists::select('project_id')->where('user_id', Auth::user()->id)->get();
-        $wishlistsArr = Arr::flatten($wishlists->toArray());
+            $questions = Questions::where('project_id', '=', $id)->get();
 
-        return view('projectDetail', ['projects'=>$projects, 'users'=>$users, 'answers'=>$answerArr, 'questions'=>$questions, 'wishlists'=>$wishlistsArr], compact('wishses'));
+            $wishses = DB::table('wishlists')->select('id')->where('user_id', Auth::user()->id)->first();
+
+            $wishlists = Wishlists::select('project_id')->where('user_id', Auth::user()->id)->get();
+            $wishlistsArr = Arr::flatten($wishlists->toArray());
+
+            return view('projectDetail', ['projects'=>$projects, 'users'=>$users, 'answers'=>$answerArr, 'questions'=>$questions, 'wishlists'=>$wishlistsArr], compact('wishses'));
+        }
+
+
     }
-
-    public function getProjectIDGuest($id){
-
-        $projects = DB::table('projects')
-                    ->where('id','=', $id)
-                    ->get();
-
-        $users = DB::table("users")
-                ->select("users.image", "users.gender", "users.id")
-                ->join("projects", "projects.user_id", "=", "users.id")
-                ->first();
-
-        return view('projectDetailGuest', compact('projects', 'users'));
-    }
-
-
 
     public function editProject(Request $request){
 
@@ -145,21 +147,24 @@ class ProjectController extends Controller
         return redirect('/myProfile');
     }
 
-    public function indexProjects(Request $request){
-        $projects = Projects::take(5)->get();
-
-        return view('welcome', compact('projects'));
-    }
-
     public function indexExploreProjects(Request $request){
-        $projects = Projects::join('users', 'users.id', '=', 'projects.user_id')->select('projects.*', 'users.image')->get();
 
-        $wishes = DB::table('wishlists')->select('id')->where('user_id', Auth::user()->id)->first();
+        if(!Auth::check())
+        {
+            $projects = Projects::join('users', 'users.id', '=', 'projects.user_id')->select('projects.*', 'users.image')->get();
 
-        $wishlists = Wishlists::select('project_id')->where('user_id', Auth::user()->id)->get();
-        $wishlistsArr = Arr::flatten($wishlists->toArray());
+            return view('/explore', compact('projects'));
+        }
+        else
+        {
+            $projects = Projects::join('users', 'users.id', '=', 'projects.user_id')->select('projects.*', 'users.image')->get();
+            $wishes = DB::table('wishlists')->select('id')->where('user_id', Auth::user()->id)->first();
+            $wishlists = Wishlists::select('project_id')->where('user_id', Auth::user()->id)->get();
+            $wishlistsArr = Arr::flatten($wishlists->toArray());
 
-        return view('/explore', ['wishlists'=>$wishlistsArr], compact('projects', 'wishes'));
+            return view('/explore', ['wishlists'=>$wishlistsArr], compact('projects', 'wishes'));
+        }
+
     }
 
     public function submitAnswer(Request $request){

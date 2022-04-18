@@ -104,16 +104,12 @@ body{
 }
 
 .card-body{
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0.5) 20%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0.7) 20%);
     color: #fff;
 }
 
 .isi{
     margin-top: 50%;
-}
-
-.card-project:hover{
-    transform: translateY(-10px);
 }
 
 .username{

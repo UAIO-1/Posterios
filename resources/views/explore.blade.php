@@ -68,11 +68,11 @@
     </div>
 
 
-    <div class="p-5 mt-lg-4">
-        <div class="row row-cols-md-4 g-4">
+    <div class="p-5" style="margin-top: 50px">
+        <div class="row row-cols-1 row-cols-md-4 g-4">
             @foreach ($projects as $p)
                 <div class="col">
-                    <a href="/projectDetailGuest/{{ $p->id }}" class="project-detail">
+                    <a href="/projectDetail/{{ $p->id }}" class="project-detail">
                         <div class="card card-project border-0">
                             <img src="{{ asset('storage/'.$p->project_image) }}" class="card-img-top" alt="project image">
                             <div class="card-body card-img-overlay">
@@ -84,12 +84,24 @@
                         </div>
                     </a>
                     <div class="mt-2">
-                        <a href="/myProfile/{{ $p->user_id }}" class="username">
-                            <small>{{ $p->name }}</small>
-                        </a>
+                        <div>
+                            <a href="/myProfile/{{ $p->user_id }}" class="username">
+                                <h5>
+                                    @if ($p->image == null)
+                                        @if ($p->gender == "Male")
+                                            <img src="{{ asset('image/user-male.png') }}" alt="profile picture" class="profile-picture">
+                                        @else
+                                            <img src="{{ asset('image/user-female.png') }}" alt="profile picture" class="profile-picture">
+                                        @endif
+                                    @else
+                                        <img src="{{ asset('storage/'.$p->image) }}" alt="profile picture" class="profile-picture">
+                                    @endif
+                                    {{ $p->name }}
+                                </h5>
+                            </a>
+                        </div>
                     </div>
                 </div>
-
             @endforeach
         </div>
     </div>
@@ -180,7 +192,15 @@
                             <div>
                                 <a href="/myProfile/{{ $p->user_id }}" class="username">
                                     <h5>
-                                        <img src="{{ asset('storage/'.$p->image) }}" alt="profile picture" class="profile-picture">
+                                        @if ($p->image == null)
+                                            @if ($p->gender == "Male")
+                                                <img src="{{ asset('image/user-male.png') }}" alt="profile picture" class="profile-picture">
+                                            @else
+                                                <img src="{{ asset('image/user-female.png') }}" alt="profile picture" class="profile-picture">
+                                            @endif
+                                        @else
+                                            <img src="{{ asset('storage/'.$p->image) }}" alt="profile picture" class="profile-picture">
+                                        @endif
                                         {{ $p->name }}
                                     </h5>
                                 </a>
