@@ -25,19 +25,7 @@ Route::get('/home', function () {
 Route::get('/register', 'AuthController@showRegister');
 Route::post('/registerPost', 'AuthController@registerPost');
 
-
-Route::get('/login', 'AuthController@showLogin');
-Route::post('/doLogin', 'AuthController@doLogin');
-
 Route::get('/logout','AuthController@logout');
-
-Route::get('/myProfile/{id}', 'AuthController@getProfileOther');
-
-Route::get('/forum', 'ForumController@indexForum');
-Route::get('/filterForum', 'SearchController@filterForum');
-
-Route::get('/filterProject', 'SearchController@filterProject');
-
 
 
 Route::group(['middleware'=>'cekuser'], function() {

@@ -69,7 +69,7 @@
     <div class="container mt-xl-5">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="projects-tab" data-bs-toggle="tab" data-bs-target="#projects" type="button" role="tab" aria-controls="projects" aria-selected="false">
+                <button class="nav-link active" id="projects-tab" data-bs-toggle="tab" data-bs-target="#projects" type="button" role="tab" aria-controls="projects" aria-selected="false">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-kanban-fill" viewBox="0 0 16 16">
                         <path d="M2.5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2h-11zm5 2h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zm-5 1a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3zm9-1h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/>
                     </svg>
@@ -91,37 +91,40 @@
 
             </div>
 
-            <div class="tab-pane fade mt-4" id="projects" role="tabpanel" aria-labelledby="projects-tab">
+            <div class="tab-pane fade mt-4 show active" id="projects" role="tabpanel" aria-labelledby="projects-tab">
                 @if (isset($projects))
-                <div class="row row-cols-1 row-cols-3">
-                    @foreach ($projects as $p)
-                    <div class="col">
-                        <div class="card mb-3 card-project" style="max-width: 540px;">
-                            <a href="/projectDetailGuest/{{ $p->id }}" class="project-detail">
-                                <div class="row g-0">
-                                    <div class="col-md-4">
-                                        <img src="{{ asset('storage/'.$p->project_image) }}" class="img-fluid rounded-start projectimage p-3" alt="project image">
-                                    </div>
-                                    <div class="col-md-8">
+                    <div class="row row-cols-4">
+                        @foreach ($projects as $p)
+                            <div class="col">
+                                <a href="/projectDetail/{{ $p->id }}" class="project-detail">
+                                    <div class="card card-wishlist border-0" style="width: 18rem;">
+                                        <img src="{{ asset('storage/'.$p->project_image) }}" class="rounded-start project-image-wishlist p-3" alt="project image">
                                         <div class="card-body">
-                                            <h5 class="card-title">{{ $p->project_title }}</h5>
-                                            @include('badgeCategory')
-                                            @php
-                                                Carbon\Carbon::setLocale('id');
-                                            @endphp
-                                            <p class="card-text"><small class="text-muted">{{ Carbon\Carbon::parse($p->created_at)->diffForHumans()}}</small></p>
+                                            <h5 class="card-title text-center">{{ $p->project_title }}</h5>
+                                            <div class="text-center">
+                                                @include('badgeCategory')
+                                            </div class="text-center">
+                                            <div class="mt-2">
+                                                @php
+                                                    Carbon\Carbon::setLocale('id');
+                                                @endphp
+                                                <p class="card-text text-center">
+                                                    <small class="text-muted">
+                                                        {{ Carbon\Carbon::parse($p->created_at)->diffForHumans()}}
+                                                    </small>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
+                                </a>
+                            </div>
+                        @endforeach
                     </div>
-                    @endforeach
-                </div>
                 @else
                     Tidak ada proyek yang diposting.
                 @endif
             </div>
+
             <div class="tab-pane fade" id="forums" role="tabpanel" aria-labelledby="forums-tab">
                 ...
             </div>
