@@ -179,7 +179,10 @@
                         <div class="d-flex justify-content-between">
                             <div>
                                 <a href="/myProfile/{{ $p->user_id }}" class="username">
-                                    <h5>{{ $p->name }}</h5>
+                                    <h5>
+                                        <img src="{{ asset('storage/'.$p->image) }}" alt="profile picture" class="profile-picture">
+                                        {{ $p->name }}
+                                    </h5>
                                 </a>
                             </div>
                             <div>

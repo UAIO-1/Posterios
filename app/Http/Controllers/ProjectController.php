@@ -152,16 +152,14 @@ class ProjectController extends Controller
     }
 
     public function indexExploreProjects(Request $request){
-        $projects = Projects::all();
-
-        $users = DB::table('users')->join('projects', 'projects.user_id', '=', 'users.id')->select('*')->where('projects.user_id', '>', 0)->first();
+        $projects = Projects::join('users', 'users.id', '=', 'projects.user_id')->select('projects.*', 'users.image')->get();
 
         $wishes = DB::table('wishlists')->select('id')->where('user_id', Auth::user()->id)->first();
 
         $wishlists = Wishlists::select('project_id')->where('user_id', Auth::user()->id)->get();
         $wishlistsArr = Arr::flatten($wishlists->toArray());
 
-        return view('/explore', ['wishlists'=>$wishlistsArr], compact('projects', 'users', 'wishes'));
+        return view('/explore', ['wishlists'=>$wishlistsArr], compact('projects', 'wishes'));
     }
 
     public function submitAnswer(Request $request){
