@@ -94,6 +94,11 @@
         </div>
     </div>
 
+
+
+
+
+
 @else
 
     <div class="header">
@@ -171,18 +176,35 @@
                         </div>
                     </a>
                     <div class="mt-2">
-                        <a href="/myProfile/{{ $p->user_id }}" class="username">
-                            @if ($users->image == null)
-                                        @if ($p->gender == "Male")
-                                            <img src="{{ asset('image/user-male.png') }}" alt="posterios male" class="profile-picture" style="border-radius: 10px">
-                                        @else
-                                            <img src="{{ asset('image/user-female.png') }}" alt="posterios female" class="profile-picture" style="border-radius: 10px">
-                                        @endif
-                                    @else
-                                        <img src="{{ asset('storage/'.$users->image) }}" alt="profile picture" class="profile-picture">
-                                    @endif
-                            <small>{{ $p->name }}</small>
-                        </a>
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <a href="/myProfile/{{ $p->user_id }}" class="username">
+                                    <h5>{{ $p->name }}</h5>
+                                </a>
+                            </div>
+                            <div>
+                                @if (in_array($p->id, $wishlists))
+                                    <a href="/wishlistDeleteDetail/{{ $wishes->id }}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bookmark-plus-fill" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm6.5-11a.5.5 0 0 0-1 0V6H6a.5.5 0 0 0 0 1h1.5v1.5a.5.5 0 0 0 1 0V7H10a.5.5 0 0 0 0-1H8.5V4.5z"/>
+                                        </svg>
+                                    </a>
+                                @else
+                                    <form action={{ url('/addToWishlists') }} method="POST">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                        <input type="hidden" name="project_id" value="{{ $p->id }}">
+                                        <button type="submit" class="btn">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bookmark-plus" viewBox="0 0 16 16">
+                                                <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+                                                <path d="M8 4a.5.5 0 0 1 .5.5V6H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V7H6a.5.5 0 0 1 0-1h1.5V4.5A.5.5 0 0 1 8 4z"/>
+                                            </svg>
+                                        </button>
+                                    </form>
+                                @endif
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             @endforeach

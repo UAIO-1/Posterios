@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Forums;
 use App\Projects;
 use App\User;
+use App\Wishlists;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
@@ -77,14 +79,20 @@ class AuthController extends Controller
                 ->where('users.id', '=', $request->id)
                 ->get();
 
-        $projects = Projects::where('user_id', '=', $request->id)
+        $projects = Projects::where('projects.user_id', '=', $request->id)
                 ->get();
 
         $forums = Forums::where('user_id', '=', $request->id)
                 ->get();
 
+        $wishlists = DB::table('wishlists')
+                ->join('projects', 'projects.id', '=', 'wishlists.project_id')
+                ->where('wishlists.user_id', Auth::user()->id)
+                ->select('*', 'wishlists.id as w_id')
+                ->get();
 
-        return view('myProfile', compact('users', 'projects', 'forums'));
+
+        return view('myProfile', compact('users', 'projects', 'forums', 'wishlists'));
     }
 
     public function getProfileOther(Request $request){

@@ -87,3 +87,15 @@ td{
     text-align: justify;
 }
 
+.card-wishlist:hover{
+    transition: all 0.3s ease 0s;
+    border-color: #259df3;
+    transform: translateY(-5px);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.project-image-wishlist{
+    width: 100%;
+    height: 200px;
+    max-height: 200px;
+}

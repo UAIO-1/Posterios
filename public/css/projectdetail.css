@@ -17,7 +17,7 @@ body{
 }
 
 .project-title{
-    font-family: 'Archivo Black', sans-serif;
+    font-family: 'Archivo', sans-serif;
     text-transform: uppercase;
     color: #7b849e;
 }
@@ -130,4 +130,9 @@ body{
 
 .card:hover .name{
     color: #000;
+}
+
+.btn:hover svg{
+    transition: all 0.3s ease 0s;
+    color: #259df3;
 }

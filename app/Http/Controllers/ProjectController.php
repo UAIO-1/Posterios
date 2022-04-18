@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Projects;
 use App\Questions;
 use App\User;
-
+use App\Wishlists;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
@@ -70,7 +70,12 @@ class ProjectController extends Controller
 
         $questions = Questions::where('project_id', '=', $id)->get();
 
-        return view('projectDetail', ['projects'=>$projects, 'users'=>$users, 'answers'=>$answerArr, 'questions'=>$questions]);
+        $wishses = DB::table('wishlists')->select('id')->where('user_id', Auth::user()->id)->first();
+
+        $wishlists = Wishlists::select('project_id')->where('user_id', Auth::user()->id)->get();
+        $wishlistsArr = Arr::flatten($wishlists->toArray());
+
+        return view('projectDetail', ['projects'=>$projects, 'users'=>$users, 'answers'=>$answerArr, 'questions'=>$questions, 'wishlists'=>$wishlistsArr], compact('wishses'));
     }
 
     public function getProjectIDGuest($id){
@@ -151,7 +156,12 @@ class ProjectController extends Controller
 
         $users = DB::table('users')->join('projects', 'projects.user_id', '=', 'users.id')->select('*')->where('projects.user_id', '>', 0)->first();
 
-        return view('/explore', compact('projects', 'users'));
+        $wishes = DB::table('wishlists')->select('id')->where('user_id', Auth::user()->id)->first();
+
+        $wishlists = Wishlists::select('project_id')->where('user_id', Auth::user()->id)->get();
+        $wishlistsArr = Arr::flatten($wishlists->toArray());
+
+        return view('/explore', ['wishlists'=>$wishlistsArr], compact('projects', 'users', 'wishes'));
     }
 
     public function submitAnswer(Request $request){
@@ -176,6 +186,31 @@ class ProjectController extends Controller
 
         return redirect('/projectDetail/'.$question->project_id);
     }
+
+    public function addToWishlists(Request $request){
+
+        $wishlist = new Wishlists();
+        $wishlist->user_id = $request->user_id;
+        $wishlist->project_id = $request->project_id;
+
+        $wishlist->save();
+
+        return redirect('/explore');
+
+    }
+
+    public function wishlistDelete($id){
+        DB::table('wishlists')->where('id', $id)->delete();
+        return redirect('/myProfile/'.Auth::user()->id);
+    }
+
+    public function wishlistDeleteDetail($id){
+
+        DB::table('wishlists')->where('id', $id)->delete();
+
+        return redirect('/explore');
+    }
+
 
 
 }

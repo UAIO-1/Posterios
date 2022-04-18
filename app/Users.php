@@ -23,6 +23,10 @@ class Users extends Model
     public function Question() {
         return $this->hasMany('App\Questions', 'user_id');
     }
+    public function Wishlist() {
+        return $this->hasMany('App\Wishlists', 'user_id');
+    }
+
 
 
 }

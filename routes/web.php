@@ -56,6 +56,9 @@ Route::group(['middleware'=>'cekuser'], function() {
 
     Route::get('/explore', 'ProjectController@indexExploreProjects');
     Route::get('/filterProject', 'SearchController@filterProject');
+    Route::post('/addToWishlists', 'ProjectController@addToWishlists');
+    Route::get('/wishlistDelete/{id}', 'ProjectController@wishlistDelete');
+    Route::get('/wishlistDeleteDetail/{id}', 'ProjectController@wishlistDeleteDetail');
 
     Route::get('/forum', 'ForumController@indexForum');
     Route::post('/postForum', 'ForumController@forumPost');
