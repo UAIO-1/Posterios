@@ -1,0 +1,40 @@
+body {
+    overflow-x: hidden;
+}
+
+.sidenav {
+    height: 100%;
+    width: 15%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to bottom, #259df3, #2834ae);
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 10px 25px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+    display: block;
+    border-radius: 10px;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    transition: all 0.3s ease 0s;
+}
+
+.main {
+    margin-left: 15%;
+    font-size: 28px;
+    padding: 0px 10px;
+}
+
+.sidebar-header{
+    padding: 20px;
+}

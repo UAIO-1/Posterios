@@ -33,14 +33,21 @@ class AuthController extends Controller
                 $rememberToken = Auth::getRecallerName();
                 Cookie::queue($rememberToken, Cookie::get($rememberToken), $minute);
             }
-            return redirect()->intended('/');
+            return redirect('/');
+        }
+        elseif(Auth::attempt($credentials) && Auth::user()->role == "Admin") {
+            if($request->remember != null){
+                $minute = 120;
+                $rememberToken = Auth::getRecallerName();
+                Cookie::queue($rememberToken, Cookie::get($rememberToken), $minute);
+            }
+            return redirect('/admin.dashboard');
         }
         else {
-            return redirect()->intended('/');
+            return redirect('/');
         }
 
     }
-
 
 
     public function editProfile(Request $request){

@@ -18,10 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('/');
-});
-
 Route::get('/register', 'AuthController@showRegister');
 Route::post('/registerPost', 'AuthController@registerPost');
 
@@ -64,6 +60,14 @@ Route::group(['middleware'=>'cekuser'], function() {
     Route::get('/projectDelete/{id}', 'ProjectController@projectDelete');
 });
 
+Route::group(['middleware'=>'cekadmin'], function() {
+    Route::get('/admin.dashboard', function () {
+        return view('/admin.dashboard');
+    });
+
+    Route::get('/admin.dashboard', 'AdminController@count');
+
+});
 
 Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->middleware('verified');

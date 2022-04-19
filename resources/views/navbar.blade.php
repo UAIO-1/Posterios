@@ -92,6 +92,8 @@
         </div>
       </div>
 
+@elseif(Auth::check() && Auth::user()->id == 1)
+
 @else
 
     <header id="navbar" class="sticky-top">
