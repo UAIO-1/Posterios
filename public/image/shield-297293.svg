@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <linearGradient id="b">
+   <stop stop-color="#ffae00" offset="0"/>
+   <stop stop-color="#211307" stop-opacity=".992" offset="1"/>
+   <stop stop-color="#0051ff" offset="1"/>
+  </linearGradient>
+  <linearGradient id="e" x1=".58422" x2="1.3577" y1=".28591" y2=".048619" xlink:href="#a"/>
+  <linearGradient id="c" x1=".07995" x2=".71815" y1=".24946" y2=".39702">
+   <stop stop-color="#fefbfe" stop-opacity=".247" offset="0"/>
+   <stop stop-color="#d9f0e8" stop-opacity=".122" offset=".5"/>
+   <stop stop-color="#ccc" stop-opacity="0" offset="1"/>
+  </linearGradient>
+  <linearGradient id="d" x1=".5842" x2="1.3577" y1=".28591" y2=".048612" xlink:href="#a"/>
+  <linearGradient id="f" x1="1.2368" x2="-.1491" y1=".36384" y2=".49999">
+   <stop stop-color="#122f14" offset="0"/>
+   <stop stop-opacity="0" offset="1"/>
+  </linearGradient>
+  <linearGradient id="a">
+   <stop stop-color="#231949" stop-opacity=".339" offset="0"/>
+   <stop stop-opacity="0" offset="1"/>
+  </linearGradient>
+ </defs>
+ <g fill="url(#b)" fill-rule="evenodd">
+  <path d="m120.31 98.671c-23.95 326.63 105.97 587.62 341.05 745.73 5.2861 4.7184 7.5829 3.5837 13.063-0.4704 234.62-158.16 364.28-418.96 340.35-745.26-266.48-71.123-451.91-70.234-694.46 0h-6.9e-5z" stroke="url(#e)"/>
+  <path d="m123.03 100.66c-23.873 326.63 105.62 587.63 339.95 745.74 5.2689 4.7185 7.5586 3.5838 13.021-0.47046 233.86-158.16 363.1-418.97 339.25-745.27-265.62-71.124-450.45-70.235-692.22 0h7.6e-5z" stroke="url(#d)"/>
+ </g>
+ <g fill="#ffb12b" fill-rule="evenodd" stroke="url(#f)" stroke-width=".798">
+  <path d="m162.32 122.99c-21.129 299.07 93.485 538.04 300.88 682.81 4.6634 4.3204 6.6897 3.2814 11.525-0.43091 206.99-144.81 321.37-383.62 300.26-682.38-235.09-65.122-398.68-64.309-612.66 0z"/>
+  <path d="m727.36 158.34c17.929 260.98-79.328 469.51-255.31 595.84-3.9572 3.77-5.6765 2.8635-9.7794-0.37585-175.64-126.37-272.7-334.76-254.79-595.47 190.92-55.281 338.3-56.118 519.88 0z"/>
+ </g>
+ <path d="m84.909 131.38c4.9291-26.77 7.7413-72.248-0.56433-106.91 19.519 1.2472 37.878 3.0386 43.576 6.8768-1.8006 45.438-29.915 93.958-43.011 100.03z" fill="url(#c)" fill-rule="evenodd"/>
+</svg>

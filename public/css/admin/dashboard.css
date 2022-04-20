@@ -1,40 +1,39 @@
-body {
-    overflow-x: hidden;
+@import url('https://fonts.googleapis.com/css2?family=Karla&family=Rubik:wght@300&display=swap');
+/*
+font-family: 'Karla', sans-serif;
+font-family: 'Rubik', sans-serif;
+*/
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Karla', sans-serif;
 }
 
-.sidenav {
-    height: 100%;
-    width: 15%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background: linear-gradient(to bottom, #259df3, #2834ae);
-    padding-top: 20px;
+.user-count{
+    font-size: 3em;
+    color: #9AE66E;
+    font-family: 'Rubik', sans-serif;
 }
 
-.sidenav a {
-    padding: 10px 25px;
-    text-decoration: none;
-    font-size: 20px;
-    color: #fff;
-    display: block;
-    border-radius: 10px;
+.project-count{
+    font-size: 3em;
+    color: #185ADB;
+    font-family: 'Rubik', sans-serif;
 }
 
-.sidenav a:hover {
-    color: #f1f1f1;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-    transition: all 0.3s ease 0s;
+.forum-count{
+    font-size: 3em;
+    color: #FFAD60;
+    font-family: 'Rubik', sans-serif;
+}
+.feedback-count{
+    font-size: 3em;
+    color: #D5D5D5;
+    font-family: 'Rubik', sans-serif;
 }
 
-.main {
-    margin-left: 15%;
-    font-size: 28px;
-    padding: 0px 10px;
-}
-
-.sidebar-header{
-    padding: 20px;
+.card-stat{
+    box-shadow: -10px 10px 10px 0 rgba(0, 0, 0, 0.1);
 }

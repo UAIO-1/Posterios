@@ -1,0 +1,53 @@
+html, body {
+    overflow-x: hidden;
+    height: 100%;
+}
+
+.users{
+    background-color: #DFDFDE;
+    padding: 20px;
+}
+
+.profile-picture{
+    width: 50px;
+    height: 50px;
+    max-width: 50px;
+    max-height: 50px;border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: -5px 5px 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.sidenav {
+    height: 100%;
+    width: 15%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    padding-top: 20px;
+    box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.sidenav a {
+    padding: 10px 25px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #000;
+    display: block;
+    border-radius: 10px;
+}
+
+.sidenav a:hover {
+    color: #259df3;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    transition: all 0.3s ease 0s;
+}
+
+.main {
+    margin-left: 15%;
+    font-size: 28px;
+    padding: 0px 10px;
+}
+

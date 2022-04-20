@@ -364,7 +364,7 @@
 
             <div class="tab-pane fade mt-4 show active" id="projects" role="tabpanel" aria-labelledby="projects-tab">
                 @if (isset($projects))
-                    <div class="row-cols-4">
+                    <div class="row row-cols-4">
                         @foreach ($projects as $p)
                             <div class="col">
                                 <a href="/projectDetail/{{ $p->id }}" class="project-detail">

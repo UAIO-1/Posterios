@@ -67,6 +67,8 @@ Route::group(['middleware'=>'cekadmin'], function() {
 
     Route::get('/admin.dashboard', 'AdminController@count');
 
+
+
 });
 
 Auth::routes(['verify' => true]);
