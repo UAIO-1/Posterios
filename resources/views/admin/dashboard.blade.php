@@ -22,14 +22,16 @@
         <hr>
         <div class="row row-cols-4 p-3">
             <div class="col">
-                <div class="card card-stat border-0 rounded-0" style="width: 18rem;">
-                    <div class="card-body">
-                        <small>
-                            <span class="text-muted" style="font-size: 20px">Users</span>
-                            <p class="user-count text-center">{{ $usersCount }}</p>
-                        </small>
+                <a href="/admin.users" style="text-decoration: none;color: #000">
+                    <div class="card card-stat border-0 rounded-0" style="width: 18rem;">
+                        <div class="card-body">
+                            <small>
+                                <span class="text-muted" style="font-size: 20px">Users</span>
+                                <p class="user-count text-center">{{ $usersCount }}</p>
+                            </small>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col">
                 <div class="card card-stat border-0 rounded-0" style="width: 18rem;">

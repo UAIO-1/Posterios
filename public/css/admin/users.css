@@ -1,0 +1,42 @@
+
+
+.profilepicture{
+    width: 50px;
+    height: 50px;
+    max-width: 50px;
+    max-height: 50px;border-radius: 50%;
+}
+
+.profilepicture-detail{
+    width: 100px;
+    height: 100px;
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 10%;
+    border: 3px solid #fff;
+    box-shadow: -5px 5px 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.vl {
+    border-left: 3px solid rgba(0, 0, 0, 0.3);
+    height: 100%;
+}
+
+.card-input-element {
+    display: none;
+}
+
+.card-input:hover {
+    cursor: pointer;
+    border-color: #259df3;
+}
+
+.card-input-element:checked + .card-input {
+    box-shadow: 0 0 1px 1px #259df3;
+}
+
+.card-pro{
+    border-radius: 20px;
+}
+
+

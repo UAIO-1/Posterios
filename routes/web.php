@@ -67,7 +67,12 @@ Route::group(['middleware'=>'cekadmin'], function() {
 
     Route::get('/admin.dashboard', 'AdminController@count');
 
+    Route::get('/admin.users', function () {
+        return view('/admin.users');
+    });
 
+    Route::get('/admin.users', 'AdminController@indexUsers');
+    Route::get('/admin.users/{id}', 'AdminController@indexUsers');
 
 });
 
