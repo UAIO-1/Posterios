@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Forums;
 use App\Projects;
+use App\Questions;
 use App\User;
 use App\Users;
 use Illuminate\Http\Request;
@@ -29,6 +30,8 @@ class AdminController extends Controller
 
         $users2 = DB::table('users')->where('id', '=', $request->id)->get();
 
+        $usersCount = Users::where('id', '>', 1)->count();
+
         $projects = DB::table('projects')
             ->join('users', 'users.id', '=', 'projects.user_id')
             ->where('projects.user_id', '=', $request->id)
@@ -39,7 +42,25 @@ class AdminController extends Controller
             ->where('projects.user_id', '=', $request->id)
             ->get();
 
-        return view('/admin.users', compact('users', 'users2', 'projects', 'projectsUser'));
+        return view('/admin.users', compact('users', 'users2', 'projects', 'projectsUser', 'usersCount'));
+    }
+
+    public function indexProjects(Request $request) {
+
+        $projects = Projects::all();
+
+        $projectsCount = Projects::where('id', '>', 0)->count();
+
+        $projects2 = DB::table('projects')->where('id', '=', $request->id)->get();
+
+        $questions = Questions::where('project_id', '=', $request->id)->get();
+
+        return view('/admin.projects', compact('projects', 'projectsCount', 'projects2', 'questions'));
+    }
+
+    public function userDelete($id){
+        DB::table('users')->where('id', $id)->delete();
+        return redirect('/admin.users');
     }
 
 }

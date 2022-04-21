@@ -34,34 +34,28 @@
                 </a>
             </div>
             <div class="col">
-                <div class="card card-stat border-0 rounded-0" style="width: 18rem;">
-                    <div class="card-body">
-                        <small>
-                            <span class="text-muted" style="font-size: 20px">Projects</span>
-                            <p class="project-count text-center">{{ $projectsCount }}</p>
-                        </small>
+                <a href="/admin.projects" style="text-decoration: none;color: #000">
+                    <div class="card card-stat border-0 rounded-0" style="width: 18rem;">
+                        <div class="card-body">
+                            <small>
+                                <span class="text-muted" style="font-size: 20px">Projects</span>
+                                <p class="project-count text-center">{{ $projectsCount }}</p>
+                            </small>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col">
-                <div class="card card-stat border-0 rounded-0" style="width: 18rem;">
-                    <div class="card-body">
-                        <small>
-                            <span class="text-muted" style="font-size: 20px">Forums</span>
-                            <p class="forum-count text-center">{{ $forumsCount }}</p>
-                        </small>
+                <a href="/admin.users" style="text-decoration: none;color: #000">
+                    <div class="card card-stat border-0 rounded-0" style="width: 18rem;">
+                        <div class="card-body">
+                            <small>
+                                <span class="text-muted" style="font-size: 20px">Forums</span>
+                                <p class="forum-count text-center">{{ $forumsCount }}</p>
+                            </small>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card card-stat border-0 rounded-0" style="width: 18rem;">
-                    <div class="card-body">
-                        <small>
-                            <span class="text-muted" style="font-size: 20px">Feedbacks</span>
-                            <p class="feedback-count text-center">{{ $forumsCount }}</p>
-                        </small>
-                    </div>
-                </div>
+                </a>
             </div>
         </div>
 
@@ -91,7 +85,7 @@
                                     <td>{{ \Carbon\Carbon::parse($u->dob)->diff(\Carbon\Carbon::now())->format('%y') }}</td>
                                     <td>{{ $u->role }}</td>
                                     <td>{{ $u->grade }}</td>
-                                    <td>-</td>
+                                    <td><a href="/admin.users/{{ $u->id }}">See Detail</a></td>
                                 </tr>
                             @else
                                 <tr>
@@ -148,7 +142,7 @@
                                                         <td>{{ $p->project_subcategory }}</td>
                                                         <td>{{ $p->name }}</td>
                                                         <td>{{ Carbon\Carbon::parse($p->created_at)->diffForHumans()}}</td>
-                                                        <td>-</td>
+                                                        <td><a href="/admin.projects/{{ $p->id }}">See Detail</a></td>
                                                     </tr>
                                                 @else
                                                     <tr>
@@ -207,7 +201,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body ">
+                        {{-- <div class="card-body ">
                             <h6 class="text-muted">Feedbacks</h6>
                             <div class="card">
                                 <span style="padding-left: 10px">
@@ -218,7 +212,7 @@
                                     <small style="font-size: 16px">from {{ $u->name }}</small>
                                 </span>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

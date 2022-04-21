@@ -12,6 +12,21 @@
         </div>
 
         <div class="col-md-7">
+            <div class="mt-lg-4">
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search Username" aria-label="Search">
+                    <button class="btn btn-primary" type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+
+            <div class="mb-4">
+                <h6>Users ({{ $usersCount }})</h6>
+            </div>
+
             <div class="row row-cols-4">
                 @foreach ($users as $u)
                     <div class="col">
@@ -46,11 +61,23 @@
                 @endforeach
             </div>
         </div>
+
+
+
+
+
         <div class="col-sm-1">
             <div class="vl"></div>
         </div>
+
+
+
+
+
+
+
         <div class="col-md-2 class-name" style="margin-left: -100px">
-            <div>
+            <div class="mt-lg-4">
                 <small style="color: #259df3">Detail:</small>
             </div>
             <div class="mt-lg-4">
@@ -86,6 +113,10 @@
                                 </em>
                             @endif
                         </p>
+                        <div class="mt-lg-3">
+                            <a href="#modalHapusAkun_{{ $u2->id }}" data-bs-toggle="modal" data-bs-target="#modalHapusAkun_{{ $u2->id }}" class="btn btn-danger">Hapus Akun User</a>
+                        </div>
+                        @include('admin.modalHapusAkun')
                         <hr>
                         <div>
                             <table style="margin-left: auto; margin-right: auto;">
@@ -117,8 +148,10 @@
                     </div>
                     <div class="mt-4">
                         <h6>Projects</h6>
-                        <div>
+                        <hr>
+                        <div style="height:300px;overflow:auto;">
                             @foreach ($projectsUser as $ps)
+                            <a href="/admin.projects/{{ $ps->id }}" style="color: #000;text-decoration: none">
                                 <div class="card card-pro p-2 mb-2" style="border-radius: 10px">
                                     <small>{{ \Carbon\Carbon::parse($ps->created_at)->format('M d, Y') }}</small>
                                     <div class="d-flex justify-content-between">
@@ -130,6 +163,28 @@
                                         </div>
                                     </div>
                                 </div>
+                            </a>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <h6>Forums</h6>
+                        <hr>
+                        <div style="height:300px;overflow:auto;">
+                            @foreach ($projectsUser as $ps)
+                            <a href="/admin.projects/{{ $ps->id }}" style="color: #000;text-decoration: none">
+                                <div class="card card-pro p-2 mb-2" style="border-radius: 10px">
+                                    <small>{{ \Carbon\Carbon::parse($ps->created_at)->format('M d, Y') }}</small>
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <small><strong>{{ $ps->project_title }}</strong></small>
+                                        </div>
+                                        <div>
+                                            @include('admin.badgeCategoryAdmin')
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
                             @endforeach
                         </div>
                     </div>

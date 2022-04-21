@@ -304,7 +304,6 @@
                 <div class="col">
                     <a href="#modalFeedbackDetail_{{ $q->id }}" data-bs-toggle="modal" data-bs-target="#modalFeedbackDetail_{{ $q->id }}" class="card-detail">
                         <div class="card card2">
-
                             @if ($q->recommendation == "A")
                                 <div class="row row-cols-2 p-5">
                                     <div class="col">

@@ -74,6 +74,11 @@ Route::group(['middleware'=>'cekadmin'], function() {
     Route::get('/admin.users', 'AdminController@indexUsers');
     Route::get('/admin.users/{id}', 'AdminController@indexUsers');
 
+    Route::get('/admin.projects', 'AdminController@indexProjects');
+    Route::get('/admin.projects/{id}', 'AdminController@indexProjects');
+
+    Route::get('/userDelete/{id}', 'AdminController@userDelete');
+
 });
 
 Auth::routes(['verify' => true]);
