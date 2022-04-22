@@ -162,7 +162,7 @@ class ProjectController extends Controller
             $wishlists = Wishlists::select('project_id')->where('user_id', Auth::user()->id)->get();
             $wishlistsArr = Arr::flatten($wishlists->toArray());
 
-            return view('/explore', ['wishlists'=>$wishlistsArr], compact('projects', 'wishes'));
+            return view('/explore', ['projects'=>$projects, 'wishes'=>$wishes, 'wishlists'=>$wishlistsArr], compact('wishlists'));
         }
 
     }

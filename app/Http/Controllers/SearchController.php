@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Forums;
 use App\Projects;
+use App\Wishlists;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 
@@ -22,14 +25,29 @@ class SearchController extends Controller
     }
 
     public function filterProject(){
-        $projects = Projects::where('project_subcategory', Request::get('project_select'))->simplePaginate(15);
+        if(!Auth::check())
+        {
+            $projects = Projects::where('project_subcategory', Request::get('project_select'))->simplePaginate(15);
 
-        $users = DB::table("projects")
-            ->select("users.image", "users.gender")
-            ->join("users", "projects.user_id", "=", "users.id")
-            ->first();
+            $users = DB::table("projects")
+                ->select("users.image", "users.gender")
+                ->join("users", "projects.user_id", "=", "users.id")
+                ->first();
+            }
+        else
+        {
+            $projects = Projects::where('project_subcategory', Request::get('project_select'))->simplePaginate(15);
 
-        return view('/explore', compact('projects', 'users'));
+            $users = DB::table("projects")
+                ->select("users.image", "users.gender")
+                ->join("users", "projects.user_id", "=", "users.id")
+                ->first();
+
+            $wishlists = Wishlists::select('project_id')->where('user_id', Auth::user()->id)->get();
+            $wishlistsArr = Arr::flatten($wishlists->toArray());
+        }
+
+        return view('/explore', ['wishlists'=>$wishlistsArr], compact('projects', 'users'));
     }
 
 }
