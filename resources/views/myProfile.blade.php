@@ -402,7 +402,6 @@
                     <div class="row row-cols-1 row-cols-4">
                         @foreach ($wishlists as $w)
                             <div class="col">
-                                @foreach ($projects as $p)
                                     <a href="/projectDetail/{{ $w->project_id }}" class="project-detail">
                                         <div class="card card-wishlist" style="width: 18rem;">
                                             <img src="{{ asset('storage/'.$w->project_image) }}" class="rounded-start project-image-wishlist p-3" alt="project image">
@@ -414,14 +413,13 @@
                                                         </svg>
                                                     </a>
                                                 </div>
-                                                <h5 class="card-title text-center">{{ $p->project_title }}</h5>
+                                                <h5 class="card-title text-center">{{ $w->project_title }}</h5>
                                                 <div class="text-center">
                                                     @include('badgeCategoryWishlists')
                                                 </div>
                                             </div>
                                         </div>
                                     </a>
-                                @endforeach
                             </div>
                         @endforeach
                     </div>
