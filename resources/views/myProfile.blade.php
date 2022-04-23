@@ -2,7 +2,7 @@
 @section('title', 'Posterios - Project Exhibition & Forum Discussion')
 <link rel="shortcut icon" href="{{ asset('image/icon-logo-white.png') }}">
 <link rel="stylesheet" href="{{ asset('css/myProfile.css') }}">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 @include('navbar')
 

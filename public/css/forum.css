@@ -31,18 +31,41 @@ body{
 }
 
 .createforum-but{
-    padding: 10px 25px;
-    font-size: 18px;
-    border-radius: 5px;
-    text-decoration: none;
     background-color: #1FD09E;
+    padding: 15px 30px;
+    text-decoration: none;
     color: #fff;
+    border: none;
+    border-radius: 30px;
     transition: all 0.3s ease 0s;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
 }
 
 .createforum-but:hover{
     color: #fff;
-    box-shadow: 0 0 150px 0 rgba(255, 255, 255, 1);
+    transform: translateY(-1px);
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.5);
+}
+
+.card-filter-forum{
+    margin-top: -80px;
+    width: 800px;
+    box-shadow: -5px 5px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.filter-but{
+    margin-top: 10px;
+    padding: 10px 25px;
+    color: #fff;
+    background-color: #1FD09E;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease 0s;
+}
+
+.filter-but:hover{
+    background-color: #1aad84;
+    color: #fff;
 }
 
 .modal-title{
@@ -66,29 +89,21 @@ body{
     margin-left: 5px;
 }
 
-option{
-    text-align: center;
-}
-
 .slogan{
     max-width: 30%;
     word-wrap: break-word;
     margin: 0 auto;
 }
 
-.forum-detail{
-    text-decoration: none;
-    color: #000;
-    transition: all 0.3s ease 0s;
-}
-
-.forum-detail:hover{
-    text-decoration: none;
-    color: #1FD09E;
-}
-
 .card{
-    box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: -10px 10px 5px 0 rgba(0, 0, 0, 0.1);
+}
+
+.card-forum:hover{
+    transition: all 0.3s ease 0s;
+    transform: translateY(-5px);
+    border-color: #259df3;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 }
 
 .search{

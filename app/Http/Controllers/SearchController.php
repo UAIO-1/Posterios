@@ -45,9 +45,11 @@ class SearchController extends Controller
 
             $wishlists = Wishlists::select('project_id')->where('user_id', Auth::user()->id)->get();
             $wishlistsArr = Arr::flatten($wishlists->toArray());
+
+            $wishes = DB::table('wishlists')->select('id')->where('user_id', Auth::user()->id)->first();
         }
 
-        return view('/explore', ['wishlists'=>$wishlistsArr], compact('projects', 'users'));
+        return view('/explore', ['wishlists'=>$wishlistsArr], compact('projects', 'users', 'wishes'));
     }
 
 }

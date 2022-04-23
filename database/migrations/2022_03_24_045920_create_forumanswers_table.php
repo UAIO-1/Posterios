@@ -19,6 +19,7 @@ class CreateForumanswersTable extends Migration
             $table->foreignId('user_id');
             $table->string('username');
             $table->string('reply_message', 10000);
+            $table->text('reply_image')->nullable();
             $table->timestamps();
         });
     }

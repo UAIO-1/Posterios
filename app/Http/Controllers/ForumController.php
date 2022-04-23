@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ForumAnswers;
 use App\Forums;
+use App\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -42,41 +43,42 @@ class ForumController extends Controller
     }
 
     public function indexForum(Request $request){
-        $forums = Forums::take(15)
-                ->inRandomOrder()
-                ->get();
+        $forums = Forums::take(50)->get();
 
         return view('/forum', compact('forums'));
     }
 
     public function getForumID($id){
         $forums = DB::table('forum')
-                ->where('id','=',$id)
+                ->select('users.image', 'users.gender', 'forum.*')
+                ->join("users", "users.id", "=", "forum.user_id")
+                ->where('forum.id','=',$id)
                 ->get();
 
-        $users = DB::table("forum")
-                ->select("users.image")
-                ->join("users", "forum.user_id", "=", "users.id")
-                ->first();
-
         $replies = DB::table('forumanswers')
+                ->select('users.image', 'users.gender', 'forumanswers.*')
+                ->join("users", "users.id", "=", "forumanswers.user_id")
                 ->where('forum_id', '=', $id)
                 ->get();
 
-        return view('/forumDetail', compact('forums', 'users', 'replies'));
+        return view('/forumDetail', compact('forums', 'replies'));
     }
 
     public function postReplyForum(Request $request){
-
-        $this->validate($request,[
-            'reply_message' => 'required',
-        ]);
 
         $reply = new ForumAnswers();
         $reply->forum_id = $request->forum_id;
         $reply->user_id = $request->user_id;
         $reply->username = $request->username;
         $reply->reply_message = $request->reply_message;
+
+        if($request->file('reply_image') == null){
+            $reply->reply_image = null;
+        } else {
+            $path = $request->file('reply_image')->store('images/reply','public');
+            $reply->reply_image = $path;
+        }
+
 
         $reply->save();
 
@@ -113,6 +115,25 @@ class ForumController extends Controller
         $reply = ForumAnswers::where('id', '=', $request->id)->first();
 
         $reply->reply_message = $request->reply_message;
+
+
+        if ($request->hasFile('reply_image')) {
+            $path = 'storage/images/reply'.$reply->reply_image;
+            if(File::exists($path)){
+                File::delete($path);
+            }
+            $file = $request->file('reply_image');
+            $path = $file->store('images/reply','public');
+            $file->move('storage/images/reply',  $path);
+            $reply->reply_image = $path;
+        } elseif($request->file('reply_image') == null){
+            $reply->reply_image = null;
+        }
+        else {
+            $path = $request->file('reply_image')->store('images/reply','public');
+            $reply->reply_image = $path;
+        }
+
 
         $reply->save();
 
