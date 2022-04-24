@@ -8,6 +8,84 @@
 @if (!Auth::check())
 
 
+<div class="container mt-lg-4">
+    @foreach ($forums as $f)
+        <div class="card card-quest" style="z-index: -1">
+            <div class="card-header bg-transparent">
+                <div class="row row-cols-auto">
+                    <div class="col">
+                        @if ($f->image == null)
+                            @if ($f->gender == "Male")
+                                <img src="{{ asset('image/user-male.png') }}" alt="user image" class="user-image">
+                            @else
+                                <img src="{{ asset('image/user-female.png') }}" alt="user image" class="user-image">
+                            @endif
+                        @else
+                            <img src="{{ asset('storage/'.$f->image) }}" alt="user image" class="user-image">
+                        @endif
+                    </div>
+                    <div class="col">
+                        <h6>{{ $f->name }}</h6>
+                        <small class="text-muted">{{ $f->forum_category }} • {{ $f->forum_subcategory }} • Asked {{ Carbon\Carbon::parse($f->created_at)->diffForHumans()}} • Modified {{ Carbon\Carbon::parse($f->updated_at)->diffForHumans()}}</small>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">{{ $f->forum_title }}</h4>
+                <p class="card-text text-muted">{{ $f->forum_message }}</p>
+            </div>
+            <div class="p-2">
+                @if ($f->forum_image == null)
+
+                @else
+                    <img src="{{ asset('storage/'.$f->forum_image) }}" class="card-img-bottom" alt="image">
+                @endif
+            </div>
+
+        </div>
+    @endforeach
+
+
+
+
+
+
+
+
+    <div class="mt-xl-5">
+        <h3>Answer</h3>
+    </div>
+    <div class="card mt-lg-2 p-3">
+        @foreach ($replies as $r)
+            <div class="row row-cols-auto">
+                <div class="col">
+                    @if ($r->image == null)
+                        @if ($r->gender == "Male")
+                            <img src="{{ asset('image/user-male.png') }}" alt="user image" class="user-image">
+                        @else
+                            <img src="{{ asset('image/user-female.png') }}" alt="user image" class="user-image">
+                        @endif
+                    @else
+                        <img src="{{ asset('storage/'.$r->image) }}" alt="user image" class="user-image">
+                    @endif
+                </div>
+                <div class="col">
+                    <h6>{{ $r->username }} <span class="text-muted"><small>• {{ Carbon\Carbon::parse($r->updated_at)->diffForHumans()}}</small></span></h6>
+                    <p class="reply">{{ $r->reply_message }}</p>
+                    @if ($r->reply_image == null)
+
+                    @else
+                        <img src="{{ asset('storage/'.$r->reply_image) }}" class="card-img-bottom" alt="image">
+                    @endif
+                </div>
+            </div>
+
+            <hr>
+        @endforeach
+    </div>
+
+</div>
+
 @else
 
     <div class="container mt-lg-4">

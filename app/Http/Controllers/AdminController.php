@@ -20,8 +20,9 @@ class AdminController extends Controller
 
         $users = Users::where('id', '>', 1)->get();
         $projects = Projects::where('id', '>', 0)->get();
+        $forums = Forums::where('id', '>', 0)->get();
 
-        return view('/admin.dashboard', compact('usersCount', 'projectsCount', 'forumsCount', 'users', 'projects'));
+        return view('/admin.dashboard', compact('usersCount', 'projectsCount', 'forumsCount', 'users', 'projects', 'forums'));
     }
 
     public function indexUsers(Request $request) {
@@ -58,9 +59,26 @@ class AdminController extends Controller
         return view('/admin.projects', compact('projects', 'projectsCount', 'projects2', 'questions'));
     }
 
+    public function indexForums(Request $request) {
+
+        $forums = Forums::all();
+
+        $forumsCount = Forums::where('id', '>', 0)->count();
+
+        $forums2 = DB::table('forum')->where('id', '=', $request->id)->get();
+
+
+        return view('/admin.forums', compact('forums', 'forumsCount', 'forums2'));
+    }
+
     public function userDelete($id){
         DB::table('users')->where('id', $id)->delete();
         return redirect('/admin.users');
+    }
+
+    public function forumDelete($id){
+        DB::table('forum')->where('id', $id)->delete();
+        return redirect('/admin.forums');
     }
 
 }

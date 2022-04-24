@@ -24,7 +24,7 @@
                 <div class="container-header text-center text-light mt-lg-4">
                     <h2 class="title mb-4">Project Showcase And Forum Disccusion</h2>
                     <p class="mb-4 slogan">
-                        Posterios is a platform to show off and promote student creations widely. Everyone can learn through a project and build connections with people.
+                        Posterios adalah platform untuk memamerkan dan mempromosikan kreasi siswa secara luas. Setiap orang dapat belajar melalui sebuah proyek dan membangun koneksi dengan orang banyak.
                     </p>
                     <div>
                         <a href="#" id="getstartbtn" class="btn getstart-btn">How To Start</a>
@@ -46,7 +46,7 @@
                 <div class="container-header text-center text-light mt-lg-4">
                     <h2 class="title mb-4">Project Showcase And Forum Disccusion</h2>
                     <p class="mb-4 slogan">
-                        Posterios is a platform to show off and promote student creations widely. Everyone can learn through a project and build connections with people.
+                        Posterios adalah platform untuk memamerkan dan mempromosikan kreasi siswa secara luas. Setiap orang dapat belajar melalui sebuah proyek dan membangun koneksi dengan orang banyak.
                     </p>
                     <div>
                         <a href="#" id="getstartbtn" class="btn getstart-btn">How To Start</a>

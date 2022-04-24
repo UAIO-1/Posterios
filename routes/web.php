@@ -79,6 +79,14 @@ Route::group(['middleware'=>'cekadmin'], function() {
 
     Route::get('/userDelete/{id}', 'AdminController@userDelete');
 
+    Route::get('/admin.forums', function () {
+        return view('/admin.forums');
+    });
+
+    Route::get('/admin.forums', 'AdminController@indexForums');
+    Route::get('/admin.forums/{id}', 'AdminController@indexForums');
+
+    Route::get('/forumDelete/{id}', 'AdminController@forumDelete');
 });
 
 Auth::routes(['verify' => true]);
