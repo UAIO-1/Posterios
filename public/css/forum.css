@@ -1,14 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik&family=Source+Sans+Pro&display=swap');
 
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 body{
     overflow-x: hidden;
+}
+
+.display-1{
+    font-family: 'Rubik', sans-serif;
 }
 
 .header{

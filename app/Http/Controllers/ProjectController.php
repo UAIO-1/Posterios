@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Forums;
 use App\Projects;
 use App\Questions;
 use App\User;
@@ -214,6 +215,14 @@ class ProjectController extends Controller
         return redirect('/explore');
     }
 
+    public function indexProjectWelcome(){
+
+        $projects = Projects::orderBy('created_at', 'desc')->simplePaginate(5);
+
+        $forums = Forums::orderBy('created_at', 'desc')->simplePaginate(5);
+
+        return view('welcome', compact('projects', 'forums'));
+    }
 
 
 }

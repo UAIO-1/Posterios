@@ -90,7 +90,7 @@
 
             <div class="tab-pane fade mt-4 show active" id="projects" role="tabpanel" aria-labelledby="projects-tab">
                 @if (isset($projects))
-                    <div class="row row-cols-4">
+                    <div class="row row-cols-4 g-4">
                         @foreach ($projects as $p)
                             <div class="col">
                                 <a href="/projectDetail/{{ $p->id }}" class="project-detail">
@@ -124,7 +124,7 @@
 
             <div class="tab-pane fade" id="forums" role="tabpanel" aria-labelledby="forums-tab">
                 @if (isset($forums))
-                <div class="row row-cols-1 row-cols-4">
+                <div class="row row-cols-1 row-cols-4 g-4">
                     @foreach ($forums as $f)
                         <div class="col">
                             <a href="/forumDetail/{{ $f->id }}" class="project-detail">
@@ -253,7 +253,7 @@
 
             <div class="tab-pane fade mt-4 show active" id="projects" role="tabpanel" aria-labelledby="projects-tab">
                 @if (isset($projects))
-                    <div class="row row-cols-4">
+                    <div class="row row-cols-4 g-4">
                         @foreach ($projects as $p)
                             <div class="col">
                                 <a href="/projectDetail/{{ $p->id }}" class="project-detail">
@@ -286,7 +286,37 @@
             </div>
 
             <div class="tab-pane fade" id="forums" role="tabpanel" aria-labelledby="forums-tab">
-                ...
+                @if (isset($forums))
+                    <div class="row row-cols-4 g-4">
+                        @foreach ($forums as $f)
+                            <div class="col">
+                                <a href="/forumDetail/{{ $f->id }}" class="project-detail">
+                                    <div class="card card-wishlist border-0" style="width: 18rem;">
+                                        <img src="{{ asset('storage/'.$f->forum_image) }}" class="rounded-start project-image-wishlist p-3" alt="project image">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-center">{{ $f->forum_title }}</h5>
+                                            <div class="text-center">
+                                                {{-- @include('badgeCategory') --}}
+                                            </div class="text-center">
+                                            <div class="mt-2">
+                                                @php
+                                                    Carbon\Carbon::setLocale('id');
+                                                @endphp
+                                                <p class="card-text text-center">
+                                                    <small class="text-muted">
+                                                        {{ Carbon\Carbon::parse($f->created_at)->diffForHumans()}}
+                                                    </small>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                @else
+                    Tidak ada proyek yang diposting.
+                @endif
             </div>
         </div>
     </div>
@@ -391,7 +421,7 @@
 
             <div class="tab-pane fade mt-4 show active" id="projects" role="tabpanel" aria-labelledby="projects-tab">
                 @if (isset($projects))
-                    <div class="row row-cols-4">
+                    <div class="row row-cols-4 g-4">
                         @foreach ($projects as $p)
                             <div class="col">
                                 <a href="/projectDetail/{{ $p->id }}" class="project-detail">
@@ -426,7 +456,7 @@
 
             <div class="tab-pane fade mt-4" id="wishlist" role="tabpanel" aria-labelledby="wishlist-tab">
                 @if (isset($wishlists))
-                    <div class="row row-cols-1 row-cols-4">
+                    <div class="row row-cols-4 g-4">
                         @foreach ($wishlists as $w)
                             <div class="col">
                                     <a href="/projectDetail/{{ $w->project_id }}" class="project-detail">
@@ -457,7 +487,7 @@
 
             <div class="tab-pane fade mt-4" id="forums" role="tabpanel" aria-labelledby="forums-tab">
                 @if (isset($forums))
-                    <div class="row row-cols-1 row-cols-4">
+                    <div class="row row-cols-4 g-4">
                         @foreach ($forums as $f)
                             <div class="col">
                                 <a href="/forumDetail/{{ $f->id }}" class="project-detail">

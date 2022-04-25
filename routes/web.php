@@ -23,8 +23,12 @@ Route::post('/registerPost', 'AuthController@registerPost');
 
 Route::get('/logout','AuthController@logout');
 
+Route::get('/','ProjectController@indexProjectWelcome');
+
 
 Route::group(['middleware'=>'cekuser'], function() {
+
+    Route::get('/','ProjectController@indexProjectWelcome');
 
     Route::get('/post', function () {
         return view('post');

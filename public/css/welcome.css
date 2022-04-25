@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@300&family=Judson&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik&family=Source+Sans+Pro&display=swap');
 
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Archivo', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 body{
@@ -21,13 +21,12 @@ body{
 }
 
 .title{
-    font-family: 'Archivo Black', sans-serif;
+    font-family: 'Rubik', sans-serif;
     font-size: 3em;
+    font-weight: bold;
 }
 
-.slogan{
-    font-family: 'Judson', serif;
-}
+
 
 .gambar-depan{
     border-radius: 5px;
@@ -78,6 +77,15 @@ body{
 .startpost-btn:hover{
     color: #fff;
     box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.9);
+}
+
+.card{
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease 0s;
+}
+
+.card:hover{
+    transform: translateY(-5px);
 }
 
 

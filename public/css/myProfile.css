@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@300&family=Judson&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik&family=Source+Sans+Pro&display=swap');
 
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Archivo', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 html, body{
@@ -20,7 +20,7 @@ html, body{
     font-size: 3em;
     max-width: 500px;
     word-wrap: break-word;
-    font-family: 'Judson', serif;
+    font-family: 'Rubik', sans-serif;
 }
 
 .teks{
