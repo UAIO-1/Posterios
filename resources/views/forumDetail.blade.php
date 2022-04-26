@@ -26,7 +26,10 @@
                     </div>
                     <div class="col">
                         <h6>{{ $f->name }}</h6>
-                        <small class="text-muted">{{ $f->forum_category }} • {{ $f->forum_subcategory }} • Asked {{ Carbon\Carbon::parse($f->created_at)->diffForHumans()}} • Modified {{ Carbon\Carbon::parse($f->updated_at)->diffForHumans()}}</small>
+                        @php
+                            Carbon\Carbon::setLocale('id');
+                        @endphp
+                        <small class="text-muted">{{ $f->forum_category }} • {{ $f->forum_subcategory }} • Ditanyakan {{ Carbon\Carbon::parse($f->created_at)->diffForHumans()}} • Diubah {{ Carbon\Carbon::parse($f->updated_at)->diffForHumans()}}</small>
                     </div>
                 </div>
             </div>
@@ -53,7 +56,7 @@
 
 
     <div class="mt-xl-5">
-        <h3>Answer</h3>
+        <h3>Jawaban</h3>
     </div>
     <div class="card mt-lg-2 p-3">
         @foreach ($replies as $r)
@@ -70,6 +73,9 @@
                     @endif
                 </div>
                 <div class="col">
+                    @php
+                        Carbon\Carbon::setLocale('id');
+                    @endphp
                     <h6>{{ $r->username }} <span class="text-muted"><small>• {{ Carbon\Carbon::parse($r->updated_at)->diffForHumans()}}</small></span></h6>
                     <p class="reply">{{ $r->reply_message }}</p>
                     @if ($r->reply_image == null)
@@ -106,9 +112,23 @@
                         </div>
                         <div class="col">
                             <h6>{{ $f->name }}</h6>
-                            <small class="text-muted">{{ $f->forum_category }} • {{ $f->forum_subcategory }} • Asked {{ Carbon\Carbon::parse($f->created_at)->diffForHumans()}} • Modified {{ Carbon\Carbon::parse($f->updated_at)->diffForHumans()}}</small>
+                            @php
+                                Carbon\Carbon::setLocale('id');
+                            @endphp
+                            <small class="text-muted">{{ $f->forum_category }} • {{ $f->forum_subcategory }} • Ditanyakan {{ Carbon\Carbon::parse($f->created_at)->diffForHumans()}} • Diubah {{ Carbon\Carbon::parse($f->updated_at)->diffForHumans()}}</small>
                         </div>
                     </div>
+                    @if (Auth::user()->id == $f->user_id)
+                        <div class="d-flex justify-content-end">
+                            <a href="#modalHapusForum_{{ $f->id }}" data-bs-toggle="modal" data-bs-target="#modalHapusForum_{{ $f->id }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-trash3-fill text-muted" viewBox="0 0 16 16">
+                                    <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    @else
+                    @endif
+                    @include('profile.modalHapusForum')
                 </div>
                 <div class="card-body">
                     <h4 class="card-title">{{ $f->forum_title }}</h4>
@@ -151,7 +171,7 @@
 
 
         <div class="mt-xl-5">
-            <h3>Answer</h3>
+            <h3>Jawaban</h3>
         </div>
         <div class="card mt-lg-2 p-3">
             @foreach ($replies as $r)

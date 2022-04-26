@@ -148,5 +148,10 @@ class ForumController extends Controller
         return view('/forum', compact('forums'));
     }
 
+    public function forumDeleteUser($id){
+        DB::table('forum')->where('id', $id)->delete();
+        return redirect('/forum');
+    }
+
 
 }
