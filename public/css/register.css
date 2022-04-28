@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik&family=Source+Sans+Pro&display=swap');
 
 *{
     box-sizing: border-box;
@@ -10,25 +10,67 @@
 body{
     width: 100vw;
     height: 100vh;
-    background-image: url("../image/register-header.png");
+    background-image:  url("../image/register-header.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
-.logo-head{
-    position: absolute;
-    top: 40vh;
-    margin-left: -100px;
-}
-
-.brand{
-    font-size: 50px;
+.col-form-label{
+    font-weight: bold;
 }
 
 .card{
-    position: absolute;
-    top: 15%;
-    box-shadow: -30px 30px 20px 0 rgba(0, 0, 0, 0.2);
+    width: 60vw;
+}
+
+.card-student{
+    border: none;
+    box-shadow: -5px 5px 10px 1px rgba(0, 0, 0, 0.1);
+}
+
+.card-default{
+    width: 130px;
+    height: 39px;
+    transition: all 0.3s ease 0s;
+}
+
+.card-default-kelas{
+    width: 40px;
+    height: 40px;
+    transition: all 0.3s ease 0s;
+}
+
+.card-input-kelas{
+    padding: 10px;
+}
+
+.card-input-kelas:hover {
+    cursor: pointer;
+    border: 1px solid #259df3;
+}
+
+.card-default:hover{
+    border: 1px solid #259df3;
+}
+
+.card-input-element {
+    display: none;
+}
+
+.card-input{
+    padding: 8px;
+}
+
+.card-input:hover {
+    cursor: pointer;
+}
+
+.card-input-element:checked + .card-input {
+    border-color: #259df3;
+}
+
+.card-input-element:checked + .card-input-kelas {
+    border-color: #259df3;
 }

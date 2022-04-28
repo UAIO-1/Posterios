@@ -3,155 +3,398 @@
 <link rel="shortcut icon" href="{{ asset('image/icon-logo-white.png') }}">
 <link rel="stylesheet" href="{{ asset('css/register.css') }}">
 
-
-<div class="container mt-xl-5">
-    <div class="row">
-        <div class="col-md-6 text-light">
-            <div class="logo-head">
-                <img src="{{ asset('image/icon-logo-white.png') }}" class="p-2" alt="posterios logo" width="200px" height="200px">
-                <span class="brand">POSTERIOS</span>
-                <h5>Join and feel the convenience of posting at Posterios</h5>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="text-center mt-lg-4">
-                    <h1><strong>Sign Up</strong></h1>
-                    <small class="text-muted">Already have an account? <a href="/" style="color: #259df3">Sign In</a></small>
-                </div>
-                <form method="POST" action="{{ route('register') }}" class="p-5">
-                    @csrf
-
-                    <div class="form-group row mb-3">
-                        <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                        <div class="col-md-6">
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                            @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="form-group row mb-3">
-                        <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                        <div class="col-md-6">
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                            @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="form-group row mb-3">
-                        <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                        <div class="col-md-6">
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('email') }}" required autocomplete="new-password">
-
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="form-group row mb-3">
-                        <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                        <div class="col-md-6">
-                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" value="{{ old('email') }}" required autocomplete="new-password">
-                        </div>
-                    </div>
-
-                    <div class="form-group row mb-3">
-                        <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
-
-                        <div class="col-md-6">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault1" value="Male" checked>
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                    Male
-                                </label>
-                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gender" value="Female" id="flexRadioDefault2">
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                    Female
-                                </label>
-                            </div>
-
-                            @error('gender')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="form-group row mb-3">
-                        <label for="dob" class="col-md-4 col-form-label text-md-right">{{ __('Date of Birth') }}</label>
-
-                        <div class="col-md-6">
-                            <input id="dob" type="date" class="form-control @error('dob') is-invalid @enderror"  name="dob" value="{{ old('email') }}" required autocomplete="new-password">
-
-                            @error('dob')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="form-group row mb-3">
-                        <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Sign Up As') }}</label>
-
-                        <div class="col-md-6">
-                            <div class="row row-cols-2">
-                                <div class="col">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="role" id="flexRadioDefault3" value="Student" checked>
-                                        <label class="form-check-label" for="flexRadioDefault3">
-                                            Student
-                                        </label>
-                                     </div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="role" value="Teacher" id="flexRadioDefault4">
-                                        <label class="form-check-label" for="flexRadioDefault4">
-                                            Teacher
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            @error('role')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="form-group row mb-0">
-                        <div class="col-md-6 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
-                                {{ __('Register') }}
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+<div class="text-center mt-lg-4 text-light">
+    <div class="d-flex justify-content-center">
+        <img src="{{ asset('image/logo-posterios-white.png') }}" alt="logo">
+    </div>
+    <div class="mt-lg-4">
+        <h4>Explore Many Projects & Discuss With Many People</h4>
     </div>
 </div>
+
+<div class="container" style="margin-top: 50px">
+    <div class="d-flex align-items-start">
+        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <button class="nav-link active mb-3 text-light" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Student</button>
+          <button class="nav-link text-light" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Teacher</button>
+        </div>
+        <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                <div class="card card-student border-0 rounded-0">
+                    <div class="card-header bg-primary">
+                        <div class="text-center text-light">
+                            <h1>Sign Up As Student</h1>
+                            <small>Already have an account? <a href="/" style="color: #fff">Sign In</a></small>
+                        </div>
+                    </div>
+                    <div class="card-body">
+
+                        <form method="POST" action={{ route('register') }} enctype="multipart/form-data">
+                            @csrf
+
+                            <input type="hidden" name="role" value="Student">
+
+                            <div class="row row-cols-2">
+
+                                <div class="col">
+                                    <div class="form-group mb-lg-4">
+                                        <label for="name" class="col-form-label text-md-right">{{ __('Nama Lengkap') }}</label>
+                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name">
+                                        @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group mb-lg-4">
+                                        <label for="email" class="col-form-label text-md-right">{{ __('Alamat E-Mail') }}</label>
+                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required>
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group mb-lg-4">
+                                        <label for="password" class="col-form-label text-md-right">{{ __('Password') }}</label>
+                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('email') }}" required>
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group mb-lg-4">
+                                        <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Ulangi Password') }}</label>
+                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" value="{{ old('email') }}" required>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group mb-lg-4">
+                                        <label for="dob" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal Lahir') }}</label>
+                                        <input id="dob" type="date" class="form-control @error('dob') is-invalid @enderror"  name="dob" value="{{ old('email') }}" required>
+                                        @error('dob')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group mb-lg-4">
+                                        <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Jenis Kelamin') }}</label>
+                                        <div class="row row-cols-auto">
+                                            <div class="col">
+                                                <label>
+                                                    <input class="card-input-element" type="radio" name="gender" value="Male">
+                                                    <div class="card card-default card-input">
+                                                        <p class="text-primary">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gender-male" viewBox="0 0 16 16">
+                                                                <path fill-rule="evenodd" d="M9.5 2a.5.5 0 0 1 0-1h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V2.707L9.871 6.836a5 5 0 1 1-.707-.707L13.293 2H9.5zM6 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/>
+                                                            </svg>
+                                                            Laki - Laki
+                                                        </p>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                            <div class="col">
+                                                <label>
+                                                    <input class="card-input-element" type="radio" name="gender" value="Female">
+                                                    <div class="card card-default card-input">
+                                                        <p class="text-danger">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gender-female" viewBox="0 0 16 16">
+                                                                <path fill-rule="evenodd" d="M8 1a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM3 5a5 5 0 1 1 5.5 4.975V12h2a.5.5 0 0 1 0 1h-2v2.5a.5.5 0 0 1-1 0V13h-2a.5.5 0 0 1 0-1h2V9.975A5 5 0 0 1 3 5z"/>
+                                                            </svg>
+                                                            Perempuan
+                                                        </p>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        @error('gender')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group mb-lg-4">
+                                        <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Kelas') }}</label>
+                                        <div class="row row-cols-auto">
+                                            <div class="col">
+                                                <label>
+                                                    <input class="card-input-element" type="radio" name="grade" value="10">
+                                                    <div class="card card-default-kelas card-input-kelas">
+                                                        <p>
+                                                            10
+                                                        </p>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                            <div class="col">
+                                                <label>
+                                                    <input class="card-input-element" type="radio" name="grade" value="11">
+                                                    <div class="card card-default-kelas card-input-kelas">
+                                                        <p>
+                                                            11
+                                                        </p>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                            <div class="col">
+                                                <label>
+                                                    <input class="card-input-element" type="radio" name="grade" value="12">
+                                                    <div class="card card-default-kelas card-input-kelas">
+                                                        <p>
+                                                            12
+                                                        </p>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        @error('gender')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group mb-lg-4">
+                                        <label for="sekolah" class="col-form-label text-md-right">{{ __('Nama Sekolah') }}</label>
+                                        <input id="sekolah" type="text" class="form-control @error('sekolah') is-invalid @enderror" name="sekolah" value="{{ old('sekolah') }}" required>
+                                        @error('sekolah')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label for="formFile" class="form-label col-form-label">Foto Selfie</label>
+                                        <input class="form-control" type="file" name="image_selfie" id="formFile" accept=".png,.jpg,.jpeg">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label for="formFile" class="form-label col-form-label">Foto Kartu Pelajar</label>
+                                        <input class="form-control" type="file" name="image_card" id="formFile" accept=".png,.jpg,.jpeg">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="mt-lg-4">
+                                <input type="submit" class="btn btn-primary w-100" style="border-radius: 50px" value="Submit">
+                            </div>
+
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                <div class="card">
+                    <div class="card card-student border-0 rounded-0">
+                        <div class="card-header bg-primary">
+                            <div class="text-center text-light">
+                                <h1>Sign Up As Teacher</h1>
+                                <small>Already have an account? <a href="/" style="color: #fff">Sign In</a></small>
+                            </div>
+                        </div>
+                        <div class="card-body">
+
+                            <form method="POST" action="{{ route('register') }}">
+                                @csrf
+
+                                <input type="hidden" name="role" value="Teacher">
+
+                                <div class="row row-cols-2">
+
+                                    <div class="col">
+                                        <div class="form-group mb-lg-4">
+                                            <label for="name" class="col-form-label text-md-right">{{ __('Nama Lengkap') }}</label>
+                                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name">
+                                            @error('name')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group mb-lg-4">
+                                            <label for="email" class="col-form-label text-md-right">{{ __('Alamat E-Mail') }}</label>
+                                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required>
+                                            @error('email')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group mb-lg-4">
+                                            <label for="password" class="col-form-label text-md-right">{{ __('Password') }}</label>
+                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('email') }}" required>
+                                            @error('password')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group mb-lg-4">
+                                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Ulangi Password') }}</label>
+                                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" value="{{ old('email') }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group mb-lg-4">
+                                            <label for="dob" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal Lahir') }}</label>
+                                            <input id="dob" type="date" class="form-control @error('dob') is-invalid @enderror"  name="dob" value="{{ old('email') }}" required>
+                                            @error('dob')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group mb-lg-4">
+                                            <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Jenis Kelamin') }}</label>
+                                            <div class="row row-cols-auto">
+                                                <div class="col">
+                                                    <label>
+                                                        <input class="card-input-element" type="radio" name="gender" value="Male">
+                                                        <div class="card card-default card-input">
+                                                            <p class="text-primary">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gender-male" viewBox="0 0 16 16">
+                                                                    <path fill-rule="evenodd" d="M9.5 2a.5.5 0 0 1 0-1h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V2.707L9.871 6.836a5 5 0 1 1-.707-.707L13.293 2H9.5zM6 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/>
+                                                                </svg>
+                                                                Laki - Laki
+                                                            </p>
+                                                        </div>
+                                                    </label>
+                                                </div>
+                                                <div class="col">
+                                                    <label>
+                                                        <input class="card-input-element" type="radio" name="gender" value="Female">
+                                                        <div class="card card-default card-input">
+                                                            <p class="text-danger">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gender-female" viewBox="0 0 16 16">
+                                                                    <path fill-rule="evenodd" d="M8 1a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM3 5a5 5 0 1 1 5.5 4.975V12h2a.5.5 0 0 1 0 1h-2v2.5a.5.5 0 0 1-1 0V13h-2a.5.5 0 0 1 0-1h2V9.975A5 5 0 0 1 3 5z"/>
+                                                                </svg>
+                                                                Perempuan
+                                                            </p>
+                                                        </div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            @error('gender')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group mb-lg-4">
+                                            <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Mengajar di Kelas') }}</label>
+                                            <div class="row row-cols-auto">
+                                                <div class="col">
+                                                    <label>
+                                                        <input class="card-input-element" type="radio" name="grade" value="10">
+                                                        <div class="card card-default-kelas card-input-kelas">
+                                                            <p>
+                                                                10
+                                                            </p>
+                                                        </div>
+                                                    </label>
+                                                </div>
+                                                <div class="col">
+                                                    <label>
+                                                        <input class="card-input-element" type="radio" name="grade" value="11">
+                                                        <div class="card card-default-kelas card-input-kelas">
+                                                            <p>
+                                                                11
+                                                            </p>
+                                                        </div>
+                                                    </label>
+                                                </div>
+                                                <div class="col">
+                                                    <label>
+                                                        <input class="card-input-element" type="radio" name="grade" value="12">
+                                                        <div class="card card-default-kelas card-input-kelas">
+                                                            <p>
+                                                                12
+                                                            </p>
+                                                        </div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            @error('gender')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group mb-lg-4">
+                                            <label for="sekolah" class="col-form-label text-md-right">{{ __('Nama Sekolah') }}</label>
+                                            <input id="sekolah" type="text" class="form-control @error('sekolah') is-invalid @enderror" name="sekolah" value="{{ old('sekolah') }}" required>
+                                            @error('sekolah')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label for="formFile" class="form-label col-form-label">Foto Selfie</label>
+                                            <input class="form-control" type="file" name="image_selfie" id="formFile" accept=".png,.jpg,.jpeg">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label for="formFile" class="form-label col-form-label">Foto Kartu Tanda Guru / ID Card</label>
+                                            <input class="form-control" type="file" name="image_card" id="formFile" accept=".png,.jpg,.jpeg">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="mt-lg-4">
+                                    <input type="submit" class="btn btn-primary w-100" style="border-radius: 50px" value="Submit">
+                                </div>
+
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+</div>
+
+
+
 

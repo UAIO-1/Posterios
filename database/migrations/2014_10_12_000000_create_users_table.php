@@ -24,9 +24,12 @@ class CreateUsersTable extends Migration
             $table->text('image')->nullable();
             $table->string('aboutme', 10000)->nullable();
             $table->string('jurusan')->nullable();
-            $table->string('grade')->nullable();
+            $table->string('grade');
             $table->string('sekolah')->nullable();
             $table->timestamp('email_verified_at')->nullable();
+            $table->text('image_selfie');
+            $table->text('image_card');
+            $table->string('status')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
