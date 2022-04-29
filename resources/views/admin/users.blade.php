@@ -24,6 +24,41 @@
             </div>
 
             <div class="mb-4">
+                <h6>Pending Approval ({{ $pendingCount }})</h6>
+            </div>
+
+            <div style="max-width: 1100px; overflow: auto;">
+            <div class="row row-cols-4" >
+                @foreach ($pending as $p)
+                    <div class="col">
+                        <div class="card p-3" style="width: 15rem;border-radius: 20px">
+                            <div class="d-flex justify-content-center">
+                                @if ($p->image == null)
+                                    @if ($p->gender == "Male")
+                                        <img src="{{ asset('image/user-male.png') }}" class="card-img-top profilepicture" alt="profile picture">
+                                    @else
+                                        <img src="{{ asset('image/user-female.png') }}" class="card-img-top profilepicture" alt="profile picture">
+                                    @endif
+                                @else
+                                    <img src="{{ asset('storage/'.$p->image) }}" class="card-img-top profilepicture" alt="profile picture">
+                                @endif
+                            </div>
+                            <div class="card-body text-center">
+                                <h5 class="card-title">{{ $p->name }}</h5>
+                                <p class="card-text">
+                                    <small style="font-size: 14px">({{ $p->email }})</small>
+                                </p>
+                                <p class="card-text">
+                                    <small style="font-size: 14px">{{ $p->role }}</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+
+            <div class="mb-4 mt-lg-4">
                 <h6>Users ({{ $usersCount }})</h6>
             </div>
 

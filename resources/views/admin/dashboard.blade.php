@@ -57,6 +57,18 @@
                     </div>
                 </a>
             </div>
+            <div class="col">
+                <a href="/admin.verifikasiuser" style="text-decoration: none;color: #000">
+                    <div class="card card-stat border-0 rounded-0" style="width: 18rem;">
+                        <div class="card-body">
+                            <small>
+                                <span class="text-muted" style="font-size: 20px">Pending Verification</span>
+                                <p class="pending-count text-center">{{ $pendingCount }}</p>
+                            </small>
+                        </div>
+                    </div>
+                </a>
+            </div>
         </div>
 
         <div class="p-3 mt-4">

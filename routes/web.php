@@ -93,6 +93,9 @@ Route::group(['middleware'=>'cekadmin'], function() {
     Route::get('/admin.forums/{id}', 'AdminController@indexForums');
 
     Route::get('/forumDelete/{id}', 'AdminController@forumDelete');
+
+    Route::get('/admin.verifikasiuser', 'AdminController@indexPending');
+    Route::post('/approve', 'AdminController@approve');
 });
 
 Auth::routes(['verify' => true]);

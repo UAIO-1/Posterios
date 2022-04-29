@@ -17,12 +17,13 @@ class AdminController extends Controller
         $usersCount = Users::where('id', '>', 1)->count();
         $projectsCount = Projects::where('id', '>', 0)->count();
         $forumsCount = Forums::where('id', '>', 0)->count();
+        $pendingCount = User::where('status', '=', null)->Where('id', '>', 1)->count();
 
         $users = Users::where('id', '>', 1)->get();
         $projects = Projects::where('id', '>', 0)->get();
         $forums = Forums::where('id', '>', 0)->get();
 
-        return view('/admin.dashboard', compact('usersCount', 'projectsCount', 'forumsCount', 'users', 'projects', 'forums'));
+        return view('/admin.dashboard', compact('usersCount', 'projectsCount', 'forumsCount', 'users', 'projects', 'forums', 'pendingCount'));
     }
 
     public function indexUsers(Request $request) {
@@ -32,6 +33,10 @@ class AdminController extends Controller
         $users2 = DB::table('users')->where('id', '=', $request->id)->get();
 
         $usersCount = Users::where('id', '>', 1)->count();
+
+        $pending = User::where('status', '=', null)->Where('id', '>', 1)->get();
+
+        $pendingCount = User::where('status', '=', null)->Where('id', '>', 1)->count();
 
         $projects = DB::table('projects')
             ->join('users', 'users.id', '=', 'projects.user_id')
@@ -43,7 +48,7 @@ class AdminController extends Controller
             ->where('projects.user_id', '=', $request->id)
             ->get();
 
-        return view('/admin.users', compact('users', 'users2', 'projects', 'projectsUser', 'usersCount'));
+        return view('/admin.users', compact('users', 'users2', 'projects', 'projectsUser', 'usersCount', 'pending', 'pendingCount'));
     }
 
     public function indexProjects(Request $request) {
@@ -79,6 +84,26 @@ class AdminController extends Controller
     public function forumDelete($id){
         DB::table('forum')->where('id', $id)->delete();
         return redirect('/admin.forums');
+    }
+
+    public function indexPending(Request $request){
+
+        $users = User::where('status', '=', null)->Where('id', '>', 1)->get();
+
+        $pendingCount = User::where('status', '=', null)->Where('id', '>', 1)->count();
+
+        return view('/admin.verifikasiuser', compact('users', 'pendingCount'));
+    }
+
+    public function approve(Request $request){
+
+        $users = User::where('id', $request->id)->first();
+
+        $users->status = "Approved";
+
+        $users->save();
+
+        return redirect('/admin.verifikasiuser');
     }
 
 }

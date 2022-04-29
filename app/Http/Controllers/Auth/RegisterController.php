@@ -81,10 +81,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-        // $file_extention = $data['image_selfie']->getClientOriginalExtension();
-        // $file_name = $data['image_selfie']->store('images/user/', 'public');
-        // // time().rand(99,999).'image_selfie.'.$file_extention;
-        // $file_path = $data['image_selfie']->move('storage/images/user',$file_name);
+
 
         $file = $data['image_selfie'];
         $path = $file->store('images/user','public');
