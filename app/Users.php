@@ -26,6 +26,9 @@ class Users extends Model
     public function Wishlist() {
         return $this->hasMany('App\Wishlists', 'user_id');
     }
+    public function Class() {
+        return $this->hasMany('App\Classes', 'user_id');
+    }
 
 
 

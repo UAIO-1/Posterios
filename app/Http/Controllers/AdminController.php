@@ -48,6 +48,9 @@ class AdminController extends Controller
             ->where('projects.user_id', '=', $request->id)
             ->get();
 
+        $search = $request->get('s_user');
+        $users = User::where("name",'like','%'.$search.'%')->get();
+
         return view('/admin.users', compact('users', 'users2', 'projects', 'projectsUser', 'usersCount', 'pending', 'pendingCount'));
     }
 
@@ -61,6 +64,9 @@ class AdminController extends Controller
 
         $questions = Questions::where('project_id', '=', $request->id)->get();
 
+        $search = $request->get('s_project');
+        $projects = Projects::where("project_title",'like','%'.$search.'%')->get();
+
         return view('/admin.projects', compact('projects', 'projectsCount', 'projects2', 'questions'));
     }
 
@@ -71,6 +77,10 @@ class AdminController extends Controller
         $forumsCount = Forums::where('id', '>', 0)->count();
 
         $forums2 = DB::table('forum')->where('id', '=', $request->id)->get();
+
+        $search = $request->get('s_forum');
+        $forums = Forums::where("forum_title",'like','%'.$search.'%')->get();
+
 
 
         return view('/admin.forums', compact('forums', 'forumsCount', 'forums2'));
@@ -104,6 +114,11 @@ class AdminController extends Controller
         $users->save();
 
         return redirect('/admin.verifikasiuser');
+    }
+
+    public function verifDelete($id){
+        DB::table('users')->where('id', $id)->delete();
+        return redirect('/admin.verifikasiUser');
     }
 
 }

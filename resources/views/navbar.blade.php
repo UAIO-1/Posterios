@@ -12,6 +12,7 @@
                 <li><a href="/login" data-bs-toggle="modal" data-bs-target="#loginmodal">Post</a></li>
                 <li><a href="/explore">Explore</a></li>
                 <li><a href="/forum">Forum</a></li>
+                <li><a href="/login">Class</a></li>
                 <li><a href="/login" class="log" data-bs-toggle="modal" data-bs-target="#loginmodal">Sign In</a></li>
             </ul>
         </nav>
@@ -92,6 +93,43 @@
         </div>
       </div>
 
+@elseif (Auth::check() & AUth::user()->status == null)
+
+<header id="navbar" class="sticky-top">
+    <img src="{{ asset('image/logo-posterios-white.png') }}" class="logo" alt="posterios logo">
+    <nav>
+        <ul class="nav__links">
+            <li><a href="/">Home</a></li>
+            <li><a href="#" data-bs-toggle="modal" data-bs-target="#kyc">Post</a></li>
+            <li><a href="/explore">Explore</a></li>
+            <li><a href="/forum">Forum</a></li>
+            <li><a href="/class">Class</a></li>
+            <li>
+                <div class="dropdown">
+                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        @if (Auth::user()->image == null)
+                            @if (Auth::user()->gender == "Male")
+                                <img src="{{ asset('image/user-male.png') }}" alt="gambar profile" class="pp">
+                            @else
+                                <img src="{{ asset('image/user-female.png') }}" alt="gambar profile" class="pp">
+                            @endif
+                        @else
+                            <img src="{{ asset('storage/'.Auth::user()->image) }}" alt="gambar profile" class="pp">
+                        @endif
+                        <strong>{{ Auth::user()->name }}</strong>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                        <li><a class="dropdown-item" href="/myProfile/{{ Auth::user()->id }}">My Profile</a></li>
+                        <li><a class="dropdown-item" href="/logout">Log Out</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+@include('modalKYC')
+
 @else
 
     <header id="navbar" class="sticky-top">
@@ -102,6 +140,7 @@
                 <li><a href="/post">Post</a></li>
                 <li><a href="/explore">Explore</a></li>
                 <li><a href="/forum">Forum</a></li>
+                <li><a href="/class">Class</a></li>
                 <li>
                     <div class="dropdown">
                         <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">

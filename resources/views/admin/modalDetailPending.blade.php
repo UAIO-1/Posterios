@@ -94,6 +94,9 @@
                 </tr>
             </table>
         </div>
+        <div class="p-3">
+            <a href="/verifDelete/{{ $u->id }}" class="btn btn-danger">Reject Akun</a>
+        </div>
         <div class="modal-footer">
             <form action={{ url('/approve') }} method="POST">
                 {{ csrf_field() }}

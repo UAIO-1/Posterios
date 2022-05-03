@@ -64,6 +64,12 @@ Route::group(['middleware'=>'cekuser'], function() {
     Route::get('/projectDelete/{id}', 'ProjectController@projectDelete');
 
     Route::get('/forumDeleteUser/{id}', 'ForumController@forumDeleteUser');
+
+    Route::get('/class', function () {
+        return view('class');
+    });
+
+    Route::post('/createClass', 'ClassController@createClass');
 });
 
 Route::group(['middleware'=>'cekadmin'], function() {
@@ -96,6 +102,8 @@ Route::group(['middleware'=>'cekadmin'], function() {
 
     Route::get('/admin.verifikasiuser', 'AdminController@indexPending');
     Route::post('/approve', 'AdminController@approve');
+
+    Route::get('/verifDelete/{id}', 'AdminController@verifDelete');
 });
 
 Auth::routes(['verify' => true]);

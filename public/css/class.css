@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&family=Source+Sans+Pro&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+body{
+    overflow-x: hidden;
+}
+
+.header{
+    padding-top: 100px;
+    width: 100vw;
+    height: 50vh;
+    background: linear-gradient(to bottom, #2834ae, #259df3);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.createclass-but{
+    background-color: #1FD09E;
+    padding: 10px 25px;
+    text-decoration: none;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    transition: all 0.3s ease 0s;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.createclass-but:hover{
+    color: #fff;
+    transform: translateX(5px);
+}
+

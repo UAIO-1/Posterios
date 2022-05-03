@@ -112,6 +112,7 @@
                 <img src="{{ asset('image/gambar-depan-welcome.png') }}" alt="stem" class="gambar-depan">
             </div>
         </div>
+        @include('modalKYC')
 
         <div class="ml-xl-5 mt-xl-5 mb-xl-5">
             <div class="text-center">
