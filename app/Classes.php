@@ -11,4 +11,8 @@ class Classes extends Model
     public function Users() {
         return $this->belongsTo('App\Users', 'id');
     }
+
+    public function Projects() {
+        return $this->hasMany('App\Projects', 'project_id');
+    }
 }

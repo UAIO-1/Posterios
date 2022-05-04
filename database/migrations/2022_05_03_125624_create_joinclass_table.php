@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClassTable extends Migration
+class CreateJoinclassTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateClassTable extends Migration
      */
     public function up()
     {
-        Schema::create('class', function (Blueprint $table) {
+        Schema::create('joinclass', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('class_name');
-            $table->string('class_code', 6);
-            $table->string('class_grade');
-            $table->string('class_description', 10000)->nullable();
-            $table->string('class_password');
+            $table->foreignId('class_id');
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ class CreateClassTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('class');
+        Schema::dropIfExists('joinclass');
     }
 }

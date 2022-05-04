@@ -69,7 +69,11 @@ Route::group(['middleware'=>'cekuser'], function() {
         return view('class');
     });
 
+    Route::get('/class', 'ClassController@indexClass');
+
     Route::post('/createClass', 'ClassController@createClass');
+
+    Route::get('/classDetail/{id}', 'ClassController@getClassID');
 });
 
 Route::group(['middleware'=>'cekadmin'], function() {

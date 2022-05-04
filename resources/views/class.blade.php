@@ -10,11 +10,61 @@
 
 
 
-@elseif(Auth::check() & Auth::user()->role == "Student")
+@elseif(Auth::check() && Auth::user()->role == "Student" && Auth::user()->status == "Approved")
 
-<div class="header">
+    <div class="header">
+        <div class="container">
 
-</div>
+            <div class="text-light text-center">
+                <h1 class="display-1">Welcome to Class!</h1>
+                <p>
+                    Buatlah kelas untuk mempermudah penilaian dan pengumpulan proyek. <br>
+                    Proyek yang dikumpulkan dalam kelas juga dapat dilihat oleh orang lain secara terpisah.
+                </p>
+            </div>
+
+            <div class="d-flex justify-content-center" style="margin-top: 150px">
+                <div class="card p-3">
+                    <p class="text-dark">Cari Kelas</p>
+                    <form class="d-flex" method="GET">
+                        <input class="form-control me-2 w-100" type="search" placeholder="Kode Kelas" name="s_class" aria-label="Search">
+                        <button class="btn btn-primary" type="submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="" style="margin-top: 100px; margin-left: 50px; margin-right: 50px;">
+        <div class="row row-cols-4 g-4">
+            @foreach ($class as $c)
+            <div class="col">
+                    <a href="/classDetail/{{ $c->id }}" style="text-decoration: none; color: #000">
+                    <div class="card">
+                        <h5 class="card-header"><strong>#{{ $c->class_code }}</strong></h5>
+                        <div class="card-body">
+                            <h5 class="card-title"><strong>{{ $c->class_name }}</strong></h5>
+                            <small class="text-muted">Kelas {{ $c->class_grade }}</small>
+                            <p class="card-text">{{ Str::limit($c->class_description, '100', '...')  }}</p>
+                            @if (in_array($c->id, $classes))
+                                <small class="text-success"><em>dibuat oleh Anda</em></small>
+                            @else
+                                <a href="#" class="btn btn-primary">Join</a>
+                            @endif
+                        </div>
+                    </div>
+                </a>
+            </div>
+            @endforeach
+        </div>
+    </div>
+
 
 @else
 
@@ -57,11 +107,27 @@
     </div>
 </div>
 
-<div class="container">
+<div class="" style="margin-top: 100px; margin-left: 50px; margin-right: 50px;">
     <div class="row row-cols-4 g-4">
-        <div class="card">
-
+        @foreach ($class as $c)
+        <div class="col">
+                <a href="/classDetail/{{ $c->id }}" style="text-decoration: none; color: #000">
+                <div class="card">
+                    <h5 class="card-header"><strong>#{{ $c->class_code }}</strong></h5>
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>{{ $c->class_name }}</strong></h5>
+                        <small class="text-muted">Kelas {{ $c->class_grade }}</small>
+                        <p class="card-text">{{ Str::limit($c->class_description, '100', '...')  }}</p>
+                        @if (in_array($c->id, $classes))
+                            <small class="text-success"><em>dibuat oleh Anda</em></small>
+                        @else
+                            <a href="#" class="btn btn-primary">Join</a>
+                        @endif
+                    </div>
+                </div>
+            </a>
         </div>
+        @endforeach
     </div>
 </div>
 

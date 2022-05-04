@@ -19,6 +19,15 @@
                     <small class="text-muted"><em>*max 6 characters</em></small>
                 </div>
                 <div class="mb-3">
+                    <label for="">Kelas</label>
+                    <select class="form-select" name="class_grade">
+                        <option disabled selected>Pilih Kelas</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                </div>
+                <div class="mb-3">
                     <label for="">Deskripsi Kelas</label>
                     <textarea name="class_description" id="" cols="30" rows="10" class="form-control"></textarea>
                 </div>

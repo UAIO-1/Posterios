@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Projects extends Model
+class JoinClasses extends Model
 {
-    protected $table = "projects";
+    protected $table = "joinclass";
 
     public function Users() {
         return $this->belongsTo('App\Users', 'id');
@@ -15,10 +15,4 @@ class Projects extends Model
     public function Class() {
         return $this->belongsTo('App\Class', 'id');
     }
-
-    public function Wishlists() {
-        return $this->hasMany('App\Wishlists', 'project_id');
-    }
-
-
 }

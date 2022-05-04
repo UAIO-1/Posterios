@@ -48,7 +48,7 @@ class UsersTableSeeder extends Seeder
 
           DB::table('users')->insert([
             'name' => 'Gunny123',
-            'email' => 'gunny123@gmail.com',
+            'email' => 'gunny@gmail.com',
             'password' => Hash::make('gunny123'),
             'gender' => 'Male',
             'dob' => '2022-04-19',
@@ -57,6 +57,7 @@ class UsersTableSeeder extends Seeder
             'sekolah' => 'SMAN 3 Bekasi',
             'image_selfie' => 'images/user/YYGqnBlj0GBLAEo2WgLcDJfOO93S132ruqXg0KSv.jpg',
             'image_card' => 'images/user/YYGqnBlj0GBLAEo2WgLcDJfOO93S132ruqXg0KSv.jpg',
+            'status' => 'Approved',
             'email_verified_at' => '2022-04-18 03:19:32',
             'created_at' => '2022-04-18 03:19:32',
             'updated_at' => '2022-04-18 03:19:32',
