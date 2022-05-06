@@ -13,7 +13,11 @@ class Projects extends Model
     }
 
     public function Class() {
-        return $this->belongsTo('App\Class', 'id');
+        return $this->belongsTo('App\Classes', 'id');
+    }
+
+    public function JoinClass() {
+        return $this->hasMany('App\JoinClasses', 'class_code');
     }
 
     public function Wishlists() {

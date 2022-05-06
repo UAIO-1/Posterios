@@ -18,7 +18,7 @@
             <div class="text-light text-center">
                 <h1 class="display-1">Welcome to Class!</h1>
                 <p>
-                    Buatlah kelas untuk mempermudah penilaian dan pengumpulan proyek. <br>
+                    Masuk ke kelas Anda untuk mempermudah mengumpulkan tugas dan proyek Anda. <br>
                     Proyek yang dikumpulkan dalam kelas juga dapat dilihat oleh orang lain secara terpisah.
                 </p>
             </div>
@@ -52,10 +52,15 @@
                             <h5 class="card-title"><strong>{{ $c->class_name }}</strong></h5>
                             <small class="text-muted">Kelas {{ $c->class_grade }}</small>
                             <p class="card-text">{{ Str::limit($c->class_description, '100', '...')  }}</p>
-                            @if (in_array($c->id, $classes))
-                                <small class="text-success"><em>dibuat oleh Anda</em></small>
+                            @if (in_array($c->id, $join))
+                                <small class="text-success"><em>Sudah Bergabung</em></small>
                             @else
-                                <a href="#" class="btn btn-primary">Join</a>
+                            <form action={{ url('/joinClass') }} method="POST">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                <input type="hidden" name="class_id" value="{{ $c->id }}">
+                                <input type="submit" class="btn btn-primary" value="Gabung">
+                            </form>
                             @endif
                         </div>
                     </div>
@@ -121,7 +126,7 @@
                         @if (in_array($c->id, $classes))
                             <small class="text-success"><em>dibuat oleh Anda</em></small>
                         @else
-                            <a href="#" class="btn btn-primary">Join</a>
+                            <a href="#" class="btn btn-primary">Gabung</a>
                         @endif
                     </div>
                 </div>

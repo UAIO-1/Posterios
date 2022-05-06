@@ -225,4 +225,45 @@ class ProjectController extends Controller
     }
 
 
+    public function postingProyekKelas(Request $request){
+
+        $this->validate($request,[
+            'project_title' => 'required|min:6|max:20',
+            'project_category' => 'required',
+            'project_subcategory' => 'required',
+            'project_image' => 'required|image|mimes:jpeg,png,jpg|max:10240',
+            'project_video' => 'max:30720',
+            'project_description' => 'max:10000',
+        ]);
+
+        $project = new Projects();
+        $project->user_id = $request->user_id;
+        $project->class_id = $request->class_id;
+        $project->name = $request->name;
+        $project->gender = $request->gender;
+        $project->project_title = $request->project_title;
+        $project->project_category = $request->project_category;
+        $project->project_subcategory = $request->project_subcategory;
+        $project->project_link = $request->project_link;
+
+        $path = $request->file('project_image')->store('images/project','public');
+        $project->project_image = $path;
+
+        $project->project_description = $request->project_description;
+
+        if($request->file('project_video') == null){
+            $project->project_video = null;
+        } else {
+            $path = $request->file('project_video')->store('videos/project','public');
+            $project->project_video = $path;
+        }
+
+        $project->project_video_link = $request->project_video_link;
+
+        $project->save();
+
+        return redirect(url('/'));
+    }
+
+
 }

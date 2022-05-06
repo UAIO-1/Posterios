@@ -15,6 +15,7 @@ class ProjectsTableSeeder extends Seeder
         DB::table('projects')->truncate(); //for cleaning earlier data to avoid duplicate entries
         DB::table('projects')->insert([
             'user_id' => 2,
+            'class_id' => '1',
             'name' => 'Luminiore',
             'gender' => 'Female',
             'project_title' => 'Scratch',
@@ -31,6 +32,7 @@ class ProjectsTableSeeder extends Seeder
 
         DB::table('projects')->insert([
             'user_id' => 2,
+            'class_id' => '1',
             'name' => 'Luminiore',
             'gender' => 'Female',
             'project_title' => 'Genshin Impact',
@@ -47,6 +49,7 @@ class ProjectsTableSeeder extends Seeder
 
         DB::table('projects')->insert([
             'user_id' => 2,
+            'class_id' => '1',
             'name' => 'Luminiore',
             'gender' => 'Female',
             'project_title' => 'WKWKWKWKWKWK',

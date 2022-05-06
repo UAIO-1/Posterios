@@ -12,6 +12,10 @@ class JoinClasses extends Model
         return $this->belongsTo('App\Users', 'id');
     }
 
+    public function Projects() {
+        return $this->belongsTo('App\Projects', 'class_code');
+    }
+
     public function Class() {
         return $this->belongsTo('App\Class', 'id');
     }

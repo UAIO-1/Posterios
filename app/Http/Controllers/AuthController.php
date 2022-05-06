@@ -110,8 +110,13 @@ class AuthController extends Controller
                     ->select('*', 'wishlists.id as w_id')
                     ->get();
 
+            $class = DB::table('joinclass')
+                    ->select('class.*', 'joinclass.*')
+                    ->join('class', 'class.id', '=', 'joinclass.class_id')
+                    ->where('joinclass.user_id', '=', Auth::user()->id)
+                    ->get();
 
-            return view('myProfile', compact('users', 'projects', 'forums', 'wishlists'));
+            return view('myProfile', compact('users', 'projects', 'forums', 'wishlists', 'class'));
         }
 
     }

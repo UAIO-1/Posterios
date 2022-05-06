@@ -70,10 +70,15 @@ Route::group(['middleware'=>'cekuser'], function() {
     });
 
     Route::get('/class', 'ClassController@indexClass');
-
     Route::post('/createClass', 'ClassController@createClass');
-
     Route::get('/classDetail/{id}', 'ClassController@getClassID');
+
+    Route::post('/joinClass', 'ClassController@joinClass');
+
+    Route::post('/postingProyekKelas', 'ProjectController@postingProyekKelas');
+
+    Route::get('/post', 'ClassController@selectClass');
+
 });
 
 Route::group(['middleware'=>'cekadmin'], function() {
