@@ -55,12 +55,13 @@
                             @if (in_array($c->id, $join))
                                 <small class="text-success"><em>Sudah Bergabung</em></small>
                             @else
-                            <form action={{ url('/joinClass') }} method="POST">
-                                {{ csrf_field() }}
-                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                                <input type="hidden" name="class_id" value="{{ $c->id }}">
-                                <input type="submit" class="btn btn-primary" value="Gabung">
-                            </form>
+                                <form action={{ url('/joinClass') }} method="POST">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                    <input type="hidden" name="class_id" value="{{ $c->id }}">
+                                    <input type="hidden" name="class_code" value="{{ $c->class_code }}">
+                                    <input type="submit" class="btn btn-primary" value="Gabung">
+                                </form>
                             @endif
                         </div>
                     </div>

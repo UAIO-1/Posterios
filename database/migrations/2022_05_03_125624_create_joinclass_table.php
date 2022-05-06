@@ -18,6 +18,7 @@ class CreateJoinclassTable extends Migration
             $table->foreignId('user_id');
             $table->foreignId('class_id');
             $table->string('class_code')->references('class_code')->on('class');
+            $table->string('user_status')->nullable();
             $table->timestamps();
         });
     }

@@ -12,7 +12,7 @@
                 <li><a href="/login" data-bs-toggle="modal" data-bs-target="#loginmodal">Post</a></li>
                 <li><a href="/explore">Explore</a></li>
                 <li><a href="/forum">Forum</a></li>
-                <li><a href="/login">Class</a></li>
+                <li><a href="/login"  data-bs-toggle="modal" data-bs-target="#loginmodal">Class</a></li>
                 <li><a href="/login" class="log" data-bs-toggle="modal" data-bs-target="#loginmodal">Sign In</a></li>
             </ul>
         </nav>

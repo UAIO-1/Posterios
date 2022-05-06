@@ -326,7 +326,16 @@
                                 </div>
                                 <hr>
                                 <small class="text-muted text-center"><em>dari</em></small>
-                                <small class="text-center"><em class="name">{{ $q->name }}</em></small>
+                                <small class="text-center">
+                                    <em class="name">{{ $q->name }}
+                                    •
+                                    @if ($q->role == 'Teacher')
+                                        <span class="text-danger">{{ $q->role }}</span>
+                                    @else
+                                        <span class="text-success">{{ $q->role }}</span>
+                                    @endif
+                                </em>
+                                </small>
                                 <p class="text-center rec">Kamu sangat cocok dibidang ini. Teruslah berkarya sampai menjadi sukses!</p>
 
                             @elseif ($q->recommendation == "B")
@@ -353,7 +362,16 @@
 
                                 <hr>
                                 <small class="text-muted text-center"><em>dari</em></small>
-                                <small class="text-center"><em class="name">{{ $q->name }}</em></small>
+                                <small class="text-center">
+                                    <em class="name">{{ $q->name }}
+                                    •
+                                    @if ($q->role == 'Teacher')
+                                        <span class="text-danger">{{ $q->role }}</span>
+                                    @else
+                                        <span class="text-success">{{ $q->role }}</span>
+                                    @endif
+                                </em>
+                                </small>
                                 <p class="text-center rec">Kamu harus lebih banyak berlatih, harus banyak membuat proyek, harus banyak belajar dari orang lain.</p>
 
                             @else
@@ -379,7 +397,16 @@
                                 </div>
                                 <hr>
                                 <small class="text-muted text-center"><em>dari</em></small>
-                                <small class="text-center"><em class="name">{{ $q->name }}</em></small>
+                                <small class="text-center">
+                                    <em class="name">{{ $q->name }}
+                                    •
+                                    @if ($q->role == 'Teacher')
+                                        <span class="text-danger">{{ $q->role }}</span>
+                                    @else
+                                        <span class="text-success">{{ $q->role }}</span>
+                                    @endif
+                                </em>
+                                </small>
                                 <p class="text-center rec">Semangat terus jangan menyerah, asah terus kemampuanmu.</p>
                             @endif
                         </div>

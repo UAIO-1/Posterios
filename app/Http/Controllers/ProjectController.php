@@ -84,7 +84,12 @@ class ProjectController extends Controller
             $answers = Questions::select('project_id')->where('user_id', Auth::user()->id)->get();
             $answerArr = Arr::flatten($answers->toArray());
 
-            $questions = Questions::where('project_id', '=', $id)->get();
+            $questions = DB::table('question_project')
+                        ->select('users.*', 'question_project.*')
+                        ->join('users', 'users.id', '=', 'question_project.user_id')
+                        ->where('project_id', '=', $id)
+                        ->orderBy('users.role', 'desc')
+                        ->get();
 
             $wishses = DB::table('wishlists')->select('id')->where('user_id', Auth::user()->id)->first();
 

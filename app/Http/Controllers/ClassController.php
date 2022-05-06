@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class ClassController extends Controller
 {
@@ -20,7 +21,7 @@ class ClassController extends Controller
         $class->class_code = $request->class_code;
         $class->class_grade = $request->class_grade;
         $class->class_description = $request->class_description;
-        $class->class_password = $request->class_password;
+        $class->class_password = Hash::make($request->class_password);
 
         $class->save();
 
@@ -28,6 +29,7 @@ class ClassController extends Controller
     }
 
     public function indexClass(){
+
         $class = DB::table('class')
                 ->select('class.*', 'users.name')
                 ->join('users', 'users.id', '=', 'class.user_id')
@@ -55,18 +57,39 @@ class ClassController extends Controller
                     ->get();
 
         $users = DB::table('users')
-                    ->select('users.*')
+                    ->select('users.*', 'joinclass.*')
                     ->join('joinclass', 'joinclass.user_id', '=', 'users.id')
                     ->where('joinclass.class_id', '=', $request->id)
                     ->where('users.role', '!=', 'Teacher')
+                    ->where('joinclass.user_status', '!=', 'null')
                     ->orderBy('users.name', 'asc')
                     ->get();
+
+        $stats = DB::table('joinclass')
+                    ->join('class', 'class.id', '=', 'joinclass.class_id')
+                    ->where('joinclass.class_id', '=', $request->id)
+                    ->first();
+
+        $statsUser = DB::table('users')
+                    ->select('users.*', 'joinclass.*')
+                    ->join('joinclass', 'joinclass.user_id', '=', 'users.id')
+                    ->where('joinclass.class_id', '=', $request->id)
+                    ->where('users.role', '!=', 'Teacher')
+                    ->where('joinclass.user_status', '=', null)
+                    ->orderBy('users.name', 'asc')
+                    ->get();
+
+        $statsCtr = DB::table('joinclass')
+                    ->where('joinclass.class_id', '=', $request->id)
+                    ->where('user_status', '=', null)
+                    ->count();
 
         $usersCtr = DB::table('users')
                     ->select('users.*')
                     ->join('joinclass', 'joinclass.user_id', '=', 'users.id')
                     ->where('joinclass.class_id', '=', $request->id)
                     ->where('users.role', '!=', 'Teacher')
+                    ->where('joinclass.user_status', '!=', 'null')
                     ->count();
 
 
@@ -78,18 +101,33 @@ class ClassController extends Controller
                     ->orderBy('projects.created_at', 'desc')
                     ->get();
 
-        return view('/classDetail', compact('class', 'users', 'host', 'usersCtr', 'projects'));
+        return view('/classDetail', compact('class', 'users', 'host', 'usersCtr', 'projects', 'stats', 'statsUser','statsCtr'));
     }
 
-    public function joinClass(Request $request){
-        $class = new JoinClasses();
+    public function approveStudent(Request $request){
 
-        $class->user_id = $request->user_id;
-        $class->class_id = $request->class_id;
+        $class = JoinClasses::where('id', $request->id)->first();
+
+        $class->user_status = "Approved";
 
         $class->save();
 
         return redirect('/classDetail/'.$class->class_id);
+    }
+
+    public function joinClass(Request $request){
+
+        $class = new JoinClasses();
+
+        $class->user_id = $request->user_id;
+        $class->class_id = $request->class_id;
+        $class->class_code = $request->class_code;
+
+
+        $class->save();
+
+        return redirect('/class');
+
     }
 
     public function selectClass(Request $request){

@@ -79,6 +79,8 @@ Route::group(['middleware'=>'cekuser'], function() {
 
     Route::get('/post', 'ClassController@selectClass');
 
+    Route::post('/approveStudent', 'ClassController@approveStudent');
+
 });
 
 Route::group(['middleware'=>'cekadmin'], function() {
