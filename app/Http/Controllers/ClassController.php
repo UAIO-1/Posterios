@@ -31,8 +31,9 @@ class ClassController extends Controller
     public function indexClass(Request $request){
 
         $class = DB::table('class')
-                ->select('class.*', 'users.name')
+                ->select('class.*', 'users.name', 'joinclass.user_status')
                 ->join('users', 'users.id', '=', 'class.user_id')
+                ->join('joinclass', 'joinclass.class_id', '=', 'class.id')
                 ->get();
 
         $classes = Classes::select('id')->where('user_id', Auth::user()->id)->get();
