@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'Project Detail • Posterios')
+@section('title', 'Project Showcase • Posterios')
 <link rel="shortcut icon" href="{{ asset('image/icon-logo-white.png') }}">
 <link rel="stylesheet" href="{{ asset('css/projectdetail.css') }}">
 
@@ -78,7 +78,6 @@
         <p class="text-center">Anda harus login terlebih dahulu sebelum memberikan saran, rekomendasi, penilaian, dan jawaban Anda terhadap proyek ini.</p>
     </div>
 
-@elseif(Auth::check() && Auth::user()->role == "Admin")
 
 
 

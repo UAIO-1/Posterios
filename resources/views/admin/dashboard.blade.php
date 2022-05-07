@@ -1,5 +1,5 @@
 @extends('layouts.adminLayouts')
-@section('title', 'Admin Dashboard • Posterios')
+@section('title', 'Dashboard • Posterios')
 <link rel="shortcut icon" href="{{ asset('image/icon-logo-white.png') }}">
 <link rel="stylesheet" href="{{ asset('css/admin/dashboard.css') }}">
 <link rel="stylesheet" href="{{ asset('css/admin/navbar.css') }}">

@@ -26,8 +26,6 @@ body{
     font-weight: bold;
 }
 
-
-
 .gambar-depan{
     border-radius: 5px;
     margin-top: 50px;
@@ -79,15 +77,20 @@ body{
     box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.9);
 }
 
-.card{
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+.card-service{
+    box-shadow: -2px 2px 5px 3px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
+    border: none;
 }
 
-.card:hover{
-    transform: translateY(-5px);
+.head{
+    font-family: 'Rubik', sans-serif;
 }
 
+
+.card-img-overlay{
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) );
+}
 
 
 

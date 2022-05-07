@@ -52,4 +52,5 @@ class SearchController extends Controller
         return view('/explore', ['wishlists'=>$wishlistsArr], compact('projects', 'users', 'wishes'));
     }
 
+
 }

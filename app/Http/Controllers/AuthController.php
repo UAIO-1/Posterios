@@ -116,8 +116,13 @@ class AuthController extends Controller
                     ->where('joinclass.user_id', '=', Auth::user()->id)
                     ->get();
 
-            return view('myProfile', compact('users', 'projects', 'forums', 'wishlists', 'class'));
+            $classTeacher = DB::table('class')
+                    ->where('user_id', '=', Auth::user()->id)
+                    ->get();
+
+            return view('myProfile', compact('users', 'projects', 'forums', 'wishlists', 'class', 'classTeacher'));
         }
+
 
     }
 

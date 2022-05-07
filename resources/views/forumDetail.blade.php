@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'Posterios - Forum Discussion')
+@section('title', 'Forum Discussion • Posterios')
 <link rel="shortcut icon" href="{{ asset('image/icon-logo-white.png') }}">
 <link rel="stylesheet" href="{{ asset('css/forumDetail.css') }}">
 

@@ -222,11 +222,9 @@ class ProjectController extends Controller
 
     public function indexProjectWelcome(){
 
-        $projects = Projects::orderBy('created_at', 'desc')->simplePaginate(5);
+        $projects = Projects::orderBy('created_at', 'desc')->paginate(4);
 
-        $forums = Forums::orderBy('created_at', 'desc')->simplePaginate(5);
-
-        return view('welcome', compact('projects', 'forums'));
+        return view('welcome', compact('projects'));
     }
 
 

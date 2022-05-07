@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'Posterios - Explore STEM')
+@section('title', 'Project Showcase • Posterios')
 <link rel="shortcut icon" href="{{ asset('image/icon-logo-white.png') }}">
 <link rel="stylesheet" href="{{ asset('css/explore.css') }}">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

@@ -46,11 +46,14 @@
                         <label for="formFile" class="form-label">Sekolah</label>
                         <input class="form-control" type="text" name="sekolah" value="{{ $u->sekolah }}" placeholder="SMP 06 Satu Bangsa">
                     </div>
+                    @if (Auth::user()->role == "Student")
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Jurusan yang disukai</label>
+                            <input class="form-control" type="text" name="jurusan" value="{{ $u->jurusan }}" placeholder="Teknik Industri, Teknik Informatika">
+                        </div>
+                    @else
 
-                    <div class="mb-3">
-                        <label for="formFile" class="form-label">Jurusan yang disukai</label>
-                        <input class="form-control" type="text" name="jurusan" value="{{ $u->jurusan }}" placeholder="Teknik Industri, Teknik Informatika">
-                    </div>
+                    @endif
 
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Gambar Profile</label>

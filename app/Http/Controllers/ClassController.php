@@ -28,7 +28,7 @@ class ClassController extends Controller
         return redirect(url('/class'));
     }
 
-    public function indexClass(){
+    public function indexClass(Request $request){
 
         $class = DB::table('class')
                 ->select('class.*', 'users.name')
@@ -40,6 +40,10 @@ class ClassController extends Controller
 
         $join = JoinClasses::select('class_id')->where('user_id', Auth::user()->id)->get();
         $joinArr = Arr::flatten($join->toArray());
+
+        $search = $request->get('s_class');
+        $class = Classes::where("class_code",'like','%'.$search.'%')->get();
+
 
         return view('/class', ['classes' => $classArr, 'join' => $joinArr], compact('class'));
     }
