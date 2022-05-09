@@ -21,7 +21,6 @@ class ClassController extends Controller
         $class->class_code = $request->class_code;
         $class->class_grade = $request->class_grade;
         $class->class_description = $request->class_description;
-        $class->class_password = Hash::make($request->class_password);
 
         $class->save();
 

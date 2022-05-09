@@ -20,7 +20,6 @@ class CreateClassTable extends Migration
             $table->string('class_code', 6);
             $table->string('class_grade');
             $table->string('class_description', 10000)->nullable();
-            $table->string('class_password');
             $table->timestamps();
         });
     }
