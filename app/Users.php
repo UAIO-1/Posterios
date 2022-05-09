@@ -29,6 +29,9 @@ class Users extends Model
     public function Class() {
         return $this->hasMany('App\Classes', 'user_id');
     }
+    public function JoinClass() {
+        return $this->hasMany('App\JoinClasses', 'user_id');
+    }
 
 
 
