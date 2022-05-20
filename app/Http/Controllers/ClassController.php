@@ -15,6 +15,13 @@ class ClassController extends Controller
 
     public function createClass(Request $request){
 
+        $this->validate($request,[
+            'class_name' => 'required|min:6|max:30',
+            // 'forum_category' => 'required',
+            // 'forum_message' => 'required|max:10000',
+            // 'forum_image' => 'image|mimes:jpeg,png,jpg|max:3072',
+        ]);
+
         $class = new Classes();
         $class->user_id = $request->user_id;
         $class->class_name = $request->class_name;

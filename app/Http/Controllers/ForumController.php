@@ -15,10 +15,10 @@ class ForumController extends Controller
     public function forumPost(Request $request){
 
         $this->validate($request,[
-            'forum_title' => 'required|min:10|max:100',
+            'forum_title' => 'required|min:10|max:50',
             'forum_category' => 'required',
-            'forum_message' => 'required',
-            'forum_image' => 'image|mimes:jpeg,png,jpg|max:10240',
+            'forum_message' => 'required|max:10000',
+            'forum_image' => 'image|mimes:jpeg,png,jpg|max:3072',
         ]);
 
         $forum = new Forums();

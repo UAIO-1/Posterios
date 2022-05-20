@@ -186,7 +186,7 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header border-0">
-                            <h5 class="modal-title" id="createForumModal">Create General Forum</h5>
+                            <h5 class="modal-title" id="createForumModal">Buat Forum</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
@@ -196,13 +196,18 @@
                                     <input type="hidden" name="name" value="{{ Auth::user()->name }}">
 
                                     <div class="mb-3">
-                                        <label class="text-muted">Judul Forum</label><span class="text-danger">*</span>
+                                        <label class=""><strong>Judul Forum</strong></label><span class="text-danger">*</span>
                                         <input type="text" name="forum_title" class="form-control">
+                                        @if($errors->first('forum_title'))
+                                            <small class="text-danger"><em>{{ $errors->first('forum_title') }}</em></small>
+                                        @else
+                                            <small class="text-muted"><em>*10 - 50 karakter.</em></small>
+                                        @endif
                                     </div>
 
                                     <div class="row row-cols-2">
                                         <div class="col mb-3">
-                                            <label class="form-label text-muted">Kategori</label> <span class="text-danger">*</span>
+                                            <label class="form-label"><strong>Kategori</strong></label><span class="text-danger">*</span>
                                             <select class="ml-4 form-select" id="main" name="forum_category">
                                                 <option selected disabled>Pilih Kategori</option>
                                                 <option value="Teknologi">Teknologi</option>
@@ -212,7 +217,7 @@
                                         </div>
 
                                         <div class="col mb-3">
-                                            <label class="form-label text-muted">Sub Kategori</label> <span class="text-danger">*</span>
+                                            <label class="form-label"><strong>Sub Kategori</strong></label><span class="text-danger">*</span>
                                             <select name="forum_subcategory" class="ml-4 form-select" id="sub">
                                                 <option selected disabled>Pilih Sub Kategori</option>
                                             </select>
@@ -222,13 +227,23 @@
 
 
                                     <div class="mb-3">
-                                        <label class="text-muted">Pesan</label><span class="text-danger">*</span>
+                                        <label class=""><strong>Pesan atau Pertanyaan</strong></label><span class="text-danger">*</span>
                                         <textarea name="forum_message" class="form-control" cols="30" rows="10"></textarea>
+                                        @if($errors->first('forum_message'))
+                                            <small class="text-danger"><em>{{ $errors->first('forum_message') }}</em></small>
+                                        @else
+                                            <small class="text-muted"><em>*maks. 10.000 karakter.</em></small>
+                                        @endif
                                     </div>
 
                                     <div class="mb-3">
-                                        <label class="form-label text-muted">Gambar</label>
+                                        <label class="form-label"><strong>Gambar</strong></label>
                                         <input class="form-control" type="file" name="forum_image" accept="image/jpg, image/jpeg, image/png" multiple>
+                                        @if($errors->first('forum_image'))
+                                            <small class="text-danger"><em>{{ $errors->first('forum_image') }}</em></small>
+                                        @else
+                                            <small class="text-muted"><em>*maks. 3 MB.</em></small>
+                                        @endif
                                     </div>
 
 
