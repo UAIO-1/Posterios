@@ -17,7 +17,7 @@ class CreateClassTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->string('class_name');
-            $table->string('class_code', 6);
+            $table->string('class_code', 8)->unique();
             $table->string('class_grade');
             $table->string('class_description', 10000)->nullable();
             $table->timestamps();

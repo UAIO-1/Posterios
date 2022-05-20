@@ -28,7 +28,7 @@
                 <h6>Projects ({{ $projectsCount }})</h6>
             </div>
 
-            <div class="row row-cols-4">
+            <div class="row row-cols-4 g-4">
                 @foreach ($projects as $p)
                     <div class="col">
                         <label>

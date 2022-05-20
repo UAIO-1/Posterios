@@ -129,19 +129,9 @@
                         <small class="text-muted">Kelas {{ $c->class_grade }}</small>
                         <p class="card-text">{{ Str::limit($c->class_description, '100', '...')  }}</p>
                         @if (in_array($c->id, $classes))
-                            @if ($c->user_status == null)
-                                <small class="text-danger"><em>Waiting Approval</em></small>
-                            @else
-                                <small class="text-success"><em>Sudah Bergabung</em></small>
-                            @endif
+                            <small class="text-success"><em>dibuat oleh Anda</em></small>
                         @else
-                            <form action={{ url('/joinClass') }} method="POST">
-                                {{ csrf_field() }}
-                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                                <input type="hidden" name="class_id" value="{{ $c->id }}">
-                                <input type="hidden" name="class_code" value="{{ $c->class_code }}">
-                                <input type="submit" class="btn btn-primary" value="Gabung">
-                            </form>
+
                         @endif
                     </div>
                 </div>

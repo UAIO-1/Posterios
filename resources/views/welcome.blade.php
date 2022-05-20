@@ -128,6 +128,8 @@
                     <h1 class="text-center text-light"><strong class="head">Showcase</strong></h1>
                     <div class="row row-cols-1 g-4">
                         @foreach ($projects as $p)
+                        @php($diffInDays = \Carbon\Carbon::parse($u->created_at)->diffInDays())
+                        @if($diffInDays < 7)
                             <div class="col">
                                 <a href="/projectDetail/{{ $p->id }}">
                                     <div class="card bg-dark text-white">
@@ -140,6 +142,7 @@
                                     </div>
                                 </a>
                             </div>
+                        @endif
                         @endforeach
                     </div>
                     {{ $projects->links() }}
@@ -281,6 +284,8 @@
                 <h1 class="text-center text-light"><strong class="head">Showcase</strong></h1>
                 <div class="row row-cols-1 g-4">
                     @foreach ($projects as $p)
+                    @php($diffInDays = \Carbon\Carbon::parse($u->created_at)->diffInDays())
+                    @if($diffInDays < 7)
                         <div class="col">
                             <a href="/projectDetail/{{ $p->id }}">
                                 <div class="card bg-dark text-white">
@@ -293,6 +298,7 @@
                                 </div>
                             </a>
                         </div>
+                    @endif
                     @endforeach
                 </div>
                 {{ $projects->links() }}
@@ -434,6 +440,8 @@
                     <h1 class="text-center text-light"><strong class="head">Showcase</strong></h1>
                     <div class="row row-cols-1 g-4">
                         @foreach ($projects as $p)
+                        @php($diffInDays = \Carbon\Carbon::parse($u->created_at)->diffInDays())
+                        @if($diffInDays < 7)
                             <div class="col">
                                 <a href="/projectDetail/{{ $p->id }}">
                                     <div class="card bg-dark text-white">
@@ -446,6 +454,7 @@
                                     </div>
                                 </a>
                             </div>
+                        @endif
                         @endforeach
                     </div>
                     {{ $projects->links() }}

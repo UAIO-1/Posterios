@@ -21,8 +21,8 @@ body{
 .card2{
     width: 40%;
     max-width: 40%;
-    height: 40vw;
-    max-height: 40vw;
+    height: 820px;
+    max-height: 820px;
     box-shadow: -10px 10px 20px 0 rgba(0, 0, 0, 0.2);
     margin-left: 300px;
 }

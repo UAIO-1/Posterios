@@ -6,7 +6,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body text-dark">
-                Apakah Anda yakin ingin menghapus forum ini? {{ $f->id }}
+                Apakah Anda yakin ingin menghapus forum ini?
             </div>
             <div class="modal-footer">
                 <a href="/forumDeleteUser/{{ $f->id }}" class="btn btn-danger">Ya</a>

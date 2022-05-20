@@ -27,6 +27,12 @@
                                         <div class="mb-3">
                                             <label class="form-label">Judul Proyek</label><span class="text-danger">*</span>
                                             <input type="text" name="project_title" value="{{ old('project_title') }}" class="form-control" placeholder="Modern Banner Design">
+                                            <small class="text-muted"><em>*setidaknya 6 - 20 karakter</em></small>
+                                            @error('project_title')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                             @enderror
                                         </div>
 
                                         <div class="row row-cols-2">
@@ -54,6 +60,7 @@
                                         <div class="mb-3">
                                             <label class="form-label">Gambar Proyek</label><span class="text-danger">*</span>
                                             <input class="form-control" type="file" name="project_image" accept="image/jpg, image/jpeg, image/png">
+                                            <small class="text-muted"><em>*maks 3 MB</em></small>
                                         </div>
 
                                         <hr>
@@ -64,15 +71,16 @@
                                         </div>
 
                                         <div class="mb-3">
-                                            <label>Deskripsi Proyek</label>
+                                            <label>Deskripsi Proyek</label> <small class="text-muted"><em>*maks. 10.000 karakter</em></small>
                                             <textarea value="{{ old('project_description') }}" class="form-control" name="project_description" rows="5"></textarea>
                                         </div>
 
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label class="form-label">File Video</label> <span class="text-muted">
+                                                    <label class="form-label">File Video</label> <span class="text-muted"> <small class="text-muted"><em>*maks 10 MB</em></small>
                                                     <input class="form-control" type="file" name="project_video" accept=".mp4,.mkv">
+
                                                 </div>
                                             </div>
                                             <div class="col-md-6">

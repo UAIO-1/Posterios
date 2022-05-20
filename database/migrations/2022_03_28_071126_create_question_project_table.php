@@ -24,7 +24,7 @@ class CreateQuestionProjectTable extends Migration
             $table->string('strength')->nullable();
             $table->string('weakness')->nullable();
             $table->string('recommendation')->nullable();
-            $table->float('points')->nullable();
+            $table->integer('points')->nullable();
             $table->timestamps();
         });
     }
