@@ -18,6 +18,6 @@ class Classes extends Model
     }
 
     public function Projects() {
-        return $this->hasMany('App\Projects', 'class_code');
+        return $this->belongsTo('App\Projects', 'id');
     }
 }

@@ -157,13 +157,13 @@ class ProjectController extends Controller
 
         if(!Auth::check())
         {
-            $projects = Projects::join('users', 'users.id', '=', 'projects.user_id')->select('projects.*', 'users.image')->get();
+            $projects = Projects::join('users', 'users.id', '=', 'projects.user_id')->orderBy('created_at', 'desc')->select('projects.*', 'users.image')->get();
 
             return view('/explore', compact('projects'));
         }
         else
         {
-            $projects = Projects::join('users', 'users.id', '=', 'projects.user_id')->select('projects.*', 'users.image')->get();
+            $projects = Projects::join('users', 'users.id', '=', 'projects.user_id')->orderBy('created_at', 'desc')->select('projects.*', 'users.image')->get();
             $wishes = DB::table('wishlists')->select('id')->where('user_id', Auth::user()->id)->first();
             $wishlists = Wishlists::select('project_id')->where('user_id', Auth::user()->id)->get();
             $wishlistsArr = Arr::flatten($wishlists->toArray());
@@ -265,7 +265,7 @@ class ProjectController extends Controller
 
         $project->save();
 
-        return redirect(url('/'));
+        return redirect(url('/classDetail/'.$project->class_id));
     }
 
 

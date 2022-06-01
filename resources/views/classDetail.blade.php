@@ -193,39 +193,72 @@
                 <h1 class="display-2"><strong>{{ $c->class_name }}</strong></h1>
                 <p class="text-muted" style="font-size: 20px">Kelas {{ $c->class_grade }} • #{{ $c->class_code }}</p>
                 <p style="text-align: justify">{{ $c->class_description }}</p>
-            <div>
-                <a href="" class="postbtn" type="button" data-bs-toggle="modal" data-bs-target="#postingproyek">
-                    Posting Proyek
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
-                    </svg>
-                </a>
-            </div>
-            @include('profile.modalPostProyekKelas')
-            @endforeach
 
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <a href="" class="postbtn" type="button" data-bs-toggle="modal" data-bs-target="#postingproyek">
+                            Posting Proyek
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    @include('profile.modalPostProyekKelas')
+                    <div>
+                        <a href="" class="nilai-but" type="button" data-bs-toggle="modal" data-bs-target="#daftarnilai">
+                            Lihat Daftar Nilai
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    @include('profile.modalDaftarNilai')
+                </div>
+            @endforeach
             <hr>
 
             <div class="mt-lg-4">
                 <div class="row row-cols-4 g-4">
                     @foreach ($projects as $p)
+
                     <div class="col">
                         <div class="card" style="width: 18rem;">
                             <img src="{{ asset('storage/'.$p->project_image) }}" class="card-img-top projectimage" alt="project image">
-                            <div class="card-body">
-                                <h5 class="card-title"><strong>{{ $p->project_title }}</strong></h5>
-                                @php
-                                    Carbon\Carbon::setLocale('id');
-                                @endphp
-                                <p class="card-text">{{ Carbon\Carbon::parse($p->created_at)->diffForHumans()}}</p>
-                                <p><small>oleh <a href="/myProfile/{{ $p->user_id }}"><em>{{ $p->name }}</em></a></small></p>
-                                <a href="/projectDetail/{{ $p->id }}" class="btn btn-primary">Lihat Detail</a>
+                            <div class="d-flex justify-content-between">
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>{{ Str::limit($p->project_title, '6', '...') }}</strong></h5>
+                                    @php
+                                        Carbon\Carbon::setLocale('id');
+                                    @endphp
+                                    <p class="card-text">{{ Carbon\Carbon::parse($p->created_at)->diffForHumans()}}</p>
+                                    <p><small>oleh <a href="/myProfile/{{ $p->user_id }}"><em>{{ $p->name }}</em></a></small></p>
+                                    <a href="/projectDetail/{{ $p->id }}" class="btn btn-primary">Lihat Detail</a>
+                                </div>
+                                <div class="p-3">
+                                    @if (in_array($p->id, $doneNilai))
+                                        <small class="badge bg-success">Sudah dinilai</small>
+                                    @else
+                                    <small class="badge bg-danger">Budah dinilai</small>
+                                    @endif
+                                    {{-- @if ($p->points > 90)
+                                        <h1 class="text-success">{{ $p->points }}</h1>
+                                    @elseif($p->points > 75)
+                                        <h1 class="text-success">{{ $p->points }}</h1>
+                                    @elseif($p->points > 65)
+                                        <h1 class="text-warning">{{ $p->points }}</h1>
+                                    @else
+                                        <h1 class="text-danger">{{ $p->points }}</h1>
+                                    @endif --}}
+                                </div>
                             </div>
                         </div>
                     </div>
                     @endforeach
                 </div>
             </div>
+
+
         </div>
         <div class="col-md-3" style="margin-left: 50px">
             <div>
@@ -410,6 +443,7 @@
                         @endforeach
                     </div>
                 </div>
+
             </div>
             <div class="col-md-3" style="margin-left: 50px">
                 <div>

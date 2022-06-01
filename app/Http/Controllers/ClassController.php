@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Classes;
 use App\JoinClasses;
+use App\Questions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
@@ -17,9 +18,6 @@ class ClassController extends Controller
 
         $this->validate($request,[
             'class_name' => 'required|min:6|max:30',
-            // 'forum_category' => 'required',
-            // 'forum_message' => 'required|max:10000',
-            // 'forum_image' => 'image|mimes:jpeg,png,jpg|max:3072',
         ]);
 
         $class = new Classes();
@@ -37,10 +35,14 @@ class ClassController extends Controller
     public function indexClass(Request $request){
 
         $class = DB::table('class')
-                ->select('class.*', 'users.name', 'joinclass.user_status')
+                ->select('class.*', 'users.name')
                 ->join('users', 'users.id', '=', 'class.user_id')
-                ->join('joinclass', 'joinclass.class_id', '=', 'class.id')
                 ->get();
+
+        $stats = DB::table('joinclass')
+                ->join('class', 'class.id', '=', 'joinclass.class_id')
+                ->where('joinclass.class_id', '=', $request->id)
+                ->first();
 
         $classes = Classes::select('id')->where('user_id', Auth::user()->id)->get();
         $classArr = Arr::flatten($classes->toArray());
@@ -52,7 +54,7 @@ class ClassController extends Controller
         $class = Classes::where("class_code",'like','%'.$search.'%')->get();
 
 
-        return view('/class', ['classes' => $classArr, 'join' => $joinArr], compact('class'));
+        return view('/class', ['classes' => $classArr, 'join' => $joinArr], compact('class', 'stats'));
     }
 
     public function getClassID(Request $request){
@@ -103,16 +105,26 @@ class ClassController extends Controller
                     ->where('joinclass.user_status', '!=', 'null')
                     ->count();
 
-
         $projects = DB::table('projects')
-                    ->select('projects.project_image', 'projects.*')
-                    ->join('class', 'class.id', '=', 'projects.class_id')
-                    ->where('projects.class_id', '=',  $request->id)
-                    ->where('projects.class_id', '!=', null)
-                    ->orderBy('projects.created_at', 'desc')
+                    ->where('projects.class_id', '=', $request->id)
+                    ->orderBy('projects.created_at', 'asc')
                     ->get();
 
-        return view('/classDetail', compact('class', 'users', 'host', 'usersCtr', 'projects', 'stats', 'statsUser','statsCtr'));
+        $doneNilai = Questions::select('project_id')->where('user_id', Auth::user()->id)->get();
+        $doneNilaiArr = Arr::flatten($doneNilai->toArray());
+
+        $nilai = DB::table('projects')
+                    ->select('class.*', 'projects.name as username', 'question_project.*', 'users.*')
+                    ->join('question_project', 'question_project.project_id', '=', 'projects.id')
+                    ->join('users', 'users.id', '=', 'question_project.user_id')
+                    ->join('class', 'class.id', '=', 'projects.class_id')
+                    ->where('class.id', '=', $request->id)
+                    ->where('users.role', '=', 'Teacher')
+                    ->where('question_project.user_id', '=', Auth::user()->id)
+                    ->orderBy('username', 'asc')
+                    ->get();
+
+        return view('/classDetail', ['doneNilai' => $doneNilaiArr], compact('class', 'users', 'host', 'usersCtr', 'projects', 'stats', 'statsUser', 'statsCtr', 'nilai'));
     }
 
     public function approveStudent(Request $request){

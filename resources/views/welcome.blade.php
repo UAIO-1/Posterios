@@ -132,7 +132,7 @@
                         @if($diffInDays < 7)
                             <div class="col">
                                 <a href="/projectDetail/{{ $p->id }}">
-                                    <div class="card bg-dark text-white">
+                                    <div class="card bg-dark text-white" style="max-width: 18rem">
                                         <img src="{{ asset('storage/'.$p->project_image) }}" class="card-img" alt="project image">
                                         <div class="card-img-overlay">
                                         <h5 class="card-title">{{ $p->project_title }}</h5>
@@ -288,7 +288,7 @@
                     @if($diffInDays < 7)
                         <div class="col">
                             <a href="/projectDetail/{{ $p->id }}">
-                                <div class="card bg-dark text-white">
+                                <div class="card bg-dark text-white" style="max-width: 18rem">
                                     <img src="{{ asset('storage/'.$p->project_image) }}" class="card-img" alt="project image">
                                     <div class="card-img-overlay">
                                     <h5 class="card-title">{{ $p->project_title }}</h5>
@@ -444,7 +444,7 @@
                         @if($diffInDays < 7)
                             <div class="col">
                                 <a href="/projectDetail/{{ $p->id }}">
-                                    <div class="card bg-dark text-white">
+                                    <div class="card bg-dark text-white" style="max-width: 18rem">
                                         <img src="{{ asset('storage/'.$p->project_image) }}" class="card-img" alt="project image">
                                         <div class="card-img-overlay">
                                         <h5 class="card-title">{{ $p->project_title }}</h5>

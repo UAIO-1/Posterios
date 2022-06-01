@@ -17,6 +17,7 @@ class JoinClassSeeder extends Seeder
           'user_id' => '3',
           'class_id' => '1',
           'class_code' => 'okas21',
+          'user_status' => 'Approved',
           'created_at' => '2022-04-18 03:19:32',
           'updated_at' => '2022-04-18 03:19:32',
         ]);
@@ -31,6 +32,7 @@ class JoinClassSeeder extends Seeder
           'user_id' => '4',
           'class_id' => '1',
           'class_code' => 'okas21',
+          'user_status' => 'Approved',
           'created_at' => '2022-04-18 03:19:32',
           'updated_at' => '2022-04-18 03:19:32',
         ]);
@@ -38,6 +40,7 @@ class JoinClassSeeder extends Seeder
           'user_id' => '5',
           'class_id' => '1',
           'class_code' => 'okas21',
+          'user_status' => 'Approved',
           'created_at' => '2022-04-18 03:19:32',
           'updated_at' => '2022-04-18 03:19:32',
         ]);

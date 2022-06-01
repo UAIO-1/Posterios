@@ -47,3 +47,16 @@ body{
     max-height: 200px;
 }
 
+.nilai-but{
+    border-radius: 25px;
+    padding: 10px 25px;
+    background-color: #259df3;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease 0s;
+}
+
+.nilai-but:hover{
+    color: #fff;
+    background-color: #208edd;
+}

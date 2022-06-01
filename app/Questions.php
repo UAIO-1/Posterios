@@ -9,10 +9,10 @@ class Questions extends Model
     protected $table = "question_project";
 
     public function Projects() {
-        return $this->belongsTo('App\Projects', 'id');
+        return $this->belongsTo('App\Projects', 'project_id');
     }
 
     public function Users() {
-        return $this->belongsToMany('App\Users', 'id');
+        return $this->belongsTo('App\Users', 'id');
     }
 }

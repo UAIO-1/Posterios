@@ -13,7 +13,7 @@ class Projects extends Model
     }
 
     public function Class() {
-        return $this->belongsTo('App\Classes', 'id');
+        return $this->hasMany('App\Classes', 'project_id');
     }
 
     public function JoinClass() {
@@ -23,6 +23,11 @@ class Projects extends Model
     public function Wishlists() {
         return $this->hasMany('App\Wishlists', 'project_id');
     }
+
+    public function Questions() {
+        return $this->hasMany('App\Questions', 'id');
+    }
+
 
 
 }

@@ -43,7 +43,7 @@ class ForumController extends Controller
     }
 
     public function indexForum(Request $request){
-        $forums = Forums::take(50)->get();
+        $forums = Forums::take(50)->orderBy('created_at', 'desc')->get();
 
         return view('/forum', compact('forums'));
     }

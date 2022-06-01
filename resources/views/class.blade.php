@@ -52,12 +52,9 @@
                             <h5 class="card-title"><strong>{{ $c->class_name }}</strong></h5>
                             <small class="text-muted">Kelas {{ $c->class_grade }}</small>
                             <p class="card-text">{{ Str::limit($c->class_description, '100', '...')  }}</p>
+
                             @if (in_array($c->id, $join))
-                                @if ($c->user_status == null)
-                                    <small class="text-danger"><em>Waiting Approval</em></small>
-                                @else
-                                    <small class="text-success"><em>Sudah Bergabung</em></small>
-                                @endif
+                                <small class="text-success"><em>Bergabung</em></small>
                             @else
                                 <form action={{ url('/joinClass') }} method="POST">
                                     {{ csrf_field() }}
