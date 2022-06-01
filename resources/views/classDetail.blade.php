@@ -239,17 +239,8 @@
                                     @if (in_array($p->id, $doneNilai))
                                         <small class="badge bg-success">Sudah dinilai</small>
                                     @else
-                                    <small class="badge bg-danger">Budah dinilai</small>
+                                        <small class="badge bg-danger">Budah dinilai</small>
                                     @endif
-                                    {{-- @if ($p->points > 90)
-                                        <h1 class="text-success">{{ $p->points }}</h1>
-                                    @elseif($p->points > 75)
-                                        <h1 class="text-success">{{ $p->points }}</h1>
-                                    @elseif($p->points > 65)
-                                        <h1 class="text-warning">{{ $p->points }}</h1>
-                                    @else
-                                        <h1 class="text-danger">{{ $p->points }}</h1>
-                                    @endif --}}
                                 </div>
                             </div>
                         </div>
