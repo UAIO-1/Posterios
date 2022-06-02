@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use App\Classes;
 use App\JoinClasses;
 use App\Questions;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
+use Svg\Tag\Rect;
 
 class ClassController extends Controller
 {
@@ -124,8 +125,14 @@ class ClassController extends Controller
                     ->orderBy('username', 'asc')
                     ->get();
 
+
         return view('/classDetail', ['doneNilai' => $doneNilaiArr], compact('class', 'users', 'host', 'usersCtr', 'projects', 'stats', 'statsUser', 'statsCtr', 'nilai'));
     }
+
+    public function daftarNilai(){
+
+    }
+
 
     public function approveStudent(Request $request){
 
@@ -166,5 +173,9 @@ class ClassController extends Controller
         return view('/post', ['join' => $joinArr], compact('class'));
     }
 
+    public function printNilai(Request $request){
+
+
+    }
 
 }

@@ -1,7 +1,11 @@
 <?php
 
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -81,6 +85,30 @@ Route::group(['middleware'=>'cekuser'], function() {
 
     Route::post('/approveStudent', 'ClassController@approveStudent');
 
+
+    Route::get('/daftarNilai/{id}', function(Request $request){
+
+        $nilai = DB::table('projects')
+                    ->select('class.*', 'projects.name as username', 'question_project.*', 'users.*')
+                    ->join('question_project', 'question_project.project_id', '=', 'projects.id')
+                    ->join('users', 'users.id', '=', 'question_project.user_id')
+                    ->join('class', 'class.id', '=', 'projects.class_id')
+                    ->where('class.id', '=', $request->id)
+                    ->where('users.role', '=', 'Teacher')
+                    ->where('question_project.user_id', '=', Auth::user()->id)
+                    ->orderBy('username', 'asc')
+                    ->get();
+
+        $class = DB::table('class')
+                    ->where('id','=', $request->id)
+                    ->first();
+
+        $pdf = Pdf::loadView('daftarNilai', compact('nilai', 'class'));
+        return $pdf->download('daftarNilai.pdf');
+
+        // return view('/daftarNilai', compact('nilai', 'class'));
+
+    });
 });
 
 Route::group(['middleware'=>'cekadmin'], function() {

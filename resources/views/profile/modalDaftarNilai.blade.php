@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-dialog-centered modal-xl">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="daftarnilai">Daftar Nilai Kelas <strong>{{ $c->class_name }}</strong></h5>
+          <h5 class="modal-title" id="daftarnilai">Daftar Nilai Kelas <strong></strong></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -42,7 +42,7 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-          <button type="button" class="btn btn-primary">Tarik Nilai</button>
+          <a href="{{ url('/printNilai') }}" class="btn btn-primary">Print</a>
         </div>
       </div>
     </div>

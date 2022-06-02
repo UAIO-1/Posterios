@@ -205,7 +205,7 @@
                     </div>
                     @include('profile.modalPostProyekKelas')
                     <div>
-                        <a href="" class="nilai-but" type="button" data-bs-toggle="modal" data-bs-target="#daftarnilai">
+                        <a href="/daftarNilai/{{ $c->id }}" class="nilai-but" type="button">
                             Lihat Daftar Nilai
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                                 <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
@@ -213,10 +213,11 @@
                             </svg>
                         </a>
                     </div>
-                    @include('profile.modalDaftarNilai')
+                    {{-- @include('profile.modalDaftarNilai')  data-bs-toggle="modal" data-bs-target="#daftarnilai"--}}
                 </div>
             @endforeach
             <hr>
+
 
             <div class="mt-lg-4">
                 <div class="row row-cols-4 g-4">
@@ -239,7 +240,7 @@
                                     @if (in_array($p->id, $doneNilai))
                                         <small class="badge bg-success">Sudah dinilai</small>
                                     @else
-                                        <small class="badge bg-danger">Budah dinilai</small>
+                                        <small class="badge bg-danger">Belum dinilai</small>
                                     @endif
                                 </div>
                             </div>
