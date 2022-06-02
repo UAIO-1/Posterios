@@ -48,10 +48,11 @@ body{
 }
 
 .nilai-but{
-    border-radius: 25px;
-    padding: 10px 25px;
-    background-color: #259df3;
-    color: #fff;
+    border-radius: 5px;
+    padding: 10px 18px;
+    background-color: #fff;
+    border: 1px solid #259df3;
+    color: #259df3;
     text-decoration: none;
     transition: all 0.3s ease 0s;
 }
@@ -59,4 +60,21 @@ body{
 .nilai-but:hover{
     color: #fff;
     background-color: #208edd;
+}
+
+.lihat-but{
+    border: 1px solid #259df3;
+    border-radius: 5px;
+    padding: 10px 18px;
+    background-color: #259df3;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease 0s;
+}
+
+.lihat-but:hover{
+    color: #fff;
+    background-color: #208edd;
+    border: 1px solid #208edd;
+
 }

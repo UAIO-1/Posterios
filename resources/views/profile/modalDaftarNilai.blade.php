@@ -42,7 +42,6 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-          <a href="{{ url('/printNilai') }}" class="btn btn-primary">Print</a>
         </div>
       </div>
     </div>
