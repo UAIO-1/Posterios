@@ -64,10 +64,11 @@ class RegisterController extends Controller
             'dob' => ['required', 'date'],
             'role' => ['required', 'string'],
             'grade' => ['required'],
-            'sekolah' => ['required', 'string'],
+            'sekolah' => ['string'],
             'image_selfie' => ['required', 'image'],
             'image_card' => ['required', 'image'],
         ]);
+
     }
 
     /**

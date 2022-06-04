@@ -18,7 +18,7 @@ class ProjectController extends Controller
     public function projectPost(Request $request){
 
         $this->validate($request,[
-            'project_title' => 'required|min:6|max:20',
+            'project_title' => 'required|min:6|max:30',
             'project_category' => 'required',
             'project_subcategory' => 'required',
             'project_image' => 'required|image|mimes:jpeg,png,jpg|max:3072',
@@ -51,7 +51,7 @@ class ProjectController extends Controller
 
         $project->save();
 
-        return redirect(url('/'));
+        return redirect(url('/explore'))->with('success-buat', 'Proyek berhasil di posting!');
     }
 
 
@@ -107,7 +107,7 @@ class ProjectController extends Controller
         $projects = Projects::where('id', '=', $request->id)->first();
 
         $this->validate($request,[
-            'project_title' => 'min:6|max:20',
+            'project_title' => 'min:6|max:30',
             'project_image' => 'image|mimes:jpeg,png,jpg|max:10240',
             'project_video' => 'max:30720',
             'project_description' => 'max:10000',
@@ -145,12 +145,12 @@ class ProjectController extends Controller
         }
 
         $projects->save();
-        return redirect('/projectDetail/'.$projects->id);
+        return redirect('/projectDetail/'.$projects->id)->with('success-edit', 'Proyek berhasil diubah!');
     }
 
     public function projectDelete($id){
         DB::table('projects')->where('id', $id)->delete();
-        return redirect('/myProfile');
+        return redirect('/explore')->with('success-hapus', 'Proyek berhasil dihapus!');
     }
 
     public function indexExploreProjects(Request $request){
@@ -265,7 +265,7 @@ class ProjectController extends Controller
 
         $project->save();
 
-        return redirect(url('/classDetail/'.$project->class_id));
+        return redirect(url('/classDetail/'.$project->class_id))->with('success-buat', 'Proyek berhasil di posting!');
     }
 
 

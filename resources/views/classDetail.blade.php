@@ -2,6 +2,7 @@
 @section('title', 'My Class • Posterios')
 <link rel="shortcut icon" href="{{ asset('image/icon-logo-white.png') }}">
 <link rel="stylesheet" href="{{ asset('css/classDetail.css') }}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 @include('navbar')
 
@@ -401,6 +402,9 @@
 @elseif(Auth::check() && Auth::user()->role == "Student" && Auth::user()->status == "Approved")
 
     <div class="mt-xl-5">
+        @if(session('success-buat'))
+            <div id="alert" class="alert alert-success m-4"><h5>{{ session('success-buat') }}</h5></div>
+        @endif
         <div class="row">
             <div class="col-md-8" style="margin-left: 50px">
                 @foreach ($class as $c)
@@ -578,3 +582,9 @@
     </div>
 
 @endif
+
+<script>
+    setTimeout(function() {
+        $('#alert').hide();
+    }, 3000);
+</script>

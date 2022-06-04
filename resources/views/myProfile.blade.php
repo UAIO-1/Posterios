@@ -335,6 +335,9 @@
 
 @elseif (Auth::check() && Auth::user()->status == null)
 <div class="header">
+    @if(session('success-edit'))
+        <div id="alert" class="alert alert-success m-4"><h5>{{ session('success-edit') }}</h5></div>
+    @endif
     <div class="container">
         <div class="row">
             <div class="col-md-4">

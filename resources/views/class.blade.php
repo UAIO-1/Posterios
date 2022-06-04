@@ -2,6 +2,7 @@
 @section('title', 'Class • Posterios')
 <link rel="shortcut icon" href="{{ asset('image/icon-logo-white.png') }}">
 <link rel="stylesheet" href="{{ asset('css/class.css') }}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 @include('navbar')
 
@@ -75,7 +76,12 @@
 
 @else
 
+
+
 <div class="header">
+    @if(session('success-buat'))
+        <div id="alert" class="alert alert-success m-4"><h5>{{ session('success-buat') }}</h5></div>
+    @endif
     <div class="container">
 
         <div class="text-light text-center">
@@ -139,3 +145,9 @@
 </div>
 
 @endif
+
+<script>
+    setTimeout(function() {
+        $('#alert').hide();
+    }, 3000);
+</script>

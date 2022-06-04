@@ -39,7 +39,7 @@ class ForumController extends Controller
 
         $forum->save();
 
-        return redirect(url('forum'));
+        return redirect(url('forum'))->with('success-buat', 'Forum berhasil di posting!');
     }
 
     public function indexForum(Request $request){
@@ -82,10 +82,17 @@ class ForumController extends Controller
 
         $reply->save();
 
-        return redirect('/forumDetail/'.$reply->forum_id);
+        return redirect('/forumDetail/'.$reply->forum_id)->with('success-balas', 'Balasan berhasil di posting!');
     }
 
     public function editForum(Request $request){
+
+        $this->validate($request,[
+            'forum_title' => 'required|min:10|max:50',
+            'forum_category' => 'required',
+            'forum_message' => 'required|max:10000',
+            'forum_image' => 'image|mimes:jpeg,png,jpg|max:3072',
+        ]);
 
         $forum = Forums::where('id', '=', $request->id)->first();
 
@@ -107,7 +114,7 @@ class ForumController extends Controller
 
         $forum->save();
 
-        return redirect('/forumDetail/'.$forum->id);
+        return redirect('/forumDetail/'.$forum->id)->with('success-edit', 'Forum berhasil diubah!');
     }
 
     public function editReplyForum(Request $request){
@@ -137,7 +144,7 @@ class ForumController extends Controller
 
         $reply->save();
 
-        return redirect('/forumDetail/'.$reply->forum_id);
+        return redirect('/forumDetail/'.$reply->forum_id)->with('success-edit-balas', 'Balasan berhasil diubah!');
     }
 
     public function searchForumTitle(Request $request){
@@ -150,7 +157,7 @@ class ForumController extends Controller
 
     public function forumDeleteUser($id){
         DB::table('forum')->where('id', $id)->delete();
-        return redirect('/forum');
+        return redirect('/forum')->with('success-hapus', 'Forum berhasil dihapus!');
     }
 
 

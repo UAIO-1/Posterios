@@ -3,7 +3,6 @@
 <link rel="shortcut icon" href="{{ asset('image/icon-logo-white.png') }}">
 <link rel="stylesheet" href="{{ asset('css/post.css') }}">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="{{ asset('js/post.js') }}"></script>
 
 @if (!Auth::check())
 
@@ -30,7 +29,7 @@
                                             @if($errors->first('project_title'))
                                                 <small class="text-danger"><em>{{ $errors->first('project_title') }}</em></small>
                                             @else
-                                            <small class="text-muted"><em>*6 - 20 karakter</em></small>
+                                                <small class="text-muted"><em>*6 - 30 karakter</em></small>
                                             @endif
                                         </div>
 
@@ -86,14 +85,18 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label class="form-label">File Video</label> <span class="text-muted"> <small class="text-muted"><em>*maks 10 MB</em></small>
+                                                    <label class="form-label">File Video</label>
                                                     <input class="form-control" type="file" name="project_video" accept=".mp4,.mkv">
-
+                                                    @if($errors->first('project_video'))
+                                                        <small class="text-danger"><em>{{ $errors->first('project_video') }}</em></small>
+                                                    @else
+                                                        <small class="text-muted"><em>*maks 10 MB</em></small>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label class="form-label">Tautan Video</label> <span class="text-muted">
+                                                    <label class="form-label">Tautan Video</label>
                                                     <input class="form-control" value="{{ old('project_video_link') }}" type="text" name="project_video_link" placeholder="https://www.youtube.com/">
                                                 </div>
                                             </div>

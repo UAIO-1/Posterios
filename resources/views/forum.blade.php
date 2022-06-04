@@ -163,6 +163,11 @@
 
 
 <div class="header">
+        @if(session('success-buat'))
+            <div id="alert" class="alert alert-success m-4"><h5>{{ session('success-buat') }}</h5></div>
+        @elseif(session('success-hapus'))
+            <div id="alert" class="alert alert-success m-4"><h5>{{ session('success-hapus') }}</h5></div>
+        @endif
         <div class="container-start">
             <div class="text-center text-light">
                 <h1 class="display-1">Forum Discussion</h1>
@@ -347,4 +352,8 @@
         });
 
     });
+
+    setTimeout(function() {
+        $('#alert').hide();
+    }, 3000);
 </script>

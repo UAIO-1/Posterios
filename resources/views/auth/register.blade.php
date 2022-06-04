@@ -38,7 +38,7 @@
 
                                 <div class="col">
                                     <div class="form-group mb-lg-4">
-                                        <label for="name" class="col-form-label text-md-right">{{ __('Nama Lengkap') }}</label>
+                                        <label for="name" class="col-form-label text-md-right">{{ __('Nama Lengkap') }} <span class="text-danger">*</span></label> <span class="text-muted"><small><em>6 - 20 characters.</em></small></span>
                                         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name">
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
@@ -49,7 +49,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="form-group mb-lg-4">
-                                        <label for="email" class="col-form-label text-md-right">{{ __('Alamat E-Mail') }}</label>
+                                        <label for="email" class="col-form-label text-md-right">{{ __('Alamat E-Mail') }} <span class="text-danger">*</span></label>
                                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required>
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
@@ -60,8 +60,8 @@
                                 </div>
                                 <div class="col">
                                     <div class="form-group mb-lg-4">
-                                        <label for="password" class="col-form-label text-md-right">{{ __('Password') }}</label>
-                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('email') }}" required>
+                                        <label for="password" class="col-form-label text-md-right">{{ __('Password') }} <span class="text-danger">*</span></label>
+                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" required>
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -71,14 +71,14 @@
                                 </div>
                                 <div class="col">
                                     <div class="form-group mb-lg-4">
-                                        <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Ulangi Password') }}</label>
-                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" value="{{ old('email') }}" required>
+                                        <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Ulangi Password') }} <span class="text-danger">*</span></label>
+                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group mb-lg-4">
-                                        <label for="dob" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal Lahir') }}</label>
-                                        <input id="dob" type="date" class="form-control @error('dob') is-invalid @enderror"  name="dob" value="{{ old('email') }}" required>
+                                        <label for="dob" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal Lahir') }} <span class="text-danger">*</span></label>
+                                        <input id="dob" type="date" class="form-control @error('dob') is-invalid @enderror"  name="dob" value="{{ old('dob') }}" required>
                                         @error('dob')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="form-group mb-lg-4">
-                                        <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Jenis Kelamin') }}</label>
+                                        <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Jenis Kelamin') }} <span class="text-danger">*</span></label>
                                         <div class="row row-cols-auto">
                                             <div class="col">
                                                 <label>
@@ -126,7 +126,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="form-group mb-lg-4">
-                                        <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Kelas') }}</label>
+                                        <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Kelas') }} <span class="text-danger">*</span></label>
                                         <div class="row row-cols-auto">
                                             <div class="col">
                                                 <label>
@@ -159,7 +159,7 @@
                                                 </label>
                                             </div>
                                         </div>
-                                        @error('gender')
+                                        @error('kelas')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -179,13 +179,13 @@
                                 </div>
                                 <div class="col">
                                     <div class="mb-3">
-                                        <label for="formFile" class="form-label col-form-label">Foto Selfie</label>
+                                        <label for="formFile" class="form-label col-form-label">Foto Selfie <span class="text-danger">*</span></label>
                                         <input class="form-control" type="file" name="image_selfie" id="formFile" accept=".png,.jpg,.jpeg">
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="mb-3">
-                                        <label for="formFile" class="form-label col-form-label">Foto Kartu Pelajar</label>
+                                        <label for="formFile" class="form-label col-form-label">Foto Kartu Pelajar <span class="text-danger">*</span></label>
                                         <input class="form-control" type="file" name="image_card" id="formFile" accept=".png,.jpg,.jpeg">
                                     </div>
                                 </div>
@@ -226,7 +226,7 @@
 
                                     <div class="col">
                                         <div class="form-group mb-lg-4">
-                                            <label for="name" class="col-form-label text-md-right">{{ __('Nama Lengkap') }}</label>
+                                            <label for="name" class="col-form-label text-md-right">{{ __('Nama Lengkap') }} <span class="text-danger">*</span></label> <span class="text-muted"><small><em>6 - 20 characters.</em></small></span>
                                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name">
                                             @error('name')
                                                 <span class="invalid-feedback" role="alert">
@@ -237,7 +237,7 @@
                                     </div>
                                     <div class="col">
                                         <div class="form-group mb-lg-4">
-                                            <label for="email" class="col-form-label text-md-right">{{ __('Alamat E-Mail') }}</label>
+                                            <label for="email" class="col-form-label text-md-right">{{ __('Alamat E-Mail') }} <span class="text-danger">*</span></label>
                                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required>
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
@@ -248,8 +248,8 @@
                                     </div>
                                     <div class="col">
                                         <div class="form-group mb-lg-4">
-                                            <label for="password" class="col-form-label text-md-right">{{ __('Password') }}</label>
-                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('email') }}" required>
+                                            <label for="password" class="col-form-label text-md-right">{{ __('Password') }} <span class="text-danger">*</span></label>
+                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" required>
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -259,14 +259,14 @@
                                     </div>
                                     <div class="col">
                                         <div class="form-group mb-lg-4">
-                                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Ulangi Password') }}</label>
-                                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" value="{{ old('email') }}" required>
+                                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Ulangi Password') }} <span class="text-danger">*</span></label>
+                                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="form-group mb-lg-4">
-                                            <label for="dob" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal Lahir') }}</label>
-                                            <input id="dob" type="date" class="form-control @error('dob') is-invalid @enderror"  name="dob" value="{{ old('email') }}" required>
+                                            <label for="dob" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal Lahir') }} <span class="text-danger">*</span></label>
+                                            <input id="dob" type="date" class="form-control @error('dob') is-invalid @enderror"  name="dob" value="{{ old('dob') }}" required>
                                             @error('dob')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -347,7 +347,7 @@
                                                     </label>
                                                 </div>
                                             </div>
-                                            @error('gender')
+                                            @error('kelas')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -356,7 +356,7 @@
                                     </div>
                                     <div class="col">
                                         <div class="form-group mb-lg-4">
-                                            <label for="sekolah" class="col-form-label text-md-right">{{ __('Nama Sekolah') }}</label>
+                                            <label for="sekolah" class="col-form-label text-md-right">{{ __('Nama Sekolah') }} <span class="text-danger">*</span></label>
                                             <input id="sekolah" type="text" class="form-control @error('sekolah') is-invalid @enderror" name="sekolah" value="{{ old('sekolah') }}" required>
                                             @error('sekolah')
                                                 <span class="invalid-feedback" role="alert">
@@ -367,13 +367,13 @@
                                     </div>
                                     <div class="col">
                                         <div class="mb-3">
-                                            <label for="formFile" class="form-label col-form-label">Foto Selfie</label>
+                                            <label for="formFile" class="form-label col-form-label">Foto Selfie <span class="text-danger">*</span></label>
                                             <input class="form-control" type="file" name="image_selfie" id="formFile" accept=".png,.jpg,.jpeg">
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="mb-3">
-                                            <label for="formFile" class="form-label col-form-label">Foto Kartu Tanda Guru / ID Card</label>
+                                            <label for="formFile" class="form-label col-form-label">Foto Kartu Tanda Guru / ID Card <span class="text-danger">*</span></label>
                                             <input class="form-control" type="file" name="image_card" id="formFile" accept=".png,.jpg,.jpeg">
                                         </div>
                                     </div>

@@ -18,6 +18,11 @@
                 <div class="mb-3">
                     <label class="form-label">Judul Proyek</label><span class="text-danger">*</span>
                     <input type="text" name="project_title" value="{{ old('project_title') }}" class="form-control" placeholder="Modern Banner Design">
+                    @if($errors->first('project_title'))
+                        <small class="text-danger"><em>{{ $errors->first('project_title') }}</em></small>
+                    @else
+                        <small class="text-muted"><em>*6 - 30 karakter</em></small>
+                    @endif
                 </div>
 
                 <div class="row row-cols-2">
@@ -45,6 +50,11 @@
                 <div class="mb-3">
                     <label class="form-label">Gambar Proyek</label><span class="text-danger">*</span>
                     <input class="form-control" type="file" name="project_image" accept="image/jpg, image/jpeg, image/png">
+                    @if($errors->first('project_image'))
+                        <small class="text-danger"><em>{{ $errors->first('project_image') }}</em></small>
+                    @else
+                        <small class="text-muted"><em>*maks 3 MB</em></small>
+                    @endif
                 </div>
 
                 <hr>
@@ -57,18 +67,28 @@
                 <div class="mb-3">
                     <label>Deskripsi Proyek</label>
                     <textarea value="{{ old('project_description') }}" class="form-control" name="project_description" rows="5"></textarea>
+                    @if($errors->first('project_description'))
+                        <small class="text-danger"><em>{{ $errors->first('project_description') }}</em></small>
+                    @else
+
+                    @endif
                 </div>
 
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">File Video</label> <span class="text-muted">
+                            <label class="form-label">File Video</label>
                             <input class="form-control" type="file" name="project_video" accept=".mp4,.mkv">
+                            @if($errors->first('project_video'))
+                                <small class="text-danger"><em>{{ $errors->first('project_video') }}</em></small>
+                            @else
+                                <small class="text-muted"><em>*maks 10 MB</em></small>
+                            @endif
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">Tautan Video</label> <span class="text-muted">
+                            <label class="form-label">Tautan Video</label>
                             <input class="form-control" value="{{ old('project_video_link') }}" type="text" name="project_video_link" placeholder="https://www.youtube.com/">
                         </div>
                     </div>
@@ -102,3 +122,11 @@
 
     });
 </script>
+
+@if (count($errors) > 0)
+  <script>
+      $( document ).ready(function() {
+          $('#postingproyek').modal('show');
+      });
+  </script>
+@endif

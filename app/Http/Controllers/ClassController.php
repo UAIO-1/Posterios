@@ -19,6 +19,8 @@ class ClassController extends Controller
 
         $this->validate($request,[
             'class_name' => 'required|min:6|max:30',
+            'class_code' => 'required|min:6|max:6|unique:class',
+            'class_grade' => 'required',
         ]);
 
         $class = new Classes();
@@ -30,7 +32,7 @@ class ClassController extends Controller
 
         $class->save();
 
-        return redirect(url('/class'));
+        return redirect(url('/class'))->with('success-buat', 'Kelas berhasil dibuat!');
     }
 
     public function indexClass(Request $request){
@@ -129,10 +131,6 @@ class ClassController extends Controller
         return view('/classDetail', ['doneNilai' => $doneNilaiArr], compact('class', 'users', 'host', 'usersCtr', 'projects', 'stats', 'statsUser', 'statsCtr', 'nilai'));
     }
 
-    public function daftarNilai(){
-
-    }
-
 
     public function approveStudent(Request $request){
 
@@ -172,10 +170,4 @@ class ClassController extends Controller
 
         return view('/post', ['join' => $joinArr], compact('class'));
     }
-
-    public function printNilai(Request $request){
-
-
-    }
-
 }

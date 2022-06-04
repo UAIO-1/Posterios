@@ -235,6 +235,11 @@
 @else
 
     <div class="header">
+        @if(session('success-buat'))
+            <div id="alert" class="alert alert-success m-4"><h5>{{ session('success-buat') }}</h5></div>
+        @elseif(session('success-hapus'))
+            <div id="alert" class="alert alert-success m-4"><h5>{{ session('success-hapus') }}</h5></div>
+        @endif
         <div class="container mt-xl-5">
             <div class="row">
                 <div class="col-md-6">
@@ -372,5 +377,11 @@
         });
 
     });
+
+
+    setTimeout(function() {
+        $('#alert').hide();
+    }, 3000);
+
 </script>
 

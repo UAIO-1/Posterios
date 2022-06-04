@@ -24,6 +24,11 @@
                 <div class="mb-3">
                     <label>Judul Forum</label>
                     <input type="text" name="forum_title" class="form-control" value="{{ $f->forum_title }}">
+                    @if($errors->first('forum_title'))
+                        <small class="text-danger"><em>{{ $errors->first('forum_title') }}</em></small>
+                    @else
+                        <small class="text-muted"><em>*10 - 50 karakter.</em></small>
+                    @endif
                 </div>
 
                 <div class="row row-cols-2">
@@ -32,18 +37,18 @@
                             <label class="form-label">Kategori</label>
                             <select class="ml-4 form-select" id="main" name="forum_category">
                                 @if ($f->forum_category == "Teknologi")
-                                <option value="Teknologi" selected>Teknologi</option>
-                                <option value="Teknik Rekayasa">Teknik Rekayasa</option>
-                                <option value="Seni">Seni</option>
-                            @elseif($f->forum_category == "Teknik Rekayasa")
-                                <option value="Teknologi">Teknologi</option>
-                                <option value="Teknik Rekayasa" selected>Teknik Rekayasa</option>
-                                <option value="Seni">Seni</option>
-                            @elseif($f->forum_category == "Seni")
-                                <option value="Teknologi">Teknologi</option>
-                                <option value="Teknik Rekayasa">Teknik Rekayasa</option>
-                                <option value="Seni" selected>Seni</option>
-                            @endif
+                                    <option value="Teknologi" selected>Teknologi</option>
+                                    <option value="Teknik Rekayasa">Teknik Rekayasa</option>
+                                    <option value="Seni">Seni</option>
+                                @elseif($f->forum_category == "Teknik Rekayasa")
+                                    <option value="Teknologi">Teknologi</option>
+                                    <option value="Teknik Rekayasa" selected>Teknik Rekayasa</option>
+                                    <option value="Seni">Seni</option>
+                                @elseif($f->forum_category == "Seni")
+                                    <option value="Teknologi">Teknologi</option>
+                                    <option value="Teknik Rekayasa">Teknik Rekayasa</option>
+                                    <option value="Seni" selected>Seni</option>
+                                @endif
                             </select>
                         </div>
                     </div>
@@ -80,11 +85,21 @@
                 <div class="mb-3">
                     <label>Pesan</label>
                     <textarea name="forum_message" class="form-control" cols="30" rows="10">{{ $f->forum_message }}</textarea>
+                    @if($errors->first('forum_message'))
+                        <small class="text-danger"><em>{{ $errors->first('forum_message') }}</em></small>
+                    @else
+                        <small class="text-muted"><em>*maks. 10.000 karakter.</em></small>
+                    @endif
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Gambar</label>
                     <input class="form-control" type="file" name="forum_image" accept="image/jpg, image/jpeg, image/png">
+                    @if($errors->first('forum_image'))
+                        <small class="text-danger"><em>{{ $errors->first('forum_image') }}</em></small>
+                    @else
+                        <small class="text-muted"><em>*maks. 3 MB.</em></small>
+                    @endif
                 </div>
 
 
@@ -102,16 +117,16 @@
 <script>
     $(document).ready(function() {
 
-    $("#main").change(function() {
-        var val = $(this).val();
-        if (val == "Teknologi") {
-            $("#sub").html("<option value='Digital Desain'>Digital Desain</option><option value='Programming'>Programming</option>");
-        } else if (val == "Teknik Rekayasa") {
-            $("#sub").html("<option value='Komputer dan Jaringan'>Komputer dan Jaringan</option>");
-        } else if (val == "Seni") {
-            $("#sub").html("<option value='Seni Musik'>Seni Musik</option><option value='Seni Lukis'>Seni Lukis</option><option value='Seni Tari'>Seni Tari</option>");
-        }
-    });
+        $("#main").change(function() {
+            var val = $(this).val();
+            if (val == "Teknologi") {
+                $("#sub").html("<option value='Digital Desain'>Digital Desain</option><option value='Programming'>Programming</option>");
+            } else if (val == "Teknik Rekayasa") {
+                $("#sub").html("<option value='Komputer dan Jaringan'>Komputer dan Jaringan</option>");
+            } else if (val == "Seni") {
+                $("#sub").html("<option value='Seni Musik'>Seni Musik</option><option value='Seni Lukis'>Seni Lukis</option><option value='Seni Tari'>Seni Tari</option>");
+            }
+        });
 
     });
 </script>

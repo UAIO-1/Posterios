@@ -2,6 +2,7 @@
 @section('title', 'Forum Discussion • Posterios')
 <link rel="shortcut icon" href="{{ asset('image/icon-logo-white.png') }}">
 <link rel="stylesheet" href="{{ asset('css/forumDetail.css') }}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 @include('navbar')
 
@@ -219,6 +220,13 @@
 @else
 
     <div class="container mt-lg-4">
+        @if(session('success-edit'))
+            <div id="alert" class="alert alert-success m-4"><h5>{{ session('success-edit') }}</h5></div>
+        @elseif(session('success-balas'))
+            <div id="alert" class="alert alert-success m-4"><h5>{{ session('success-balas') }}</h5></div>
+        @elseif(session('success-edit-balas'))
+            <div id="alert" class="alert alert-success m-4"><h5>{{ session('success-edit-balas') }}</h5></div>
+        @endif
         @foreach ($forums as $f)
             <div class="card card-quest">
                 <div class="card-header bg-transparent">
@@ -339,3 +347,9 @@
     </div>
 
 @endif
+
+<script>
+    setTimeout(function() {
+        $('#alert').hide();
+    }, 3000);
+</script>

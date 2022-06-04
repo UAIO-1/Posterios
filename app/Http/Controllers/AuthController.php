@@ -73,7 +73,7 @@ class AuthController extends Controller
 
         $user->save();
 
-        return redirect('/myProfile/'.Auth::user()->id);
+        return redirect('/myProfile/'.Auth::user()->id)->with('success-edit', 'Profil berhasil diubah!');
     }
 
     public function getProfileUser(Request $request){
