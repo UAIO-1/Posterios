@@ -262,8 +262,8 @@ class UsersTableSeeder extends Seeder
             'updated_at' => '2022-04-18 08:28:10',
           ]);
           DB::table('users')->insert([
-            'name' => 'Andrew Kus',
-            'email' => 'andrew.m@gmail.com',
+            'name' => 'jose',
+            'email' => 'jose.j@gmail.com',
             'password' => Hash::make('qwerty123'),
             'gender' => 'Male',
             'dob' => '2006-08-05',
@@ -278,8 +278,8 @@ class UsersTableSeeder extends Seeder
             'updated_at' => '2022-04-18 08:28:10',
           ]);
           DB::table('users')->insert([
-            'name' => 'Andrew Kus',
-            'email' => 'andrew.m@gmail.com',
+            'name' => 'kalvin eff',
+            'email' => 'effendi.kalvin@gmail.com',
             'password' => Hash::make('qwerty123'),
             'gender' => 'Male',
             'dob' => '2006-08-05',
