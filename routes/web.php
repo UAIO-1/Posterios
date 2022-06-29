@@ -1,11 +1,12 @@
 <?php
 
+use App\Exports\NilaiExport;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
-
+use Maatwebsite\Excel\Facades\Excel as Export;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,6 +80,8 @@ Route::group(['middleware'=>'cekuser'], function() {
 
     Route::post('/joinClass', 'ClassController@joinClass');
 
+
+
     Route::post('/postingProyekKelas', 'ProjectController@postingProyekKelas');
 
     Route::get('/post', 'ClassController@selectClass');
@@ -106,9 +109,24 @@ Route::group(['middleware'=>'cekuser'], function() {
         $pdf = Pdf::loadView('daftarNilai', compact('nilai', 'class'));
         return $pdf->download('daftarNilai.pdf');
 
-        // return view('/daftarNilai', compact('nilai', 'class'));
 
     });
+
+
+    Route::get('/daftarNilaiExcel/{id}', function(Request $request){
+
+        $class = DB::table('class')
+                    ->where('id','=', $request->id)
+                    ->first();
+
+        $filename = urlencode("Daftar_Nilai_".$class->class_name.date("_Y-m-d").".xls");
+
+
+        return Export::download(new NilaiExport, $filename);
+    });
+
+
+
 });
 
 Route::group(['middleware'=>'cekadmin'], function() {
