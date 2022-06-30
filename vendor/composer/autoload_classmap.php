@@ -9,7 +9,7 @@ return array(
     'App\\Classes' => $baseDir . '/app/Classes.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
-    'App\\Exports\\UsersExport' => $baseDir . '/app/Exports/UsersExport.php',
+    'App\\Exports\\NilaiExport' => $baseDir . '/app/Exports/NilaiExport.php',
     'App\\ForumAnswers' => $baseDir . '/app/ForumAnswers.php',
     'App\\Forums' => $baseDir . '/app/Forums.php',
     'App\\Http\\Controllers\\AdminController' => $baseDir . '/app/Http/Controllers/AdminController.php',
