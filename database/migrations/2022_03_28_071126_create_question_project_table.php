@@ -23,7 +23,7 @@ class CreateQuestionProjectTable extends Migration
             $table->integer('third_answer');
             $table->string('strength')->nullable();
             $table->string('weakness')->nullable();
-            $table->string('recommendation')->nullable();
+            $table->double('recommendation')->nullable();
             $table->integer('points')->nullable();
             $table->timestamps();
         });

@@ -31,4 +31,6 @@ class NilaiController extends Controller
     public function exportExcel(){
         return Export::download(new NilaiExport,'daftarNilaiExcel.xls');
     }
+
+
 }

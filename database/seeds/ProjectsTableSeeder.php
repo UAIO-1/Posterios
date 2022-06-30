@@ -76,8 +76,7 @@ class ProjectsTableSeeder extends Seeder
             'project_video' => '',
             'project_video_link' => 'https://www.youtube.com/watch?v=kuEGsvVCAu8&list=PLQkygKP5WXvI452Tv7dFkTer-xZRg4KTP&index=3',
             'created_at' => '2022-04-18 03:19:32',
-            'upda
-            ted_at' => '2022-04-18 03:19:32',
+            'updated_at' => '2022-04-18 03:19:32',
         ]);
 
         DB::table('projects')->insert([

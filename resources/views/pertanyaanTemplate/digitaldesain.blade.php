@@ -108,10 +108,10 @@
         <div class="row row-cols-1 row-cols-3">
             <div class="col">
                 <label>
-                    <input type="radio" name="recommendation" value="A" class="card-input-element">
+                    <input type="radio" name="recommendation" value="5" class="card-input-element">
                     <div class="card card-default card-input">
                         <div class="card-body">
-                            <p>A</p>
+                            <p>+5</p>
                             <div class="d-flex justify-content-center">
                                 <img src="{{ asset('image/A.png') }}" alt="success">
                             </div>
@@ -122,10 +122,10 @@
             </div>
             <div class="col">
                 <label>
-                    <input type="radio" name="recommendation" value="B" class="card-input-element">
+                    <input type="radio" name="recommendation" value="3" class="card-input-element">
                     <div class="card card-default card-input">
                         <div class="card-body">
-                            <p>B</p>
+                            <p>+3</p>
                             <div class="d-flex justify-content-center">
                                 <img src="{{ asset('image/B.png') }}" alt="power">
                             </div>
@@ -136,10 +136,10 @@
             </div>
             <div class="col">
                 <label>
-                    <input type="radio" name="recommendation" value="C" class="card-input-element">
+                    <input type="radio" name="recommendation" value="1" class="card-input-element">
                     <div class="card card-default card-input">
                         <div class="card-body">
-                            <p>C</p>
+                            <p>+1</p>
                             <div class="d-flex justify-content-center">
                                 <img src="{{ asset('image/C.png') }}" alt="study" style="border-radius: 50%">
                             </div>

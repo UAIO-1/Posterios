@@ -825,7 +825,8 @@
     </div>
 
     <div class="container mt-xl-5">
-        <h6><strong>Tentang Saya:</strong></h6>
+        @include('profile.hitungRekomendasi')
+        <h6 class="mt-4"><strong>Tentang Saya:</strong></h6>
         <p class="aboutme">{{ $u->aboutme }}</p>
     </div>
 

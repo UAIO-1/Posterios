@@ -103,16 +103,22 @@
 
     <div class="mt-xl-5 mb-xl-5">
         <div class="text-center" style="font-size: 1.5em">
-            <p><strong> {{ $p->name }}</strong> memiliki peminatan pada jurusan <strong>{{ $users->jurusan }}.</strong></p>
-            <p>Berikan saran Anda untuk <em>{{ $p->name }}</em>:</p>
+            <p><strong> {{ $p->name }}</strong> memiliki peminatan pada jurusan
+                @if ($users->jurusan == null)
+                    <em>(masih kosong)</em>
+                @else
+                    <strong>{{ $users->jurusan }}.</strong>
+                @endif
+            </p>
+            <p>Berikan rekomendasi Anda untuk tugas atau proyek ini.</p>
         </div>
         <div class="row row-cols-1 row-cols-3">
             <div class="col">
                 <label>
-                    <input type="radio" name="recommendation" value="A" class="card-input-element">
+                    <input type="radio" name="recommendation" value="5" class="card-input-element">
                     <div class="card card-default card-input">
                         <div class="card-body">
-                            <p>A</p>
+                            <h4>+5</h4>
                             <div class="d-flex justify-content-center">
                                 <img src="{{ asset('image/A.png') }}" alt="success">
                             </div>
@@ -123,10 +129,10 @@
             </div>
             <div class="col">
                 <label>
-                    <input type="radio" name="recommendation" value="B" class="card-input-element">
+                    <input type="radio" name="recommendation" value="3" class="card-input-element">
                     <div class="card card-default card-input">
                         <div class="card-body">
-                            <p>B</p>
+                            <h4>+3</h4>
                             <div class="d-flex justify-content-center">
                                 <img src="{{ asset('image/B.png') }}" alt="power">
                             </div>
@@ -137,10 +143,10 @@
             </div>
             <div class="col">
                 <label>
-                    <input type="radio" name="recommendation" value="C" class="card-input-element">
+                    <input type="radio" name="recommendation" value="1" class="card-input-element">
                     <div class="card card-default card-input">
                         <div class="card-body">
-                            <p>C</p>
+                            <h4>+1</h4>
                             <div class="d-flex justify-content-center">
                                 <img src="{{ asset('image/C.png') }}" alt="study" style="border-radius: 50%">
                             </div>
