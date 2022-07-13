@@ -86,7 +86,7 @@
                     <div class="mt-lg-4">
                         <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModalDeleteProject">Hapus Proyek</a>
                     </div>
-                    @include('profile.modalDeleteProject')
+                    @include('admin.modalHapusProject')
 
                     <hr>
                     <div class="mt-lg-4">

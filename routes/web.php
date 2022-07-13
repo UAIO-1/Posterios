@@ -66,7 +66,7 @@ Route::group(['middleware'=>'cekuser'], function() {
 
     Route::post('/editProject', 'ProjectController@editProject');
 
-    Route::get('/projectDelete/{id}', 'ProjectController@projectDelete');
+    Route::get('/deleteProject/{id}', 'ProjectController@deleteProject');
 
     Route::get('/forumDeleteUser/{id}', 'ForumController@forumDeleteUser');
 
@@ -145,6 +145,8 @@ Route::group(['middleware'=>'cekadmin'], function() {
 
     Route::get('/admin.projects', 'AdminController@indexProjects');
     Route::get('/admin.projects/{id}', 'AdminController@indexProjects');
+
+    Route::get('/projectDelete/{id}', 'AdminController@projectDelete');
 
     Route::get('/userDelete/{id}', 'AdminController@userDelete');
 

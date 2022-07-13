@@ -279,7 +279,7 @@
             </div>
         </div>
 
-        <div class="p-2 mt-xl-5" style="background-color: #259df3">
+        {{-- <div class="p-2 mt-xl-5" style="background-color: #259df3">
             <div class="container">
                 <h1 class="text-center text-light"><strong class="head">Showcase</strong></h1>
                 <div class="row row-cols-1 g-4">
@@ -303,7 +303,7 @@
                 </div>
                 {{ $projects->links() }}
             </div>
-        </div>
+        </div> --}}
 
         <div class="container mt-xl-5">
             <div class="text-center">
@@ -435,7 +435,7 @@
                 </div>
             </div>
 
-            <div class="p-2 mt-xl-5" style="background-color: #259df3">
+            {{-- <div class="p-2 mt-xl-5" style="background-color: #259df3">
                 <div class="container">
                     <h1 class="text-center text-light"><strong class="head">Showcase</strong></h1>
                     <div class="row row-cols-1 g-4">
@@ -459,7 +459,7 @@
                     </div>
                     {{ $projects->links() }}
                 </div>
-            </div>
+            </div> --}}
 
             <div class="container mt-xl-5">
                 <div class="text-center">

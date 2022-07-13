@@ -148,7 +148,7 @@ class ProjectController extends Controller
         return redirect('/projectDetail/'.$projects->id)->with('success-edit', 'Proyek berhasil diubah!');
     }
 
-    public function projectDelete($id){
+    public function deleteProject($id){
         DB::table('projects')->where('id', $id)->delete();
         return redirect('/explore')->with('success-hapus', 'Proyek berhasil dihapus!');
     }

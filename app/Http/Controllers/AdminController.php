@@ -91,6 +91,11 @@ class AdminController extends Controller
         return redirect('/admin.users');
     }
 
+    public function projectDelete($id){
+        DB::table('projects')->where('id', $id)->delete();
+        return redirect('/admin.projects');
+    }
+
     public function forumDelete($id){
         DB::table('forum')->where('id', $id)->delete();
         return redirect('/admin.forums');
