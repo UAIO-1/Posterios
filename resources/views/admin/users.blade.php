@@ -66,6 +66,7 @@
                 @foreach ($users as $u)
                     <div class="col">
                         <label>
+
                             <a href="/admin.users/{{ $u->id }}" style="text-decoration: none; color:#000;">
                                 <input type="radio" name="recommendation" value="A" class="card-input-element">
                                 <div class="card p-3 card-input" style="width: 15rem;border-radius: 20px">

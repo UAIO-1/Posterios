@@ -130,9 +130,9 @@ Route::group(['middleware'=>'cekuser'], function() {
 });
 
 Route::group(['middleware'=>'cekadmin'], function() {
-    Route::get('/admin.dashboard', function () {
-        return view('/admin.dashboard');
-    });
+    // Route::get('/admin.dashboard', function () {
+    //     return view('/admin.dashboard');
+    // });
 
     Route::get('/admin.dashboard', 'AdminController@count');
 
