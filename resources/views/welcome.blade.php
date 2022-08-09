@@ -173,7 +173,7 @@
                 <p class="text-muted text-center">gabung bersama Posterios <a href="/register" class="text-primary">sekarang</a></p>
             </div>
 
-        {{-- @elseif(Auth::check() && Auth::user()->status == null) --}}
+        @elseif(Auth::check() && Auth::user()->status == null)
 
             <div class="header">
                 @include('navbar')
