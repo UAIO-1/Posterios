@@ -333,7 +333,7 @@
             <h3 class="text-center"><strong class="head">Ingin Bergabung?</strong></h3>
             <p class="text-muted text-center">gabung bersama Posterios <a href="/register" class="text-primary">sekarang</a></p>
         </div>
-
+        @endif
 
         @else
 
@@ -493,7 +493,7 @@
                 <p class="text-muted text-center">gabung bersama Posterios <a href="/register" class="text-primary">sekarang</a></p>
             </div>
 
-@endif
+
         @endif
     </body>
 </html>
