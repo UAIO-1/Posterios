@@ -128,25 +128,23 @@
                     <h1 class="text-center text-light"><strong class="head">Showcase</strong></h1>
                     <div class="row row-cols-1 g-4">
                         @if(isset($projects))
-
-
-                        @foreach ($projects as $p)
-                        @php($diffInDays = \Carbon\Carbon::parse($p->created_at)->diffInDays())
-                        @if($diffInDays < 7)
-                            <div class="col">
-                                <a href="/projectDetail/{{ $p->id }}">
-                                    <div class="card bg-dark text-white" style="max-width: 18rem">
-                                        <img src="{{ asset('storage/'.$p->project_image) }}" class="card-img" alt="project image">
-                                        <div class="card-img-overlay">
-                                        <h5 class="card-title">{{ $p->project_title }}</h5>
-                                        <p class="card-text">{{ $p->project_category }} • {{ $p->project_subcategory }}</p>
-                                        <p class="card-text">Posted by {{ $p->name }}</p>
-                                        </div>
+                            @foreach ($projects as $p)
+                            @php($diffInDays = \Carbon\Carbon::parse($p->created_at)->diffInDays())
+                                @if($diffInDays < 7)
+                                    <div class="col">
+                                        <a href="/projectDetail/{{ $p->id }}">
+                                            <div class="card bg-dark text-white" style="max-width: 18rem">
+                                                <img src="{{ asset('storage/'.$p->project_image) }}" class="card-img" alt="project image">
+                                                <div class="card-img-overlay">
+                                                <h5 class="card-title">{{ $p->project_title }}</h5>
+                                                <p class="card-text">{{ $p->project_category }} • {{ $p->project_subcategory }}</p>
+                                                <p class="card-text">Posted by {{ $p->name }}</p>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
-                            </div>
-                        @endif
-                        @endforeach
+                                @endif
+                            @endforeach
                     </div>
                     {{ $projects->links() }}
                     @endif
@@ -175,7 +173,7 @@
                 <p class="text-muted text-center">gabung bersama Posterios <a href="/register" class="text-primary">sekarang</a></p>
             </div>
 
-        @elseif(Auth::check() && Auth::user()->status == null)
+        {{-- @elseif(Auth::check() && Auth::user()->status == null) --}}
 
             <div class="header">
                 @include('navbar')
@@ -288,24 +286,23 @@
                     <h1 class="text-center text-light"><strong class="head">Showcase</strong></h1>
                     <div class="row row-cols-1 g-4">
                         @if(@isset($projects))
-
-                        @foreach ($projects as $p)
-                        @php($diffInDays = \Carbon\Carbon::parse($p->created_at)->diffInDays())
-                        @if($diffInDays < 7)
-                            <div class="col">
-                                <a href="/projectDetail/{{ $p->id }}">
-                                    <div class="card bg-dark text-white" style="max-width: 18rem">
-                                        <img src="{{ asset('storage/'.$p->project_image) }}" class="card-img" alt="project image">
-                                        <div class="card-img-overlay">
-                                        <h5 class="card-title">{{ $p->project_title }}</h5>
-                                        <p class="card-text">{{ $p->project_category }} • {{ $p->project_subcategory }}</p>
-                                        <p class="card-text">Posted by {{ $p->name }}</p>
-                                        </div>
+                            @foreach ($projects as $p)
+                            @php($diffInDays = \Carbon\Carbon::parse($p->created_at)->diffInDays())
+                                @if($diffInDays < 7)
+                                    <div class="col">
+                                        <a href="/projectDetail/{{ $p->id }}">
+                                            <div class="card bg-dark text-white" style="max-width: 18rem">
+                                                <img src="{{ asset('storage/'.$p->project_image) }}" class="card-img" alt="project image">
+                                                <div class="card-img-overlay">
+                                                <h5 class="card-title">{{ $p->project_title }}</h5>
+                                                <p class="card-text">{{ $p->project_category }} • {{ $p->project_subcategory }}</p>
+                                                <p class="card-text">Posted by {{ $p->name }}</p>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
-                            </div>
-                        @endif
-                        @endforeach
+                                @endif
+                            @endforeach
                     </div>
                     {{ $projects->links() }}
                     @endif
@@ -463,6 +460,7 @@
                                 </a>
                             </div>
                         @endif
+
                         @endforeach
                     </div>
                     {{ $projects->links() }}
