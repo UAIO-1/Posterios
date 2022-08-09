@@ -5,7 +5,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 @include('navbar')
-
+@if(isset($projects))
 @foreach ($projects as $p)
 
 @if (!Auth::check())
@@ -302,6 +302,7 @@
 
     <div class="mt-lg-4 p-3">
         <div class="row row-cols-5 g-3">
+            @if(isset($questions))
             @foreach ($questions as $q)
                 <div class="col">
                     <a href="#modalFeedbackDetail_{{ $q->id }}" data-bs-toggle="modal" data-bs-target="#modalFeedbackDetail_{{ $q->id }}" class="card-detail">
@@ -417,6 +418,7 @@
                 </div>
 
             @endforeach
+            @endif
         </div>
     </div>
 
@@ -426,6 +428,7 @@
 @endif
 
 @endforeach
+@endif
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>

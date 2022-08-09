@@ -6,7 +6,7 @@
 
 @include('navbar')
 
-
+@if(isset($users))
 @foreach ($users as $u)
 
 
@@ -1003,3 +1003,4 @@
 
 
 @endforeach
+@endif

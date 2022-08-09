@@ -127,6 +127,9 @@
                 <div class="container">
                     <h1 class="text-center text-light"><strong class="head">Showcase</strong></h1>
                     <div class="row row-cols-1 g-4">
+                        @if(isset($projects))
+
+                        @endif
                         @foreach ($projects as $p)
                         @php($diffInDays = \Carbon\Carbon::parse($p->created_at)->diffInDays())
                         @if($diffInDays < 7)
@@ -146,6 +149,7 @@
                         @endforeach
                     </div>
                     {{ $projects->links() }}
+                    @endif
                 </div>
             </div>
 
@@ -283,6 +287,8 @@
             <div class="container">
                 <h1 class="text-center text-light"><strong class="head">Showcase</strong></h1>
                 <div class="row row-cols-1 g-4">
+                    @if(@isset($projects))
+
                     @foreach ($projects as $p)
                     @php($diffInDays = \Carbon\Carbon::parse($p->created_at)->diffInDays())
                     @if($diffInDays < 7)
@@ -302,6 +308,7 @@
                     @endforeach
                 </div>
                 {{ $projects->links() }}
+                @endif
             </div>
         </div>
 
@@ -439,6 +446,7 @@
                 <div class="container">
                     <h1 class="text-center text-light"><strong class="head">Showcase</strong></h1>
                     <div class="row row-cols-1 g-4">
+                        @if(@isset($projects))
                         @foreach ($projects as $p)
                         @php($diffInDays = \Carbon\Carbon::parse($p->created_at)->diffInDays())
                         @if($diffInDays < 7)
@@ -458,6 +466,8 @@
                         @endforeach
                     </div>
                     {{ $projects->links() }}
+                    @endif
+
                 </div>
             </div>
 
@@ -482,7 +492,6 @@
                 <h3 class="text-center"><strong class="head">Ingin Bergabung?</strong></h3>
                 <p class="text-muted text-center">gabung bersama Posterios <a href="/register" class="text-primary">sekarang</a></p>
             </div>
-
 
 
         @endif
