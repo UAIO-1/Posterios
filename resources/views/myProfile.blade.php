@@ -32,7 +32,7 @@
                     <p class="teks">{{ $u->role }}</p>
                     <table>
                         <tr>
-                            <th>Umur</th>
+                            <th>Umurs</th>
                             <td>{{ \Carbon\Carbon::parse($u->dob)->diff(\Carbon\Carbon::now())->format('%y years old') }}</td>
                         </tr>
                         <tr>
