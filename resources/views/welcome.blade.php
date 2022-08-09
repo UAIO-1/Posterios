@@ -174,7 +174,7 @@
                 <h3 class="text-center"><strong class="head">Ingin Bergabung?</strong></h3>
                 <p class="text-muted text-center">gabung bersama Posterios <a href="/register" class="text-primary">sekarang</a></p>
             </div>
-
+            @if(Session::has('success'))
         @elseif(Auth::check() && Auth::user()->status == null)
 
         <div class="header">
@@ -493,7 +493,7 @@
                 <p class="text-muted text-center">gabung bersama Posterios <a href="/register" class="text-primary">sekarang</a></p>
             </div>
 
-
+@endif
         @endif
     </body>
 </html>
