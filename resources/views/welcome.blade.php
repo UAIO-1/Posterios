@@ -129,7 +129,7 @@
                     <div class="row row-cols-1 g-4">
                         @if(isset($projects))
 
-                        @endif
+
                         @foreach ($projects as $p)
                         @php($diffInDays = \Carbon\Carbon::parse($p->created_at)->diffInDays())
                         @if($diffInDays < 7)
