@@ -87,6 +87,7 @@
                         <th scope="col">Action</th>
                     </thead>
                     <tbody>
+                        @if(isset($users))
                         @foreach ($users as $u)
                             @php($diffInDays = \Carbon\Carbon::parse($u->created_at)->diffInDays())
                             @if($diffInDays < 30)
@@ -111,6 +112,7 @@
                                 </tr>
                             @endif
                         @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>
@@ -144,6 +146,7 @@
                                             <th scope="col">Action</th>
                                         </thead>
                                         <tbody>
+                                            @if(isset($projects))
                                             @foreach ($projects as $p)
                                                 @php($diffInDays = \Carbon\Carbon::parse($p->created_at)->diffInDays())
                                                 @if($diffInDays < 30)
@@ -168,6 +171,7 @@
                                                     </tr>
                                                 @endif
                                             @endforeach
+                                            @endif
                                         </tbody>
                                     </table>
                                 </div>
@@ -186,6 +190,7 @@
                                             <th scope="col">Action</th>
                                         </thead>
                                         <tbody>
+                                            @if(isset($forums))
                                             @foreach ($forums as $f)
                                                 @php($diffInDays = \Carbon\Carbon::parse($f->created_at)->diffInDays())
                                                 @if($diffInDays < 30)
@@ -210,6 +215,7 @@
                                                     </tr>
                                                 @endif
                                             @endforeach
+                                            @endif
                                         </tbody>
                                     </table>
                                 </div>
@@ -225,29 +231,35 @@
                             <div class="row row-cols-3">
                                 <div class="col">
                                     <h5>Users</h5>
+                                    @if(isset($u))
                                     @php($diffInDays = \Carbon\Carbon::parse($u->created_at)->diffInDays())
                                     @if($diffInDays < 1)
                                         <h3>+{{ $usersCount }}</h3>
                                     @else
                                         <h3>+0</h3>
                                     @endif
+                                    @endif
                                 </div>
                                 <div class="col">
                                     <h5>Projects</h5>
+                                    @if(isset($p))
                                     @php($diffInDays = \Carbon\Carbon::parse($p->created_at)->diffInDays())
                                     @if($diffInDays < 1)
                                         <h3>+{{ $projectsCount }}</h3>
                                     @else
                                         <h3>+0</h3>
                                     @endif
+                                    @endif
                                 </div>
                                 <div class="col">
                                     <h5>Forums</h5>
+                                    @if(isset($f))
                                     @php($diffInDays = \Carbon\Carbon::parse($u->created_at)->diffInDays())
                                     @if($diffInDays < 1)
                                         <h3>+{{ $forumsCount }}</h3>
                                     @else
                                         <h3>+0</h3>
+                                    @endif
                                     @endif
                                 </div>
                             </div>
