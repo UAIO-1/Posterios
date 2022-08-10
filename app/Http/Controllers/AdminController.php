@@ -112,7 +112,7 @@ class AdminController extends Controller
 
         $pendingCount = User::where('status', '=', null)->Where('id', '>', 1)->count();
 
-        return view('/admin.verifikasiuser', compact('users', 'pendingCount'));
+        return view('/admin.verifikasiUser', compact('users', 'pendingCount'));
     }
 
     public function approve(Request $request){
