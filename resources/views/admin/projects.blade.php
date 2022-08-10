@@ -29,6 +29,7 @@
             </div>
 
             <div class="row row-cols-4 g-4">
+                @if(isset($projects))
                 @foreach ($projects as $p)
                     <div class="col">
                         <label>
@@ -52,6 +53,7 @@
                         </label>
                     </div>
                 @endforeach
+                @endif
             </div>
         </div>
 
@@ -74,6 +76,7 @@
                 <small style="color: #259df3">Detail:</small>
             </div>
             <div class="mt-lg-4">
+                @if(isset($projects2))
                 @foreach ($projects2 as $p2)
                     <div class="d-flex justify-content-center">
                         <img src="{{ asset('storage/'.$p2->project_image) }}" class="card-img-top profilepicture" alt="profile picture">
@@ -127,10 +130,12 @@
                         </div>
                     </div>
                 @endforeach
+                @endif
                 <div class="mt-4">
                     <h6>Feedback Proyek</h6>
                     <hr>
                     <div style="height:300px;overflow:auto;">
+                        @if(isset($questions))
                         @foreach ($questions as $q)
                         <a href="#modalFeedbackDetail_{{ $q->id }}" data-bs-toggle="modal" data-bs-target="#modalFeedbackDetail_{{ $q->id }}" style="text-decoration: none;color:#000">
                             <div class="card card-pro p-2 mb-2" style="border-radius: 10px">
@@ -157,6 +162,7 @@
                         </a>
                         @include('profile.modalFeedbackDetail')
                         @endforeach
+                        @endif
                     </div>
                 </div>
             </div>

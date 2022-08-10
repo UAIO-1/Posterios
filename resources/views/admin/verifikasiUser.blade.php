@@ -26,6 +26,7 @@
             </div>
 
             <div class="row row-cols-5">
+                @if(isset($users))
                 @foreach ($users as $u)
                     <div class="col">
                         <label>
@@ -58,6 +59,7 @@
                         @include('admin.modalDetailPending')
                     </div>
                 @endforeach
+                @endif
             </div>
         </div>
 

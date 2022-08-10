@@ -48,10 +48,15 @@ class AdminController extends Controller
             ->where('projects.user_id', '=', $request->id)
             ->get();
 
+        $forumsUser = DB::table('forum')
+            ->join('users', 'users.id', '=', 'forum.user_id')
+            ->where('forum.user_id', '=', $request->id)
+            ->get();
+
         $search = $request->get('s_user');
         $users = User::where("name",'like','%'.$search.'%')->get();
 
-        return view('/admin.users', compact('users', 'users2', 'projects', 'projectsUser', 'usersCount', 'pending', 'pendingCount'));
+        return view('/admin.users', compact('users', 'forumsUser', 'users2', 'projects', 'projectsUser', 'usersCount', 'pending', 'pendingCount'));
     }
 
     public function indexProjects(Request $request) {

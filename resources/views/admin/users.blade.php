@@ -24,11 +24,14 @@
             </div>
 
             <div class="mb-4">
+                @if(isset($pendingCount))
                 <h6>Pending Approval ({{ $pendingCount }})</h6>
+                @endif
             </div>
 
             <div style="max-width: 1100px; overflow: auto;">
             <div class="row row-cols-4 g-4">
+                @if(isset($pending))
                 @foreach ($pending as $p)
                     <div class="col">
                         <div class="card p-3" style="width: 15rem;border-radius: 20px">
@@ -55,6 +58,7 @@
                         </div>
                     </div>
                 @endforeach
+                @endif
             </div>
         </div>
 
@@ -63,6 +67,7 @@
             </div>
 
             <div class="row row-cols-4 g-4">
+                @if(isset($users))
                 @foreach ($users as $u)
                     <div class="col">
                         <label>
@@ -95,6 +100,7 @@
                         </label>
                     </div>
                 @endforeach
+                @endif
             </div>
         </div>
 
@@ -117,6 +123,7 @@
                 <small style="color: #259df3">Detail:</small>
             </div>
             <div class="mt-lg-4">
+                @if(isset($users2))
                 @foreach ($users2 as $u2)
                     <div class="d-flex justify-content-center">
                         @if ($u2->image == null)
@@ -186,6 +193,7 @@
                         <h6>Projects</h6>
                         <hr>
                         <div style="height:300px;overflow:auto;">
+                            @if(isset($projectsUser))
                             @foreach ($projectsUser as $ps)
                             <a href="/admin.projects/{{ $ps->id }}" style="color: #000;text-decoration: none">
                                 <div class="card card-pro p-2 mb-2" style="border-radius: 10px">
@@ -201,13 +209,15 @@
                                 </div>
                             </a>
                             @endforeach
+                            @endif
                         </div>
                     </div>
                     <div class="mt-4">
                         <h6>Forums</h6>
                         <hr>
                         <div style="height:300px;overflow:auto;">
-                            @foreach ($projectsUser as $ps)
+                            @if(isset($forumUser))
+                            @foreach ($forumUser as $ps)
                             <a href="/admin.projects/{{ $ps->id }}" style="color: #000;text-decoration: none">
                                 <div class="card card-pro p-2 mb-2" style="border-radius: 10px">
                                     <small>{{ \Carbon\Carbon::parse($ps->created_at)->format('M d, Y') }}</small>
@@ -222,9 +232,11 @@
                                 </div>
                             </a>
                             @endforeach
+                            @endif
                         </div>
                     </div>
                 @endforeach
+                @endif
             </div>
         </div>
     </div>

@@ -25,10 +25,13 @@
             </div>
 
             <div class="mb-4">
+                @if(isset($forumsCount))
                 <h6>Forums ({{ $forumsCount }})</h6>
+                @endif
             </div>
 
             <div class="row row-cols-4 g-4">
+                @if(isset($forums))
                 @foreach ($forums as $f)
                     <div class="col">
                         <label>
@@ -56,6 +59,7 @@
                         </label>
                     </div>
                 @endforeach
+                @endif
             </div>
         </div>
 
@@ -78,6 +82,7 @@
                 <small style="color: #259df3">Detail:</small>
             </div>
             <div class="mt-lg-4">
+                @if(isset($forums2))
                 @foreach ($forums2 as $f2)
                     <div class="d-flex justify-content-center">
                         @if ($f2->forum_image == null)
@@ -112,7 +117,7 @@
                         </div>
                     </div>
                 @endforeach
-
+@endif
             </div>
         </div>
     </div>
