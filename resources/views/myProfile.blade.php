@@ -6,7 +6,7 @@
 
 @include('navbar')
 
-@if(isset($users))
+
 @foreach ($users as $u)
 
 
@@ -123,7 +123,7 @@
             </div>
 
             <div class="tab-pane fade" id="forums" role="tabpanel" aria-labelledby="forums-tab">
-                @if (isset($forums))
+
                 <div class="row row-cols-1 row-cols-4 g-4">
                     @foreach ($forums as $f)
                         <div class="col">
@@ -151,9 +151,7 @@
                         </div>
                     @endforeach
                 </div>
-            @else
-                Tidak ada proyek yang diposting.
-            @endif
+
             </div>
         </div>
     </div>
@@ -434,7 +432,7 @@
     <div class="tab-content p-3" id="myTabContent">
 
         <div class="tab-pane fade mt-4 show active" id="projects" role="tabpanel" aria-labelledby="projects-tab">
-            @if (isset($projects))
+
                 <div class="row row-cols-4 g-4">
                     @foreach ($projects as $p)
                         <div class="col">
@@ -462,14 +460,12 @@
                         </div>
                     @endforeach
                 </div>
-            @else
-                Tidak ada proyek yang diposting.
-            @endif
+
         </div>
 
 
         <div class="tab-pane fade mt-4" id="wishlist" role="tabpanel" aria-labelledby="wishlist-tab">
-            @if (isset($wishlists))
+
                 <div class="row row-cols-4 g-4">
                     @foreach ($wishlists as $w)
                         <div class="col">
@@ -494,9 +490,7 @@
                         </div>
                     @endforeach
                 </div>
-            @else
-                Tidak ada proyek yang diposting.
-            @endif
+
         </div>
 
         <div class="tab-pane fade mt-4" id="forums" role="tabpanel" aria-labelledby="forums-tab">
@@ -637,7 +631,7 @@
         <div class="tab-content p-3" id="myTabContent">
 
             <div class="tab-pane fade mt-4 show active" id="projects" role="tabpanel" aria-labelledby="projects-tab">
-                @if (isset($projects))
+
                     <div class="row row-cols-4 g-4">
                         @foreach ($projects as $p)
                             <div class="col">
@@ -665,14 +659,12 @@
                             </div>
                         @endforeach
                     </div>
-                @else
-                    Tidak ada proyek yang diposting.
-                @endif
+
             </div>
 
 
             <div class="tab-pane fade mt-4" id="wishlist" role="tabpanel" aria-labelledby="wishlist-tab">
-                @if (isset($wishlists))
+
                     <div class="row row-cols-4 g-4">
                         @foreach ($wishlists as $w)
                             <div class="col">
@@ -697,13 +689,11 @@
                             </div>
                         @endforeach
                     </div>
-                @else
-                    Tidak ada proyek yang diposting.
-                @endif
+
             </div>
 
             <div class="tab-pane fade mt-4" id="forums" role="tabpanel" aria-labelledby="forums-tab">
-                @if (isset($forums))
+
                     <div class="row row-cols-4 g-4">
                         @foreach ($forums as $f)
                             <div class="col">
@@ -731,9 +721,7 @@
                             </div>
                         @endforeach
                     </div>
-                @else
-                    Tidak ada proyek yang diposting.
-                @endif
+
             </div>
 
             <div class="tab-pane fade mt-4" id="class" role="tabpanel" aria-labelledby="class-tab">
@@ -870,7 +858,7 @@
         <div class="tab-content p-3" id="myTabContent">
 
             <div class="tab-pane fade mt-4 show active" id="projects" role="tabpanel" aria-labelledby="projects-tab">
-                @if (isset($projects))
+
                     <div class="row row-cols-4 g-4">
                         @foreach ($projects as $p)
                             <div class="col">
@@ -898,14 +886,12 @@
                             </div>
                         @endforeach
                     </div>
-                @else
-                    Tidak ada proyek yang diposting.
-                @endif
+
             </div>
 
 
             <div class="tab-pane fade mt-4" id="wishlist" role="tabpanel" aria-labelledby="wishlist-tab">
-                @if (isset($wishlists))
+
                     <div class="row row-cols-4 g-4">
                         @foreach ($wishlists as $w)
                             <div class="col">
@@ -930,13 +916,11 @@
                             </div>
                         @endforeach
                     </div>
-                @else
-                    Tidak ada proyek yang diposting.
-                @endif
+
             </div>
 
             <div class="tab-pane fade mt-4" id="forums" role="tabpanel" aria-labelledby="forums-tab">
-                @if (isset($forums))
+
                     <div class="row row-cols-4 g-4">
                         @foreach ($forums as $f)
                             <div class="col">
@@ -964,13 +948,11 @@
                             </div>
                         @endforeach
                     </div>
-                @else
-                    Tidak ada proyek yang diposting.
-                @endif
+
             </div>
 
             <div class="tab-pane fade mt-4" id="class" role="tabpanel" aria-labelledby="class-tab">
-                @if (isset($class))
+
                     <div class="row row-cols-4 g-4">
                         @foreach ($class as $c)
                             <div class="col">
@@ -989,9 +971,7 @@
                             </div>
                         @endforeach
                     </div>
-                @else
-                    Tidak ada proyek yang diposting.
-                @endif
+
             </div>
 
         </div>
@@ -1003,4 +983,4 @@
 
 
 @endforeach
-@endif
+

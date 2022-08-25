@@ -44,7 +44,7 @@
 
     <div class="" style="margin-top: 100px; margin-left: 50px; margin-right: 50px;">
         <div class="row row-cols-4 g-4">
-            @if(isset($class))
+
             @foreach ($class as $c)
             <div class="col">
                     <a href="/classDetail/{{ $c->id }}" style="text-decoration: none; color: #000">
@@ -71,7 +71,7 @@
                 </a>
             </div>
             @endforeach
-            @endif
+
         </div>
     </div>
 
@@ -124,7 +124,7 @@
 
 <div class="" style="margin-top: 100px; margin-left: 50px; margin-right: 50px;">
     <div class="row row-cols-4 g-4">
-        @if(isset($class))
+
         @foreach ($class as $c)
         <div class="col">
                 <a href="/classDetail/{{ $c->id }}" style="text-decoration: none; color: #000">
@@ -144,7 +144,7 @@
             </a>
         </div>
         @endforeach
-        @endif
+
     </div>
 </div>
 

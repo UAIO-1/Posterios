@@ -10,7 +10,6 @@
 
 
 <div class="container mt-lg-4">
-    @if(isset($forums))
     @foreach ($forums as $f)
         <div class="card card-quest" style="z-index: -1">
             <div class="card-header bg-transparent">
@@ -49,7 +48,6 @@
 
         </div>
     @endforeach
-@endif
 
 
 
@@ -61,7 +59,6 @@
         <h3>Jawaban</h3>
     </div>
     <div class="card mt-lg-2 p-3">
-        @if(isset($replies))
         @foreach ($replies as $r)
             <div class="row row-cols-auto">
                 <div class="col">
@@ -91,7 +88,6 @@
 
             <hr>
         @endforeach
-        @endif
     </div>
 
 </div>
@@ -100,7 +96,6 @@
 @elseif (Auth::check() & AUth::user()->status == null)
 
 <div class="container mt-lg-4">
-    @if(isset($forums))
     @foreach ($forums as $f)
         <div class="card card-quest">
             <div class="card-header bg-transparent">
@@ -169,7 +164,6 @@
             </div>
         </div>
     @endforeach
-@endif
 
 
 
@@ -181,7 +175,6 @@
         <h3>Jawaban</h3>
     </div>
     <div class="card mt-lg-2 p-3">
-        @if(isset($replies))
         @foreach ($replies as $r)
             <div class="row row-cols-auto">
                 <div class="col">
@@ -218,7 +211,6 @@
             @endif
             <hr>
         @endforeach
-        @endif
     </div>
 
 </div>
@@ -233,7 +225,6 @@
         @elseif(session('success-edit-balas'))
             <div id="alert" class="alert alert-success m-4"><h5>{{ session('success-edit-balas') }}</h5></div>
         @endif
-        @if(isset($forums))
         @foreach ($forums as $f)
             <div class="card card-quest">
                 <div class="card-header bg-transparent">
@@ -301,7 +292,6 @@
                 </div>
             </div>
         @endforeach
-@endif
 
 
 
@@ -313,7 +303,6 @@
             <h3>Jawaban</h3>
         </div>
         <div class="card mt-lg-2 p-3">
-            @if(isset($replies))
             @foreach ($replies as $r)
                 <div class="row row-cols-auto">
                     <div class="col">
@@ -350,7 +339,6 @@
                 @endif
                 <hr>
             @endforeach
-            @endif
         </div>
 
     </div>

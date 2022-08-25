@@ -12,7 +12,7 @@
 <div class="mt-xl-5">
     <div class="row">
         <div class="col-md-8" style="margin-left: 50px">
-            @if(isset($class))
+
             @foreach ($class as $c)
                 <h1 class="display-2"><strong>{{ $c->class_name }}</strong></h1>
                 <p class="text-muted" style="font-size: 20px">Kelas {{ $c->class_grade }} • #{{ $c->class_code }}</p>
@@ -31,13 +31,13 @@
             </div>
             @include('profile.modalPostProyekKelas')
             @endforeach
-            @endif
+
 
             <hr>
 
             <div class="mt-lg-4">
                 <div class="row row-cols-4 g-4">
-                    @if(isset($projects))
+
                     @foreach ($projects as $p)
                     <div class="col">
                         <div class="card" style="width: 18rem;">
@@ -54,7 +54,7 @@
                         </div>
                     </div>
                     @endforeach
-                    @endif
+
                 </div>
             </div>
         </div>
@@ -102,7 +102,7 @@
                     <h6><strong>Pending ({{ $statsCtr }})</strong></h6>
                 </div>
                 <div style="max-height: 200px;overflow: auto">
-                    @if(isset($statsUser))
+
                 @foreach ($statsUser as $u)
                     <a href="/myProfile/{{ $u->id }}" style="text-decoration: none; color:#000">
                         <div class="card mb-3" style="max-width: 540px; max-height: 100px">
@@ -144,7 +144,7 @@
                         </div>
                     </a>
                     @endforeach
-                    @endif
+
                 </div>
             </div>
 
@@ -152,7 +152,7 @@
                 <div>
                     <h6><strong>Anggota ({{ $usersCtr }})</strong></h6>
                 </div>
-                @if(isset($users))
+
                 @foreach ($users as $u)
                     <a href="/myProfile/{{ $u->id }}" style="text-decoration: none; color:#000">
                         <div class="card mb-3" style="max-width: 540px; max-height: 100px">
@@ -188,7 +188,7 @@
                         </div>
                     </a>
                 @endforeach
-                @endif
+
             </div>
         </div>
     </div>
@@ -199,7 +199,7 @@
 <div class="mt-xl-5">
     <div class="row">
         <div class="col-md-8" style="margin-left: 50px">
-            @if(isset($class))
+
             @foreach ($class as $c)
                 <h1 class="display-2"><strong>{{ $c->class_name }}</strong></h1>
                 <p class="text-muted" style="font-size: 20px">Kelas {{ $c->class_grade }} • #{{ $c->class_code }}</p>
@@ -238,13 +238,13 @@
 
                 </div>
             @endforeach
-            @endif
+
             <hr>
 
 
             <div class="mt-lg-4">
                 <div class="row row-cols-4 g-4">
-                    @if(isset($projects))
+
                     @foreach ($projects as $p)
 
                     <div class="col">
@@ -271,7 +271,7 @@
                         </div>
                     </div>
                     @endforeach
-                    @endif
+
                 </div>
             </div>
 
@@ -320,7 +320,7 @@
                     <h6><strong>Pending ({{ $statsCtr }})</strong></h6>
                 </div>
                 <div style="max-height: 200px;overflow: auto">
-                    @if(isset($statsUser))
+
                 @foreach ($statsUser as $u)
                     <a href="/myProfile/{{ $u->id }}" style="text-decoration: none; color:#000">
                         <div class="card mb-3" style="max-width: 540px; max-height: 100px">
@@ -367,7 +367,7 @@
                         </div>
                     </a>
                     @endforeach
-                    @endif
+
                 </div>
             </div>
 
@@ -375,7 +375,7 @@
                 <div>
                     <h6><strong>Anggota ({{ $usersCtr }})</strong></h6>
                 </div>
-                @if(isset($users))
+
                 @foreach ($users as $u)
                     <a href="/myProfile/{{ $u->id }}" style="text-decoration: none; color:#000">
                         <div class="card mb-3" style="max-width: 540px; max-height: 100px">
@@ -411,7 +411,7 @@
                         </div>
                     </a>
                 @endforeach
-                @endif
+
             </div>
         </div>
     </div>
@@ -426,7 +426,7 @@
         @endif
         <div class="row">
             <div class="col-md-8" style="margin-left: 50px">
-                @if(isset($class))
+
                 @foreach ($class as $c)
                     <h1 class="display-2"><strong>{{ $c->class_name }}</strong></h1>
                     <p class="text-muted" style="font-size: 20px">Kelas {{ $c->class_grade }} • #{{ $c->class_code }}</p>
@@ -445,13 +445,13 @@
                 </div>
                 @include('profile.modalPostProyekKelas')
                 @endforeach
-                @endif
+
 
                 <hr>
 
                 <div class="mt-lg-4">
                     <div class="row row-cols-4 g-4">
-                        @if(isset($projects))
+
                         @foreach ($projects as $p)
                         <div class="col">
                             <div class="card" style="width: 18rem;">
@@ -468,7 +468,7 @@
                             </div>
                         </div>
                         @endforeach
-                        @endif
+
                     </div>
                 </div>
 
@@ -516,7 +516,7 @@
                         <h6><strong>Pending ({{ $statsCtr }})</strong></h6>
                     </div>
                     <div style="max-height: 200px;overflow: auto">
-                        @if(isset($statsUser))
+
                     @foreach ($statsUser as $u)
                         <a href="/myProfile/{{ $u->id }}" style="text-decoration: none; color:#000">
                             <div class="card mb-3" style="max-width: 540px; max-height: 100px">
@@ -558,7 +558,7 @@
                             </div>
                         </a>
                         @endforeach
-                        @endif
+
                     </div>
                 </div>
 
@@ -566,7 +566,7 @@
                     <div>
                         <h6><strong>Anggota ({{ $usersCtr }})</strong></h6>
                     </div>
-                    @if(isset($users))
+
                     @foreach ($users as $u)
                         <a href="/myProfile/{{ $u->id }}" style="text-decoration: none; color:#000">
                             <div class="card mb-3" style="max-width: 540px; max-height: 100px">
@@ -602,7 +602,7 @@
                             </div>
                         </a>
                     @endforeach
-                    @endif
+
                 </div>
             </div>
         </div>

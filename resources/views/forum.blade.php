@@ -59,7 +59,6 @@
 
 <div class="mt-xl-5 mb-xl-5" style="margin-left: 50px; margin-right: 50px;">
     <div class="row row-cols-2 g-4">
-        @if(isset($forums))
         @foreach ($forums as $f)
             <div class="col">
                 <a href="/forumDetail/{{ $f->id }}" style="text-decoration: none;color: #000;">
@@ -76,7 +75,6 @@
                 </a>
             </div>
         @endforeach
-        @endif
     </div>
 </div>
 
@@ -141,7 +139,6 @@
 
 <div class="mt-xl-5 mb-xl-5" style="margin-left: 50px; margin-right: 50px;">
     <div class="row row-cols-2 g-4">
-        @if(isset($forums))
         @foreach ($forums as $f)
             <div class="col">
                 <a href="/forumDetail/{{ $f->id }}" style="text-decoration: none;color: #000;">
@@ -158,7 +155,6 @@
                 </a>
             </div>
         @endforeach
-        @endif
     </div>
 </div>
 
@@ -304,7 +300,6 @@
 
     <div class="mt-xl-5 mb-xl-5" style="margin-left: 50px; margin-right: 50px;">
         <div class="row row-cols-2 g-4">
-            @if(isset($forums))
             @foreach ($forums as $f)
                 <div class="col">
                     <a href="/forumDetail/{{ $f->id }}" style="text-decoration: none;color: #000;">
@@ -321,7 +316,6 @@
                     </a>
                 </div>
             @endforeach
-            @endif
         </div>
     </div>
 

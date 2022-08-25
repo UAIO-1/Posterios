@@ -70,7 +70,7 @@
 
     <div class="p-5" style="margin-top: 50px">
         <div class="row row-cols-1 row-cols-md-4 g-4">
-            @if(isset($projects))
+
 
 
             @foreach ($projects as $p)
@@ -106,7 +106,7 @@
                     </div>
                 </div>
             @endforeach
-            @endif
+
         </div>
     </div>
 
@@ -175,7 +175,7 @@
 
     <div class="p-5" style="margin-top: 50px">
         <div class="row row-cols-1 row-cols-md-4 g-4">
-            @if(isset($projects))
+
             @foreach ($projects as $p)
                 <div class="col">
                     <a href="/projectDetail/{{ $p->id }}" class="project-detail">
@@ -232,7 +232,6 @@
                     </div>
                 </div>
             @endforeach
-            @endif
         </div>
     </div>
 
@@ -306,7 +305,7 @@
 
     <div class="p-5" style="margin-top: 50px">
         <div class="row row-cols-1 row-cols-md-4 g-4">
-            @if(isset($projects))
+
             @foreach ($projects as $p)
                 <div class="col">
                     <a href="/projectDetail/{{ $p->id }}" class="project-detail">
@@ -363,7 +362,6 @@
                     </div>
                 </div>
             @endforeach
-            @endif
         </div>
     </div>
 
